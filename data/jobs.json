@@ -1,0 +1,49 @@
+[
+  {
+    "title": "Trainee",
+    "company": "AGI Clozures",
+    "location": "Hyderabad, Telangana, India",
+    "type": "Internship, Full-time",
+    "salary": "Not specified",
+    "url": "https://www.linkedin.com/jobs/view/4414434943",
+    "description": "AGI Clozures is hiring a Trainee in Hyderabad, Telangana, India.",
+    "notes": "",
+    "status": "wishlist",
+    "userId": "kingkite789@gmail.com",
+    "id": "38817f55-c030-4771-bbe6-05b62eaa3560"
+  },
+  {
+    "id": "06824589-28d8-442e-8d08-d9a7276d03a4",
+    "company": "SUTHERLAND",
+    "role": "Applicant",
+    "status": "Interview",
+    "url": "",
+    "dateApplied": "2026-05-14",
+    "notes": "Auto-detected from email: \"SUTHERLAND ( WFH ) INTERVIEW Masthan Basha Shaik | Your Application has been Shortlisted\"",
+    "source": "email-sync",
+    "userId": "kingkite789@gmail.com"
+  },
+  {
+    "id": "b70aec44-3c26-47a8-8bf2-aea2ed2ad207",
+    "company": "Wellfound",
+    "role": "Applicant",
+    "status": "Interview",
+    "url": "",
+    "dateApplied": "2026-05-14",
+    "notes": "Auto-detected from email: \"An update from ContentKosh, Grovyn and 1 others\"",
+    "source": "email-sync",
+    "userId": "kingkite789@gmail.com",
+    "lastUpdated": "2026-05-14T15:52:07.407Z"
+  },
+  {
+    "id": "10753e04-8502-4967-ba90-835d0ec32950",
+    "company": "Future Bound tech Company",
+    "role": "CEO",
+    "status": "Interview",
+    "url": "",
+    "dateApplied": "2026-05-14",
+    "notes": "Auto-detected from email: \"Job application Update\"",
+    "source": "email-sync",
+    "userId": "kingkite789@gmail.com"
+  }
+]

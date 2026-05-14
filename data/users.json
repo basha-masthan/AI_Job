@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Masthan Basha",
+    "email": "kingkite789@gmail.com",
+    "password": "$2b$10$3Flki5mwWhoWnLU/Fi4y6eJQJJHFe2xAck2cvY17G6v7QrvcnOaHW",
+    "verified": true,
+    "verificationCode": null,
+    "createdAt": "2026-05-14T08:30:32.770Z",
+    "nylasGrantId": "bbd5f12c-fe41-40cb-888d-7a09f8f60f2b",
+    "nylasEmail": "official4basha@gmail.com",
+    "lastEmailSyncTime": "2026-05-14T16:50:31.274Z"
+  },
+  {
+    "name": "Basha",
+    "email": "official4basha@gmail.com",
+    "password": "$2b$10$VJ38RoyhUUe81iYa90zut.fxt/j/fuJhWRBHQZS0qR31q65Z/iJmW",
+    "verified": true,
+    "verificationCode": null,
+    "createdAt": "2026-05-14T08:33:32.063Z",
+    "nylasGrantId": "41d9cada-cd4d-40d7-8245-914c9a5dde7a",
+    "nylasEmail": "kingkite789@gmail.com",
+    "lastEmailSyncTime": "2026-05-14T12:19:33.178Z"
+  },
+  {
+    "name": "basha",
+    "email": "bashamasthan31@gmail.com",
+    "password": "$2b$10$7gFo1h21Ye3G0ZSQw60nZewCX7yqqsvAns2yao6iq8V/UKR5/Yc/S",
+    "verified": false,
+    "verificationCode": "536282",
+    "createdAt": "2026-05-14T09:31:11.714Z"
+  }
+]

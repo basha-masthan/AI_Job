@@ -1,0 +1,8 @@
+{
+  "/job-tracker/page": "app/job-tracker/page.js",
+  "/api/auth/me/route": "app/api/auth/me/route.js",
+  "/api/jobs/route": "app/api/jobs/route.js",
+  "/api/resumes/route": "app/api/resumes/route.js",
+  "/api/jobs/sync/route": "app/api/jobs/sync/route.js",
+  "/page": "app/page.js"
+}

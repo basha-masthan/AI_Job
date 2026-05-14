@@ -1,0 +1,29 @@
+{
+  "name": "job-hunt-pro",
+  "version": "1.0.0",
+  "description": "AI-powered job hunting application using Amazon Bedrock",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cheerio": "^1.0.0",
+    "cloudinary": "^2.10.0",
+    "cookie": "^1.1.1",
+    "docx": "^9.6.1",
+    "file-saver": "^2.0.5",
+    "html2pdf.js": "^0.14.0",
+    "jose": "^6.2.3",
+    "next": "^14.2.0",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^8.0.7",
+    "nylas": "^8.1.1",
+    "pdf-parse-new": "^2.1.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "uuid": "^9.0.0"
+  }
+}
