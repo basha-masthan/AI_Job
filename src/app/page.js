@@ -70,6 +70,38 @@ export default function HomePage() {
   const [animVals, setAnimVals] = useState(HERO_STATS.map(() => 0));
   const statsStarted = useRef(false);
 
+  // AI Brain Testing State
+  const [brainQuestion, setBrainQuestion] = useState('');
+  const [brainLoading, setBrainLoading] = useState(false);
+  const [brainResults, setBrainResults] = useState(null);
+  const [brainConsensus, setBrainConsensus] = useState('');
+
+  async function handleTestBrain(e) {
+    e.preventDefault();
+    if (!brainQuestion.trim()) return;
+    setBrainLoading(true);
+    setBrainResults(null);
+    setBrainConsensus('');
+    try {
+      const res = await fetch('/api/ai/consensus', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: brainQuestion }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setBrainResults(data.results);
+        setBrainConsensus(data.consensus);
+      } else {
+        setBrainConsensus('Error: ' + data.error);
+      }
+    } catch (err) {
+      setBrainConsensus('Failed to fetch AI consensus.');
+    } finally {
+      setBrainLoading(false);
+    }
+  }
+
   useEffect(() => { ensureSessionId(); checkAuthentication(); }, []);
 
   useEffect(() => {
@@ -214,49 +246,59 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <div className="lp-hero-visual-sandbox lp-reveal">
+          <div className="lp-hero-visual-sandbox lp-reveal" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="lp-sandbox-header">
               <div className="lp-sandbox-actions">
                 <span className="lp-sdot red"></span>
                 <span className="lp-sdot yellow"></span>
                 <span className="lp-sdot green"></span>
               </div>
-              <div className="lp-sandbox-tab">⚡ FBT Career Intelligence Engine</div>
+              <div className="lp-sandbox-tab">🧠 Try My AI Brain / Consensus Engine</div>
             </div>
-            <div className="lp-sandbox-body">
-              <div className="lp-sandbox-panel-main">
-                <div className="lp-sandbox-profile">
-                  <div className="lp-avatar">💼</div>
-                  <div className="lp-prof-info">
-                    <h4>Alex Carter</h4>
-                    <span>Master Profile: Full-Stack Engineer</span>
-                  </div>
-                </div>
-                
-                <div className="lp-sandbox-live-analysis">
-                  <div className="lp-analysis-heading">
-                    <span>Active Analysis: AI Tech Lead Role</span>
-                    <span className="lp-badge-live">98% Fit</span>
+            <div className="lp-sandbox-body" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '16px', overflowY: 'auto', padding: '20px' }}>
+              <p style={{ fontSize: '13px', color: 'var(--text-secondary)', textAlign: 'center', marginBottom: 0 }}>
+                Enter an MCQ or question. Watch top AI models debate and reach a consensus!
+              </p>
+              
+              <form onSubmit={handleTestBrain} style={{ display: 'flex', gap: '8px' }}>
+                <input 
+                  type="text" 
+                  value={brainQuestion}
+                  onChange={(e) => setBrainQuestion(e.target.value)}
+                  placeholder="E.g., What is React? A) Library B) Framework"
+                  style={{ flex: 1, padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--border-color)', background: 'var(--bg-card)', color: 'var(--text-primary)', outline: 'none' }}
+                />
+                <button type="submit" disabled={brainLoading || !brainQuestion.trim()} style={{ background: 'var(--accent-primary)', color: 'white', border: 'none', padding: '0 16px', borderRadius: '8px', cursor: brainLoading ? 'not-allowed' : 'pointer', fontWeight: 600 }}>
+                  {brainLoading ? 'Asking...' : 'Ask AIs'}
+                </button>
+              </form>
+
+              {brainResults && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '8px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '8px' }}>
+                    {brainResults.map((r, i) => (
+                      <div key={i} style={{ background: 'var(--bg-card-hover)', padding: '10px', borderRadius: '8px', border: '1px solid var(--border-color)', fontSize: '12px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', color: 'var(--text-muted)' }}>
+                          <strong style={{ color: 'var(--text-primary)' }}>{r.name}</strong>
+                          <span style={{ fontSize: '10px' }}>{r.status === 'success' ? `${r.duration}ms` : '❌'}</span>
+                        </div>
+                        <div style={{ color: r.status === 'success' ? 'var(--text-secondary)' : 'var(--text-error)', lineHeight: 1.4, maxHeight: '60px', overflowY: 'auto' }}>
+                          {r.answer}
+                        </div>
+                      </div>
+                    ))}
                   </div>
                   
-                  <div className="lp-sandbox-bars">
-                    <div className="lp-sbar-row">
-                      <span className="lp-sbar-lbl">ATS Match Score</span>
-                      <div className="lp-sbar-bg"><div className="lp-sbar-fill match" style={{ width: '98%' }}></div></div>
-                    </div>
-                    <div className="lp-sbar-row">
-                      <span className="lp-sbar-lbl">Keyword Density</span>
-                      <div className="lp-sbar-bg"><div className="lp-sbar-fill keyword" style={{ width: '85%' }}></div></div>
-                    </div>
-                  </div>
-                  
-                  <div className="lp-sandbox-bullets">
-                    <div className="lp-sbullet"><span className="lp-sbullet-icon check">✓</span> React & Node.js skills match job requirements</div>
-                    <div className="lp-sbullet"><span className="lp-sbullet-icon check">✓</span> Tailored resume ready for ATS submission</div>
-                    <div className="lp-sbullet"><span className="lp-sbullet-icon warn">⚠️</span> Missing AWS Serverless keyword. <span className="lp-sbullet-action">Auto-Fix</span></div>
+                  <div style={{ background: 'rgba(99, 102, 241, 0.1)', padding: '14px', borderRadius: '8px', border: '1px solid rgba(99, 102, 241, 0.2)' }}>
+                    <h4 style={{ fontSize: '13px', color: 'var(--accent-primary)', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <span>✨</span> AI Consensus Result
+                    </h4>
+                    <p style={{ fontSize: '14px', color: 'var(--text-primary)', lineHeight: 1.5 }}>
+                      {brainConsensus || 'Calculating consensus...'}
+                    </p>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </section>

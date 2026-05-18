@@ -13,7 +13,7 @@ function getActiveAIProvider() {
   return getSetting('activeAIProvider', 'openrouter');
 }
 
-async function callOpenRouter(messages, maxTokens = 4096, retries = 2) {
+export async function callOpenRouter(messages, maxTokens = 4096, retries = 2) {
   const keys = getOpenRouterKeys();
   let lastErr = null;
   
@@ -94,7 +94,7 @@ export async function callGroq(messages, maxTokens = 4096) {
   throw lastErr || new Error('All Groq keys failed.');
 }
 
-async function callHuggingFace(messages, maxTokens = 4096) {
+export async function callHuggingFace(messages, maxTokens = 4096) {
   const apiKey = getApiKey('HF_TOKEN');
   if (!apiKey) throw new Error('HF_TOKEN is missing in .env.local');
 
@@ -121,7 +121,7 @@ async function callHuggingFace(messages, maxTokens = 4096) {
   return data.choices[0].message.content;
 }
 
-async function callGemini(systemPrompt, userPrompt, maxTokens = 4096) {
+export async function callGemini(systemPrompt, userPrompt, maxTokens = 4096) {
   const apiKey = getApiKey('GEMINI_API_KEY');
   if (!apiKey) throw new Error('GEMINI_API_KEY is missing in .env.local');
 
@@ -147,7 +147,7 @@ async function callGemini(systemPrompt, userPrompt, maxTokens = 4096) {
   throw new Error('Gemini returned empty response');
 }
 
-async function callCerebras(messages, maxTokens = 4096) {
+export async function callCerebras(messages, maxTokens = 4096) {
   const apiKey = getApiKey('CEREBRAS_API_KEY');
   const model = getApiKey('CEREBRAS_MODEL') || 'llama3.1-8b';
   if (!apiKey) throw new Error('CEREBRAS_API_KEY is missing');
