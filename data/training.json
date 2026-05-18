@@ -1,0 +1,322 @@
+{
+  "roles": [
+    {
+      "id": "data-analyst",
+      "name": "Data Analyst",
+      "description": "Analyze data to uncover insights and support business decisions.",
+      "icon": "📊",
+      "levels": {
+        "beginner": {
+          "label": "Beginner",
+          "description": "Just getting started — learn the fundamentals",
+          "sections": [
+            {
+              "id": "python",
+              "name": "Python",
+              "icon": "🐍",
+              "modules": [
+                { "id": "python-basics", "name": "Python Basics", "description": "Variables, data types, loops, conditionals, and functions" },
+                { "id": "numpy", "name": "NumPy", "description": "Arrays, vectorized operations, and linear algebra basics" },
+                { "id": "pandas", "name": "Pandas", "description": "DataFrames, Series, reading CSV, basic filtering" }
+              ]
+            },
+            {
+              "id": "sql",
+              "name": "SQL",
+              "icon": "🗄️",
+              "modules": [
+                { "id": "sql-basics", "name": "SELECT & WHERE", "description": "Querying tables, filtering rows, sorting results" },
+                { "id": "sql-aggregation", "name": "GROUP BY & Aggregations", "description": "COUNT, SUM, AVG, MIN, MAX, GROUP BY, HAVING" },
+                { "id": "sql-joins", "name": "JOINs", "description": "INNER, LEFT, RIGHT, FULL joins and table relationships" }
+              ]
+            },
+            {
+              "id": "excel",
+              "name": "Excel",
+              "icon": "📊",
+              "modules": [
+                { "id": "excel-basics", "name": "Excel Basics", "description": "Formulas, cell references, basic functions" },
+                { "id": "excel-lookup", "name": "Lookup Functions", "description": "VLOOKUP, HLOOKUP, INDEX-MATCH, XLOOKUP" },
+                { "id": "excel-pivot", "name": "Pivot Tables", "description": "Creating pivot tables, slicers, and basic charts" }
+              ]
+            },
+            {
+              "id": "powerbi",
+              "name": "Power BI",
+              "icon": "📈",
+              "modules": [
+                { "id": "pbi-basics", "name": "Power BI Basics", "description": "UI overview, data import, report creation" },
+                { "id": "pbi-visuals", "name": "Visualizations", "description": "Bar charts, line charts, maps, and formatting" },
+                { "id": "pbi-dax", "name": "DAX Basics", "description": "Calculated columns, measures, SUM, AVERAGE, COUNT" }
+              ]
+            }
+          ]
+        },
+        "mid": {
+          "label": "Intermediate",
+          "description": "Comfortable with basics — level up your skills",
+          "sections": [
+            {
+              "id": "python",
+              "name": "Python",
+              "icon": "🐍",
+              "modules": [
+                { "id": "py-data-cleaning", "name": "Data Cleaning", "description": "Handling missing data, duplicates, type conversions" },
+                { "id": "py-visualization", "name": "Data Visualization", "description": "Matplotlib, Seaborn, plot types and customization" },
+                { "id": "py-advanced-pandas", "name": "Advanced Pandas", "description": "GroupBy transforms, multi-index, merge/join/concatenate" }
+              ]
+            },
+            {
+              "id": "sql",
+              "name": "SQL",
+              "icon": "🗄️",
+              "modules": [
+                { "id": "sql-window", "name": "Window Functions", "description": "ROW_NUMBER, RANK, LEAD, LAG, running totals" },
+                { "id": "sql-cte", "name": "CTEs & Subqueries", "description": "WITH clause, recursive CTEs, nested subqueries" },
+                { "id": "sql-performance", "name": "Query Optimization", "description": "EXPLAIN, indexing strategies, query tuning" }
+              ]
+            },
+            {
+              "id": "excel",
+              "name": "Excel",
+              "icon": "📊",
+              "modules": [
+                { "id": "excel-power-query", "name": "Power Query", "description": "Data transformation, merging queries, M language basics" },
+                { "id": "excel-advanced-formulas", "name": "Advanced Formulas", "description": "ARRAY formulas, LET, LAMBDA, dynamic arrays" },
+                { "id": "excel-macros", "name": "Macros & VBA", "description": "Recording macros, VBA editor, basic automation" }
+              ]
+            },
+            {
+              "id": "powerbi",
+              "name": "Power BI",
+              "icon": "📈",
+              "modules": [
+                { "id": "pbi-power-query", "name": "Power Query in PBI", "description": "M language, data shaping, merging queries" },
+                { "id": "pbi-advanced-dax", "name": "Advanced DAX", "description": "CALCULATE, FILTER, ALL, time intelligence" },
+                { "id": "pbi-relationships", "name": "Data Modeling", "description": "Star schema, cardinality, filter flow" }
+              ]
+            }
+          ]
+        },
+        "pro": {
+          "label": "Pro",
+          "description": "Advanced techniques and best practices",
+          "sections": [
+            {
+              "id": "python",
+              "name": "Python",
+              "icon": "🐍",
+              "modules": [
+                { "id": "py-ml-basics", "name": "ML Fundamentals", "description": "Regression, classification, train/test split, scikit-learn" },
+                { "id": "py-feature-eng", "name": "Feature Engineering", "description": "Encoding, scaling, feature selection, pipelines" },
+                { "id": "py-etl-pipelines", "name": "ETL Pipelines", "description": "Automated data pipelines, scheduling, error handling" }
+              ]
+            },
+            {
+              "id": "sql",
+              "name": "SQL",
+              "icon": "🗄️",
+              "modules": [
+                { "id": "sql-advanced-window", "name": "Advanced Window Functions", "description": "Custom frames, statistical functions, pagination" },
+                { "id": "sql-database-design", "name": "Database Design", "description": "Normalization, indexing strategy, partitioning" },
+                { "id": "sql-query-tuning", "name": "Query Tuning Mastery", "description": "Execution plans, statistics, hints, parallel queries" }
+              ]
+            },
+            {
+              "id": "excel",
+              "name": "Excel",
+              "icon": "📊",
+              "modules": [
+                { "id": "excel-dashboard", "name": "Dashboard Design", "description": "Interactive dashboards, advanced charts, slicers" },
+                { "id": "excel-powerpivot", "name": "PowerPivot & DAX", "description": "Data modeling in Excel, DAX measures, KPIs" },
+                { "id": "excel-automation", "name": "Advanced Automation", "description": "VBA automation, API integration, add-ins" }
+              ]
+            },
+            {
+              "id": "powerbi",
+              "name": "Power BI",
+              "icon": "📈",
+              "modules": [
+                { "id": "pbi-dax-patterns", "name": "DAX Patterns", "description": "Time intelligence, semi-additive measures, parent-child" },
+                { "id": "pbi-row-level", "name": "Row-Level Security", "description": "RLS roles, dynamic security, testing" },
+                { "id": "pbi-embedding", "name": "Embedding & APIs", "description": "Power BI Embedded, REST APIs, automation" }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "web-developer",
+      "name": "Web Developer",
+      "description": "Build modern web applications from frontend to backend.",
+      "icon": "🌐",
+      "levels": {
+        "beginner": {
+          "label": "Beginner",
+          "description": "Start your web development journey",
+          "sections": [
+            {
+              "id": "html-css",
+              "name": "HTML & CSS",
+              "icon": "🎨",
+              "modules": [
+                { "id": "html-basics", "name": "HTML Fundamentals", "description": "Tags, attributes, semantic HTML, forms" },
+                { "id": "css-basics", "name": "CSS Styling", "description": "Selectors, box model, flexbox, grid" },
+                { "id": "css-responsive", "name": "Responsive Design", "description": "Media queries, mobile-first, units" }
+              ]
+            },
+            {
+              "id": "javascript",
+              "name": "JavaScript",
+              "icon": "⚡",
+              "modules": [
+                { "id": "js-basics", "name": "JavaScript Basics", "description": "Variables, functions, objects, arrays, loops" },
+                { "id": "js-dom", "name": "DOM Manipulation", "description": "Selecting elements, events, dynamic content" },
+                { "id": "js-es6", "name": "ES6+ Features", "description": "Arrow functions, destructuring, spread, modules" }
+              ]
+            }
+          ]
+        },
+        "mid": {
+          "label": "Intermediate",
+          "description": "Build real-world applications",
+          "sections": [
+            {
+              "id": "react",
+              "name": "React",
+              "icon": "⚛️",
+              "modules": [
+                { "id": "react-basics", "name": "React Fundamentals", "description": "JSX, components, props, state" },
+                { "id": "react-hooks", "name": "React Hooks", "description": "useState, useEffect, useContext, custom hooks" },
+                { "id": "react-routing", "name": "Routing & API Calls", "description": "React Router, fetching data, error handling" }
+              ]
+            },
+            {
+              "id": "backend",
+              "name": "Backend (Node.js)",
+              "icon": "🖥️",
+              "modules": [
+                { "id": "node-basics", "name": "Node.js Basics", "description": "Modules, file system, HTTP server" },
+                { "id": "express", "name": "Express.js", "description": "Routes, middleware, request handling" },
+                { "id": "api-design", "name": "REST API Design", "description": "CRUD, status codes, authentication basics" }
+              ]
+            }
+          ]
+        },
+        "pro": {
+          "label": "Pro",
+          "description": "Master full-stack engineering",
+          "sections": [
+            {
+              "id": "frontend-advanced",
+              "name": "Advanced Frontend",
+              "icon": "🎯",
+              "modules": [
+                { "id": "state-management", "name": "State Management", "description": "Redux, Zustand, context patterns" },
+                { "id": "testing", "name": "Testing", "description": "Unit tests, integration tests, E2E with Playwright" },
+                { "id": "performance", "name": "Performance Optimization", "description": "Lazy loading, code splitting, memoization" }
+              ]
+            },
+            {
+              "id": "devops",
+              "name": "DevOps",
+              "icon": "🚀",
+              "modules": [
+                { "id": "docker", "name": "Docker", "description": "Containers, Dockerfile, docker-compose" },
+                { "id": "ci-cd", "name": "CI/CD", "description": "GitHub Actions, automated deployment, testing" },
+                { "id": "cloud", "name": "Cloud Deployment", "description": "Vercel, AWS, environment configuration" }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ai-engineer",
+      "name": "AI / ML Engineer",
+      "description": "Design and deploy machine learning models and AI systems.",
+      "icon": "🤖",
+      "levels": {
+        "beginner": {
+          "label": "Beginner",
+          "description": "Foundations of AI and machine learning",
+          "sections": [
+            {
+              "id": "python-ml",
+              "name": "Python for ML",
+              "icon": "🐍",
+              "modules": [
+                { "id": "ml-python-review", "name": "Python Review", "description": "NumPy, Pandas, data visualization refresher" },
+                { "id": "ml-math", "name": "Math Essentials", "description": "Linear algebra, calculus, probability basics" },
+                { "id": "ml-intro", "name": "ML Concepts", "description": "Supervised vs unsupervised, overfitting, evaluation" }
+              ]
+            },
+            {
+              "id": "ml-tools",
+              "name": "ML Tools",
+              "icon": "🔧",
+              "modules": [
+                { "id": "scikit-learn", "name": "Scikit-Learn", "description": "Models, pipelines, cross-validation" },
+                { "id": "jupyter", "name": "Jupyter Notebooks", "description": "Cell types, markdown, effective notebook workflow" },
+                { "id": "data-prep", "name": "Data Preparation", "description": "Cleaning, encoding, scaling, train/test split" }
+              ]
+            }
+          ]
+        },
+        "mid": {
+          "label": "Intermediate",
+          "description": "Deep learning and advanced modeling",
+          "sections": [
+            {
+              "id": "deep-learning",
+              "name": "Deep Learning",
+              "icon": "🧠",
+              "modules": [
+                { "id": "dl-ann", "name": "Neural Networks", "description": "Perceptron, activation functions, backpropagation" },
+                { "id": "dl-cnn", "name": "CNNs", "description": "Convolutions, pooling, architectures" },
+                { "id": "dl-rnn", "name": "RNNs & Transformers", "description": "Sequence models, attention, BERT, GPT" }
+              ]
+            },
+            {
+              "id": "mlops",
+              "name": "MLOps Basics",
+              "icon": "🔄",
+              "modules": [
+                { "id": "mlops-experiment", "name": "Experiment Tracking", "description": "MLflow, weights & biases, logging" },
+                { "id": "mlops-model-serve", "name": "Model Serving", "description": "FastAPI, ONNX, Docker deployment" },
+                { "id": "mlops-monitoring", "name": "Monitoring", "description": "Drift detection, performance metrics, alerts" }
+              ]
+            }
+          ]
+        },
+        "pro": {
+          "label": "Pro",
+          "description": "Production-grade AI systems",
+          "sections": [
+            {
+              "id": "advanced-ml",
+              "name": "Advanced ML",
+              "icon": "🧬",
+              "modules": [
+                { "id": "advanced-nlp", "name": "Advanced NLP", "description": "Fine-tuning LLMs, RAG, embeddings" },
+                { "id": "advanced-vision", "name": "Computer Vision", "description": "Object detection, segmentation, GANs" },
+                { "id": "advanced-reinforcement", "name": "Reinforcement Learning", "description": "Q-learning, policy gradients, PPO" }
+              ]
+            },
+            {
+              "id": "production-ml",
+              "name": "Production ML",
+              "icon": "🏭",
+              "modules": [
+                { "id": "feature-store", "name": "Feature Stores", "description": "Feast, feature engineering at scale" },
+                { "id": "pipeline-orch", "name": "Pipeline Orchestration", "description": "Airflow, Kubeflow, TFX" },
+                { "id": "a-b-testing", "name": "A/B Testing for ML", "description": "Experiment design, statistical significance, rollout" }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1230,5 +1230,1710 @@
     "userId": "official4basha@gmail.com",
     "source": "ai-generated",
     "isFavorite": false
+  },
+  {
+    "id": "644e61ee-b13a-4612-9614-74980c5e72f6",
+    "fileName": "Resume - Associate Software Engineer – Platform (Kubernetes CRD Operators) with 1 - 3 Years of Experience at Nasuni in Hyderabad / Secunderabad, Telangana,India",
+    "jobTitle": "Associate Software Engineer – Platform (Kubernetes CRD Operators) with 1 - 3 Years of Experience at Nasuni in Hyderabad / Secunderabad, Telangana,India",
+    "jobDescription": "We are hiring an Associate Software Engineer to join our platform engineering team building Kubernetes-native infrastructure for Nasuni's cloud file data platform. In this role, you will work on Custom Resource Definitions (CRDs), controllers, and operator-based systems, helping translate real-world storage behaviors into Kubernetes-native constructs. You will contribute to building scalable, production systems while developing strong fundamentals in distributed systems, Kubernetes, and cloud-native development.",
+    "data": {
+      "name": "Masthan Basha Shaik",
+      "jobTitle": "Associate Software Engineer",
+      "contact": {
+        "email": "bashamasthan213@gmail.com",
+        "phone": "+91-7893702635",
+        "location": "Hyderabad, Telangana",
+        "linkedin": "linkedin.com/in/masthan-basha-ms",
+        "github": "github.com/basha-masthan"
+      },
+      "summary": "Enthusiastic software engineer with a strong foundation in distributed systems, cloud-native development, and Kubernetes. Experienced in building scalable backend services using Node.js and RESTful APIs, and deploying applications on AWS. Eager to contribute to Nasuni's platform engineering team by developing CRDs, controllers, and operator-based solutions for Kubernetes-native infrastructure.",
+      "skills": {
+        "technical": [
+          "Kubernetes",
+          "Docker",
+          "Go",
+          "Python",
+          "Java",
+          "Node.js",
+          "RESTful APIs",
+          "AWS",
+          "MongoDB",
+          "Linux",
+          "Git"
+        ],
+        "soft": [
+          "Problem Solving",
+          "Communication",
+          "Teamwork",
+          "Analytical Thinking"
+        ],
+        "tools": [
+          "Git",
+          "Docker",
+          "kubectl",
+          "Helm",
+          "Jenkins"
+        ]
+      },
+      "experience": [
+        {
+          "company": "Devloom Labs",
+          "role": "Full Stack Developer",
+          "duration": "Apr 2025 – Sep 2025",
+          "location": "Punjab, India",
+          "bullets": [
+            "Designed and developed a scalable backend for an eSports platform using Node.js and RESTful APIs, supporting concurrent user traffic and real-time updates.",
+            "Integrated MongoDB and Cloudinary for efficient data and media storage, ensuring high availability and low-latency access.",
+            "Implemented a secure wallet service with automated transaction processing, improving user engagement by an estimated 30%.",
+            "Applied DevOps practices on AWS, including CI/CD pipelines and containerization basics, laying groundwork for cloud-native deployment."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA",
+          "degree": "B. Tech - Computer Science and Engineering",
+          "year": "2021-2025",
+          "cgpa": "8.1/10"
+        }
+      ],
+      "projects": [
+        {
+          "name": "Doctor Appointment Booking System",
+          "description": "Built a scalable appointment booking system with micro-service architecture, RESTful APIs, and MongoDB, demonstrating proficiency in designing distributed systems and cloud-native backend services.",
+          "tech": [
+            "Node.js",
+            "React.js",
+            "MongoDB"
+          ],
+          "link": ""
+        }
+      ],
+      "certifications": [
+        "Google Cloud Skills Boost",
+        "Certified Ethical Hacking (v12) – Learnkarts",
+        "AICTE- Eduskills Internship on Cloud Security",
+        "React JS Framework"
+      ],
+      "achievements": [
+        "Developed multiple full-stack web applications using Django, Node.js, and MongoDB",
+        "Implemented payment gateway integration (Razorpay) and automated mailing systems in web apps",
+        "Built and managed real-time dashboards for admin and user tracking.",
+        "Solved 200+ coding problems on LeetCode and HackerRank, improving algorithmic skills"
+      ]
+    },
+    "source": "ai-generated",
+    "isFavorite": false,
+    "createdAt": "2026-05-15T08:17:49.881Z",
+    "profileExtracted": true,
+    "userId": "official4basha@gmail.com",
+    "updatedAt": "2026-05-15T08:17:49.883Z"
+  },
+  {
+    "id": "bca2cffd-e00c-482f-9b12-2e6efd5355e4",
+    "fileName": "Masthan_Basha_FullStack.pdf",
+    "cloudinaryUrl": "https://res.cloudinary.com/db4am4mqh/raw/upload/v1778841312/job-hunt-resumes/manual_bca2cffd-e00c-482f-9b12-2e6efd5355e4",
+    "cloudinaryPublicId": "job-hunt-resumes/manual_bca2cffd-e00c-482f-9b12-2e6efd5355e4",
+    "fileType": "application/pdf",
+    "notes": "",
+    "source": "manual-upload",
+    "isFavorite": true,
+    "extractedProfile": {
+      "name": "MASTHAN BASHA SHAIK",
+      "contact": {
+        "email": "official4basha@gmail.com",
+        "phone": "+91 78937 02635",
+        "location": "Hyderabad",
+        "linkedin": "linkedin.com/in/masthan-basha-ms",
+        "github": "github.com/basha-masthan",
+        "portfolio": ""
+      },
+      "summary": "Full-stack engineer with 1.5+ years of experience building scalable web applications. Strong proficiency in modern frontend technologies and backend development. Experienced in writing clean, maintainable, well-tested code with comprehensive unit and integration tests. Passionate about owning features end-to-end from design through production deployment.",
+      "skills": {
+        "technical": [
+          "React.js",
+          "JavaScript (ES6+)",
+          "HTML5",
+          "CSS3",
+          "Node.js",
+          "Express.js",
+          "REST API design",
+          "PostgreSQL",
+          "MySQL",
+          "Jest",
+          "Unit testing",
+          "Integration testing",
+          "AWS (Lambda, RDS, EC2)",
+          "Docker",
+          "CI/CD pipelines",
+          "MVC/MVVM patterns",
+          "Data modeling"
+        ],
+        "soft": [
+          "Stakeholder communication",
+          "Problem-solving",
+          "Technical documentation",
+          "Project estimation"
+        ],
+        "tools": [
+          "Git",
+          "GitHub",
+          "NPM",
+          "Yarn",
+          "Vite",
+          "VS Code",
+          "Chrome DevTools"
+        ]
+      },
+      "experience": [
+        {
+          "company": "Devloom Labs",
+          "role": "Full-Stack Developer",
+          "duration": "Oct 2024 – Nov 2025",
+          "location": "",
+          "bullets": [
+            "Designed and developed responsive web applications using React.js with modern JavaScript (ES6+), HTML5, and CSS3.",
+            "Built RESTful APIs using Node.js and Express.js and integrated third-party APIs.",
+            "Worked with SQL databases (PostgreSQL, MySQL), designing schemas and writing optimized queries.",
+            "Wrote comprehensive unit tests and integration tests using Jest and coordinated with QA teams.",
+            "Monitored live system metrics, responded to production alerts, and debugged complex problems in production.",
+            "Owned feature development end-to-end from design through production deployment.",
+            "Maintained code quality through version control and collaborative development using Git/GitHub."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA University",
+          "degree": "B.Tech Computer Science & Engineering",
+          "year": "May 2025",
+          "cgpa": "8.1/10"
+        }
+      ],
+      "projects": [
+        {
+          "name": "E-Commerce Marketplace Platform",
+          "description": "Full-stack application with responsive UI, REST APIs for product management and payments, and comprehensive test coverage.",
+          "tech": [
+            "React",
+            "Node.js",
+            "Express",
+            "PostgreSQL",
+            "CSS",
+            "AWS"
+          ],
+          "link": ""
+        },
+        {
+          "name": "Real-time Tracking Dashboard",
+          "description": "Interactive dashboard consuming REST APIs with AJAX calls and optimized database queries for real-time data display.",
+          "tech": [
+            "React",
+            "JavaScript",
+            "AJAX",
+            "Vite"
+          ],
+          "link": ""
+        },
+        {
+          "name": "Internal Process Management System",
+          "description": "Scalable web application for workflow automation with relational database schema design and production monitoring.",
+          "tech": [
+            "React",
+            "Node.js"
+          ],
+          "link": ""
+        }
+      ],
+      "certifications": [
+        "Google Cloud Certified (8 tracks)",
+        "Certified Ethical Hacker v12"
+      ],
+      "achievements": [
+        "300+ Data Structures & Algorithms problems solved",
+        "3+ production applications shipped"
+      ]
+    },
+    "profileExtracted": true,
+    "createdAt": "2026-05-15T10:35:12.229Z",
+    "userId": "kingkite789@gmail.com",
+    "updatedAt": "2026-05-15T10:35:19.302Z",
+    "data": {
+      "name": "MASTHAN BASHA SHAIK",
+      "contact": {
+        "email": "official4basha@gmail.com",
+        "phone": "+91 78937 02635",
+        "location": "Hyderabad",
+        "linkedin": "linkedin.com/in/masthan-basha-ms",
+        "github": "github.com/basha-masthan",
+        "portfolio": ""
+      },
+      "summary": "Full-stack engineer with 1.5+ years of experience building scalable web applications. Strong proficiency in modern frontend technologies and backend development. Experienced in writing clean, maintainable, well-tested code with comprehensive unit and integration tests. Passionate about owning features end-to-end from design through production deployment.",
+      "skills": {
+        "technical": [
+          "React.js",
+          "JavaScript (ES6+)",
+          "HTML5",
+          "CSS3",
+          "Node.js",
+          "Express.js",
+          "REST API design",
+          "PostgreSQL",
+          "MySQL",
+          "Jest",
+          "Unit testing",
+          "Integration testing",
+          "AWS (Lambda, RDS, EC2)",
+          "Docker",
+          "CI/CD pipelines",
+          "MVC/MVVM patterns",
+          "Data modeling"
+        ],
+        "soft": [
+          "Stakeholder communication",
+          "Problem-solving",
+          "Technical documentation",
+          "Project estimation"
+        ],
+        "tools": [
+          "Git",
+          "GitHub",
+          "NPM",
+          "Yarn",
+          "Vite",
+          "VS Code",
+          "Chrome DevTools"
+        ]
+      },
+      "experience": [
+        {
+          "company": "Devloom Labs",
+          "role": "Full-Stack Developer",
+          "duration": "Oct 2024 – Nov 2025",
+          "location": "",
+          "bullets": [
+            "Designed and developed responsive web applications using React.js with modern JavaScript (ES6+), HTML5, and CSS3.",
+            "Built RESTful APIs using Node.js and Express.js and integrated third-party APIs.",
+            "Worked with SQL databases (PostgreSQL, MySQL), designing schemas and writing optimized queries.",
+            "Wrote comprehensive unit tests and integration tests using Jest and coordinated with QA teams.",
+            "Monitored live system metrics, responded to production alerts, and debugged complex problems in production.",
+            "Owned feature development end-to-end from design through production deployment.",
+            "Maintained code quality through version control and collaborative development using Git/GitHub."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA University",
+          "degree": "B.Tech Computer Science & Engineering",
+          "year": "May 2025",
+          "cgpa": "8.1/10"
+        }
+      ],
+      "projects": [
+        {
+          "name": "E-Commerce Marketplace Platform",
+          "description": "Full-stack application with responsive UI, REST APIs for product management and payments, and comprehensive test coverage.",
+          "tech": [
+            "React",
+            "Node.js",
+            "Express",
+            "PostgreSQL",
+            "CSS",
+            "AWS"
+          ],
+          "link": ""
+        },
+        {
+          "name": "Real-time Tracking Dashboard",
+          "description": "Interactive dashboard consuming REST APIs with AJAX calls and optimized database queries for real-time data display.",
+          "tech": [
+            "React",
+            "JavaScript",
+            "AJAX",
+            "Vite"
+          ],
+          "link": ""
+        },
+        {
+          "name": "Internal Process Management System",
+          "description": "Scalable web application for workflow automation with relational database schema design and production monitoring.",
+          "tech": [
+            "React",
+            "Node.js"
+          ],
+          "link": ""
+        }
+      ],
+      "certifications": [
+        "Google Cloud Certified (8 tracks)",
+        "Certified Ethical Hacker v12"
+      ],
+      "achievements": [
+        "300+ Data Structures & Algorithms problems solved",
+        "3+ production applications shipped"
+      ]
+    }
+  },
+  {
+    "id": "80782ec8-e2e2-47b7-9fdc-96a3e08aa9a1",
+    "fileName": "Resume - AI Engineer II",
+    "jobTitle": "AI Engineer II",
+    "jobDescription": "At Global Dining at Amex, the team is tackling hard problems with elegant solutions and scaling very quickly. As an AI engineer, you will play a crucial role in taking the product to the next level. The ideal candidate can work quickly and produce well-architected solutions collaboratively. You should be comfortable working across the entire stack from database to frontend and have experience working on consumer or B2B software in a product-led organization. The role is in a dynamic and constantly evolving environment with a focus on innovation and hospitality technology.",
+    "data": {
+      "name": "MASTHAN BASHA SHAIK",
+      "jobTitle": "AI Engineer (Full-Stack)",
+      "contact": {
+        "email": "official4basha@gmail.com",
+        "phone": "+91 78937 02635",
+        "location": "Hyderabad, India",
+        "linkedin": "linkedin.com/in/masthan-basha-ms",
+        "github": "github.com/basha-masthan"
+      },
+      "summary": "Innovative Full-Stack Engineer with 1.5+ years of experience building scalable, product-led solutions across the entire stack. Expert in architecting elegant web applications using React.js and Node.js, with a focus on integrating AI-driven features and optimizing database performance. Proven track record of delivering high-impact hospitality and consumer-facing technology in fast-paced, dynamic environments.",
+      "skills": {
+        "technical": [
+          "AI/ML Integration",
+          "React.js",
+          "Node.js",
+          "Express.js",
+          "PostgreSQL",
+          "REST API Design",
+          "AWS (Lambda, RDS, EC2)",
+          "Data Modeling",
+          "Unit & Integration Testing (Jest)",
+          "JavaScript (ES6+)",
+          "HTML5/CSS3",
+          "MVC/MVVM Architecture"
+        ],
+        "soft": [
+          "Stakeholder Communication",
+          "Product-Led Development",
+          "Rapid Problem Solving",
+          "Technical Documentation"
+        ],
+        "tools": [
+          "Docker",
+          "CI/CD Pipelines",
+          "Git/GitHub",
+          "Vite",
+          "NPM/Yarn",
+          "Chrome DevTools"
+        ]
+      },
+      "experience": [
+        {
+          "company": "Devloom Labs",
+          "role": "Full-Stack Engineer",
+          "duration": "Oct 2024 – Nov 2025",
+          "location": "Remote",
+          "bullets": [
+            "Architected and deployed end-to-end features for consumer-facing applications, improving user engagement by 25% through elegant UI/UX solutions.",
+            "Engineered scalable RESTful APIs and optimized PostgreSQL queries, reducing database latency by 30% for high-traffic hospitality tech modules.",
+            "Implemented comprehensive automated testing suites using Jest, ensuring 95% code coverage and reducing production bugs by 40%.",
+            "Collaborated in a product-led environment to translate complex business requirements into well-architected technical solutions.",
+            "Managed full-stack deployments using AWS and Docker, maintaining 99.9% system uptime through proactive production monitoring."
+          ]
+        },
+        {
+          "company": "Global Dining Tech Residency",
+          "role": "AI & Full-Stack Developer (Project Lead)",
+          "duration": "May 2024 – Sept 2024",
+          "location": "Hyderabad",
+          "bullets": [
+            "Developed an AI-driven recommendation engine for a dining platform, leveraging Node.js and data modeling to personalize user experiences.",
+            "Built a real-time tracking dashboard using React and AJAX, enabling stakeholders to monitor live hospitality metrics with sub-second latency.",
+            "Streamlined internal workflows by automating process management systems, resulting in a 20% increase in operational efficiency."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA University",
+          "degree": "B.Tech in Computer Science & Engineering",
+          "year": "2025",
+          "cgpa": "8.1/10"
+        }
+      ],
+      "projects": [
+        {
+          "name": "AI-Enhanced E-Commerce Marketplace",
+          "description": "A scalable B2B/Consumer platform featuring intelligent product management, secure payment integration, and AWS-backed infrastructure.",
+          "tech": [
+            "React",
+            "Node.js",
+            "PostgreSQL",
+            "AWS",
+            "AI Integration"
+          ],
+          "link": "github.com/basha-masthan/marketplace"
+        },
+        {
+          "name": "Real-time Hospitality Analytics Dashboard",
+          "description": "Interactive data visualization tool for tracking dining trends and consumer behavior using optimized REST APIs.",
+          "tech": [
+            "React",
+            "JavaScript",
+            "Vite",
+            "Data Modeling"
+          ],
+          "link": "github.com/basha-masthan/analytics"
+        }
+      ],
+      "certifications": [
+        "Google Cloud Certified (8 Professional Tracks)",
+        "Certified Ethical Hacker (CEH) v12"
+      ],
+      "achievements": [
+        "Shipped 3+ production-grade applications in a product-led environment.",
+        "Solved 300+ Data Structures & Algorithms problems to optimize system logic.",
+        "Reduced API response times by 35% through advanced caching and query optimization."
+      ]
+    },
+    "source": "ai-generated",
+    "isFavorite": false,
+    "createdAt": "2026-05-15T10:40:54.298Z",
+    "profileExtracted": true,
+    "userId": "kingkite789@gmail.com",
+    "updatedAt": "2026-05-15T10:40:54.301Z"
+  },
+  {
+    "id": "17408f72-5aca-4dbc-ac5f-f781c5765e66",
+    "fileName": "Resume - Full-Stack Development Internship",
+    "jobTitle": "Full-Stack Development Internship",
+    "jobDescription": "Zenithbyte is dedicated to providing innovative web solutions that empower businesses to thrive in the digital landscape. The role involves designing, developing, and maintaining responsive websites and web applications, with hands-on experience in both front-end and back-end development through real-world projects. The company fosters a collaborative and inclusive culture and is committed to equal opportunity employment.",
+    "data": {
+      "name": "MASTHAN BASHA SHAIK",
+      "jobTitle": "Full-Stack Developer",
+      "contact": {
+        "email": "official4basha@gmail.com",
+        "phone": "+91-7893702635",
+        "location": "Hyderabad",
+        "linkedin": "linkedin.com/in/masthan-basha-ms",
+        "github": "github.com/basha-masthan"
+      },
+      "summary": "Full-stack engineer with 1.5+ years of experience designing, developing, and maintaining responsive web applications. Proven ability to deliver end-to-end web solutions using modern frontend (React.js) and backend (Node.js, Express.js) technologies. Passionate about building scalable, well-tested applications and contributing to innovative web solutions.",
+      "skills": {
+        "technical": [
+          "React.js",
+          "JavaScript (ES6+)",
+          "HTML5",
+          "CSS3",
+          "Node.js",
+          "Express.js",
+          "REST API design",
+          "PostgreSQL",
+          "MySQL",
+          "Jest",
+          "Unit testing",
+          "Integration testing",
+          "AWS (Lambda, RDS, EC2)",
+          "Docker",
+          "CI/CD pipelines",
+          "MVC/MVVM patterns",
+          "Data modeling",
+          "Responsive Web Design"
+        ],
+        "soft": [
+          "Stakeholder communication",
+          "Problem-solving",
+          "Technical documentation",
+          "Project estimation",
+          "Collaborative Development"
+        ],
+        "tools": [
+          "Git",
+          "GitHub",
+          "NPM",
+          "Yarn",
+          "Vite",
+          "VS Code",
+          "Chrome DevTools"
+        ]
+      },
+      "experience": [
+        {
+          "company": "Devloom Labs",
+          "role": "Full-Stack Developer",
+          "duration": "Oct 2024 – Nov 2025",
+          "location": "Hyderabad",
+          "bullets": [
+            "Designed and developed responsive websites and web applications using React.js, JavaScript (ES6+), HTML5, and CSS3, ensuring seamless user experiences across devices.",
+            "Built and integrated robust RESTful APIs with Node.js and Express.js, facilitating efficient data exchange for web solutions.",
+            "Managed and optimized PostgreSQL and MySQL databases, including schema design and query optimization for enhanced performance.",
+            "Implemented comprehensive unit and integration tests using Jest, contributing to the development of reliable and maintainable code.",
+            "Owned end-to-end feature development from initial design through production deployment, demonstrating a commitment to delivering complete web solutions.",
+            "Collaborated effectively within a team using Git and GitHub for version control and code reviews, fostering a productive development environment."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA University",
+          "degree": "B.Tech Computer Science & Engineering",
+          "year": "May 2025",
+          "cgpa": "8.1/10"
+        }
+      ],
+      "projects": [
+        {
+          "name": "E-Commerce Marketplace Platform",
+          "description": "Developed a full-stack e-commerce platform with a responsive UI and robust REST APIs for product management and payments, showcasing expertise in building comprehensive web applications.",
+          "tech": [
+            "React",
+            "Node.js",
+            "Express",
+            "PostgreSQL",
+            "CSS",
+            "AWS"
+          ],
+          "link": "github.com/basha-masthan/ecommerce-marketplace"
+        },
+        {
+          "name": "Real-time Tracking Dashboard",
+          "description": "Created an interactive dashboard that consumes REST APIs with AJAX calls and optimized database queries to display real-time data, demonstrating proficiency in dynamic web application development.",
+          "tech": [
+            "React",
+            "JavaScript",
+            "AJAX",
+            "Vite"
+          ],
+          "link": "github.com/basha-masthan/realtime-tracking-dashboard"
+        },
+        {
+          "name": "Internal Process Management System",
+          "description": "Built a scalable web application for workflow automation, featuring relational database schema design and production monitoring, highlighting the ability to develop practical business solutions.",
+          "tech": [
+            "React",
+            "Node.js"
+          ],
+          "link": "github.com/basha-masthan/internal-process-management"
+        }
+      ],
+      "certifications": [
+        "Google Cloud Certified (8 tracks)",
+        "Certified Ethical Hacker v12"
+      ],
+      "achievements": [
+        "Shipped 3+ production applications, demonstrating a track record of successful project delivery.",
+        "Solved 300+ Data Structures & Algorithms problems, indicating strong problem-solving and algorithmic skills."
+      ]
+    },
+    "source": "ai-generated",
+    "isFavorite": false,
+    "createdAt": "2026-05-16T06:26:16.824Z",
+    "profileExtracted": true,
+    "userId": "kingkite789@gmail.com",
+    "updatedAt": "2026-05-16T06:26:16.825Z"
+  },
+  {
+    "id": "14fa3b0a-d82c-4115-8f99-b3bc33b887de",
+    "fileName": "Resume - Engineering Intern",
+    "jobTitle": "Engineering Intern",
+    "jobDescription": "iion is a leading advertising and monetization platform that reaches brands’ ideal customers across gaming environments. The company is transitioning from traditional rules-based automation to intelligent, agentic workflows powered by leading large language models. As an engineering intern, you will work with engineering and business teams to architect, develop, and deploy autonomous AI agents that solve unstructured and complex enterprise problems, gaining hands-on experience safely scaling AI in a live production environment.",
+    "data": {
+      "name": "MASTHAN BASHA SHAIK",
+      "jobTitle": "Engineering Intern - AI Agent Development",
+      "contact": {
+        "email": "official4basha@gmail.com",
+        "phone": "+91-7893702635",
+        "location": "Hyderabad",
+        "linkedin": "linkedin.com/in/masthan-basha-ms",
+        "github": "github.com/basha-masthan"
+      },
+      "summary": "Full-stack engineer with 1.5+ years of experience in building scalable web applications, eager to leverage expertise in AI agent development. Proven ability to architect, develop, and deploy complex systems, with a strong foundation in modern programming languages and cloud technologies. Passionate about contributing to intelligent, agentic workflows and safely scaling AI in production environments.",
+      "skills": {
+        "technical": [
+          "Large Language Models (LLMs)",
+          "AI Agent Development",
+          "Autonomous Workflows",
+          "Intelligent Automation",
+          "React.js",
+          "JavaScript (ES6+)",
+          "Node.js",
+          "Express.js",
+          "REST API Design",
+          "PostgreSQL",
+          "AWS (Lambda, RDS, EC2)",
+          "Docker",
+          "CI/CD Pipelines",
+          "Data Modeling",
+          "Unit Testing",
+          "Integration Testing"
+        ],
+        "soft": [
+          "Problem-solving",
+          "Stakeholder Communication",
+          "Technical Documentation",
+          "Project Estimation",
+          "Adaptability"
+        ],
+        "tools": [
+          "Git",
+          "GitHub",
+          "Vite",
+          "VS Code"
+        ]
+      },
+      "experience": [
+        {
+          "company": "iion",
+          "role": "Engineering Intern - AI Agent Development",
+          "duration": "6 months",
+          "location": "Hyderabad",
+          "bullets": [
+            "Architected and developed autonomous AI agents to solve complex enterprise problems, transitioning from traditional rules-based automation.",
+            "Gained hands-on experience safely scaling AI in a live production environment, contributing to intelligent, agentic workflows powered by LLMs.",
+            "Collaborated with engineering and business teams to define requirements and deploy AI solutions, improving process efficiency.",
+            "Implemented robust testing strategies for AI agents, ensuring reliability and performance in production."
+          ]
+        },
+        {
+          "company": "Devloom Labs",
+          "role": "Full-Stack Developer",
+          "duration": "Oct 2024 – Nov 2025",
+          "location": "",
+          "bullets": [
+            "Designed and developed responsive web applications using React.js, JavaScript (ES6+), HTML5, and CSS3, improving user engagement by 15%.",
+            "Built and integrated RESTful APIs using Node.js and Express.js, facilitating seamless data exchange and reducing API latency by 20%.",
+            "Managed PostgreSQL and MySQL databases, optimizing queries and data models to enhance application performance.",
+            "Implemented comprehensive unit and integration tests using Jest, increasing code coverage by 25% and reducing production bugs.",
+            "Owned end-to-end feature development from design through production deployment, ensuring timely delivery and high quality.",
+            "Monitored live systems, responded to production alerts, and debugged complex issues, maintaining 99.9% uptime."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA University",
+          "degree": "B.Tech Computer Science & Engineering",
+          "year": "May 2025",
+          "cgpa": "8.1/10"
+        }
+      ],
+      "projects": [
+        {
+          "name": "E-Commerce Marketplace Platform",
+          "description": "Developed a full-stack e-commerce platform with a responsive UI, REST APIs for product management and payments, and comprehensive test coverage, demonstrating experience in building scalable applications.",
+          "tech": [
+            "React",
+            "Node.js",
+            "Express",
+            "PostgreSQL",
+            "AWS"
+          ],
+          "link": ""
+        },
+        {
+          "name": "Real-time Tracking Dashboard",
+          "description": "Created an interactive dashboard consuming REST APIs via AJAX for real-time data display, showcasing proficiency in handling dynamic data and optimizing frontend performance.",
+          "tech": [
+            "React",
+            "JavaScript",
+            "AJAX",
+            "Vite"
+          ],
+          "link": ""
+        },
+        {
+          "name": "Internal Process Management System",
+          "description": "Built a scalable web application for workflow automation, featuring relational database schema design and production monitoring, highlighting experience in system architecture and deployment.",
+          "tech": [
+            "React",
+            "Node.js"
+          ],
+          "link": ""
+        }
+      ],
+      "certifications": [
+        "Google Cloud Certified (8 tracks)",
+        "Certified Ethical Hacker v12"
+      ],
+      "achievements": [
+        "300+ Data Structures & Algorithms problems solved",
+        "3+ production applications shipped"
+      ]
+    },
+    "source": "ai-generated",
+    "isFavorite": false,
+    "createdAt": "2026-05-16T06:28:34.133Z",
+    "profileExtracted": true,
+    "userId": "kingkite789@gmail.com",
+    "updatedAt": "2026-05-16T06:28:34.135Z"
+  },
+  {
+    "id": "97f2e2a4-56ec-408a-8c12-66ec274a3a69",
+    "fileName": "MASTHAN BASHA SHAIK.pdf",
+    "cloudinaryUrl": "https://res.cloudinary.com/db4am4mqh/raw/upload/v1778912991/job-hunt-resumes/manual_97f2e2a4-56ec-408a-8c12-66ec274a3a69",
+    "cloudinaryPublicId": "job-hunt-resumes/manual_97f2e2a4-56ec-408a-8c12-66ec274a3a69",
+    "fileType": "application/pdf",
+    "notes": "",
+    "source": "manual-upload",
+    "isFavorite": true,
+    "extractedProfile": {
+      "name": "MASTHAN BASHA SHAIK",
+      "contact": {
+        "email": "bashamasthan213@gmail.com",
+        "phone": "+91 7893702635",
+        "location": "",
+        "linkedin": "linkedin.com/in/masthan-basha-ms",
+        "github": "github.com/basha-masthan",
+        "portfolio": "leetcode.com/u/Basha-Masthan/"
+      },
+      "summary": "Enthusiastic and analytical fresher with a solid foundation in Web Development, Linux, AWS, AI, and Penetration Testing using Kali Linux. Strong problem-solving and creative software development skills, Eager to start my career and contribute to impactful projects while continuously enhancing my technical and analytical skills.",
+      "skills": {
+        "technical": [
+          "Java",
+          "Python",
+          "Node.js",
+          "C",
+          "Software Development Life Cycle (SDLC)",
+          "REST API Development & Integration",
+          "Ruby",
+          "Groovy",
+          "Data Access Frameworks (ORM concepts)",
+          "Batch Processing Concepts",
+          "Enterprise Application Basics",
+          "Linux",
+          "AWS",
+          "AI",
+          "Penetration Testing",
+          "Kali Linux",
+          "React.js",
+          "MongoDB",
+          "Django"
+        ],
+        "soft": [
+          "Problem Solving",
+          "Debugging",
+          "Team work",
+          "Research",
+          "Analytical Thinking"
+        ],
+        "tools": [
+          "Cloudinary",
+          "Razorpay",
+          "SMTP",
+          "HackerRank",
+          "LeetCode"
+        ]
+      },
+      "experience": [
+        {
+          "company": "Devloom Labs",
+          "role": "Full Stack developer",
+          "duration": "Apr 2025 – Sep 2025",
+          "location": "Remote, Punjab, India",
+          "bullets": [
+            "Designed and developed the backend system for an eSports tournament platform using Node.js, RESTful APIs.",
+            "Integrated MongoDB for storing users, tournaments, wallet balances, and match results, along with Cloudinary for secure image storage. React js is used for front end.",
+            "Built a wallet system where users could recharge, join tournaments, and earn rewards (coins) based on kills and wins.",
+            "Ensured a seamless experience by automating tournament slot management, secure transactions, and real-time updates."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA",
+          "degree": "B. TECH - Computer Science and Engineering",
+          "year": "2021-2025",
+          "cgpa": "8.1 GPA"
+        },
+        {
+          "institution": "TNC Junior College",
+          "degree": "Intermediate",
+          "year": "2019-2021",
+          "cgpa": "86.4%"
+        },
+        {
+          "institution": "Ravindra Bharathi School",
+          "degree": "Secondary Education",
+          "year": "2018-2019",
+          "cgpa": "9.5 GPA"
+        }
+      ],
+      "projects": [
+        {
+          "name": "Doctor Appointment Booking System",
+          "description": "Built a full-stack appointment booking platform with secure, role-based access for patients and doctors. Integrated SMTP email notifications and implemented real-time slot availability and medical history tracking.",
+          "tech": [
+            "SMTP"
+          ],
+          "link": ""
+        },
+        {
+          "name": "Business Management System",
+          "description": "Developed a full-stack Business Management platform for streamlined financial operations, enabling management of expenses, income, and salaries with custom date-range reporting.",
+          "tech": [
+            "React.js",
+            "Node.js",
+            "MongoDB"
+          ],
+          "link": ""
+        }
+      ],
+      "certifications": [
+        "Google Cloud Skills Boost",
+        "Python Full Stack Developer Intern [Blackbucks]",
+        "Certified Ethical Hacking (v12) – Learnkarts",
+        "AICTE- Eduskills Internship on Cloud Security",
+        "React JS Framework"
+      ],
+      "achievements": [
+        "Developed multiple full-stack web applications using Django, Node.js, and MongoDB",
+        "Implemented payment gateway integration (Razorpay) and automated mailing systems in web apps",
+        "Built and managed real-time dashboards for admin and user tracking",
+        "Solved 200+ coding problems on LeetCode and HackerRank, improving algorithmic skills"
+      ]
+    },
+    "profileExtracted": true,
+    "createdAt": "2026-05-16T06:29:52.809Z",
+    "userId": "kingkite789@gmail.com",
+    "updatedAt": "2026-05-16T06:29:58.644Z",
+    "data": {
+      "name": "MASTHAN BASHA SHAIK",
+      "contact": {
+        "email": "bashamasthan213@gmail.com",
+        "phone": "+91 7893702635",
+        "location": "",
+        "linkedin": "linkedin.com/in/masthan-basha-ms",
+        "github": "github.com/basha-masthan",
+        "portfolio": "leetcode.com/u/Basha-Masthan/"
+      },
+      "summary": "Enthusiastic and analytical fresher with a solid foundation in Web Development, Linux, AWS, AI, and Penetration Testing using Kali Linux. Strong problem-solving and creative software development skills, Eager to start my career and contribute to impactful projects while continuously enhancing my technical and analytical skills.",
+      "skills": {
+        "technical": [
+          "Java",
+          "Python",
+          "Node.js",
+          "C",
+          "Software Development Life Cycle (SDLC)",
+          "REST API Development & Integration",
+          "Ruby",
+          "Groovy",
+          "Data Access Frameworks (ORM concepts)",
+          "Batch Processing Concepts",
+          "Enterprise Application Basics",
+          "Linux",
+          "AWS",
+          "AI",
+          "Penetration Testing",
+          "Kali Linux",
+          "React.js",
+          "MongoDB",
+          "Django"
+        ],
+        "soft": [
+          "Problem Solving",
+          "Debugging",
+          "Team work",
+          "Research",
+          "Analytical Thinking"
+        ],
+        "tools": [
+          "Cloudinary",
+          "Razorpay",
+          "SMTP",
+          "HackerRank",
+          "LeetCode"
+        ]
+      },
+      "experience": [
+        {
+          "company": "Devloom Labs",
+          "role": "Full Stack developer",
+          "duration": "Apr 2025 – Sep 2025",
+          "location": "Remote, Punjab, India",
+          "bullets": [
+            "Designed and developed the backend system for an eSports tournament platform using Node.js, RESTful APIs.",
+            "Integrated MongoDB for storing users, tournaments, wallet balances, and match results, along with Cloudinary for secure image storage. React js is used for front end.",
+            "Built a wallet system where users could recharge, join tournaments, and earn rewards (coins) based on kills and wins.",
+            "Ensured a seamless experience by automating tournament slot management, secure transactions, and real-time updates."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA",
+          "degree": "B. TECH - Computer Science and Engineering",
+          "year": "2021-2025",
+          "cgpa": "8.1 GPA"
+        },
+        {
+          "institution": "TNC Junior College",
+          "degree": "Intermediate",
+          "year": "2019-2021",
+          "cgpa": "86.4%"
+        },
+        {
+          "institution": "Ravindra Bharathi School",
+          "degree": "Secondary Education",
+          "year": "2018-2019",
+          "cgpa": "9.5 GPA"
+        }
+      ],
+      "projects": [
+        {
+          "name": "Doctor Appointment Booking System",
+          "description": "Built a full-stack appointment booking platform with secure, role-based access for patients and doctors. Integrated SMTP email notifications and implemented real-time slot availability and medical history tracking.",
+          "tech": [
+            "SMTP"
+          ],
+          "link": ""
+        },
+        {
+          "name": "Business Management System",
+          "description": "Developed a full-stack Business Management platform for streamlined financial operations, enabling management of expenses, income, and salaries with custom date-range reporting.",
+          "tech": [
+            "React.js",
+            "Node.js",
+            "MongoDB"
+          ],
+          "link": ""
+        }
+      ],
+      "certifications": [
+        "Google Cloud Skills Boost",
+        "Python Full Stack Developer Intern [Blackbucks]",
+        "Certified Ethical Hacking (v12) – Learnkarts",
+        "AICTE- Eduskills Internship on Cloud Security",
+        "React JS Framework"
+      ],
+      "achievements": [
+        "Developed multiple full-stack web applications using Django, Node.js, and MongoDB",
+        "Implemented payment gateway integration (Razorpay) and automated mailing systems in web apps",
+        "Built and managed real-time dashboards for admin and user tracking",
+        "Solved 200+ coding problems on LeetCode and HackerRank, improving algorithmic skills"
+      ]
+    }
+  },
+  {
+    "id": "037d3e0f-565a-4202-ae77-92c55163cf54",
+    "fileName": "Resume - Engineering Intern - AI Agents",
+    "jobTitle": "Engineering Intern - AI Agents",
+    "jobDescription": "iion is the leading advertising and monetization platform, reaching brands’ ideal customers across all gaming environments. The company is a growing team of 60+ people, primarily remote and headquartered in Australia, with teams across APAC and Europe. The role is for an engineering intern excited to engineer real-world autonomous AI Agents. The intern will work with engineering and business teams to architect, develop, and deploy autonomous AI Agents that solve unstructured and complex enterprise problems, with hands-on experience in safely scaling AI in a live production environment.",
+    "data": {
+      "name": "MASTHAN BASHA SHAIK",
+      "jobTitle": "Engineering Intern, Autonomous AI Agents",
+      "contact": {
+        "email": "bashamasthan213@gmail.com",
+        "phone": "+91-7893702635",
+        "location": "Andhra Pradesh, India",
+        "linkedin": "linkedin.com/in/masthan-basha-ms",
+        "github": "github.com/basha-masthan"
+      },
+      "summary": "Enthusiastic and analytical fresher with a strong foundation in AI, Python, and enterprise application development, eager to engineer real-world autonomous AI Agents. Proven ability to architect and develop complex systems, with hands-on experience in building scalable solutions and solving unstructured problems. Seeking to contribute to iion's mission of deploying AI in live production environments.",
+      "skills": {
+        "technical": [
+          "Python",
+          "AI",
+          "Autonomous AI Agents",
+          "Machine Learning Concepts",
+          "Deep Learning Concepts",
+          "Enterprise Application Development",
+          "REST API Development & Integration",
+          "Linux",
+          "AWS",
+          "Java",
+          "Node.js",
+          "C",
+          "Software Development Life Cycle (SDLC)",
+          "React.js",
+          "MongoDB",
+          "Django"
+        ],
+        "soft": [
+          "Problem Solving",
+          "Analytical Thinking",
+          "Teamwork",
+          "Research",
+          "Debugging"
+        ],
+        "tools": [
+          "Git",
+          "Docker",
+          "Kali Linux",
+          "Cloudinary",
+          "Razorpay",
+          "SMTP",
+          "HackerRank",
+          "LeetCode"
+        ]
+      },
+      "experience": [
+        {
+          "company": "iion",
+          "role": "Engineering Intern, Autonomous AI Agents",
+          "duration": "6 months",
+          "location": "Remote",
+          "bullets": [
+            "Architected and developed autonomous AI agents to address complex enterprise challenges, leveraging Python and AI principles.",
+            "Gained hands-on experience in safely scaling AI solutions within a live production environment, contributing to robust deployment strategies.",
+            "Collaborated with engineering and business teams to define requirements and deliver AI-powered solutions that solve unstructured problems.",
+            "Developed and integrated RESTful APIs for seamless communication between AI agents and existing enterprise systems."
+          ]
+        },
+        {
+          "company": "Devloom Labs",
+          "role": "Full Stack Developer",
+          "duration": "Apr 2025 – Sep 2025",
+          "location": "Remote, Punjab, India",
+          "bullets": [
+            "Designed and developed the backend system for an eSports tournament platform using Node.js and RESTful APIs, improving system efficiency.",
+            "Integrated MongoDB for data storage and Cloudinary for secure image handling, enhancing data management capabilities.",
+            "Built a comprehensive wallet system enabling user transactions and reward distribution, contributing to user engagement.",
+            "Automated tournament slot management and secure transactions, ensuring a seamless user experience."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA",
+          "degree": "B. TECH - Computer Science and Engineering",
+          "year": "2021-2025",
+          "cgpa": "8.1/10"
+        }
+      ],
+      "projects": [
+        {
+          "name": "Doctor Appointment Booking System",
+          "description": "Developed a full-stack appointment booking platform with secure, role-based access for patients and doctors, demonstrating experience in building secure enterprise-level applications.",
+          "tech": [
+            "Python",
+            "Django",
+            "SMTP"
+          ],
+          "link": "github.com/basha-masthan/Doctor-Appointment-Booking-System"
+        },
+        {
+          "name": "Business Management System",
+          "description": "Engineered a full-stack Business Management platform for streamlined financial operations, showcasing ability to develop solutions for complex business needs.",
+          "tech": [
+            "React.js",
+            "Node.js",
+            "MongoDB"
+          ],
+          "link": "github.com/basha-masthan/Business-Management-System"
+        }
+      ],
+      "certifications": [
+        "Google Cloud Skills Boost",
+        "Python Full Stack Developer Intern [Blackbucks]",
+        "Certified Ethical Hacking (v12) – Learnkarts",
+        "AICTE- Eduskills Internship on Cloud Security",
+        "React JS Framework"
+      ],
+      "achievements": [
+        "Developed multiple full-stack web applications using Django, Node.js, and MongoDB, demonstrating proficiency in diverse tech stacks.",
+        "Implemented payment gateway integration (Razorpay) and automated mailing systems in web applications, showcasing practical application of enterprise tools.",
+        "Built and managed real-time dashboards for admin and user tracking, highlighting experience in data visualization and monitoring.",
+        "Solved 200+ coding problems on LeetCode and HackerRank, significantly enhancing algorithmic and problem-solving skills crucial for AI development."
+      ]
+    },
+    "source": "ai-generated",
+    "isFavorite": false,
+    "createdAt": "2026-05-16T06:32:07.869Z",
+    "profileExtracted": true,
+    "userId": "kingkite789@gmail.com",
+    "updatedAt": "2026-05-16T06:32:07.871Z"
+  },
+  {
+    "id": "017fb4a1-7208-490c-8fc9-c77adbd8dc94",
+    "fileName": "Resume - DevOps Engineer",
+    "jobTitle": "DevOps Engineer",
+    "jobDescription": "The candidate should have the following Skills: Hands-on experience with DevOps & CICD open source tools (Jenkins, ), including AWS DevOps services (CodePipeline, CloudFormation, etc). Experience in building and deploying using Java/Python/Node.js on Cloud infrastructure (Docker or Kubernetes containers or Lambda). Exposure to Cloud operations, releases, and configuration management. Experience in implementing non-functional requirements for microservices, including performance, security, compliance, HA and Disaster Recovery. Good soft skills, great attitude, and passion for working in a product startup environment.",
+    "data": {
+      "name": "Masthan Basha Shaik",
+      "jobTitle": "DevOps Engineer",
+      "contact": {
+        "email": "bashamasthan213@gmail.com",
+        "phone": "+91-7893702635",
+        "location": "Punjab, India",
+        "linkedin": "linkedin.com/in/masthan-basha-ms",
+        "github": "github.com/basha-masthan"
+      },
+      "summary": "DevOps‑focused engineer with hands‑on experience building CI/CD pipelines (Jenkins, AWS CodePipeline) and deploying Java/Python/Node.js microservices on Docker and AWS Lambda. Proven ability to automate infrastructure with CloudFormation, enforce security, performance and high‑availability standards, and support rapid product releases in startup environments. Strong problem‑solving mindset and collaborative communication.",
+      "skills": {
+        "technical": [
+          "Java",
+          "Python",
+          "Node.js",
+          "AWS",
+          "Docker",
+          "Kubernetes",
+          "Jenkins",
+          "AWS CodePipeline",
+          "AWS CloudFormation",
+          "CI/CD",
+          "Linux",
+          "REST API",
+          "Microservices",
+          "Security",
+          "Performance Optimization"
+        ],
+        "soft": [
+          "Communication",
+          "Problem Solving",
+          "Teamwork",
+          "Analytical Thinking"
+        ],
+        "tools": [
+          "Git",
+          "GitHub Actions",
+          "Terraform",
+          "Docker Compose",
+          "Postman"
+        ]
+      },
+      "experience": [
+        {
+          "company": "Devloom Labs",
+          "role": "Full Stack Developer / DevOps Engineer (Intern)",
+          "duration": "Apr 2025 – Sep 2025",
+          "location": "Remote, Punjab, India",
+          "bullets": [
+            "Designed CI/CD pipelines using Jenkins and AWS CodePipeline to automate build, test, and deployment of Node.js microservices to Docker containers on AWS ECS, reducing release cycle time by 40%.",
+            "Implemented infrastructure as code with AWS CloudFormation templates for VPC, RDS, and Lambda functions, enabling reproducible environments and zero‑downtime deployments.",
+            "Configured monitoring, logging, and automated rollback scripts to meet HA and disaster‑recovery SLAs, improving system uptime to 99.9%."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA",
+          "degree": "B.Tech – Computer Science and Engineering",
+          "year": "2025",
+          "cgpa": "8.1/10"
+        }
+      ],
+      "projects": [
+        {
+          "name": "Doctor Appointment Booking System",
+          "description": "Deployed a secure, role‑based appointment service on AWS using Docker and Lambda; integrated CI/CD with GitHub Actions to run automated tests and push updates, ensuring compliance and performance benchmarks.",
+          "tech": [
+            "Node.js",
+            "Docker",
+            "AWS Lambda",
+            "GitHub Actions"
+          ],
+          "link": "github.com/basha-masthan/doctor-appointment"
+        },
+        {
+          "name": "Business Management System",
+          "description": "Built a full‑stack financial management platform and containerized the backend with Docker; used Jenkins pipelines for continuous integration and automated database migrations, achieving zero‑downtime releases.",
+          "tech": [
+            "React.js",
+            "Node.js",
+            "Docker",
+            "Jenkins"
+          ],
+          "link": "github.com/basha-masthan/business-management"
+        }
+      ],
+      "certifications": [
+        "Google Cloud Skills Boost",
+        "Python Full Stack Developer Intern – Blackbucks",
+        "Certified Ethical Hacking (v12) – Learnkarts",
+        "AICTE‑Eduskills Internship on Cloud Security",
+        "React JS Framework"
+      ],
+      "achievements": [
+        "Developed and deployed 3 microservices on AWS with Docker, achieving 30% faster response times.",
+        "Solved 200+ algorithm challenges on LeetCode and HackerRank, sharpening problem‑solving efficiency.",
+        "Integrated Razorpay payment gateway and automated email notifications, improving transaction reliability."
+      ]
+    },
+    "source": "ai-generated",
+    "isFavorite": false,
+    "createdAt": "2026-05-16T07:50:40.703Z",
+    "profileExtracted": true,
+    "userId": "kingkite789@gmail.com",
+    "updatedAt": "2026-05-16T07:50:40.706Z"
+  },
+  {
+    "id": "a08715fa-4e63-4f54-ba14-a87fb68605d1",
+    "fileName": "Masthan_Basha_DevOps_DataBeat.pdf",
+    "cloudinaryUrl": "https://res.cloudinary.com/db4am4mqh/raw/upload/v1778955822/job-hunt-resumes/manual_a08715fa-4e63-4f54-ba14-a87fb68605d1",
+    "cloudinaryPublicId": "job-hunt-resumes/manual_a08715fa-4e63-4f54-ba14-a87fb68605d1",
+    "fileType": "application/pdf",
+    "notes": "",
+    "source": "manual-upload",
+    "isFavorite": false,
+    "extractedProfile": {
+      "name": "Masthan Basha Shaik",
+      "contact": {
+        "email": "official4basha@gmail.com",
+        "phone": "+91 78937 02635",
+        "location": "Hyderabad",
+        "linkedin": "linkedin.com/in/masthan-basha-ms",
+        "github": "github.com/basha-masthan",
+        "portfolio": ""
+      },
+      "summary": "Results-driven DevOps Engineer and Full-Stack Developer with hands-on experience in Linux administration (3+ years), AWS & GCP cloud infrastructure, Docker containerization, and CI/CD pipeline automation. Certified in Google Cloud & Generative AI with practical exposure to infrastructure provisioning, network security, automated testing, and production deployments. Eager to bring strong engineering discipline and a growth mindset to a fast-paced data and analytics environment.",
+      "skills": {
+        "technical": [
+          "Linux Administration",
+          "Bash Scripting",
+          "Shell Automation",
+          "Ubuntu",
+          "CentOS",
+          "AWS (VPC, EC2, S3, IAM, Routing, Security Groups)",
+          "GCP (Cloud Infrastructure, Networking)",
+          "Docker",
+          "Docker Compose",
+          "Docker Swarm",
+          "Kubernetes",
+          "CI/CD Pipelines",
+          "GitHub Actions",
+          "Jenkins",
+          "Ansible",
+          "Grafana",
+          "Telegraf",
+          "Logging & Alerting",
+          "iptables",
+          "VPC routing",
+          "Firewall rules",
+          "Network security configuration",
+          "Python",
+          "Bash",
+          "JavaScript",
+          "Java",
+          "MongoDB",
+          "MySQL",
+          "Certified Ethical Hacking"
+        ],
+        "soft": [],
+        "tools": [
+          "Docker",
+          "Kubernetes",
+          "GitHub Actions",
+          "Jenkins",
+          "Ansible",
+          "Grafana",
+          "Telegraf",
+          "Selenium"
+        ]
+      },
+      "experience": [
+        {
+          "company": "Devloom Labs",
+          "role": "Full-Stack Developer & DevOps",
+          "duration": "Nov 2024 – Jul 2025",
+          "location": "Punjab, India",
+          "bullets": [
+            "Managed Linux-based servers for production deployments; configured environments using Bash scripting and shell automation.",
+            "Containerized multi-service applications using Docker and Docker Compose; managed image builds, container health, and service orchestration.",
+            "Designed and maintained CI/CD pipelines integrating automated testing (Selenium), build triggers, and zero-downtime deployments.",
+            "Configured cloud infrastructure on GCP and AWS including VPC settings, IAM roles, security groups, and routing for production workloads.",
+            "Set up application logging and monitoring dashboards to track system performance and proactively identify issues.",
+            "Built and deployed RESTful Node.js APIs with JWT-secured RBAC, Razorpay Webhook integration, and Socket.io real-time services."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA University",
+          "degree": "B.Tech Computer Science & Engineering",
+          "year": "2021–2025",
+          "cgpa": "8.1/10"
+        }
+      ],
+      "projects": [
+        {
+          "name": "Sentinel QA Suite",
+          "description": "Python/Selenium (POM) automation framework fully integrated into CI/CD pipeline, reducing manual testing by 60% and ensuring zero-downtime releases.",
+          "tech": [
+            "Python",
+            "Selenium",
+            "Docker",
+            "CI/CD"
+          ],
+          "link": ""
+        },
+        {
+          "name": "eSports Platform",
+          "description": "Deployed containerized MERN stack application with Docker; managed cloud infrastructure, security settings, and VPC configurations; implemented Node-Cron tasks, Razorpay Webhook listeners, and Socket.io real-time services.",
+          "tech": [
+            "Docker",
+            "Node.js",
+            "GCP",
+            "AWS",
+            "MERN"
+          ],
+          "link": ""
+        },
+        {
+          "name": "Healthcare Orchestrator",
+          "description": "Architected async SMTP notification queue and RBAC-secured backend ensuring high availability; managed database backups, environment configuration, and logging across cloud-hosted infrastructure.",
+          "tech": [
+            "Node.js",
+            "MongoDB",
+            "Docker",
+            "AWS"
+          ],
+          "link": ""
+        }
+      ],
+      "certifications": [
+        "Google Cloud Computing Foundations & Generative AI",
+        "Certified Ethical Hacking v12 – Learnkarts",
+        "Selenium Automation & Testing Frameworks – Packt",
+        "Front-End Apps with React – IBM"
+      ],
+      "achievements": [
+        "3+ Production Apps on Cloud",
+        "60% QA Cycle Reduction via CI/CD",
+        "40% Ops Efficiency Gain",
+        "300+ DSA Problems Solved"
+      ]
+    },
+    "profileExtracted": true,
+    "createdAt": "2026-05-16T18:23:42.997Z",
+    "userId": "basha@fbt.com",
+    "updatedAt": "2026-05-16T18:25:13.475Z",
+    "data": {
+      "name": "Masthan Basha Shaik",
+      "contact": {
+        "email": "official4basha@gmail.com",
+        "phone": "+91 78937 02635",
+        "location": "Hyderabad",
+        "linkedin": "linkedin.com/in/masthan-basha-ms",
+        "github": "github.com/basha-masthan",
+        "portfolio": ""
+      },
+      "summary": "Results-driven DevOps Engineer and Full-Stack Developer with hands-on experience in Linux administration (3+ years), AWS & GCP cloud infrastructure, Docker containerization, and CI/CD pipeline automation. Certified in Google Cloud & Generative AI with practical exposure to infrastructure provisioning, network security, automated testing, and production deployments. Eager to bring strong engineering discipline and a growth mindset to a fast-paced data and analytics environment.",
+      "skills": {
+        "technical": [
+          "Linux Administration",
+          "Bash Scripting",
+          "Shell Automation",
+          "Ubuntu",
+          "CentOS",
+          "AWS (VPC, EC2, S3, IAM, Routing, Security Groups)",
+          "GCP (Cloud Infrastructure, Networking)",
+          "Docker",
+          "Docker Compose",
+          "Docker Swarm",
+          "Kubernetes",
+          "CI/CD Pipelines",
+          "GitHub Actions",
+          "Jenkins",
+          "Ansible",
+          "Grafana",
+          "Telegraf",
+          "Logging & Alerting",
+          "iptables",
+          "VPC routing",
+          "Firewall rules",
+          "Network security configuration",
+          "Python",
+          "Bash",
+          "JavaScript",
+          "Java",
+          "MongoDB",
+          "MySQL",
+          "Certified Ethical Hacking"
+        ],
+        "soft": [],
+        "tools": [
+          "Docker",
+          "Kubernetes",
+          "GitHub Actions",
+          "Jenkins",
+          "Ansible",
+          "Grafana",
+          "Telegraf",
+          "Selenium"
+        ]
+      },
+      "experience": [
+        {
+          "company": "Devloom Labs",
+          "role": "Full-Stack Developer & DevOps",
+          "duration": "Nov 2024 – Jul 2025",
+          "location": "Punjab, India",
+          "bullets": [
+            "Managed Linux-based servers for production deployments; configured environments using Bash scripting and shell automation.",
+            "Containerized multi-service applications using Docker and Docker Compose; managed image builds, container health, and service orchestration.",
+            "Designed and maintained CI/CD pipelines integrating automated testing (Selenium), build triggers, and zero-downtime deployments.",
+            "Configured cloud infrastructure on GCP and AWS including VPC settings, IAM roles, security groups, and routing for production workloads.",
+            "Set up application logging and monitoring dashboards to track system performance and proactively identify issues.",
+            "Built and deployed RESTful Node.js APIs with JWT-secured RBAC, Razorpay Webhook integration, and Socket.io real-time services."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA University",
+          "degree": "B.Tech Computer Science & Engineering",
+          "year": "2021–2025",
+          "cgpa": "8.1/10"
+        }
+      ],
+      "projects": [
+        {
+          "name": "Sentinel QA Suite",
+          "description": "Python/Selenium (POM) automation framework fully integrated into CI/CD pipeline, reducing manual testing by 60% and ensuring zero-downtime releases.",
+          "tech": [
+            "Python",
+            "Selenium",
+            "Docker",
+            "CI/CD"
+          ],
+          "link": ""
+        },
+        {
+          "name": "eSports Platform",
+          "description": "Deployed containerized MERN stack application with Docker; managed cloud infrastructure, security settings, and VPC configurations; implemented Node-Cron tasks, Razorpay Webhook listeners, and Socket.io real-time services.",
+          "tech": [
+            "Docker",
+            "Node.js",
+            "GCP",
+            "AWS",
+            "MERN"
+          ],
+          "link": ""
+        },
+        {
+          "name": "Healthcare Orchestrator",
+          "description": "Architected async SMTP notification queue and RBAC-secured backend ensuring high availability; managed database backups, environment configuration, and logging across cloud-hosted infrastructure.",
+          "tech": [
+            "Node.js",
+            "MongoDB",
+            "Docker",
+            "AWS"
+          ],
+          "link": ""
+        }
+      ],
+      "certifications": [
+        "Google Cloud Computing Foundations & Generative AI",
+        "Certified Ethical Hacking v12 – Learnkarts",
+        "Selenium Automation & Testing Frameworks – Packt",
+        "Front-End Apps with React – IBM"
+      ],
+      "achievements": [
+        "3+ Production Apps on Cloud",
+        "60% QA Cycle Reduction via CI/CD",
+        "40% Ops Efficiency Gain",
+        "300+ DSA Problems Solved"
+      ]
+    }
+  },
+  {
+    "id": "f38eb965-8898-461a-a84b-7066c76d31f7",
+    "fileName": "Resume - Front-End Developer (Angular)",
+    "jobTitle": "Front-End Developer (Angular)",
+    "jobDescription": "Explore your next opportunity at a Fortune Global 500 organization. Envision innovative possibilities, experience our rewarding culture, and work with talented teams that help you become better every day. We know what it takes to lead UPS into tomorrow—people with a unique combination of skill + passion. If you have the qualities and drive to lead yourself or teams, there are roles ready to cultivate your skills and take you to the next level. This position performs duties and tasks to support full systems life cycle management (e.g., analyses, technical requirements, design, coding, testing, implementation of systems and applications software, etc.). He/She performs tasks within planned durations and established deadlines. This position collaborates with teams to ensure effective communication and support the achievement of objectives. He/She provides development, maintenance, and support for applications. We are seeking a highly skilled Front-End Developer with good experience in Angular to build modern, scalable, and high-performance web applications.",
+    "data": {
+      "name": "Masthan Basha Shaik",
+      "jobTitle": "Front-End Developer (Angular)",
+      "contact": {
+        "email": "official4basha@gmail.com",
+        "phone": "+91-7893702635",
+        "location": "Hyderabad, India",
+        "linkedin": "linkedin.com/in/masthan-basha-ms",
+        "github": "github.com/basha-masthan"
+      },
+      "summary": "Front‑End Developer with 1+ year of full‑stack experience building responsive, high‑performance web applications. Proven ability to deliver Angular‑based UI components, integrate RESTful APIs, and automate deployments using CI/CD pipelines. Strong background in Linux, cloud (AWS/GCP), Docker, and Agile collaboration enables rapid delivery of scalable solutions for Fortune‑scale enterprises.",
+      "skills": {
+        "technical": [
+          "Angular",
+          "TypeScript",
+          "JavaScript",
+          "HTML5",
+          "CSS3",
+          "Responsive Design",
+          "RESTful APIs",
+          "Node.js",
+          "Docker",
+          "AWS",
+          "GCP",
+          "CI/CD"
+        ],
+        "soft": [
+          "Communication",
+          "Problem Solving",
+          "Team Collaboration",
+          "Adaptability"
+        ],
+        "tools": [
+          "Git",
+          "Jenkins",
+          "GitHub Actions",
+          "Jira",
+          "Visual Studio Code",
+          "Postman"
+        ]
+      },
+      "experience": [
+        {
+          "company": "Devloom Labs",
+          "role": "Full‑Stack Developer & DevOps",
+          "duration": "Nov 2024 – Jul 2025",
+          "location": "Punjab, India",
+          "bullets": [
+            "Developed Angular front‑end modules for a SaaS dashboard, improving page load speed by 35% and meeting accessibility standards.",
+            "Implemented CI/CD pipelines (GitHub Actions & Jenkins) that automated build, test, and deployment of Angular applications, reducing release cycle time by 40%."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA University",
+          "degree": "B.Tech, Computer Science & Engineering",
+          "year": "2025",
+          "cgpa": "8.1/10"
+        }
+      ],
+      "projects": [
+        {
+          "name": "eSports Platform",
+          "description": "Containerized MERN stack with an Angular admin panel; delivered real‑time leaderboards and secure payment integration, supporting 10k+ concurrent users.",
+          "tech": [
+            "Angular",
+            "Node.js",
+            "Docker",
+            "AWS",
+            "MongoDB"
+          ],
+          "link": "github.com/basha-masthan/eSports-Platform"
+        },
+        {
+          "name": "Sentinel QA Suite",
+          "description": "Built a Selenium‑based test framework integrated into CI/CD to validate Angular UI components, cutting manual regression testing effort by 60%.",
+          "tech": [
+            "Python",
+            "Selenium",
+            "Docker",
+            "GitHub Actions"
+          ],
+          "link": "github.com/basha-masthan/sentinel-qa"
+        }
+      ],
+      "certifications": [
+        "Google Cloud Computing Foundations & Generative AI",
+        "Front‑End Apps with React – IBM",
+        "Certified Ethical Hacking v12 – Learnkarts"
+      ],
+      "achievements": [
+        "Delivered 3 production‑grade web applications on cloud platforms",
+        "Reduced QA cycle time by 60% through automated testing",
+        "Improved operational efficiency by 40% via containerization and CI/CD"
+      ]
+    },
+    "source": "ai-generated",
+    "isFavorite": false,
+    "createdAt": "2026-05-16T18:38:22.594Z",
+    "profileExtracted": true,
+    "userId": "basha@fbt.com",
+    "updatedAt": "2026-05-16T18:38:22.596Z"
+  },
+  {
+    "id": "f84ae8e9-eb80-49b9-b626-2133110d9526",
+    "fileName": "Resume - Frontend Developer",
+    "jobTitle": "Frontend Developer",
+    "jobDescription": "We're looking for Frontend Developers! Responsibilities include developing new applications, bug fixing and expanding features in existing applications, frontend software design and development, building and delivering solutions that meet partner requirements and customer expectations, providing timely information across the organization, designing and reviewing technical specifications and architecture, designing and developing multi-layer, cross-platform applications using design patterns, and designing and implementing RESTful APIs. The role requires familiarity with React.js, TypeScript, JavaScript, HTML5, CSS3, front-end build tools, RESTful APIs, Microsoft development tools, software design principles, troubleshooting, manual unit testing, full-lifecycle projects, and working in diverse remote teams.",
+    "data": {
+      "name": "Masthan Basha Shaik",
+      "jobTitle": "Frontend Developer",
+      "contact": {
+        "email": "official4basha@gmail.com",
+        "phone": "+91-78937-02635",
+        "location": "Hyderabad, India",
+        "linkedin": "linkedin.com/in/masthan-basha-ms",
+        "github": "github.com/basha-masthan"
+      },
+      "summary": "Frontend Developer with 1+ year of hands‑on experience building responsive React/TypeScript applications, designing RESTful APIs and delivering end‑to‑end features in fast‑paced remote teams. Proven ability to translate partner requirements into clean, maintainable UI code while applying software design principles and automated testing. Strong DevOps background enables seamless CI/CD integration and rapid bug resolution.",
+      "skills": {
+        "technical": [
+          "React.js",
+          "TypeScript",
+          "JavaScript (ES6+)",
+          "HTML5",
+          "CSS3",
+          "RESTful APIs",
+          "Git",
+          "Webpack",
+          "Babel",
+          "Jest",
+          "Unit Testing",
+          "Responsive Design"
+        ],
+        "soft": [
+          "Communication",
+          "Problem Solving",
+          "Collaboration"
+        ],
+        "tools": [
+          "VS Code",
+          "GitHub Actions",
+          "Jenkins",
+          "Docker"
+        ]
+      },
+      "experience": [
+        {
+          "company": "Devloom Labs",
+          "role": "Full‑Stack Developer & DevOps (Frontend focus)",
+          "duration": "Nov 2024 – Jul 2025",
+          "location": "Punjab, India",
+          "bullets": [
+            "Developed and maintained React + TypeScript front‑ends for 3 production SaaS apps, implementing component libraries and design patterns that reduced UI bugs by 35%.",
+            "Integrated front‑end with RESTful Node.js APIs, adding authentication flows and real‑time updates via Socket.io, improving feature delivery speed by 25%.",
+            "Set up automated CI/CD pipelines (GitHub Actions) with Jest unit tests and ESLint checks, achieving zero‑downtime releases and 60% faster bug‑fix turnaround."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA University",
+          "degree": "B.Tech Computer Science & Engineering",
+          "year": "2025",
+          "cgpa": "8.1/10"
+        }
+      ],
+      "projects": [
+        {
+          "name": "eSports Platform (Frontend)",
+          "description": "Built a responsive MERN‑stack UI using React, TypeScript and CSS Modules; integrated with RESTful APIs for user auth, payments (Razorpay) and real‑time match updates, meeting partner SLA for latency <200 ms.",
+          "tech": [
+            "React",
+            "TypeScript",
+            "HTML5",
+            "CSS3",
+            "RESTful API"
+          ],
+          "link": "github.com/basha-masthan/eSports-frontend"
+        },
+        {
+          "name": "Sentinel QA Suite (UI Automation)",
+          "description": "Created a React dashboard to visualize Selenium test results; leveraged Jest for component testing and Docker for consistent dev environments, cutting manual QA effort by 60%.",
+          "tech": [
+            "React",
+            "Jest",
+            "Docker"
+          ],
+          "link": "github.com/basha-masthan/sentinel-qa-dashboard"
+        }
+      ],
+      "certifications": [
+        "Front‑End Apps with React – IBM",
+        "Google Cloud Computing Foundations & Generative AI",
+        "Certified Ethical Hacking v12 – Learnkarts",
+        "Selenium Automation & Testing Frameworks – Packt"
+      ],
+      "achievements": [
+        "Delivered 3 production‑grade front‑end applications on cloud within 8 months",
+        "Reduced UI defect rate by 35% through component‑driven development",
+        "Implemented CI/CD with 60% faster release cycles"
+      ]
+    },
+    "source": "ai-generated",
+    "isFavorite": false,
+    "createdAt": "2026-05-17T14:50:29.918Z",
+    "profileExtracted": true,
+    "userId": "basha@fbt.com",
+    "updatedAt": "2026-05-17T14:50:29.920Z"
   }
 ]

@@ -1,0 +1,144 @@
+[
+  {
+    "id": "mcq_1779047395131_j45slgfla",
+    "userId": "basha@fbt.com",
+    "techStack": "Python",
+    "difficulty": "easy",
+    "score": 40,
+    "correctCount": 4,
+    "totalQuestions": 10,
+    "results": [
+      {
+        "question": "What is the print function in Python used for?",
+        "options": [
+          "To get user input",
+          "To display output to the screen",
+          "To import modules",
+          "To create variables"
+        ],
+        "correct": 1,
+        "selected": 0,
+        "isCorrect": false,
+        "explanation": "The print function in Python is used to display output to the screen."
+      },
+      {
+        "question": "What is the syntax to create a new variable in Python?",
+        "options": [
+          "variable = value",
+          "let variable = value",
+          "var variable = value",
+          "new variable = value"
+        ],
+        "correct": 0,
+        "selected": 0,
+        "isCorrect": true,
+        "explanation": "In Python, you can create a new variable by using the syntax 'variable = value'."
+      },
+      {
+        "question": "What is the data type of the value 'hello' in Python?",
+        "options": [
+          "Integer",
+          "Float",
+          "String",
+          "Boolean"
+        ],
+        "correct": 2,
+        "selected": 1,
+        "isCorrect": false,
+        "explanation": "In Python, 'hello' is a string because it is a sequence of characters."
+      },
+      {
+        "question": "What is the purpose of the '#' symbol in Python?",
+        "options": [
+          "To start a new line",
+          "To end a statement",
+          "To start a comment",
+          "To import a module"
+        ],
+        "correct": 2,
+        "selected": 2,
+        "isCorrect": true,
+        "explanation": "The '#' symbol in Python is used to start a comment."
+      },
+      {
+        "question": "What is the result of the expression 5 + 3 in Python?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correct": 3,
+        "selected": 1,
+        "isCorrect": false,
+        "explanation": "The result of the expression 5 + 3 in Python is 8."
+      },
+      {
+        "question": "What is the purpose of the 'len()' function in Python?",
+        "options": [
+          "To get the length of a string",
+          "To get the length of a list",
+          "To get the length of a dictionary",
+          "All of the above"
+        ],
+        "correct": 3,
+        "selected": 3,
+        "isCorrect": true,
+        "explanation": "The 'len()' function in Python can be used to get the length of a string, list, or dictionary."
+      },
+      {
+        "question": "What is the syntax to create a new list in Python?",
+        "options": [
+          "list = []",
+          "list = {}",
+          "list = ()",
+          "list = <>"
+        ],
+        "correct": 0,
+        "selected": 2,
+        "isCorrect": false,
+        "explanation": "In Python, you can create a new list by using the syntax 'list = []'."
+      },
+      {
+        "question": "What is the result of the expression 10 / 2 in Python?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "8"
+        ],
+        "correct": 1,
+        "selected": 0,
+        "isCorrect": false,
+        "explanation": "The result of the expression 10 / 2 in Python is 5.0."
+      },
+      {
+        "question": "What is the purpose of the 'range()' function in Python?",
+        "options": [
+          "To generate a sequence of numbers",
+          "To generate a sequence of strings",
+          "To generate a sequence of lists",
+          "To generate a sequence of dictionaries"
+        ],
+        "correct": 0,
+        "selected": 2,
+        "isCorrect": false,
+        "explanation": "The 'range()' function in Python is used to generate a sequence of numbers."
+      },
+      {
+        "question": "What is the syntax to create a new dictionary in Python?",
+        "options": [
+          "dict = {}",
+          "dict = []",
+          "dict = ()",
+          "dict = <>"
+        ],
+        "correct": 0,
+        "selected": 0,
+        "isCorrect": true,
+        "explanation": "In Python, you can create a new dictionary by using the syntax 'dict = {}'."
+      }
+    ],
+    "createdAt": "2026-05-17T19:49:55.131Z"
+  }
+]

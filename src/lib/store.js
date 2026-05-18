@@ -2,14 +2,16 @@ import fs from 'fs';
 import path from 'path';
 import { v4 as uuid } from 'uuid';
 
-const DATA_DIR = path.join(process.cwd(), 'data');
-export const RESUMES_INDEX = path.join(DATA_DIR, 'resumes.json');
-export const JOBS_INDEX = path.join(DATA_DIR, 'jobs.json');
+import { getStoragePath } from '@/lib/config';
+
+export const RESUMES_INDEX = getStoragePath('resumes.json');
+export const JOBS_INDEX = getStoragePath('jobs.json');
+export const PATHS_INDEX = getStoragePath('training_paths.json');
 
 export function ensureDirs() {
-  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
   if (!fs.existsSync(RESUMES_INDEX)) fs.writeFileSync(RESUMES_INDEX, JSON.stringify([]));
   if (!fs.existsSync(JOBS_INDEX)) fs.writeFileSync(JOBS_INDEX, JSON.stringify([]));
+  if (!fs.existsSync(PATHS_INDEX)) fs.writeFileSync(PATHS_INDEX, JSON.stringify([]));
 }
 
 function readIndex(filePath) {
@@ -120,4 +122,40 @@ export function toggleFavoriteResume(id, userId) {
     return resumes[index];
   }
   return null;
+}
+
+export function getAllPaths(userId) {
+  const all = readIndex(PATHS_INDEX);
+  if (!userId) return all;
+  return all.filter(p => p.userId === userId);
+}
+
+export function getPathById(id, userId) {
+  const all = readIndex(PATHS_INDEX);
+  return all.find(p => p.id === id && (!userId || p.userId === userId));
+}
+
+export function savePath(pathObj, userId) {
+  if (!userId) throw new Error('userId is required to save data');
+  const paths = readIndex(PATHS_INDEX);
+  
+  if (!pathObj.id) pathObj.id = uuid();
+  const index = paths.findIndex(p => p.id === pathObj.id);
+  
+  const pathWithUser = { ...pathObj, userId, updatedAt: new Date().toISOString() };
+  if (!pathWithUser.createdAt) pathWithUser.createdAt = new Date().toISOString();
+
+  if (index !== -1) {
+    paths[index] = pathWithUser;
+  } else {
+    paths.push(pathWithUser);
+  }
+  writeIndex(PATHS_INDEX, paths);
+  return pathWithUser;
+}
+
+export function deletePath(id, userId) {
+  const paths = readIndex(PATHS_INDEX);
+  const filtered = paths.filter(p => !(p.id === id && p.userId === userId));
+  writeIndex(PATHS_INDEX, filtered);
 }

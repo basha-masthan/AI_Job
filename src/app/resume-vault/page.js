@@ -248,7 +248,7 @@ export default function ResumeVault() {
           <div className="card" style={{ marginBottom: 24, borderColor: 'rgba(99,102,241,0.3)' }}>
             <h3 style={{ fontWeight: 700, fontSize: 15, marginBottom: 8 }}>🤖 AI Resume Matcher</h3>
             <p style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 12, lineHeight: 1.5 }}>
-              Paste a JD — Groq AI ranks your saved resumes by match score with strengths and gap analysis.
+              Paste a JD — AI ranks your saved resumes by match score with strengths and gap analysis.
             </p>
             <textarea
               className="form-textarea"

@@ -1,0 +1,102 @@
+[
+  {
+    "id": "int_1779080675398_gd5jbixn6",
+    "userId": "basha@fbt.com",
+    "type": "voice",
+    "role": "Python Developer",
+    "difficulty": "easy",
+    "overallScore": 32,
+    "communication": 4,
+    "technicalAccuracy": 2,
+    "strengths": [
+      "Shows willingness to engage with the questions",
+      "Maintains a positive tone throughout the interview"
+    ],
+    "improvements": [
+      "Needs solid understanding of fundamental Python concepts",
+      "Should provide concrete, relevant answers rather than unrelated statements"
+    ],
+    "detailedFeedback": [
+      {
+        "score": 3,
+        "comment": "When asked about static vs dynamic typing, the candidate gave an incomplete and partially incorrect description, indicating limited grasp of the concept."
+      },
+      {
+        "score": 1,
+        "comment": "The candidate could not correctly describe how to implement a stack with a list and gave an unrelated answer about a distributed app, showing a lack of basic data‑structure knowledge."
+      },
+      {
+        "score": 1,
+        "comment": "When prompted to write a function to reverse a string using a stack, the candidate admitted they did not know, demonstrating insufficient practical coding ability."
+      },
+      {
+        "score": 3,
+        "comment": "The explanation of break vs. continue was vague and partially inaccurate; the candidate did not clearly differentiate the two statements."
+      },
+      {
+        "score": 2,
+        "comment": "The candidate did not answer the question about the purpose of the pass statement, missing an opportunity to show understanding of placeholder syntax."
+      }
+    ],
+    "videoUrl": "/uploads/interviews/interview_basha@fbt.com_1779080655365.webm",
+    "answers": [
+      {
+        "role": "user",
+        "content": "smile to begin"
+      },
+      {
+        "role": "assistant",
+        "content": "Let's start with a basic question: What is your understanding of the difference between static typing and dynamic typing, and how does Python fit into this classification?"
+      },
+      {
+        "role": "user",
+        "content": "yeah static typing means before running the Python application or python"
+      },
+      {
+        "role": "assistant",
+        "content": "That's partially correct, static typing refers to the type checking that occurs at compile time, before the code is executed. Python, on the other hand, is dynamically typed, meaning type checking occurs at runtime. What are some advantages of using a dynamically typed language like Python?"
+      },
+      {
+        "role": "user",
+        "content": "yes used for after comparing runtime executions alive modifications will be done for a"
+      },
+      {
+        "role": "assistant",
+        "content": "Dynamic typing allows for more flexibility and ease of development. Now, let's move on to data structures: How would you implement a simple stack in Python using a list, and what methods would you include?"
+      },
+      {
+        "role": "user",
+        "content": "yeah is a distributed app"
+      },
+      {
+        "role": "assistant",
+        "content": "That's not quite relevant to implementing a stack. A stack is a linear data structure that follows the LIFO principle. In Python, you can implement a stack using a list with methods like append, pop, and peek. Can you write a simple Python function to reverse a string using a stack?"
+      },
+      {
+        "role": "user",
+        "content": "yeah we can"
+      },
+      {
+        "role": "assistant",
+        "content": "I'd like to see how you'd do it. Write a simple Python function that takes a string as input and returns the reversed string using a stack. What would be the first line of code in this function?"
+      },
+      {
+        "role": "user",
+        "content": "I don't know"
+      },
+      {
+        "role": "assistant",
+        "content": "The first line of code could be defining an empty list to act as the stack. Now, let's move on to control structures: Can you explain the difference between the break and continue statements in a Python loop?"
+      },
+      {
+        "role": "user",
+        "content": "yeah the condition not satisfied or we want to stop the execution we choose"
+      },
+      {
+        "role": "assistant",
+        "content": "The break statement is used to exit the loop entirely when a certain condition is met. The continue statement, on the other hand, skips the rest of the code in the current iteration and moves on to the next one. What is the purpose of the pass statement in Python?"
+      }
+    ],
+    "createdAt": "2026-05-18T05:04:35.398Z"
+  }
+]

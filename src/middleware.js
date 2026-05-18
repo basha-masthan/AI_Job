@@ -19,15 +19,18 @@ export async function middleware(request) {
 
   const session = request.cookies.get('session')?.value;
 
+  const redirectUrl = new URL('/login', request.url);
+  redirectUrl.searchParams.set('redirect', pathname);
+
   if (!session) {
-    return NextResponse.redirect(new URL('/login', request.url));
+    return NextResponse.redirect(redirectUrl);
   }
 
   try {
     await jwtVerify(session, secret);
     return NextResponse.next();
   } catch (err) {
-    return NextResponse.redirect(new URL('/login', request.url));
+    return NextResponse.redirect(redirectUrl);
   }
 }
 

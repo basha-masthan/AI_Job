@@ -38,52 +38,63 @@ export async function POST(request) {
     const messages = messagesResponse.data || [];
     console.log(`Nylas Sync: Fetched ${messages.length} messages for ${user.email}`);
 
-    const userJobs = getAllJobs(user.id);
-    const allJobs = getAllJobs(); // full list for write-back
+    const userJobs = getAllJobs(session.email);
     const updates = [];
-    let jobsModified = false;
 
     for (const message of messages) {
       try {
         const update = await processEmailForJobUpdates(message, userJobs);
 
-        if (update && update.isJobRelated && update.company) {
-          // Match by company name (case-insensitive)
-          const jobIndex = allJobs.findIndex(
-            j =>
-              j.userId === user.id &&
-              j.company?.toLowerCase() === update.company?.toLowerCase()
+        if (update && update.isJobRelated && update.company && update.role) {
+          // Match by company name (case-insensitive) and role
+          const existing = userJobs.find(j => 
+            j.company.toLowerCase() === update.company.toLowerCase() &&
+            (j.role.toLowerCase() === update.role.toLowerCase() || update.role.toLowerCase().includes('applicant'))
           );
 
-          if (jobIndex !== -1 && update.status && update.status !== 'none') {
-            const prevStatus = allJobs[jobIndex].status;
-            if (prevStatus !== update.status) {
-              allJobs[jobIndex] = {
-                ...allJobs[jobIndex],
-                status: update.status,
-                updatedAt: new Date().toISOString(),
-                notes:
-                  (allJobs[jobIndex].notes || '') +
-                  `\n[AI Sync ${new Date().toLocaleDateString()}]: ${update.role} — ${update.status}`,
-              };
-              jobsModified = true;
-              updates.push({
-                company: update.company,
-                role: update.role,
-                prevStatus,
-                newStatus: update.status,
-              });
-              console.log(`✅ Synced: ${update.company} → ${update.status}`);
+          if (existing) {
+            let changed = false;
+            if (existing.status.toLowerCase() !== update.status.toLowerCase()) {
+              existing.status = update.status;
+              changed = true;
             }
+            
+            // Fill in missing details
+            if (!existing.location && update.location) { existing.location = update.location; changed = true; }
+            if (!existing.salary && update.salary) { existing.salary = update.salary; changed = true; }
+            if ((!existing.url || existing.url === '') && update.jobUrl) { existing.url = update.jobUrl; changed = true; }
+            
+            if (changed) {
+              existing.lastUpdated = new Date().toISOString();
+              if (update.notes) {
+                existing.notes = (existing.notes || '') + `\nUpdate [${new Date().toLocaleDateString()}]: ${update.notes}`;
+              }
+              saveJob(existing, session.email);
+              updates.push(existing);
+            }
+          } else {
+            // Create new job
+            const newJob = {
+              id: uuid(),
+              company: update.company,
+              role: update.role,
+              status: update.status || 'Applied',
+              location: update.location || '',
+              salary: update.salary || '',
+              type: update.type || 'Full-time',
+              url: update.jobUrl || '',
+              dateApplied: new Date(message.date * 1000).toISOString().split('T')[0],
+              notes: update.notes || `Auto-detected from Nylas Email: "${message.subject}"`,
+              source: 'nylas-email-sync',
+            };
+            saveJob(newJob, session.email);
+            updates.push(newJob);
+            userJobs.push(newJob);
           }
         }
       } catch (msgErr) {
         console.warn(`Skipping message due to error:`, msgErr.message);
       }
-    }
-
-    if (jobsModified) {
-      writeIndex(JOBS_INDEX, allJobs);
     }
 
     return NextResponse.json({

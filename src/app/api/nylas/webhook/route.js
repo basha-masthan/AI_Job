@@ -4,13 +4,14 @@ import { getNylasClient, processEmailForJobUpdates } from '@/lib/nylas';
 import { getAllJobs, writeIndex, JOBS_INDEX } from '@/lib/store';
 import { getAllUsers } from '@/lib/users';
 import { notifyN8N } from '@/lib/n8n';
+import { getApiKey } from '@/lib/config';
 
 // ─── Webhook Signature Verification ────────────────────────────────────────
 function verifyNylasSignature(request, rawBody) {
   const signature = request.headers.get('x-nylas-signature');
   if (!signature) return false;
 
-  const secret = process.env.NYLAS_CLIENT_SECRET;
+  const secret = getApiKey('NYLAS_CLIENT_SECRET');
   if (!secret) return false;
 
   const hmac = crypto

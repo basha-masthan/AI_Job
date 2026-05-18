@@ -15,7 +15,8 @@ export async function GET() {
       success: true, 
       jobs,
       hasNylas: !!user?.nylasGrantId,
-      nylasEmail: user?.nylasEmail
+      nylasEmail: user?.nylasEmail,
+      hasGoogle: !!user?.googleRefreshToken
     });
   } catch (err) {
     return NextResponse.json({ error: err.message }, { status: 500 });

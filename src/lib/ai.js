@@ -1,21 +1,111 @@
 /**
- * AI Client - Groq (primary) with OpenRouter fallback
- * Groq uses LPU chips — delivers ~10x faster inference than GPU-based APIs
- * Model: llama-3.3-70b-versatile (best balance of quality + speed on Groq)
+ * AI Client - Strictly OpenRouter
  */
 
-const GROQ_BASE = 'https://api.groq.com/openai/v1/chat/completions';
+import { getApiKey, getSetting, getGroqKeys, getOpenRouterKeys } from '@/lib/config';
+
 const OPENROUTER_BASE = 'https://openrouter.ai/api/v1/chat/completions';
+const GROQ_BASE = 'https://api.groq.com/openai/v1/chat/completions';
+const HF_BASE = 'https://router.huggingface.co/v1';
+const CEREBRAS_BASE = 'https://api.cerebras.ai/v1/chat/completions';
 
-async function callGroq(messages, maxTokens = 4096) {
-  const res = await fetch(GROQ_BASE, {
+function getActiveAIProvider() {
+  return getSetting('activeAIProvider', 'openrouter');
+}
+
+async function callOpenRouter(messages, maxTokens = 4096, retries = 2) {
+  const keys = getOpenRouterKeys();
+  let lastErr = null;
+  
+  for (const apiKey of keys) {
+    if (!apiKey) continue;
+    for (let attempt = 0; attempt <= retries; attempt++) {
+      const res = await fetch(OPENROUTER_BASE, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': 'http://localhost:3000',
+          'X-Title': 'JobHunt AI Pro',
+        },
+        body: JSON.stringify({
+          model: getApiKey('OPENROUTER_MODEL') || 'openai/gpt-oss-120b:free',
+          messages,
+          max_tokens: maxTokens,
+          temperature: 0.3,
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (!data.choices?.[0]?.message?.content) {
+          throw new Error(`OpenRouter invalid response: ${JSON.stringify(data).substring(0, 500)}`);
+        }
+        return data.choices[0].message.content;
+      }
+
+      const err = await res.text();
+      if (res.status === 429 && attempt < retries) {
+        const delay = (attempt + 1) * 2000;
+        console.warn(`OpenRouter rate limited, retrying in ${delay}ms...`);
+        await new Promise(r => setTimeout(r, delay));
+        continue;
+      }
+      lastErr = new Error(`OpenRouter error ${res.status}: ${err}`);
+      break; // Break retry loop to try next key
+    }
+  }
+  throw lastErr || new Error('All OpenRouter keys failed.');
+}
+
+export async function callGroq(messages, maxTokens = 4096) {
+  const keys = getGroqKeys();
+  let lastErr = null;
+  
+  for (const apiKey of keys) {
+    if (!apiKey) continue;
+    const res = await fetch(GROQ_BASE, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: getApiKey('GROQ_MODEL') || 'llama-3.3-70b-versatile',
+        messages,
+        max_tokens: maxTokens,
+        temperature: 0.3,
+      }),
+    });
+
+    if (!res.ok) {
+      const err = await res.text();
+      lastErr = new Error(`Groq error ${res.status}: ${err}`);
+      if (res.status === 429) {
+        console.warn(`Groq rate limited on key ${apiKey.substring(0,8)}..., trying next key...`);
+        continue; // Try next key
+      }
+      continue; // Also try next key on other errors
+    }
+
+    const data = await res.json();
+    return data.choices[0].message.content;
+  }
+  throw lastErr || new Error('All Groq keys failed.');
+}
+
+async function callHuggingFace(messages, maxTokens = 4096) {
+  const apiKey = getApiKey('HF_TOKEN');
+  if (!apiKey) throw new Error('HF_TOKEN is missing in .env.local');
+
+  const res = await fetch(`${HF_BASE}/chat/completions`, {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+      'Authorization': `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile',
+      model: getApiKey('HF_MODEL') || 'deepseek-ai/DeepSeek-V4-Pro:cheapest',
       messages,
       max_tokens: maxTokens,
       temperature: 0.3,
@@ -24,63 +114,138 @@ async function callGroq(messages, maxTokens = 4096) {
 
   if (!res.ok) {
     const err = await res.text();
-    throw new Error(`Groq API error ${res.status}: ${err}`);
+    throw new Error(`HuggingFace error ${res.status}: ${err}`);
   }
 
   const data = await res.json();
   return data.choices[0].message.content;
 }
 
-async function callOpenRouter(messages, maxTokens = 4096) {
-  const res = await fetch(OPENROUTER_BASE, {
+async function callGemini(systemPrompt, userPrompt, maxTokens = 4096) {
+  const apiKey = getApiKey('GEMINI_API_KEY');
+  if (!apiKey) throw new Error('GEMINI_API_KEY is missing in .env.local');
+
+  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
     method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
-      'Content-Type': 'application/json',
-      'HTTP-Referer': 'http://localhost:3000',
-      'X-Title': 'JobHunt AI Pro',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: process.env.OPENROUTER_MODEL || 'nvidia/nemotron-3-super-120b-a12b:free',
-      messages,
-      max_tokens: maxTokens,
-      temperature: 0.3,
-    }),
+      system_instruction: { parts: { text: systemPrompt } },
+      contents: [{ parts: [{ text: userPrompt }] }],
+      generationConfig: { maxOutputTokens: maxTokens, temperature: 0.3 }
+    })
   });
 
   if (!res.ok) {
     const err = await res.text();
-    throw new Error(`OpenRouter error ${res.status}: ${err}`);
+    throw new Error(`Gemini error ${res.status}: ${err}`);
+  }
+
+  const data = await res.json();
+  if (data.candidates && data.candidates.length > 0) {
+    return data.candidates[0].content.parts[0].text;
+  }
+  throw new Error('Gemini returned empty response');
+}
+
+async function callCerebras(messages, maxTokens = 4096) {
+  const apiKey = getApiKey('CEREBRAS_API_KEY');
+  const model = getApiKey('CEREBRAS_MODEL') || 'llama3.1-8b';
+  if (!apiKey) throw new Error('CEREBRAS_API_KEY is missing');
+
+  const res = await fetch(CEREBRAS_BASE, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ model, messages, max_tokens: maxTokens, temperature: 0.3 }),
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Cerebras error ${res.status}: ${err}`);
   }
 
   const data = await res.json();
   return data.choices[0].message.content;
 }
 
-/**
- * Primary AI call — tries Groq first, falls back to OpenRouter if configured
- */
 export async function invokeAI(systemPrompt, userPrompt, maxTokens = 4096) {
+  const provider = getActiveAIProvider();
+
   const messages = [
     { role: 'system', content: systemPrompt },
     { role: 'user', content: userPrompt },
   ];
 
-  // Try Groq first (fastest)
-  if (process.env.GROQ_API_KEY) {
+  const providers = [
+    { name: 'cerebras', fn: () => callCerebras(messages, maxTokens), key: 'CEREBRAS_API_KEY' },
+    { name: 'gemini', fn: () => callGemini(systemPrompt, userPrompt, maxTokens), key: 'GEMINI_API_KEY' },
+    { name: 'groq', fn: () => callGroq(messages, maxTokens), key: 'GROQ_API_KEY' },
+    { name: 'huggingface', fn: () => callHuggingFace(messages, maxTokens), key: 'HF_TOKEN' },
+    { name: 'openrouter', fn: () => callOpenRouter(messages, maxTokens), key: 'OPENROUTER_API_KEY' },
+  ];
+
+  const preferredIndex = providers.findIndex(p => p.name === provider);
+
+  const orderedProviders = [
+    ...providers.slice(preferredIndex),
+    ...providers.slice(0, preferredIndex),
+  ];
+
+  let lastError = null;
+  for (const p of orderedProviders) {
+    if (!getApiKey(p.key)) continue;
     try {
-      return await callGroq(messages, maxTokens);
+      return await p.fn();
     } catch (err) {
-      console.warn('Groq failed, trying fallback:', err.message);
+      lastError = err;
+      console.warn(`${p.name} failed (${err.message}), trying next provider...`);
     }
   }
 
-  // Fallback to OpenRouter
-  if (process.env.OPENROUTER_API_KEY) {
-    return await callOpenRouter(messages, maxTokens);
-  }
+  throw lastError || new Error('No AI provider available. Configure an API key in settings.');
+}
 
-  throw new Error('No AI API key configured. Add GROQ_API_KEY to .env.local');
+export function safeJSONParse(text, fallback = null) {
+  if (!text) return fallback;
+  
+  try {
+    // 1. Try direct parse first
+    return JSON.parse(text.trim());
+  } catch (e) {
+    // 2. Try to extract the JSON block using a non-greedy-start, greedy-end approach
+    // We want to find the first { or [ and the last } or ]
+    const firstBrace = text.indexOf('{');
+    const firstBracket = text.indexOf('[');
+    let start = -1;
+    let end = -1;
+
+    if (firstBrace !== -1 && (firstBracket === -1 || firstBrace < firstBracket)) {
+      start = firstBrace;
+      end = text.lastIndexOf('}');
+    } else if (firstBracket !== -1) {
+      start = firstBracket;
+      end = text.lastIndexOf(']');
+    }
+
+    if (start !== -1 && end !== -1 && end > start) {
+      let cleaned = text.substring(start, end + 1);
+      
+      // 3. Remove common AI formatting artifacts
+      // Remove trailing commas before closing braces/brackets
+      cleaned = cleaned.replace(/,\s*([}\]])/g, '$1');
+
+      try {
+        return JSON.parse(cleaned);
+      } catch (innerError) {
+        console.error('safeJSONParse failed even after cleaning. Text snippet:', cleaned.substring(0, 200));
+        return fallback;
+      }
+    }
+    
+    return fallback;
+  }
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -143,13 +308,9 @@ Return ONLY this JSON structure (fill all fields you can find, leave empty strin
 }`;
 
   const text = await invokeAI(system, user, 2048);
-  const jsonMatch = text.match(/\{[\s\S]*\}/);
-  if (jsonMatch) {
-    try { return JSON.parse(jsonMatch[0]); } catch { /* fall through */ }
-  }
-  try { return JSON.parse(text.trim()); } catch {
-    throw new Error('Could not parse profile from resume text.');
-  }
+  const profile = safeJSONParse(text);
+  if (!profile) throw new Error('Could not parse profile from resume text.');
+  return profile;
 }
 
 /**
@@ -179,17 +340,54 @@ ${resumes.map((r, i) => `
 Data: ${JSON.stringify(r.data || r.extractedProfile)}
 `).join('\n---\n')}`;
 
-  const text = await invokeAI(system, user, 2048);
-  const jsonMatch = text.match(/\[[\s\S]*\]/);
-  if (jsonMatch) {
-    try {
-      return JSON.parse(jsonMatch[0]);
-    } catch (e) {
-      console.error('Failed to parse match results:', e);
-      return [];
-    }
+  let text;
+  try {
+    text = await callGroq([
+      { role: 'system', content: system },
+      { role: 'user', content: user },
+    ], 2048);
+  } catch {
+    text = await invokeAI(system, user, 2048);
   }
-  return [];
+
+  return safeJSONParse(text, []);
+}
+
+/**
+ * Match a single resume against multiple job descriptions (Bulk Search Scoring)
+ */
+export async function matchJobsWithResume(resumeProfile, jobListText) {
+  const system = `You are an expert AI Job Matcher. 
+Compare the provided CANDIDATE PROFILE against a list of JOB DESCRIPTIONS.
+Rate how well the candidate fits each job.
+Return a JSON array of objects:
+[
+  { 
+    "score": 85, 
+    "reason": "1-sentence explanation"
+  }
+]
+Score is 0-100. Be very brief.`;
+
+  const user = `CANDIDATE PROFILE:
+${JSON.stringify(resumeProfile)}
+
+JOB LIST:
+${jobListText}
+
+Return a JSON array with one score object per job in the list, in the SAME order.`;
+
+  let text;
+  try {
+    text = await callGroq([
+      { role: 'system', content: system },
+      { role: 'user', content: user },
+    ], 2048);
+  } catch {
+    text = await invokeAI(system, user, 2048);
+  }
+
+  return safeJSONParse(text, []);
 }
 
 export async function generateResumeFromJD(jobDescription, userProfile = null, isSmartMerge = false) {
@@ -207,9 +405,14 @@ Your task is to synthesize a 'Master Tailored Profile'.
 
 CRITICAL RULES:
 1. ATS OPTIMIZATION: Use standard section headings. Include high-impact keywords from the JD.
-2. FRESHER/INTERN LOGIC: If the candidate has 0 or very little professional experience, do NOT leave the experience section empty. Instead, transform their academic projects or skills into a "Professional Internship" or "Technical Residency" of 3-6 months that directly relates to the target JD.
-3. IMPACT: Use quantified bullets (e.g., "Improved performance by 30%").
-4. JSON ONLY: Return valid JSON matching the structure provided.`;
+2. CONCISENESS (SINGLE PAGE STRICT): The final output MUST be concise to fit on one printed page.
+   - Summary: Max 2-3 short sentences.
+   - Experience: Max 3 bullet points per role (only top 2-3 most relevant roles). Keep bullets to 1-2 lines.
+   - Projects: Max 2 most relevant projects.
+   - Skills: Only list the top 12-15 most relevant skills.
+3. FRESHER/INTERN LOGIC: If candidate has little experience, transform their academic projects into a "Professional Internship" or "Technical Residency" related to the JD.
+4. IMPACT: Use quantified bullets (e.g., "Improved performance by 30%").
+5. JSON ONLY: Return valid JSON matching the structure provided.`;
 
   const profileContext = userProfile
     ? `\n\nCandidate's existing profile/background (Source Data):\n${JSON.stringify(userProfile, null, 2)}`
@@ -270,13 +473,9 @@ Return ONLY a valid JSON object with this exact structure:
 }`;
 
   const text = await invokeAI(system, user, 4096);
-  const jsonMatch = text.match(/\{[\s\S]*\}/);
-  if (jsonMatch) {
-    try { return JSON.parse(jsonMatch[0]); } catch { /* fall through */ }
-  }
-  try { return JSON.parse(text.trim()); } catch {
-    throw new Error('AI returned invalid JSON for resume. Try again.');
-  }
+  const resume = safeJSONParse(text);
+  if (!resume) throw new Error('AI returned invalid JSON for resume. Try again.');
+  return resume;
 }
 
 export async function extractJobUpdateFromEmail(subject, body, existingJobs = []) {
@@ -305,16 +504,88 @@ Return JSON:
 {
   "isJobRelated": boolean,
   "company": "Company Name",
-  "role": "Role Name",
-  "status": "Applied|Interview|Offer|Rejected"
+  "role": "Full Job Title (e.g. Senior Frontend Developer)",
+  "status": "Applied|Interview|Offer|Rejected",
+  "location": "City, Country or Remote/Hybrid",
+  "salary": "Package or Salary details if mentioned, else empty",
+  "type": "Full-time|Part-time|Internship|Contract",
+  "jobUrl": "Link to the application or job post if found in the text",
+  "notes": "A brief summary of the email content or next steps mentioned"
 }`;
 
-  const text = await invokeAI(system, user, 1024);
-  const jsonMatch = text.match(/\{[\s\S]*\}/);
-  if (jsonMatch) {
-    try { return JSON.parse(jsonMatch[0]); } catch { return null; }
+  try {
+    const text = await callCerebras([
+      { role: 'system', content: system },
+      { role: 'user', content: user },
+    ], 1024);
+    const result = safeJSONParse(text);
+    if (result) return result;
+  } catch (e) {
+    console.warn(`Cerebras email analysis failed (${e.message}), trying configured AI provider...`);
   }
-  try { return JSON.parse(text.trim()); } catch { return null; }
+
+  try {
+    const text = await invokeAI(system, user, 1024);
+    const result = safeJSONParse(text);
+    if (result) return result;
+  } catch (e) {
+    console.warn(`AI email analysis failed (${e.message}), using keyword fallback`);
+  }
+
+  return keywordFallback(subject, body);
+}
+
+function keywordFallback(subject, body) {
+  const text = `${subject} ${body}`.toLowerCase();
+
+  const platformKeywords = ['indeed', 'linkedin', 'naukri', 'wellfound', 'cutshort', 'careers', 'glassdoor', 'monster'];
+  const jobActionKeywords = ['shortlisted', 'application update', 'successfully submitted', 'thank you for applying',
+    'next steps', 'interview', 'application received', 'job update', 'application status'
+  ];
+  const interviewKeywords = ['interview', 'schedule', 'meet the team', 'phone screen', 'video call'];
+  const offerKeywords = ['offer letter', 'offer', 'congratulations', 'you\'re hired', 'joining'];
+  const rejectKeywords = ['rejected', 'unfortunately', 'not moving forward', 'other candidates', 'regret to inform'];
+
+  const isFromPlatform = platformKeywords.some(k => text.includes(k));
+  const hasAction = jobActionKeywords.some(k => text.includes(k));
+  const isInterview = interviewKeywords.some(k => text.includes(k));
+  const isOffer = offerKeywords.some(k => text.includes(k));
+  const isRejected = rejectKeywords.some(k => text.includes(k));
+
+  if (!isFromPlatform && !hasAction && !isInterview && !isOffer && !isRejected) {
+    return { isJobRelated: false };
+  }
+
+  let status = 'Applied';
+  if (isInterview) status = 'Interview';
+  if (isOffer) status = 'Offer';
+  if (isRejected) status = 'Rejected';
+
+  let company = '';
+  const knownPlatforms = { indeed: 'Indeed', linkedin: 'LinkedIn', naukri: 'Naukri', wellfound: 'Wellfound', cutshort: 'Cutshort', glassdoor: 'Glassdoor', monster: 'Monster' };
+  for (const [key, name] of Object.entries(knownPlatforms)) {
+    if (subject.toLowerCase().includes(key) || body.toLowerCase().includes(key)) {
+      company = name;
+      break;
+    }
+  }
+
+  const fromMatch = body.match(/from:\s*([^\n]+)/i);
+  if (!company && fromMatch) {
+    company = fromMatch[1].replace(/<[^>]+>/g, '').trim();
+  }
+
+  return {
+    isJobRelated: true,
+    company: company || 'Unknown Company',
+    role: isInterview ? 'Applicant (Interview)' : 'Applicant',
+    status,
+    location: '',
+    salary: '',
+    type: 'Full-time',
+    jobUrl: '',
+    notes: `Keyword detected: ${status}`
+  };
 }
 
 export async function extractJobDetails(rawText, url) {
@@ -323,10 +594,12 @@ Extract structured information from job posting text.
 Return valid JSON only — no markdown, no explanation.`;
 
   const user = `Extract all job details from this scraped job posting text.
+  
+  IMPORTANT: If the CONTENT below appears to be a "Sign In" page, a "Security Verification" page, a "Bot Challenge", or contains NO actual job information (like just a header and footer), DO NOT attempt to guess the details. Instead, return a JSON object with only one field: {"error": "blocked_by_bot_protection"}.
 
 URL: ${url}
 CONTENT:
-${rawText.substring(0, 6000)}
+${rawText.substring(0, 8000)}
 
 Return ONLY this JSON structure:
 {
@@ -346,14 +619,27 @@ Return ONLY this JSON structure:
   "deadline": "Deadline or Not specified"
 }`;
 
-  const text = await invokeAI(system, user, 2048);
-  const jsonMatch = text.match(/\{[\s\S]*\}/);
-  if (jsonMatch) {
-    try { return JSON.parse(jsonMatch[0]); } catch { /* fall through */ }
+  let text;
+  try {
+    text = await callGroq([
+      { role: 'system', content: system },
+      { role: 'user', content: user },
+    ], 4096);
+  } catch {
+    text = await invokeAI(system, user, 4096);
   }
-  try { return JSON.parse(text.trim()); } catch {
-    throw new Error('AI returned invalid JSON for job details. Try again.');
+
+  const details = safeJSONParse(text);
+  
+  if (!details) {
+    throw new Error('AI could not parse the job content. Please try manual paste.');
   }
+
+  if (details.error === 'blocked_by_bot_protection') {
+    throw new Error('This site is protected by a login wall or bot challenge. Please use the Manual Paste tab to provide the job description directly.');
+  }
+
+  return details;
 }
 
 /**
@@ -387,11 +673,16 @@ Return JSON:
   ]
 }`;
 
-  const text = await invokeAI(system, user, 3000);
-  const jsonMatch = text.match(/\{[\s\S]*\}/);
-  if (jsonMatch) {
-    try { return JSON.parse(jsonMatch[0]); } catch { /* fall through */ }
+  let text;
+  try {
+    text = await callGroq([
+      { role: 'system', content: system },
+      { role: 'user', content: user },
+    ], 3000);
+  } catch {
+    text = await invokeAI(system, user, 3000);
   }
-  return null;
+
+  return safeJSONParse(text);
 }
 

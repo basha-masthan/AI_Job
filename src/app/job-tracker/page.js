@@ -27,9 +27,7 @@ export default function JobTracker() {
   const [filterStatus, setFilterStatus] = useState('all');
   const [preppingId, setPreppingId] = useState(null);
   
-  // Nylas state
-  const [hasNylas, setHasNylas] = useState(false);
-  const [nylasEmail, setNylasEmail] = useState('');
+  const [hasGoogle, setHasGoogle] = useState(false);
   const [syncing, setSyncing] = useState(false);
   const [syncMessage, setSyncMessage] = useState('');
   const [toolkit, setToolkit] = useState(null);
@@ -39,26 +37,26 @@ export default function JobTracker() {
     const r = await fetch('/api/jobs');
     const data = await r.json();
     setJobs(data.jobs || []);
-    setHasNylas(data.hasNylas || false);
-    setNylasEmail(data.nylasEmail || '');
+    setHasGoogle(data.hasGoogle || false);
     setLoading(false);
   }, []);
 
   useEffect(() => { loadJobs(); }, [loadJobs]);
 
-  async function handleSyncEmails() {
+
+  async function handleGoogleSync() {
     setSyncing(true); setSyncMessage(''); setError('');
     try {
-      const res = await fetch('/api/jobs/sync', { method: 'POST' });
+      const res = await fetch('/api/google/sync', { method: 'POST' });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Failed to sync emails');
+      if (!res.ok) throw new Error(data.error || 'Failed to sync emails (Google)');
       
-      console.log('🤖 --- AI EMAIL SYNC DEBUG LOG --- 🤖');
+      console.log('🤖 --- AI EMAIL SYNC DEBUG LOG (GOOGLE) --- 🤖');
       console.log('Total Emails Scanned:', data.debugCount);
       console.table(data.debugInfo);
       console.log('Jobs Created/Updated:', data.jobs);
       
-      setSyncMessage(data.message || 'Sync complete.');
+      setSyncMessage(data.message || 'Google Sync complete.');
       loadJobs();
     } catch (err) {
       setError(err.message);
@@ -192,15 +190,17 @@ export default function JobTracker() {
               <p className="page-subtitle">Track every application from wishlist to offer</p>
             </div>
             <div className="flex-row">
-              {hasNylas ? (
-                <button className="btn btn-secondary" onClick={handleSyncEmails} disabled={syncing}>
-                  {syncing ? <><span className="spinner" /> Scanning...</> : '📥 Auto-Sync Emails'}
+              {/* Google Sync UI */}
+              {hasGoogle ? (
+                <button className="btn btn-secondary" onClick={handleGoogleSync} disabled={syncing}>
+                  {syncing ? <><span className="spinner" /> Scanning...</> : '📥 Auto-Sync (Google)'}
                 </button>
               ) : (
-                <a href="/api/nylas/auth" className="btn btn-primary" style={{ background: '#ea4335', borderColor: '#ea4335' }}>
-                  ✉️ Connect Gmail
+                <a href="/api/google/auth" className="btn btn-primary" style={{ background: '#ea4335', borderColor: '#ea4335' }}>
+                  ✉️ Connect Google Auth
                 </a>
               )}
+
               <div style={{ display: 'flex', gap: 4, background: 'var(--bg-secondary)', padding: 4, borderRadius: 10, border: '1px solid var(--border)' }}>
                 {['kanban', 'list'].map(v => (
                   <button

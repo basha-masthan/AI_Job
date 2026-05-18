@@ -1,20 +1,28 @@
 'use client';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-export default function LoginPage() {
+function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [code, setCode] = useState('');
-  const [step, setStep] = useState('login'); // login | verify
+  const [step, setStep] = useState('login');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [redirectTo, setRedirectTo] = useState('/job-tracker');
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const redirectParam = searchParams.get('redirect');
+    if (redirectParam) setRedirectTo(redirectParam);
+  }, [searchParams]);
 
   async function handleLogin(e) {
     e.preventDefault();
-    setLoading(true); setError('');
+    setLoading(true);
+    setError('');
     try {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
@@ -23,7 +31,7 @@ export default function LoginPage() {
       });
       const data = await res.json();
       if (res.ok) {
-        router.push('/job-tracker');
+        router.push(redirectTo);
       } else if (data.needsVerification) {
         setStep('verify');
       } else {
@@ -38,7 +46,8 @@ export default function LoginPage() {
 
   async function handleVerify(e) {
     e.preventDefault();
-    setLoading(true); setError('');
+    setLoading(true);
+    setError('');
     try {
       const res = await fetch('/api/auth/verify', {
         method: 'POST',
@@ -46,7 +55,7 @@ export default function LoginPage() {
         body: JSON.stringify({ email, code }),
       });
       if (res.ok) {
-        router.push('/job-tracker');
+        router.push(redirectTo);
       } else {
         const data = await res.json();
         setError(data.error || 'Verification failed');
@@ -59,83 +68,89 @@ export default function LoginPage() {
   }
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      background: 'radial-gradient(circle at top left, #1e1b4b, #020617)',
-      padding: '20px'
-    }}>
-      <div className="card" style={{ maxWidth: 400, width: '100%', padding: '40px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
-        <div style={{ textAlign: 'center', marginBottom: 32 }}>
-          <div style={{ fontSize: 48, marginBottom: 16 }}>🚀</div>
-          <h1 style={{ fontFamily: 'Space Grotesk', fontSize: 28, fontWeight: 800, color: 'white', marginBottom: 8 }}>
+    <div className="auth-shell">
+      <div className="card auth-card">
+        <div className="auth-header">
+          <div className="auth-icon">AI</div>
+          <h1 className="auth-title">
             JobHunt AI <span style={{ color: 'var(--accent-primary)' }}>Pro</span>
           </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: 14 }}>
+          <p className="auth-subtitle">
             {step === 'login' ? 'Welcome back, future bounder!' : 'Verify your email to continue'}
           </p>
         </div>
 
         {step === 'login' ? (
-          <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <form onSubmit={handleLogin} className="auth-form">
             <div className="form-group">
-              <label className="form-label" style={{ color: 'var(--text-secondary)' }}>Email Address</label>
-              <input 
-                type="email" 
-                className="form-input" 
-                required 
-                value={email} 
+              <label className="form-label">Email Address</label>
+              <input
+                type="email"
+                className="form-input"
+                required
+                value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder="you@example.com"
               />
             </div>
             <div className="form-group">
-              <label className="form-label" style={{ color: 'var(--text-secondary)' }}>Password</label>
-              <input 
-                type="password" 
-                className="form-input" 
-                required 
-                value={password} 
+              <label className="form-label">Password</label>
+              <input
+                type="password"
+                className="form-input"
+                required
+                value={password}
                 onChange={e => setPassword(e.target.value)}
-                placeholder="••••••••"
+                placeholder="********"
               />
             </div>
-            {error && <div className="alert alert-error" style={{ fontSize: 13 }}>⚠️ {error}</div>}
+            {error && <div className="alert alert-error auth-error">! {error}</div>}
             <button className="btn btn-primary btn-lg" type="submit" disabled={loading}>
               {loading ? <span className="spinner" /> : 'Sign In'}
             </button>
-            <p style={{ textAlign: 'center', fontSize: 13, color: 'var(--text-muted)' }}>
-              Don't have an account? <Link href="/register" style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>Create one</Link>
+            <p className="auth-helper">
+              Don't have an account? <Link href="/register" className="auth-link">Create one</Link>
             </p>
           </form>
         ) : (
-          <form onSubmit={handleVerify} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <form onSubmit={handleVerify} className="auth-form">
             <div className="form-group">
-              <label className="form-label" style={{ color: 'var(--text-secondary)' }}>Verification Code</label>
-              <input 
-                type="text" 
-                className="form-input" 
-                required 
+              <label className="form-label">Verification Code</label>
+              <input
+                type="text"
+                className="form-input auth-code-input"
+                required
                 maxLength={6}
-                style={{ textAlign: 'center', fontSize: 24, letterSpacing: 8, fontWeight: 800 }}
-                value={code} 
+                value={code}
                 onChange={e => setCode(e.target.value)}
                 placeholder="000000"
               />
-              <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 8, textAlign: 'center' }}>
+              <p className="auth-code-note">
                 We sent a 6-digit code to <strong>{email}</strong>
               </p>
             </div>
-            {error && <div className="alert alert-error" style={{ fontSize: 13 }}>⚠️ {error}</div>}
+            {error && <div className="alert alert-error auth-error">! {error}</div>}
             <button className="btn btn-primary btn-lg" type="submit" disabled={loading}>
               {loading ? <span className="spinner" /> : 'Verify & Enter'}
             </button>
-            <button className="btn btn-ghost btn-sm" type="button" onClick={() => setStep('login')}>Back to Login</button>
+            <button className="btn btn-ghost btn-sm auth-back-btn" type="button" onClick={() => setStep('login')}>
+              Back to Login
+            </button>
           </form>
         )}
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="auth-shell loading">
+        <div className="spinner spinner-lg" />
+      </div>
+    }>
+      <LoginForm />
+    </Suspense>
   );
 }

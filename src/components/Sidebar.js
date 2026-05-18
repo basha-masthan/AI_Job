@@ -6,13 +6,19 @@ import Link from 'next/link';
 const NAV = [
   { label: 'OVERVIEW', items: [
     { href: '/', icon: '⚡', label: 'Dashboard' },
-    { href: '/profile', icon: '👤', label: 'My Profile' },
+  ]},
+  { label: 'TRAINING', items: [
+    { href: '/training', icon: '🎓', label: 'Training Portal' },
+    { href: '/training/progress', icon: '📈', label: 'Learning Progress' },
+    { href: '/training/mock-interview', icon: '🎤', label: 'Mock Interview' },
+    { href: '/training/technical-mock', icon: '🧪', label: 'Technical MCQ' },
   ]},
   { label: 'RESUME', items: [
     { href: '/resume-builder', icon: '✨', label: 'Resume Builder' },
     { href: '/resume-vault', icon: '🗄️', label: 'Resume Vault' },
   ]},
   { label: 'JOBS', items: [
+    { href: '/job-search', icon: '🔍', label: 'India Jobs' },
     { href: '/job-tracker', icon: '📋', label: 'Job Tracker' },
     { href: '/job-fetcher', icon: '🔗', label: 'Job Fetcher' },
   ]},
@@ -25,8 +31,14 @@ export default function Sidebar() {
   const pathname = usePathname();
   const [userName, setUserName] = useState('User');
   const [userEmail, setUserEmail] = useState('');
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
+    // Load collapse state
+    const saved = localStorage.getItem('sidebar_collapsed') === 'true';
+    setIsCollapsed(saved);
+    if (saved) document.body.classList.add('sidebar-collapsed');
+
     fetch('/api/auth/me')
       .then(res => res.json())
       .then(data => {
@@ -37,6 +49,17 @@ export default function Sidebar() {
       })
       .catch(console.error);
   }, []);
+
+  const toggleSidebar = () => {
+    const newState = !isCollapsed;
+    setIsCollapsed(newState);
+    localStorage.setItem('sidebar_collapsed', newState);
+    if (newState) {
+      document.body.classList.add('sidebar-collapsed');
+    } else {
+      document.body.classList.remove('sidebar-collapsed');
+    }
+  };
 
   async function handleLogout() {
     await fetch('/api/auth/logout', { method: 'POST' });
@@ -52,44 +75,58 @@ export default function Sidebar() {
   });
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
       <div className="sidebar-logo">
-        <div className="sidebar-logo-icon">🚀</div>
-        <div>
-          <div className="sidebar-logo-text">JobHunt AI</div>
-          <div className="sidebar-logo-sub">Welcome, {userName}</div>
+        <div className="sidebar-logo-icon" style={{ background: 'transparent' }}>
+          <img src="/logo.svg" alt="JobHunt AI Logo" style={{ width: 38, height: 38, borderRadius: 10 }} />
         </div>
+        {!isCollapsed && (
+          <div>
+            <div className="sidebar-logo-text">JobHunt AI</div>
+            <div className="sidebar-logo-sub">Welcome, {userName.split(' ')[0]}</div>
+          </div>
+        )}
+        <button onClick={toggleSidebar} className="collapse-toggle" title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}>
+          {isCollapsed ? '➡' : '⬅'}
+        </button>
       </div>
 
-      {filteredNav.map(section => (
-        <div key={section.label}>
-          <div className="nav-section-label">{section.label}</div>
-          {section.items.map(item => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`nav-item${pathname === item.href ? ' active' : ''}`}
-            >
-              <span className="nav-icon">{item.icon}</span>
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      ))}
+      <div className="nav-container" style={{ overflowY: 'auto', flex: 1, paddingRight: '4px' }}>
+        {filteredNav.map(section => (
+          <div key={section.label} className="nav-section">
+            {!isCollapsed && <div className="nav-section-label">{section.label}</div>}
+            {section.items.map(item => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`nav-item${pathname === item.href ? ' active' : ''}`}
+                title={isCollapsed ? item.label : ''}
+              >
+                <span className="nav-icon">{item.icon}</span>
+                {!isCollapsed && <span className="nav-label">{item.label}</span>}
+              </Link>
+            ))}
+          </div>
+        ))}
+      </div>
 
-      <div style={{ marginTop: 'auto', padding: '16px 12px', borderTop: '1px solid var(--border)' }}>
+      <div className="sidebar-footer">
         <button 
           onClick={handleLogout}
-          className="nav-item" 
-          style={{ width: '100%', border: 'none', background: 'transparent', cursor: 'pointer', marginBottom: 16, color: 'inherit', textAlign: 'left', padding: '8px 12px' }}
+          className="nav-item logout-btn" 
+          title={isCollapsed ? "Logout" : ""}
         >
-          <span className="nav-icon">🚪</span> Logout
+          <span className="nav-icon">🚪</span> 
+          {!isCollapsed && <span className="nav-label">Logout</span>}
         </button>
-        <div style={{ fontSize: 11, color: 'var(--text-muted)', lineHeight: 1.6 }}>
-          <div style={{ fontWeight: 600, color: 'var(--text-secondary)', marginBottom: 4 }}>⚡ AI Model</div>
-          Groq · llama-3.3-70b<br />
-          <span style={{ color: 'var(--accent-emerald)' }}>● Active</span>
-        </div>
+        <Link
+          href="/profile"
+          className={`nav-item${pathname === '/profile' ? ' active' : ''}`}
+          title={isCollapsed ? "My Profile" : ""}
+        >
+          <span className="nav-icon">👤</span> 
+          {!isCollapsed && <span className="nav-label">My Profile</span>}
+        </Link>
       </div>
     </aside>
   );

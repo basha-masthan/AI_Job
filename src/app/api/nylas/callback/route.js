@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getNylasClient } from '@/lib/nylas';
 import { getSession } from '@/lib/auth';
 import { getUserByEmail, saveUser } from '@/lib/users';
+import { getApiKey } from '@/lib/config';
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
@@ -14,16 +15,14 @@ export async function GET(request) {
   try {
     const session = await getSession();
     if (!session) {
-      // If no session, we can't link the account. But Nylas callback doesn't have the cookie easily if cross-origin.
-      // Assuming same-origin for now.
       return NextResponse.redirect(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/login?error=Please login first`);
     }
 
     const nylas = getNylasClient();
     
     const response = await nylas.auth.exchangeCodeForToken({
-      clientId: process.env.NYLAS_CLIENT_ID,
-      clientSecret: process.env.NYLAS_CLIENT_SECRET,
+      clientId: getApiKey('NYLAS_CLIENT_ID'),
+      clientSecret: getApiKey('NYLAS_CLIENT_SECRET'),
       code: code,
       redirectUri: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/nylas/callback`,
     });

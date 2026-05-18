@@ -1,0 +1,15 @@
+{
+  "activeAIProvider": "openrouter",
+  "apiKeys": {
+    "OPENROUTER_API_KEY": "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",
+    "OPENROUTER_MODEL": "openai/gpt-oss-120b:free",
+    "CEREBRAS_API_KEY": "csk-m4dn4epmkjeen4nj8r68h4en5f4r8ftx896kpt5jcfwwhyth",
+    "CEREBRAS_MODEL": "llama3.1-8b",
+    "GROQ_API_KEY": "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",
+    "GROQ_MODEL": "llama-3.3-70b-versatile",
+    "TAVILY_API_KEY": "",
+    "RAPIDAPI_KEY": "",
+    "GOOGLE_SEARCH_API_KEY": "",
+    "GOOGLE_SEARCH_CX": ""
+  }
+}

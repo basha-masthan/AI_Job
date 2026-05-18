@@ -1,8 +1,9 @@
 import Nylas from 'nylas';
+import { getApiKey } from '@/lib/config';
 
 const nylasConfig = {
-  apiKey: process.env.NYLAS_API_KEY,
-  apiUri: process.env.NYLAS_API_URI || 'https://api.us.nylas.com',
+  apiKey: getApiKey('NYLAS_API_KEY'),
+  apiUri: getApiKey('NYLAS_API_URI') || 'https://api.us.nylas.com',
 };
 
 let nylasClient;

@@ -1,13 +1,14 @@
 import { NextResponse } from 'next/server';
 import { getNylasClient } from '@/lib/nylas';
+import { getApiKey } from '@/lib/config';
 
 export async function GET(request) {
   try {
     const nylas = getNylasClient();
     
-    const clientId = process.env.NYLAS_CLIENT_ID;
+    const clientId = getApiKey('NYLAS_CLIENT_ID');
     if (!clientId) {
-      return NextResponse.json({ error: 'NYLAS_CLIENT_ID is missing in .env.local' }, { status: 500 });
+      return NextResponse.json({ error: 'NYLAS_CLIENT_ID is not configured' }, { status: 500 });
     }
 
     const authUrl = nylas.auth.urlForOAuth2({

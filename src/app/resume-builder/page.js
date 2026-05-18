@@ -175,7 +175,7 @@ export default function ResumeBuilder() {
             <p style={{ fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: 28 }}>
               To create a tailored resume, the AI needs your existing profile as a base.
               Upload at least <strong style={{ color: 'var(--text-primary)' }}>one of your current resumes</strong> to the vault — 
-              Groq AI will read it and tailor a new version specifically for your target job.
+              AI will read it and tailor a new version specifically for your target job.
             </p>
             <div className="card" style={{ textAlign: 'left', marginBottom: 24, padding: '16px 20px', borderColor: 'rgba(99,102,241,0.3)' }}>
               {[
@@ -284,7 +284,7 @@ export default function ResumeBuilder() {
                 disabled={loading || !jd.trim() || !profileReady}
               >
                 {loading
-                  ? <><span className="spinner" /> Tailoring with Groq AI...</>
+                  ? <><span className="spinner" /> Tailoring with AI...</>
                   : !profileReady
                     ? '⏳ Extracting profile, please wait...'
                     : '✨ Generate Tailored Resume'}
@@ -293,7 +293,7 @@ export default function ResumeBuilder() {
               {loading && (
                 <div className="card" style={{ textAlign: 'center', padding: '24px', borderColor: 'rgba(99,102,241,0.3)' }}>
                   <div style={{ fontSize: 32, marginBottom: 12 }}>🤖</div>
-                  <div style={{ fontWeight: 600, marginBottom: 4 }}>Groq is tailoring your resume...</div>
+                  <div style={{ fontWeight: 600, marginBottom: 4 }}>AI is tailoring your resume...</div>
                   <div style={{ fontSize: 12, color: 'var(--text-muted)', lineHeight: 1.6 }}>
                     Reading your profile · Matching to JD keywords · Writing ATS-optimized content
                   </div>
@@ -442,71 +442,89 @@ export default function ResumeBuilder() {
             <div 
               className="resume-preview-container" 
               style={{ 
-                background: 'white', color: '#111', padding: '50px 60px', borderRadius: 8, 
-                boxShadow: '0 20px 40px rgba(0,0,0,0.3)', width: '100%', minHeight: '1000px',
-                border: isEditing ? '2px dashed var(--accent-primary)' : 'none'
+                background: 'white', color: '#000', padding: '0.5in', margin: '0 auto',
+                boxShadow: '0 20px 40px rgba(0,0,0,0.3)', width: '8.5in', minHeight: '11in',
+                border: isEditing ? '2px dashed var(--accent-primary)' : 'none',
+                fontFamily: '"Open Sans", sans-serif',
+                lineHeight: 1.4,
+                boxSizing: 'border-box'
               }}
             >
               {/* Header */}
-              <div style={{ textAlign: 'center', marginBottom: 30, borderBottom: '2px solid #333', paddingBottom: 20 }}>
+              <div style={{ textAlign: 'center', marginBottom: 16 }}>
                 <h1 
                   contentEditable={isEditing} 
                   suppressContentEditableWarning
-                  style={{ fontSize: 32, fontWeight: 800, marginBottom: 6, outline: 'none', textTransform: 'uppercase', letterSpacing: '1px' }}
+                  style={{ fontFamily: '"Merriweather", serif', fontSize: 28, fontWeight: 900, marginBottom: 4, outline: 'none', textTransform: 'uppercase', letterSpacing: '1px', color: '#000' }}
                 >
                   {result.data?.name}
                 </h1>
-                <div 
-                  contentEditable={isEditing}
-                  suppressContentEditableWarning
-                  style={{ fontSize: 18, color: '#6366f1', fontWeight: 700, marginBottom: 15, outline: 'none' }}
-                >
-                  {result.data?.jobTitle}
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center', gap: 15, fontSize: 12, color: '#444', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: 12, fontSize: 11, color: '#333', flexWrap: 'wrap' }}>
                   <span contentEditable={isEditing} suppressContentEditableWarning>{result.data?.contact?.email}</span>
-                  <span>•</span>
+                  <span>|</span>
                   <span contentEditable={isEditing} suppressContentEditableWarning>{result.data?.contact?.phone}</span>
-                  <span>•</span>
+                  <span>|</span>
                   <span contentEditable={isEditing} suppressContentEditableWarning>{result.data?.contact?.location}</span>
+                  <span>|</span>
+                  <span contentEditable={isEditing} suppressContentEditableWarning>{result.data?.contact?.linkedin?.replace('https://', '')}</span>
                 </div>
               </div>
 
               {/* Summary */}
-              <div className="section" style={{ marginBottom: 25 }}>
-                <div style={{ fontSize: 14, fontWeight: 700, textTransform: 'uppercase', color: '#6366f1', borderBottom: '1px solid #eee', paddingBottom: 5, marginBottom: 10 }}>
+              {result.data?.summary && (
+              <div className="section" style={{ marginBottom: 16 }}>
+                <div style={{ fontFamily: '"Merriweather", serif', fontSize: 14, fontWeight: 700, textTransform: 'uppercase', color: '#000', borderBottom: '1px solid #000', paddingBottom: 2, marginBottom: 10 }}>
                   Professional Summary
                 </div>
                 <p 
                   contentEditable={isEditing}
                   suppressContentEditableWarning
-                  style={{ fontSize: 13, lineHeight: 1.6, outline: 'none', textAlign: 'justify' }}
+                  style={{ fontSize: 12, outline: 'none', textAlign: 'justify', color: '#222', margin: 0 }}
                 >
                   {result.data?.summary}
                 </p>
               </div>
+              )}
+
+              {/* Skills */}
+              <div className="section" style={{ marginBottom: 16 }}>
+                <div style={{ fontFamily: '"Merriweather", serif', fontSize: 14, fontWeight: 700, textTransform: 'uppercase', color: '#000', borderBottom: '1px solid #000', paddingBottom: 2, marginBottom: 10 }}>
+                  Skills & Competencies
+                </div>
+                <div style={{ fontSize: 12, color: '#222' }}>
+                  <div style={{ marginBottom: 4 }}>
+                    <strong>Technical Skills:</strong> <span contentEditable={isEditing} suppressContentEditableWarning>{result.data?.skills?.technical?.join(', ')}</span>
+                  </div>
+                  <div style={{ marginBottom: 4 }}>
+                    <strong>Tools & Technologies:</strong> <span contentEditable={isEditing} suppressContentEditableWarning>{result.data?.skills?.tools?.join(', ')}</span>
+                  </div>
+                  <div style={{ marginBottom: 4 }}>
+                    <strong>Core Competencies:</strong> <span contentEditable={isEditing} suppressContentEditableWarning>{result.data?.skills?.soft?.join(', ')}</span>
+                  </div>
+                </div>
+              </div>
 
               {/* Experience */}
-              <div className="section" style={{ marginBottom: 25 }}>
-                <div style={{ fontSize: 14, fontWeight: 700, textTransform: 'uppercase', color: '#6366f1', borderBottom: '1px solid #eee', paddingBottom: 5, marginBottom: 10 }}>
-                  Experience
+              <div className="section" style={{ marginBottom: 16 }}>
+                <div style={{ fontFamily: '"Merriweather", serif', fontSize: 14, fontWeight: 700, textTransform: 'uppercase', color: '#000', borderBottom: '1px solid #000', paddingBottom: 2, marginBottom: 10 }}>
+                  Professional Experience
                 </div>
                 {result.data?.experience?.map((exp, idx) => (
-                  <div key={idx} style={{ marginBottom: 15 }}>
+                  <div key={idx} style={{ marginBottom: 12 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                      <span contentEditable={isEditing} suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 14 }}>{exp.role}</span>
-                      <span contentEditable={isEditing} suppressContentEditableWarning style={{ fontSize: 11, color: '#666', fontWeight: 600 }}>{exp.duration}</span>
+                      <span contentEditable={isEditing} suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13, color: '#111' }}>{exp.role}</span>
+                      <span contentEditable={isEditing} suppressContentEditableWarning style={{ fontSize: 13, color: '#111', fontWeight: 700 }}>{exp.duration}</span>
                     </div>
-                    <div contentEditable={isEditing} suppressContentEditableWarning style={{ fontSize: 13, color: '#444', fontStyle: 'italic', marginBottom: 5 }}>
-                      {exp.company} {exp.location && `• ${exp.location}`}
+                    <div contentEditable={isEditing} suppressContentEditableWarning style={{ fontSize: 13, color: '#333', fontStyle: 'italic', marginBottom: 4 }}>
+                      {exp.company} {exp.location && `, ${exp.location}`}
                     </div>
-                    <ul style={{ paddingLeft: 18, margin: 0 }}>
+                    <ul style={{ paddingLeft: 20, margin: 0 }}>
                       {exp.bullets?.map((bullet, bIdx) => (
                         <li 
                           key={bIdx} 
                           contentEditable={isEditing}
                           suppressContentEditableWarning
-                          style={{ fontSize: 12, marginBottom: 4, outline: 'none', color: '#333' }}
+                          style={{ fontSize: 12, marginBottom: 3, outline: 'none', color: '#222' }}
                         >
                           {bullet}
                         </li>
@@ -516,33 +534,45 @@ export default function ResumeBuilder() {
                 ))}
               </div>
 
-              {/* Skills */}
-              <div className="section" style={{ marginBottom: 25 }}>
-                <div style={{ fontSize: 14, fontWeight: 700, textTransform: 'uppercase', color: '#6366f1', borderBottom: '1px solid #eee', paddingBottom: 5, marginBottom: 10 }}>
-                  Technical Skills
+              {/* Projects */}
+              {result.data?.projects?.length > 0 && (
+              <div className="section" style={{ marginBottom: 16 }}>
+                <div style={{ fontFamily: '"Merriweather", serif', fontSize: 14, fontWeight: 700, textTransform: 'uppercase', color: '#000', borderBottom: '1px solid #000', paddingBottom: 2, marginBottom: 10 }}>
+                  Key Projects
                 </div>
-                <div style={{ fontSize: 12, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-                  <div>
-                    <strong>Technical:</strong> <span contentEditable={isEditing} suppressContentEditableWarning>{result.data?.skills?.technical?.join(', ')}</span>
+                {result.data?.projects?.map((p, idx) => (
+                  <div key={idx} style={{ marginBottom: 10 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                      <span contentEditable={isEditing} suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13, color: '#111' }}>{p.name}</span>
+                      <span contentEditable={isEditing} suppressContentEditableWarning style={{ fontSize: 11, color: '#111' }}>{p.link?.replace('https://', '')}</span>
+                    </div>
+                    <div contentEditable={isEditing} suppressContentEditableWarning style={{ fontSize: 12, color: '#222', marginTop: 2 }}>
+                      {p.description}
+                    </div>
+                    {p.tech && (
+                      <div contentEditable={isEditing} suppressContentEditableWarning style={{ fontStyle: 'italic', fontSize: 11, color: '#444', marginTop: 2 }}>
+                        Technologies: {p.tech.join(', ')}
+                      </div>
+                    )}
                   </div>
-                  <div>
-                    <strong>Tools & Others:</strong> <span contentEditable={isEditing} suppressContentEditableWarning>{result.data?.skills?.tools?.join(', ')}</span>
-                  </div>
-                </div>
+                ))}
               </div>
+              )}
 
               {/* Education */}
               <div className="section">
-                <div style={{ fontSize: 14, fontWeight: 700, textTransform: 'uppercase', color: '#6366f1', borderBottom: '1px solid #eee', paddingBottom: 5, marginBottom: 10 }}>
+                <div style={{ fontFamily: '"Merriweather", serif', fontSize: 14, fontWeight: 700, textTransform: 'uppercase', color: '#000', borderBottom: '1px solid #000', paddingBottom: 2, marginBottom: 10 }}>
                   Education
                 </div>
                 {result.data?.education?.map((edu, idx) => (
-                  <div key={idx} style={{ marginBottom: 10 }}>
+                  <div key={idx} style={{ marginBottom: 6, fontSize: 13 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                      <span contentEditable={isEditing} suppressContentEditableWarning style={{ fontWeight: 700, fontSize: 13 }}>{edu.degree}</span>
-                      <span contentEditable={isEditing} suppressContentEditableWarning style={{ fontSize: 11, color: '#666' }}>{edu.year}</span>
+                      <span contentEditable={isEditing} suppressContentEditableWarning style={{ fontWeight: 700, color: '#111' }}>{edu.institution}</span>
+                      <span contentEditable={isEditing} suppressContentEditableWarning style={{ color: '#111', fontWeight: 700 }}>{edu.year}</span>
                     </div>
-                    <div contentEditable={isEditing} suppressContentEditableWarning style={{ fontSize: 12, color: '#444' }}>{edu.institution} {edu.cgpa && `• CGPA: ${edu.cgpa}`}</div>
+                    <div contentEditable={isEditing} suppressContentEditableWarning style={{ color: '#222', fontStyle: 'italic' }}>
+                      {edu.degree} {edu.cgpa && `| CGPA: ${edu.cgpa}`}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -558,103 +588,156 @@ function buildResumeHTML(d) {
   if (!d) return '';
   const c = d.contact || {};
   const contact = [
-    c.email ? `<a href="mailto:${c.email}">${c.email}</a>` : '',
+    c.email ? `<span>${c.email}</span>` : '',
     c.phone ? `<span>${c.phone}</span>` : '',
-    c.github ? `<a href="https://${c.github}">${c.github}</a>` : '',
-    c.linkedin ? `<a href="https://${c.linkedin}">${c.linkedin}</a>` : ''
-  ].filter(Boolean).join(' · ');
+    c.location ? `<span>${c.location}</span>` : '',
+    c.linkedin ? `<span>${c.linkedin.replace('https://', '')}</span>` : '',
+    c.github ? `<span>${c.github.replace('https://', '')}</span>` : ''
+  ].filter(Boolean).join(' | ');
 
-  // Skills categorization logic
   const skills = d.skills ? Object.entries(d.skills).map(([k, v]) => `
     <div style="margin-bottom: 4px;">
-      <strong style="text-transform: capitalize;">${k}:</strong> ${Array.isArray(v) ? v.join(', ') : v}
+      <strong style="text-transform: capitalize;">${k === 'technical' ? 'Technical Skills' : k === 'soft' ? 'Core Competencies' : 'Tools & Technologies'}:</strong> 
+      ${Array.isArray(v) ? v.join(', ') : v}
     </div>
   `).join('') : '';
 
   const exp = (d.experience || []).map(e => `
     <div style="margin-bottom: 12px;">
-      <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 13px;">
-        <span>${e.role || ''} — ${e.company || ''}</span>
+      <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 13px; color: #111;">
+        <span>${e.role || ''}</span>
         <span>${e.duration || ''}</span>
       </div>
-      <ul style="margin: 4px 0; padding-left: 18px; font-size: 12px; color: #333;">
-        ${e.bullets ? e.bullets.map(b => `<li style="margin-bottom: 2px;">${b}</li>`).join('') : ''}
+      <div style="font-style: italic; font-size: 13px; color: #333; margin-bottom: 4px;">
+        ${e.company || ''}${e.location ? `, ${e.location}` : ''}
+      </div>
+      <ul style="margin: 0; padding-left: 20px; font-size: 12px; color: #222;">
+        ${e.bullets ? e.bullets.map(b => `<li style="margin-bottom: 3px;">${b}</li>`).join('') : ''}
       </ul>
     </div>`).join('');
 
   const proj = (d.projects || []).map(p => `
-    <div style="border: 1px solid #eee; padding: 10px; border-radius: 4px;">
-      <div style="font-weight: 700; font-size: 12px; color: #2563eb; margin-bottom: 4px;">${p.name || ''}</div>
-      <div style="font-size: 11px; color: #444; line-height: 1.4;">${p.description || ''}</div>
-      ${p.tech ? `<div style="font-size: 10px; color: #6366f1; margin-top: 4px; font-weight: 600;">${p.tech.join(' · ')}</div>` : ''}
+    <div style="margin-bottom: 10px;">
+      <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 13px; color: #111;">
+        <span>${p.name || ''}</span>
+        ${p.link ? `<span style="font-weight: normal; font-size: 11px;">${p.link.replace('https://', '')}</span>` : ''}
+      </div>
+      <div style="font-size: 12px; color: #222; margin-top: 2px;">
+        ${p.description || ''}
+      </div>
+      ${p.tech ? `<div style="font-style: italic; font-size: 11px; color: #444; margin-top: 2px;">Technologies: ${p.tech.join(', ')}</div>` : ''}
     </div>`).join('');
 
   return `
     <html>
     <head>
       <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-        body { font-family: 'Inter', sans-serif; color: #111; line-height: 1.5; padding: 40px; max-width: 850px; margin: 0 auto; }
-        .header { text-align: center; border-bottom: 1px solid #2563eb; padding-bottom: 15px; margin-bottom: 20px; }
-        .name { color: #2563eb; font-size: 32px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin: 0; }
-        .role-line { font-size: 14px; font-weight: 600; color: #444; margin: 8px 0; }
-        .contact { font-size: 11px; color: #666; }
-        .contact a { color: #666; text-decoration: none; }
-        .section { margin-bottom: 20px; }
-        .section-title { font-size: 14px; font-weight: 800; color: #2563eb; text-transform: uppercase; border-bottom: 1px solid #eee; padding-bottom: 4px; margin-bottom: 10px; }
-        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
-        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 11px; }
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap');
+        
+        body { 
+          font-family: 'Open Sans', sans-serif; 
+          color: #000; 
+          line-height: 1.4; 
+          padding: 0; 
+          margin: 0;
+          background: #fff;
+        }
+        
+        .resume-page {
+          max-width: 8.5in; /* Standard US Letter width */
+          margin: 0 auto;
+          background: #fff;
+          box-sizing: border-box;
+        }
+        
+        .header { 
+          text-align: center; 
+          margin-bottom: 16px; 
+        }
+        
+        .name { 
+          font-family: 'Merriweather', serif;
+          color: #000; 
+          font-size: 28px; 
+          font-weight: 900; 
+          text-transform: uppercase; 
+          letter-spacing: 1px; 
+          margin: 0 0 4px 0; 
+        }
+        
+        .contact { 
+          font-size: 11px; 
+          color: #333; 
+        }
+        
+        .section { 
+          margin-bottom: 16px; 
+        }
+        
+        .section-title { 
+          font-family: 'Merriweather', serif;
+          font-size: 14px; 
+          font-weight: 700; 
+          color: #000; 
+          text-transform: uppercase; 
+          border-bottom: 1px solid #000; 
+          padding-bottom: 2px; 
+          margin-bottom: 10px; 
+        }
       </style>
     </head>
     <body>
-      <div class="header">
-        <h1 class="name">${d.name || 'RESUME'}</h1>
-        <div class="role-line">${d.jobTitle || 'Professional'}</div>
-        <div class="contact">${contact}</div>
-      </div>
+      <div class="resume-page">
+        <div class="header">
+          <h1 class="name">${d.name || 'RESUME'}</h1>
+          <div class="contact">${contact}</div>
+        </div>
 
-      ${d.summary ? `
-      <div class="section">
-        <div class="section-title">Profile Summary</div>
-        <div style="font-size: 12px; text-align: justify;">${d.summary}</div>
-      </div>` : ''}
+        ${d.summary ? `
+        <div class="section">
+          <div class="section-title">Professional Summary</div>
+          <div style="font-size: 12px; text-align: justify; color: #222;">${d.summary}</div>
+        </div>` : ''}
 
-      ${skills ? `
-      <div class="section">
-        <div class="section-title">Technical Skills</div>
-        <div class="skills-grid">${skills}</div>
-      </div>` : ''}
+        ${skills ? `
+        <div class="section">
+          <div class="section-title">Skills & Competencies</div>
+          <div style="font-size: 12px; color: #222;">${skills}</div>
+        </div>` : ''}
 
-      ${exp ? `
-      <div class="section">
-        <div class="section-title">Professional Experience</div>
-        ${exp}
-      </div>` : ''}
+        ${exp ? `
+        <div class="section">
+          <div class="section-title">Professional Experience</div>
+          ${exp}
+        </div>` : ''}
 
-      ${proj ? `
-      <div class="section">
-        <div class="section-title">Key Projects</div>
-        <div class="grid-3">${proj}</div>
-      </div>` : ''}
+        ${proj ? `
+        <div class="section">
+          <div class="section-title">Key Projects</div>
+          ${proj}
+        </div>` : ''}
 
-      ${d.education ? `
-      <div class="section">
-        <div class="section-title">Education & Certifications</div>
-        ${d.education.map(e => `
-          <div style="margin-bottom: 8px; font-size: 12px;">
-            <div style="display: flex; justify-content: space-between; font-weight: 700;">
-              <span>${e.degree}</span>
-              <span>${e.year}</span>
+        ${d.education && d.education.length > 0 ? `
+        <div class="section">
+          <div class="section-title">Education</div>
+          ${d.education.map(e => `
+            <div style="margin-bottom: 6px; font-size: 13px;">
+              <div style="display: flex; justify-content: space-between; font-weight: 700; color: #111;">
+                <span>${e.institution}</span>
+                <span>${e.year}</span>
+              </div>
+              <div style="color: #222; font-style: italic;">
+                ${e.degree} ${e.cgpa ? ' | CGPA: ' + e.cgpa : ''}
+              </div>
             </div>
-            <div style="color: #666;">${e.institution} ${e.cgpa ? '· CGPA: ' + e.cgpa : ''}</div>
-          </div>
-        `).join('')}
-        ${d.certifications?.length ? `
-          <div style="margin-top: 10px; font-size: 11px;">
-            <strong>Certifications:</strong> ${d.certifications.join(', ')}
-          </div>
-        ` : ''}
-      </div>` : ''}
+          `).join('')}
+          ${d.certifications && d.certifications.length > 0 ? `
+            <div style="margin-top: 6px; font-size: 12px; color: #222;">
+              <strong>Certifications:</strong> ${d.certifications.join(', ')}
+            </div>
+          ` : ''}
+        </div>` : ''}
+      </div>
     </body>
     </html>
   `;
