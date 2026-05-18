@@ -75,6 +75,13 @@ export default function HomePage() {
   const [brainLoading, setBrainLoading] = useState(false);
   const [brainResults, setBrainResults] = useState(null);
   const [brainConsensus, setBrainConsensus] = useState('');
+  const [isMaximized, setIsMaximized] = useState(false);
+
+  // Authenticated Dashboard Chat State
+  const [chatSessions, setChatSessions] = useState([]);
+  const [activeSessionId, setActiveSessionId] = useState(null);
+  const [dashboardQuestion, setDashboardQuestion] = useState('');
+  const [dashboardChatLoading, setDashboardChatLoading] = useState(false);
 
   async function handleTestBrain(e) {
     e.preventDefault();
@@ -90,8 +97,13 @@ export default function HomePage() {
       });
       const data = await res.json();
       if (res.ok) {
-        setBrainResults(data.results);
-        setBrainConsensus(data.consensus);
+        setBrainResults(data.turn.results);
+        setBrainConsensus(data.turn.consensus);
+        if (isAuthenticated) {
+          fetch('/api/ai/consensus')
+            .then(res => res.json())
+            .then(d => { if (d.success) setChatSessions(d.chats || []); });
+        }
       } else {
         setBrainConsensus('Error: ' + data.error);
       }
@@ -99,6 +111,110 @@ export default function HomePage() {
       setBrainConsensus('Failed to fetch AI consensus.');
     } finally {
       setBrainLoading(false);
+    }
+  }
+
+  // Load chat sessions for authenticated user
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    fetch('/api/ai/consensus')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          setChatSessions(data.chats || []);
+          if (data.chats?.length > 0) {
+            setActiveSessionId(data.chats[0].id);
+          }
+        }
+      })
+      .catch(console.error);
+  }, [isAuthenticated]);
+
+  async function handleDashboardChatSubmit(e) {
+    e.preventDefault();
+    if (!dashboardQuestion.trim()) return;
+    setDashboardChatLoading(true);
+    const questionText = dashboardQuestion;
+    setDashboardQuestion('');
+
+    const tempTurnId = Date.now().toString();
+    const tempTurn = {
+      id: tempTurnId,
+      question: questionText,
+      results: [],
+      consensus: 'Aggregating consensus from AI models...',
+      createdAt: new Date().toISOString(),
+      isTemporary: true
+    };
+
+    let targetSessionId = activeSessionId;
+    let updatedSessions = [...chatSessions];
+    let activeSession = updatedSessions.find(s => s.id === targetSessionId);
+
+    if (!activeSession) {
+      activeSession = {
+        id: 'temp-session',
+        title: questionText.length > 30 ? questionText.substring(0, 27) + '...' : questionText,
+        messages: [tempTurn],
+        createdAt: new Date().toISOString()
+      };
+      updatedSessions.unshift(activeSession);
+      setChatSessions(updatedSessions);
+      setActiveSessionId('temp-session');
+    } else {
+      activeSession.messages.push(tempTurn);
+      setChatSessions(updatedSessions);
+    }
+
+    try {
+      const res = await fetch('/api/ai/consensus', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question: questionText,
+          sessionId: targetSessionId && targetSessionId !== 'temp-session' ? targetSessionId : null
+        })
+      });
+      
+      const data = await res.json();
+      if (res.ok && data.success) {
+        const listRes = await fetch('/api/ai/consensus');
+        const listData = await listRes.json();
+        if (listData.success) {
+          setChatSessions(listData.chats);
+          setActiveSessionId(data.sessionId);
+        }
+      } else {
+        alert('Failed to get response: ' + (data.error || 'Unknown error'));
+      }
+    } catch (err) {
+      alert('Error connecting to Consensus Engine.');
+    } finally {
+      setDashboardChatLoading(false);
+    }
+  }
+
+  function handleNewSession() {
+    setActiveSessionId(null);
+    setDashboardQuestion('');
+  }
+
+  async function handleDeleteSession(sessionId, e) {
+    e.stopPropagation();
+    if (!confirm('Are you sure you want to delete this chat history?')) return;
+    try {
+      const res = await fetch(`/api/ai/consensus?sessionId=${sessionId}`, {
+        method: 'DELETE'
+      });
+      if (res.ok) {
+        const updated = chatSessions.filter(s => s.id !== sessionId);
+        setChatSessions(updated);
+        if (activeSessionId === sessionId) {
+          setActiveSessionId(updated.length > 0 ? updated[0].id : null);
+        }
+      }
+    } catch (err) {
+      console.error('Failed to delete session:', err);
     }
   }
 
@@ -246,14 +362,23 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <div className="lp-hero-visual-sandbox lp-reveal" style={{ display: 'flex', flexDirection: 'column' }}>
+          <div className={`lp-hero-visual-sandbox lp-reveal ${isMaximized ? 'maximized' : ''}`} style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="lp-sandbox-header">
               <div className="lp-sandbox-actions">
-                <span className="lp-sdot red"></span>
-                <span className="lp-sdot yellow"></span>
-                <span className="lp-sdot green"></span>
+                <span className="lp-sdot red" onClick={() => setIsMaximized(false)} style={{ cursor: 'pointer' }} title="Close Fullscreen"></span>
+                <span className="lp-sdot yellow" onClick={() => setIsMaximized(!isMaximized)} style={{ cursor: 'pointer' }} title="Toggle Fullscreen"></span>
+                <span className="lp-sdot green" onClick={() => setIsMaximized(true)} style={{ cursor: 'pointer' }} title="Go Fullscreen"></span>
               </div>
-              <div className="lp-sandbox-tab">🧠 Try My AI Brain / Consensus Engine</div>
+              <div className="lp-sandbox-tab" style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
+                <span>🧠 Try My AI Brain / Consensus Engine</span>
+                <button 
+                  onClick={() => setIsMaximized(!isMaximized)}
+                  style={{ background: 'rgba(255,255,255,0.06)', border: 'none', color: '#fff', padding: '2px 8px', borderRadius: '4px', cursor: 'pointer', fontSize: '11px', transition: 'all 0.2s', marginLeft: 'auto' }}
+                  type="button"
+                >
+                  {isMaximized ? '🗗 Minimize' : '🗖 Maximize'}
+                </button>
+              </div>
             </div>
             <div className="lp-sandbox-body" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '16px', overflowY: 'auto', padding: '20px' }}>
               <p style={{ fontSize: '13px', color: 'var(--text-secondary)', textAlign: 'center', marginBottom: 0 }}>
@@ -587,6 +712,134 @@ export default function HomePage() {
                 ))}
               </div>
             )}
+          </div>
+        </div>
+
+        {/* ── AI Consensus Brain Center ── */}
+        <div className="card" style={{ marginTop: 32, padding: 0, overflow: 'hidden' }}>
+          <div style={{ padding: '18px 24px', borderBottom: '1px solid var(--border)', background: 'rgba(255,255,255,0.02)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div>
+              <h2 style={{ fontSize: 16, fontWeight: 700, margin: 0, fontFamily: 'Space Grotesk', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span>🧠</span> AI Consensus Brain Center
+              </h2>
+              <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: '2px 0 0 0' }}>
+                Your personal multi-model debating intelligence hub. Chat history is saved securely to your account.
+              </p>
+            </div>
+            <button onClick={handleNewSession} className="btn btn-secondary btn-sm">
+              ➕ New Chat
+            </button>
+          </div>
+
+          <div className="brain-chat-container">
+            {/* Sidebar (History) */}
+            <div className="brain-chat-sidebar">
+              <div className="brain-chat-sessions-list">
+                <div 
+                  onClick={handleNewSession}
+                  className={`brain-chat-session-item ${!activeSessionId ? 'active' : ''}`}
+                  style={{ fontWeight: 600, border: '1px dashed var(--border)' }}
+                >
+                  <span className="brain-chat-session-title">🆕 Start New Session</span>
+                </div>
+                {chatSessions.length === 0 ? (
+                  <div style={{ padding: '24px 8px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '12px' }}>
+                    No past chat history.
+                  </div>
+                ) : (
+                  chatSessions.map(session => (
+                    <div 
+                      key={session.id}
+                      onClick={() => setActiveSessionId(session.id)}
+                      className={`brain-chat-session-item ${activeSessionId === session.id ? 'active' : ''}`}
+                    >
+                      <span className="brain-chat-session-title">💬 {session.title}</span>
+                      <button 
+                        onClick={(e) => handleDeleteSession(session.id, e)}
+                        className="brain-chat-session-delete"
+                        title="Delete Chat"
+                      >
+                        🗑️
+                      </button>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+
+            {/* Chat Pane */}
+            <div className="brain-chat-main">
+              <div className="brain-chat-history">
+                {!activeSessionId || !chatSessions.find(s => s.id === activeSessionId) ? (
+                  <div style={{ margin: 'auto', textAlign: 'center', maxWidth: '400px' }}>
+                    <div style={{ fontSize: '48px', marginBottom: '16px' }}>🧠</div>
+                    <h3 style={{ fontSize: '15px', fontWeight: 700, marginBottom: '6px' }}>Ask My Multi-Model AI Brain</h3>
+                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+                      Submit your question or multiple-choice options. Watch 5 major AI brains debate, compare their responses, and see a unified, accurate consensus!
+                    </p>
+                  </div>
+                ) : (
+                  chatSessions.find(s => s.id === activeSessionId).messages.map((m, idx) => (
+                    <div key={idx} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                      {/* User Bubble */}
+                      <div className="brain-chat-bubble user">
+                        <strong>You:</strong> {m.question}
+                      </div>
+                      
+                      {/* AI Debate Bubble */}
+                      <div className="brain-chat-bubble ai">
+                        <strong style={{ color: 'var(--accent-primary)', display: 'block', marginBottom: '8px' }}>🤖 Multi-Model Debate:</strong>
+                        
+                        {m.results && m.results.length > 0 ? (
+                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '10px', marginBottom: '12px' }}>
+                            {m.results.map((r, rIdx) => (
+                              <div key={rIdx} style={{ background: 'rgba(255,255,255,0.02)', padding: '10px', borderRadius: '8px', border: '1px solid var(--border)', fontSize: '12px' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px', color: 'var(--text-muted)', fontSize: '10px' }}>
+                                  <strong style={{ color: 'var(--text-primary)' }}>{r.name}</strong>
+                                  <span>{r.status === 'success' ? `${r.duration}ms` : '❌'}</span>
+                                </div>
+                                <p style={{ margin: 0, fontSize: '11px', color: 'var(--text-secondary)', lineHeight: 1.4 }}>
+                                  {r.answer}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-muted)', padding: '8px 0' }}>
+                            <div className="spinner" /> <span>Consulting expert AI models concurrently...</span>
+                          </div>
+                        )}
+
+                        <div style={{ background: 'rgba(99, 102, 241, 0.1)', padding: '14px', borderRadius: '8px', border: '1px solid rgba(99, 102, 241, 0.2)', marginTop: '8px' }}>
+                          <h4 style={{ fontSize: '12px', color: 'var(--accent-primary)', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <span>✨</span> AI Consensus Verdict
+                          </h4>
+                          <p style={{ fontSize: '13px', color: 'var(--text-primary)', margin: 0, lineHeight: 1.5 }}>
+                            {m.consensus}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+
+              <div className="brain-chat-input-area">
+                <form onSubmit={handleDashboardChatSubmit} style={{ display: 'flex', gap: '10px' }}>
+                  <input 
+                    type="text" 
+                    value={dashboardQuestion}
+                    onChange={(e) => setDashboardQuestion(e.target.value)}
+                    placeholder="Ask a question or input MCQ choices here..."
+                    disabled={dashboardChatLoading}
+                    style={{ flex: 1, padding: '12px 16px', borderRadius: '8px', border: '1px solid var(--border-color)', background: 'var(--bg-secondary)', color: 'var(--text-primary)', outline: 'none' }}
+                  />
+                  <button type="submit" disabled={dashboardChatLoading || !dashboardQuestion.trim()} className="btn btn-primary" style={{ padding: '0 24px' }}>
+                    {dashboardChatLoading ? 'Querying...' : 'Ask Brain'}
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
 

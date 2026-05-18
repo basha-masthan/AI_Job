@@ -1,10 +1,29 @@
 import { NextResponse } from 'next/server';
 import { callOpenRouter, callGroq, callGemini, callCerebras, callHuggingFace } from '@/lib/ai';
 import { getApiKey } from '@/lib/config';
+import { getSession } from '@/lib/auth';
+import { getUserChats, getChatById, saveChatSession, deleteChatSession } from '@/lib/brain-chats';
+import { v4 as uuid } from 'uuid';
+
+export async function GET() {
+  try {
+    const session = await getSession();
+    if (!session) {
+      return NextResponse.json({ success: true, chats: [] });
+    }
+    const chats = getUserChats(session.email);
+    return NextResponse.json({ success: true, chats });
+  } catch (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
 
 export async function POST(req) {
   try {
-    const { question } = await req.json();
+    const session = await getSession();
+    const userId = session ? session.email : null;
+
+    const { question, sessionId } = await req.json();
     if (!question) {
       return NextResponse.json({ error: 'Question is required' }, { status: 400 });
     }
@@ -41,7 +60,7 @@ export async function POST(req) {
 
     await Promise.allSettled(promises);
 
-    // After gathering answers, compute a consensus string using the active AI provider.
+    // Calculate consensus
     let consensus = "Could not determine consensus. Try again.";
     const successfulAnswers = results.filter(r => r.status === 'success').map(r => `[${r.name}]: ${r.answer}`).join('\n');
     
@@ -61,7 +80,6 @@ Analyze these answers. Which option/answer is the most commonly chosen? Summariz
           { role: 'user', content: consensusPrompt }
         ], 150);
       } catch (e) {
-        // Fallback to OpenRouter if Groq fails
         try {
           consensus = await callOpenRouter([
             { role: 'system', content: 'You are an aggregator that finds the consensus among multiple AI models.' },
@@ -73,7 +91,64 @@ Analyze these answers. Which option/answer is the most commonly chosen? Summariz
       }
     }
 
-    return NextResponse.json({ results, consensus: consensus.trim() });
+    const newTurn = {
+      id: uuid(),
+      question,
+      results,
+      consensus: consensus.trim(),
+      createdAt: new Date().toISOString()
+    };
+
+    let activeSessionId = sessionId;
+
+    // Save history only if logged in
+    if (userId) {
+      let chatSession;
+      if (sessionId) {
+        chatSession = getChatById(sessionId, userId);
+      }
+      
+      if (!chatSession) {
+        chatSession = {
+          id: uuid(),
+          userId,
+          title: question.length > 40 ? question.substring(0, 37) + '...' : question,
+          messages: [],
+          createdAt: new Date().toISOString()
+        };
+      }
+
+      chatSession.messages.push(newTurn);
+      saveChatSession(chatSession);
+      activeSessionId = chatSession.id;
+    }
+
+    return NextResponse.json({ 
+      success: true, 
+      sessionId: activeSessionId, 
+      turn: newTurn 
+    });
+
+  } catch (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+
+export async function DELETE(req) {
+  try {
+    const session = await getSession();
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { searchParams } = new URL(req.url);
+    const sessionId = searchParams.get('sessionId');
+    if (!sessionId) {
+      return NextResponse.json({ error: 'Session ID is required' }, { status: 400 });
+    }
+
+    deleteChatSession(sessionId, session.email);
+    return NextResponse.json({ success: true });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

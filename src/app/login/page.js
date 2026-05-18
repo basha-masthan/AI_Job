@@ -10,7 +10,7 @@ function LoginForm() {
   const [step, setStep] = useState('login');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [redirectTo, setRedirectTo] = useState('/job-tracker');
+  const [redirectTo, setRedirectTo] = useState('/');
   const router = useRouter();
   const searchParams = useSearchParams();
 

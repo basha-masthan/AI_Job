@@ -63,7 +63,7 @@ export default function Sidebar() {
 
   async function handleLogout() {
     await fetch('/api/auth/logout', { method: 'POST' });
-    window.location.href = '/login';
+    window.location.href = '/';
   }
 
   // Filter navigation dynamically
