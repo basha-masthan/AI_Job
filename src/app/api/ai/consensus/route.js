@@ -26,18 +26,15 @@ export async function POST(req) {
 
     const results = [];
     const promises = tasks.map(async (task) => {
-      // Check if API key exists for this provider
-      let keyToCheck = task.key;
-      if (task.key === 'GROQ_API_KEY_1') {
-         // Fallback checks for config
-         keyToCheck = 'GROQ_API_KEY_1';
-      }
       try {
         const start = Date.now();
         const answer = await task.fn();
         const duration = Date.now() - start;
         results.push({ name: task.name, status: 'success', answer: answer.trim(), duration });
       } catch (e) {
+        if (e.message.toLowerCase().includes('missing') || e.message.toLowerCase().includes('not configured')) {
+          return; // Silently skip unconfigured models
+        }
         results.push({ name: task.name, status: 'error', answer: `Failed: ${e.message}` });
       }
     });
