@@ -75,7 +75,6 @@ export default function HomePage() {
   const [brainLoading, setBrainLoading] = useState(false);
   const [brainResults, setBrainResults] = useState(null);
   const [brainConsensus, setBrainConsensus] = useState('');
-  const [isMaximized, setIsMaximized] = useState(false);
 
   // Authenticated Dashboard Chat State
   const [chatSessions, setChatSessions] = useState([]);
@@ -362,27 +361,20 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <div className={`lp-hero-visual-sandbox lp-reveal ${isMaximized ? 'maximized' : ''}`} style={{ display: 'flex', flexDirection: 'column' }}>
+          <div className="lp-hero-visual-sandbox lp-reveal" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="lp-sandbox-header">
               <div className="lp-sandbox-actions">
-                <span className="lp-sdot red" onClick={() => setIsMaximized(false)} style={{ cursor: 'pointer' }} title="Close Fullscreen"></span>
-                <span className="lp-sdot yellow" onClick={() => setIsMaximized(!isMaximized)} style={{ cursor: 'pointer' }} title="Toggle Fullscreen"></span>
-                <span className="lp-sdot green" onClick={() => setIsMaximized(true)} style={{ cursor: 'pointer' }} title="Go Fullscreen"></span>
+                <span className="lp-sdot red"></span>
+                <span className="lp-sdot yellow"></span>
+                <span className="lp-sdot green"></span>
               </div>
-              <div className="lp-sandbox-tab" style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
-                <span>🧠 Try My AI Brain / Consensus Engine</span>
-                <button 
-                  onClick={() => setIsMaximized(!isMaximized)}
-                  style={{ background: 'rgba(255,255,255,0.06)', border: 'none', color: '#fff', padding: '2px 8px', borderRadius: '4px', cursor: 'pointer', fontSize: '11px', transition: 'all 0.2s', marginLeft: 'auto' }}
-                  type="button"
-                >
-                  {isMaximized ? '🗗 Minimize' : '🗖 Maximize'}
-                </button>
+              <div className="lp-sandbox-tab">
+                <span>⚡ Try JobHunt AI Assistant</span>
               </div>
             </div>
             <div className="lp-sandbox-body" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '16px', overflowY: 'auto', padding: '20px' }}>
               <p style={{ fontSize: '13px', color: 'var(--text-secondary)', textAlign: 'center', marginBottom: 0 }}>
-                Enter an MCQ or question. Watch top AI models debate and reach a consensus!
+                Ask any question and get a fast, direct AI answer.
               </p>
               
               <form onSubmit={handleTestBrain} style={{ display: 'flex', gap: '8px' }}>
@@ -390,38 +382,28 @@ export default function HomePage() {
                   type="text" 
                   value={brainQuestion}
                   onChange={(e) => setBrainQuestion(e.target.value)}
-                  placeholder="E.g., What is React? A) Library B) Framework"
+                  placeholder="Ask any question..."
                   style={{ flex: 1, padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--border-color)', background: 'var(--bg-card)', color: 'var(--text-primary)', outline: 'none' }}
                 />
                 <button type="submit" disabled={brainLoading || !brainQuestion.trim()} style={{ background: 'var(--accent-primary)', color: 'white', border: 'none', padding: '0 16px', borderRadius: '8px', cursor: brainLoading ? 'not-allowed' : 'pointer', fontWeight: 600 }}>
-                  {brainLoading ? 'Asking...' : 'Ask AIs'}
+                  {brainLoading ? 'Thinking...' : 'Ask AI'}
                 </button>
               </form>
 
-              {brainResults && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '8px' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '8px' }}>
-                    {brainResults.map((r, i) => (
-                      <div key={i} style={{ background: 'var(--bg-card-hover)', padding: '10px', borderRadius: '8px', border: '1px solid var(--border-color)', fontSize: '12px' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', color: 'var(--text-muted)' }}>
-                          <strong style={{ color: 'var(--text-primary)' }}>{r.name}</strong>
-                          <span style={{ fontSize: '10px' }}>{r.status === 'success' ? `${r.duration}ms` : '❌'}</span>
-                        </div>
-                        <div style={{ color: r.status === 'success' ? 'var(--text-secondary)' : 'var(--text-error)', lineHeight: 1.4, maxHeight: '60px', overflowY: 'auto' }}>
-                          {r.answer}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div style={{ background: 'rgba(99, 102, 241, 0.1)', padding: '14px', borderRadius: '8px', border: '1px solid rgba(99, 102, 241, 0.2)' }}>
-                    <h4 style={{ fontSize: '13px', color: 'var(--accent-primary)', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <span>✨</span> AI Consensus Result
-                    </h4>
-                    <p style={{ fontSize: '14px', color: 'var(--text-primary)', lineHeight: 1.5 }}>
-                      {brainConsensus || 'Calculating consensus...'}
-                    </p>
-                  </div>
+              {brainLoading && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-muted)', padding: '12px 0', fontSize: '13px' }}>
+                  <div className="spinner" /> <span>Thinking...</span>
+                </div>
+              )}
+
+              {brainConsensus && !brainLoading && (
+                <div style={{ background: 'rgba(99, 102, 241, 0.1)', padding: '14px', borderRadius: '8px', border: '1px solid rgba(99, 102, 241, 0.2)' }}>
+                  <h4 style={{ fontSize: '13px', color: 'var(--accent-primary)', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span>✨</span> AI Answer
+                  </h4>
+                  <p style={{ fontSize: '14px', color: 'var(--text-primary)', lineHeight: 1.6, margin: 0 }}>
+                    {brainConsensus}
+                  </p>
                 </div>
               )}
             </div>
@@ -621,8 +603,11 @@ export default function HomePage() {
   return (
     <div className="app-shell">
       <Sidebar />
-      <main className="main-content" style={{ position: 'relative' }}>
+      <main className="main-content" style={{ position: 'relative', display: 'flex', gap: '24px' }}>
         <div className="hero-glow" />
+        
+        {/* Left Column - Main Content */}
+        <div style={{ flex: 1, minWidth: 0 }}>
 
         <div className="page-header">
           <div className="flex-between" style={{ marginBottom: 8 }}>
@@ -686,7 +671,14 @@ export default function HomePage() {
               <Link href="/job-tracker" className="btn btn-ghost btn-sm">View All →</Link>
             </div>
             {dashboardLoading ? (
-              <div className="empty-state"><div className="spinner spinner-lg" /></div>
+              <div className="empty-state">
+                <img 
+                  src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700"
+                  alt="Loading..."
+                  style={{ width: 100, height: 100, objectFit: 'contain', opacity: 0.85 }}
+                />
+                <div style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 8 }}>Loading your jobs...</div>
+              </div>
             ) : recentJobs.length === 0 ? (
               <div className="empty-state">
                 <div className="empty-icon">📭</div>
@@ -699,7 +691,7 @@ export default function HomePage() {
                 {recentJobs.map(job => (
                   <div key={job.id} className="card" style={{ padding: 16 }}>
                     <div className="flex-between" style={{ marginBottom: 6 }}>
-                      <div style={{ fontWeight: 600, fontSize: 14 }}>{job.title || 'Untitled Role'}</div>
+                      <div style={{ fontWeight: 600, fontSize: 14 }}>{job.title || job.role || job.jobTitle || (job.company ? job.company + ' Role' : 'Untitled Role')}</div>
                       <span className={`tag ${STATUS_COLORS[job.status] || 'tag-primary'}`}>{job.status}</span>
                     </div>
                     <div style={{ fontSize: 12, color: 'var(--text-secondary)' }}>
@@ -715,133 +707,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* ── AI Consensus Brain Center ── */}
-        <div className="card" style={{ marginTop: 32, padding: 0, overflow: 'hidden' }}>
-          <div style={{ padding: '18px 24px', borderBottom: '1px solid var(--border)', background: 'rgba(255,255,255,0.02)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div>
-              <h2 style={{ fontSize: 16, fontWeight: 700, margin: 0, fontFamily: 'Space Grotesk', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span>🧠</span> AI Consensus Brain Center
-              </h2>
-              <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: '2px 0 0 0' }}>
-                Your personal multi-model debating intelligence hub. Chat history is saved securely to your account.
-              </p>
-            </div>
-            <button onClick={handleNewSession} className="btn btn-secondary btn-sm">
-              ➕ New Chat
-            </button>
-          </div>
-
-          <div className="brain-chat-container">
-            {/* Sidebar (History) */}
-            <div className="brain-chat-sidebar">
-              <div className="brain-chat-sessions-list">
-                <div 
-                  onClick={handleNewSession}
-                  className={`brain-chat-session-item ${!activeSessionId ? 'active' : ''}`}
-                  style={{ fontWeight: 600, border: '1px dashed var(--border)' }}
-                >
-                  <span className="brain-chat-session-title">🆕 Start New Session</span>
-                </div>
-                {chatSessions.length === 0 ? (
-                  <div style={{ padding: '24px 8px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '12px' }}>
-                    No past chat history.
-                  </div>
-                ) : (
-                  chatSessions.map(session => (
-                    <div 
-                      key={session.id}
-                      onClick={() => setActiveSessionId(session.id)}
-                      className={`brain-chat-session-item ${activeSessionId === session.id ? 'active' : ''}`}
-                    >
-                      <span className="brain-chat-session-title">💬 {session.title}</span>
-                      <button 
-                        onClick={(e) => handleDeleteSession(session.id, e)}
-                        className="brain-chat-session-delete"
-                        title="Delete Chat"
-                      >
-                        🗑️
-                      </button>
-                    </div>
-                  ))
-                )}
-              </div>
-            </div>
-
-            {/* Chat Pane */}
-            <div className="brain-chat-main">
-              <div className="brain-chat-history">
-                {!activeSessionId || !chatSessions.find(s => s.id === activeSessionId) ? (
-                  <div style={{ margin: 'auto', textAlign: 'center', maxWidth: '400px' }}>
-                    <div style={{ fontSize: '48px', marginBottom: '16px' }}>🧠</div>
-                    <h3 style={{ fontSize: '15px', fontWeight: 700, marginBottom: '6px' }}>Ask My Multi-Model AI Brain</h3>
-                    <p style={{ fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                      Submit your question or multiple-choice options. Watch 5 major AI brains debate, compare their responses, and see a unified, accurate consensus!
-                    </p>
-                  </div>
-                ) : (
-                  chatSessions.find(s => s.id === activeSessionId).messages.map((m, idx) => (
-                    <div key={idx} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                      {/* User Bubble */}
-                      <div className="brain-chat-bubble user">
-                        <strong>You:</strong> {m.question}
-                      </div>
-                      
-                      {/* AI Debate Bubble */}
-                      <div className="brain-chat-bubble ai">
-                        <strong style={{ color: 'var(--accent-primary)', display: 'block', marginBottom: '8px' }}>🤖 Multi-Model Debate:</strong>
-                        
-                        {m.results && m.results.length > 0 ? (
-                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '10px', marginBottom: '12px' }}>
-                            {m.results.map((r, rIdx) => (
-                              <div key={rIdx} style={{ background: 'rgba(255,255,255,0.02)', padding: '10px', borderRadius: '8px', border: '1px solid var(--border)', fontSize: '12px' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px', color: 'var(--text-muted)', fontSize: '10px' }}>
-                                  <strong style={{ color: 'var(--text-primary)' }}>{r.name}</strong>
-                                  <span>{r.status === 'success' ? `${r.duration}ms` : '❌'}</span>
-                                </div>
-                                <p style={{ margin: 0, fontSize: '11px', color: 'var(--text-secondary)', lineHeight: 1.4 }}>
-                                  {r.answer}
-                                </p>
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-muted)', padding: '8px 0' }}>
-                            <div className="spinner" /> <span>Consulting expert AI models concurrently...</span>
-                          </div>
-                        )}
-
-                        <div style={{ background: 'rgba(99, 102, 241, 0.1)', padding: '14px', borderRadius: '8px', border: '1px solid rgba(99, 102, 241, 0.2)', marginTop: '8px' }}>
-                          <h4 style={{ fontSize: '12px', color: 'var(--accent-primary)', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                            <span>✨</span> AI Consensus Verdict
-                          </h4>
-                          <p style={{ fontSize: '13px', color: 'var(--text-primary)', margin: 0, lineHeight: 1.5 }}>
-                            {m.consensus}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
-
-              <div className="brain-chat-input-area">
-                <form onSubmit={handleDashboardChatSubmit} style={{ display: 'flex', gap: '10px' }}>
-                  <input 
-                    type="text" 
-                    value={dashboardQuestion}
-                    onChange={(e) => setDashboardQuestion(e.target.value)}
-                    placeholder="Ask a question or input MCQ choices here..."
-                    disabled={dashboardChatLoading}
-                    style={{ flex: 1, padding: '12px 16px', borderRadius: '8px', border: '1px solid var(--border-color)', background: 'var(--bg-secondary)', color: 'var(--text-primary)', outline: 'none' }}
-                  />
-                  <button type="submit" disabled={dashboardChatLoading || !dashboardQuestion.trim()} className="btn btn-primary" style={{ padding: '0 24px' }}>
-                    {dashboardChatLoading ? 'Querying...' : 'Ask Brain'}
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* ── AI Consensus Brain Center (Removed for cleaner dashboard, moved to separate tab/widget later) ── */}
 
         <div style={{ marginTop: 32 }} className="card-glass">
           <div style={{ display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
@@ -860,7 +726,105 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+        </div>
+
+        {/* Right Column - Autopilot Status */}
+        <div style={{ width: '350px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <AutopilotWidget />
+        </div>
       </main>
+    </div>
+  );
+}
+
+function AutopilotWidget() {
+  const [autopilotState, setAutopilotState] = useState({ active: false, logs: [] });
+  const [activeRun, setActiveRun] = useState(null);
+  
+  useEffect(() => {
+    const fetchAutopilot = async () => {
+      try {
+        const res = await fetch('/api/autopilot/status');
+        const data = await res.json();
+        if (data.success) {
+          setAutopilotState(data.state || { active: false, logs: [] });
+          setActiveRun(data.activeRun);
+        }
+      } catch (e) {}
+    };
+    
+    fetchAutopilot();
+    const interval = setInterval(fetchAutopilot, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const isRunning = autopilotState.active || activeRun?.status === 'running';
+  const isPaused = activeRun?.status === 'paused';
+  const stats = activeRun?.stats || {};
+
+  return (
+    <div className="card" style={{ height: 'calc(100vh - 48px)', display: 'flex', flexDirection: 'column', position: 'sticky', top: '24px' }}>
+      <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: '16px', marginBottom: '16px' }}>
+        <h3 style={{ fontSize: '16px', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ width: 8, height: 8, borderRadius: '50%', background: isRunning ? '#10b981' : isPaused ? '#f59e0b' : '#64748b' }}></span>
+          Autopilot {isRunning ? 'Running' : isPaused ? 'Paused' : 'Idle'}
+        </h3>
+        <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px' }}>
+          Real-time auto-application tracking.
+        </p>
+
+        {activeRun && (
+          <div style={{ display: 'flex', gap: 8, marginTop: 10, flexWrap: 'wrap' }}>
+            {[
+              { l: 'Search', v: stats.searched, c: '#3b82f6' },
+              { l: 'Match', v: stats.matched, c: '#8b5cf6' },
+              { l: 'Apply', v: stats.applied, c: '#10b981' },
+              { l: 'Fail', v: stats.failed, c: '#ef4444' },
+            ].map(s => (
+              <div key={s.l} style={{
+                flex: 1, textAlign: 'center', padding: '4px 6px', borderRadius: 6,
+                background: `${s.c}15`, minWidth: 50,
+              }}>
+                <div style={{ fontSize: 16, fontWeight: 700, color: s.c }}>{s.v || 0}</div>
+                <div style={{ fontSize: 9, color: 'var(--text-muted)' }}>{s.l}</div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        {autopilotState.logs.length === 0 ? (
+          <div className="empty-state" style={{ margin: 'auto' }}>
+            <div className="empty-icon" style={{ fontSize: '32px' }}>💤</div>
+            <div className="empty-title" style={{ fontSize: '14px' }}>Autopilot is idle</div>
+            <div className="empty-desc" style={{ fontSize: '12px' }}>Configure in the Auto Apply tab.</div>
+            <Link href="/autopilot" className="btn btn-primary btn-sm" style={{ marginTop: '12px' }}>Configure</Link>
+          </div>
+        ) : (
+          autopilotState.logs.slice(0, 20).map((log, i) => (
+            <div key={i} style={{
+              fontSize: '12px', padding: '10px 12px', background: 'var(--bg-secondary)',
+              borderRadius: '8px',
+              borderLeft: `3px solid ${log.type === 'error' ? '#ef4444' : log.type === 'success' ? '#10b981' : '#3b82f6'}`,
+            }}>
+              <div style={{ fontWeight: 600, color: 'var(--text-primary)', marginBottom: '2px', fontSize: '12px' }}>{log.title}</div>
+              <div style={{ color: 'var(--text-secondary)', fontSize: '11px' }}>{log.message}</div>
+              <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '4px' }}>
+                {new Date(log.time).toLocaleTimeString()}
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+      
+      {(isRunning || isPaused) && (
+        <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid var(--border)' }}>
+          <Link href="/autopilot" className="btn btn-primary btn-sm btn-full" style={{ fontSize: '12px' }}>
+            {isRunning ? '🟢 View Pipeline' : '⏸️ Pipeline Paused'}
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

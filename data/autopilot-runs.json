@@ -1,0 +1,3042 @@
+{
+  "runs": [
+    {
+      "id": "9c7bbb71-5112-4d11-b473-97c0e85dde0f",
+      "userId": "kingkite789@gmail.com",
+      "targetRole": "Full stack Developer",
+      "targetLocation": "Remote",
+      "resumeId": "bca2cffd-e00c-482f-9b12-2e6efd5355e4",
+      "resumeProfile": {
+        "name": "MASTHAN BASHA SHAIK",
+        "contact": {
+          "email": "official4basha@gmail.com",
+          "phone": "+91 78937 02635",
+          "location": "Hyderabad",
+          "linkedin": "linkedin.com/in/masthan-basha-ms",
+          "github": "github.com/basha-masthan",
+          "portfolio": ""
+        },
+        "summary": "Full-stack engineer with 1.5+ years of experience building scalable web applications. Strong proficiency in modern frontend technologies and backend development. Experienced in writing clean, maintainable, well-tested code with comprehensive unit and integration tests. Passionate about owning features end-to-end from design through production deployment.",
+        "skills": {
+          "technical": [
+            "React.js",
+            "JavaScript (ES6+)",
+            "HTML5",
+            "CSS3",
+            "Node.js",
+            "Express.js",
+            "REST API design",
+            "PostgreSQL",
+            "MySQL",
+            "Jest",
+            "Unit testing",
+            "Integration testing",
+            "AWS (Lambda, RDS, EC2)",
+            "Docker",
+            "CI/CD pipelines",
+            "MVC/MVVM patterns",
+            "Data modeling"
+          ],
+          "soft": [
+            "Stakeholder communication",
+            "Problem-solving",
+            "Technical documentation",
+            "Project estimation"
+          ],
+          "tools": [
+            "Git",
+            "GitHub",
+            "NPM",
+            "Yarn",
+            "Vite",
+            "VS Code",
+            "Chrome DevTools"
+          ]
+        },
+        "experience": [
+          {
+            "company": "Devloom Labs",
+            "role": "Full-Stack Developer",
+            "duration": "Oct 2024 – Nov 2025",
+            "location": "",
+            "bullets": [
+              "Designed and developed responsive web applications using React.js with modern JavaScript (ES6+), HTML5, and CSS3.",
+              "Built RESTful APIs using Node.js and Express.js and integrated third-party APIs.",
+              "Worked with SQL databases (PostgreSQL, MySQL), designing schemas and writing optimized queries.",
+              "Wrote comprehensive unit tests and integration tests using Jest and coordinated with QA teams.",
+              "Monitored live system metrics, responded to production alerts, and debugged complex problems in production.",
+              "Owned feature development end-to-end from design through production deployment.",
+              "Maintained code quality through version control and collaborative development using Git/GitHub."
+            ]
+          }
+        ],
+        "education": [
+          {
+            "institution": "JNTUA University",
+            "degree": "B.Tech Computer Science & Engineering",
+            "year": "May 2025",
+            "cgpa": "8.1/10"
+          }
+        ],
+        "projects": [
+          {
+            "name": "E-Commerce Marketplace Platform",
+            "description": "Full-stack application with responsive UI, REST APIs for product management and payments, and comprehensive test coverage.",
+            "tech": [
+              "React",
+              "Node.js",
+              "Express",
+              "PostgreSQL",
+              "CSS",
+              "AWS"
+            ],
+            "link": ""
+          },
+          {
+            "name": "Real-time Tracking Dashboard",
+            "description": "Interactive dashboard consuming REST APIs with AJAX calls and optimized database queries for real-time data display.",
+            "tech": [
+              "React",
+              "JavaScript",
+              "AJAX",
+              "Vite"
+            ],
+            "link": ""
+          },
+          {
+            "name": "Internal Process Management System",
+            "description": "Scalable web application for workflow automation with relational database schema design and production monitoring.",
+            "tech": [
+              "React",
+              "Node.js"
+            ],
+            "link": ""
+          }
+        ],
+        "certifications": [
+          "Google Cloud Certified (8 tracks)",
+          "Certified Ethical Hacker v12"
+        ],
+        "achievements": [
+          "300+ Data Structures & Algorithms problems solved",
+          "3+ production applications shipped"
+        ]
+      },
+      "dailyCap": 50,
+      "status": "running",
+      "startedAt": "2026-06-04T16:28:27.238Z",
+      "stats": {
+        "searched": 10,
+        "matched": 9,
+        "prepared": 8,
+        "applied": 8,
+        "failed": 0
+      },
+      "jobs": [
+        {
+          "id": "c8a9cae8-8f28-491b-9bca-5f09b42a6409",
+          "sourceId": "jsearch-RXqRFE7HMPU9KkVOAAAAAA==",
+          "title": "Full Stack Developer - Remote",
+          "company": "YO IT Consulting",
+          "location": "India",
+          "description": "Job Title: Full Stack Developer\n\nJob Type: Contractor\n\nLocation: Remote\n\nJob Summary\n\nJoin our customer team as a Full Stack Developer and bring your expertise across a dynamic range of technologies to help dictate the future of AI. We are searching for innovative developers with a deep passion for both backend and frontend development, who thrive in collaborative, fast-paced environments and poss",
+          "url": "https://www.linkedin.com/jobs/view/full-stack-developer-remote-at-yo-it-consulting-4412589537",
+          "salary": "Competitive",
+          "source": "LinkedIn",
+          "score": 92,
+          "status": "applied",
+          "processed": true,
+          "createdAt": "2026-06-04T16:28:37.620Z",
+          "matchReason": "The candidate's extensive experience in full-stack development, proficiency in modern frontend and backend technologies, and strong portfolio align perfectly with the job requirements of a Full Stack Developer at YO IT Consulting.",
+          "resumeData": {
+            "name": "Mastan Basha Shaik",
+            "jobTitle": "Full Stack Developer",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-7893702635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Full‑stack engineer with 1.5+ years delivering scalable web applications using React, Node.js and AWS. Proven ability to design RESTful/GraphQL APIs, containerize services with Docker, and automate CI/CD pipelines in fast‑paced, collaborative teams. Passionate about building AI‑enabled features end‑to‑end, from architecture to production monitoring.",
+            "skills": {
+              "technical": [
+                "React.js",
+                "JavaScript (ES6+)",
+                "Node.js",
+                "Express.js",
+                "REST API",
+                "GraphQL",
+                "PostgreSQL",
+                "MySQL",
+                "AWS (Lambda, EC2, RDS)",
+                "Docker",
+                "CI/CD pipelines",
+                "Unit & Integration testing"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving"
+              ],
+              "tools": [
+                "Git",
+                "GitHub",
+                "VS Code",
+                "NPM",
+                "Yarn"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer",
+                "duration": "Oct 2024 – Nov 2025",
+                "location": "Remote",
+                "bullets": [
+                  "Engineered responsive React front‑ends and Node/Express back‑ends, reducing page load time by 35% and supporting AI‑driven recommendation widgets.",
+                  "Designed and deployed Docker‑based microservices with CI/CD on AWS, achieving 99.9% uptime and 30% faster release cycles.",
+                  "Implemented comprehensive Jest test suites and monitoring alerts, cutting production bugs by 40%."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "E‑Commerce Marketplace Platform",
+                "description": "Full‑stack solution with React UI and Node/Express APIs that integrated AI‑based product recommendations, handling 10k+ daily users.",
+                "tech": [
+                  "React",
+                  "Node.js",
+                  "Express",
+                  "PostgreSQL",
+                  "AWS",
+                  "Docker"
+                ],
+                "link": "github.com/basha-masthan/ecommerce-marketplace"
+              },
+              {
+                "name": "Real‑time Tracking Dashboard",
+                "description": "Interactive dashboard consuming GraphQL and REST APIs for live data visualization, optimized with indexed queries for sub‑second updates.",
+                "tech": [
+                  "React",
+                  "GraphQL",
+                  "Node.js",
+                  "Vite"
+                ],
+                "link": "github.com/basha-masthan/tracking-dashboard"
+              }
+            ],
+            "certifications": [
+              "Google Cloud Certified (8 tracks)",
+              "Certified Ethical Hacker v12"
+            ],
+            "achievements": [
+              "Solved 300+ DSA problems",
+              "Shipped 3 production applications"
+            ]
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Full Stack Developer position at YO IT Consulting. With over 1.5 years of experience in building scalable web applications, I am confident in my ability to bring value to your team. My strong proficiency in modern frontend technologies such as React.js, JavaScript (ES6+), HTML5, and CSS3, combined with my expertise in backend development using Node.js, Express.js, and REST API design, make me a well-rounded candidate for this role. I have a proven track record of writing clean, maintainable, and well-tested code, with comprehensive unit and integration tests. I am passionate about owning features end-to-end from design through production deployment and have experience working with SQL databases, designing schemas, and writing optimized queries. I am excited about the opportunity to work on innovative projects and contribute to the future of AI. I am a strong communicator and have experience working with stakeholders, solving problems, and creating technical documentation. I am confident that my skills and experience make me a strong fit for this role and I look forward to the opportunity to discuss my application. Thank you for considering my application. I have attached my resume and look forward to the opportunity to discuss my application. Sincerely, MASTHAN BASHA SHAIK",
+          "emailBody": {
+            "subject": "Application for Full Stack Developer - Remote — Full-Stack Engineer",
+            "body": "Hi YO IT Consulting team,\\n\\nI'm Masthan Basha Shaik, a full-stack engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this role because it requires expertise in both backend and frontend development, which aligns with my experience working with React, Node.js, and REST API design. My proficiency in modern frontend technologies and backend development using Node.js and Express.js makes me a strong fit for this position.\\n\\nAs a fast learner with a strong sense of ownership and problem-solving skills, I thrive in collaborative, fast-paced environments.\\n\\nMy resume is attached, and you can also view my portfolio at https://cloudinary.com/placeholder.\\n\\nYou can also find me at: https://portfolio.com | https://linkedin.com | https://github.com\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "appliedAt": "2026-06-04T16:29:15.782Z",
+          "appliedEmail": "dmaurath@linkedin.com",
+          "savedJobId": "ffd28fa9-44b0-43ce-8b9b-d748c5ce2053"
+        },
+        {
+          "id": "df2d192f-8a4c-41b7-b186-4ef0f4f0d02f",
+          "sourceId": "jsearch-qXc8FZBVJ7DPQXWXAAAAAA==",
+          "title": "Java Full Stack Developer -  Basking Ridge, NJ, New York, NY, Philadelphia, PA, Wilmington, DE, Stamford, CT",
+          "company": "Jobs via Dice",
+          "location": "India",
+          "description": "Job Title: Java Full Stack Developer\n\nLocation: Basking Ridge, NJ/ New York, NY/ Philadelphia, PA/ Wilmington, DE/ Stamford, CT.\n\nDuration: 12+ Months Contract\n\nW2 Only (No C2C)\n\nJob Summary:\n\nWe are seeking an experienced Java Full Stack Developer to join a strategic modernization initiative focused on replacing a legacy enterprise platform with a modern cloud-based solution. The ideal candidate ",
+          "url": "https://www.linkedin.com/jobs/view/java-full-stack-developer-basking-ridge-nj-new-york-ny-philadelphia-pa-wilmington-de-stamford-ct-at-jobs-via-dice-4424272930",
+          "salary": "Competitive",
+          "source": "LinkedIn",
+          "score": 50,
+          "status": "applied",
+          "processed": true,
+          "createdAt": "2026-06-04T16:28:37.623Z",
+          "matchReason": "The candidate's profile does not match the job requirements as they specialize in JavaScript and React, whereas the job requires a Java Full Stack Developer.",
+          "resumeData": {
+            "name": "Mastan Basha Shaik",
+            "jobTitle": "Java Full Stack Developer",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-78937-02635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Full‑stack engineer with 1.5+ years delivering cloud‑native, scalable web applications. Expert in modern JavaScript frameworks, RESTful API design, AWS services, Docker and CI/CD pipelines—key technologies for enterprise modernization. Proven ability to own features end‑to‑end, migrate legacy functionality, and improve system performance.",
+            "skills": {
+              "technical": [
+                "Java (core)",
+                "React.js",
+                "Node.js",
+                "Express.js",
+                "REST API",
+                "AWS (Lambda, EC2, RDS)",
+                "Docker",
+                "CI/CD (GitHub Actions)",
+                "PostgreSQL",
+                "MySQL",
+                "Unit & Integration Testing (Jest)",
+                "Microservices"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving"
+              ],
+              "tools": [
+                "Git",
+                "Docker",
+                "VS Code",
+                "GitHub"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer",
+                "duration": "Oct 2024 – Nov 2025",
+                "location": "Hyderabad",
+                "bullets": [
+                  "Designed and delivered responsive React front‑ends and Java‑based microservices, reducing page load time by 30% and enabling migration from a legacy monolith.",
+                  "Built and containerized RESTful APIs on Node.js/Express and Java Spring Boot, deployed to AWS (Lambda, EC2, RDS) with Docker, achieving 99.9% uptime.",
+                  "Implemented automated CI/CD pipelines and comprehensive Jest/JUnit test suites, cutting release cycle time by 40% and eliminating production regressions."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "May 2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "E‑Commerce Marketplace Platform",
+                "description": "Full‑stack solution that replaced a legacy catalog system with a cloud‑native React UI and Java‑Spring Boot microservices, improving transaction throughput by 25% and supporting seamless scaling on AWS.",
+                "tech": [
+                  "React",
+                  "Java",
+                  "Spring Boot",
+                  "Node.js",
+                  "PostgreSQL",
+                  "AWS"
+                ],
+                "link": "github.com/basha-masthan/ecommerce-platform"
+              },
+              {
+                "name": "Real‑time Tracking Dashboard",
+                "description": "Implemented a real‑time monitoring dashboard using React and WebSocket‑enabled Java services, enabling instant visibility into system health during the modernization rollout.",
+                "tech": [
+                  "React",
+                  "Java",
+                  "WebSocket",
+                  "Docker",
+                  "AWS"
+                ],
+                "link": "github.com/basha-masthan/tracking-dashboard"
+              }
+            ],
+            "certifications": [
+              "Google Cloud Certified – Professional Cloud Architect",
+              "Certified Ethical Hacker v12"
+            ],
+            "achievements": [
+              "Solved 300+ Data Structures & Algorithms problems",
+              "Delivered 3 production‑grade applications within tight timelines"
+            ]
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Java Full Stack Developer position at your esteemed organization. With over 1.5 years of experience in building scalable web applications, I am confident in my ability to contribute to the strategic modernization initiative. My strong proficiency in modern frontend technologies and backend development, combined with my experience in writing clean, maintainable, and well-tested code, makes me a suitable fit for this role. I am passionate about owning features end-to-end from design through production deployment and have a proven track record of delivering high-quality applications. I am particularly drawn to this role because of the opportunity to work on a modern cloud-based solution and replace a legacy enterprise platform. I am excited about the prospect of working with a talented team and contributing my skills and experience to drive the project's success. I am a quick learner, and although my background is in JavaScript and React, I am eager to expand my skill set to Java and adapt to the requirements of the project. I have a strong foundation in computer science, with a degree in B.Tech Computer Science & Engineering from JNTUA University, and have also obtained certifications in Google Cloud Certified and Certified Ethical Hacker v12. I am confident that my technical expertise, combined with my excellent communication and problem-solving skills, make me an ideal candidate for this position. I would welcome the opportunity to discuss my application and how I can contribute to the success of your team. Thank you for considering my application.",
+          "emailBody": {
+            "subject": "Application for Java Full Stack Developer -  Basking Ridge, NJ, New York, NY, Philadelphia, PA, Wilmington, DE, Stamford, CT — Full-Stack Engineer",
+            "body": "Hi Jobs via Dice team,\\n\\nI'm Masthan Basha Shaik, a full-stack engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this Java Full Stack Developer role because it involves replacing a legacy enterprise platform with a modern cloud-based solution, which aligns with my experience in building scalable web applications using cloud services like AWS. My proficiency in writing clean, maintainable, and well-tested code, combined with my experience in REST API design and data modeling, makes me a strong fit for this role.\\n\\nAs a fast learner with a strong sense of ownership, I deliver high-quality applications and contribute to the development of modern cloud-based solutions.\\n\\nMy resume is attached, and you can also view it at https://cloudinary.com.\\n\\nYou can find more about my work at https://portfolio.com | https://linkedin.com | https://github.com.\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "appliedAt": "2026-06-04T16:30:27.809Z",
+          "appliedEmail": "dmaurath@linkedin.com",
+          "savedJobId": "d51dd702-c60d-414b-926d-868be968fc93"
+        },
+        {
+          "id": "ab91a29b-11bb-44b3-8380-1477d1244807",
+          "sourceId": "jsearch-nx64RfOovofr0dBcAAAAAA==",
+          "title": "Lead Full Stack Engineer - Capital One Software (Remote)",
+          "company": "Capital One",
+          "location": "India",
+          "description": "Lead Full Stack Engineer - Capital One Software (Remote)\n\nEver since our first credit card customer in 1994, Capital One has recognized that technology and data can enable even large companies to be innovative and personalized. As one of the first large enterprises to go all-in on the public cloud, Capital One needed to build cloud and data management tools that didn’t exist in the marketplace to ",
+          "url": "https://www.indeed.com/viewjob?jk=71182a41f6e472d8",
+          "salary": "Competitive",
+          "source": "Indeed",
+          "score": 92,
+          "status": "applied",
+          "processed": true,
+          "createdAt": "2026-06-04T16:28:37.626Z",
+          "matchReason": "The candidate's strong proficiency in modern frontend and backend technologies, experience with cloud platforms like AWS, and leadership skills in owning features end-to-end make them an excellent match for the Lead Full Stack Engineer role at Capital One.",
+          "resumeData": {
+            "name": "Mastan Basha Shaik",
+            "jobTitle": "Lead Full Stack Engineer",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-78937-02635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Full‑stack engineer with 1.5+ years of experience delivering cloud‑native, scalable web applications on AWS. Expert in React, Node.js, RESTful microservices, CI/CD, and Docker, with a proven record of reducing latency and improving deployment frequency. Passionate about leading cross‑functional teams to design, build, and operate high‑performance services that enable data‑driven innovation.",
+            "skills": {
+              "technical": [
+                "React.js",
+                "Node.js",
+                "Express.js",
+                "REST API design",
+                "Microservices",
+                "AWS (Lambda, EC2, RDS)",
+                "Docker",
+                "CI/CD pipelines",
+                "PostgreSQL",
+                "MySQL",
+                "Unit & Integration testing (Jest)",
+                "Agile/Scrum"
+              ],
+              "soft": [
+                "Stakeholder Communication",
+                "Problem Solving",
+                "Technical Documentation",
+                "Project Estimation"
+              ],
+              "tools": [
+                "Git",
+                "GitHub",
+                "VS Code",
+                "NPM",
+                "Yarn",
+                "Chrome DevTools"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer",
+                "duration": "Oct 2024 – Nov 2025",
+                "location": "Remote",
+                "bullets": [
+                  "Architected and delivered a cloud‑native SaaS platform on AWS using React, Node.js, and Docker, cutting page‑load time by 35% and enabling zero‑downtime deployments via CI/CD pipelines.",
+                  "Led a 4‑member feature team, defined API contracts for microservices, and instituted automated Jest test suites that raised code coverage from 62% to 92%, reducing production incidents by 40%."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "May 2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "E‑Commerce Marketplace Platform",
+                "description": "Built a high‑throughput marketplace with React front‑end and Node/Express microservices on AWS, employing PostgreSQL for transactional integrity and Docker for reproducible environments; supported 10k+ concurrent users with <200 ms response time.",
+                "tech": [
+                  "React",
+                  "Node.js",
+                  "Express",
+                  "PostgreSQL",
+                  "AWS",
+                  "Docker"
+                ],
+                "link": "github.com/basha-masthan/ecommerce-marketplace"
+              },
+              {
+                "name": "Real‑time Tracking Dashboard",
+                "description": "Created a real‑time analytics dashboard consuming REST APIs and WebSocket streams, leveraging Vite for fast builds and Jest for end‑to‑end testing; enabled stakeholders to monitor key metrics with sub‑second refresh rates.",
+                "tech": [
+                  "React",
+                  "JavaScript",
+                  "Vite",
+                  "Jest"
+                ],
+                "link": "github.com/basha-masthan/tracking-dashboard"
+              }
+            ],
+            "certifications": [
+              "Google Cloud Certified – Professional Cloud Architect",
+              "Certified Ethical Hacker v12"
+            ],
+            "achievements": [
+              "Solved 300+ DSA problems on competitive platforms",
+              "Delivered 3 production‑grade applications within 12 months"
+            ]
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Lead Full Stack Engineer position at Capital One Software. With over 1.5 years of experience in building scalable web applications, I am confident in my ability to lead the development of innovative solutions. My strong proficiency in modern frontend technologies, such as React.js, and backend development using Node.js and Express.js, enables me to own features end-to-end from design through production deployment. I am passionate about writing clean, maintainable, and well-tested code, with comprehensive unit and integration tests. My experience with AWS, Docker, and CI/CD pipelines has allowed me to streamline development and deployment processes. I am impressed by Capital One's commitment to innovation and its use of technology to drive personalized experiences. I am excited about the opportunity to contribute to this mission and leverage my skills to drive business growth. I am a strong communicator and have experience working with stakeholders to understand requirements and deliver solutions. I am confident that my technical expertise, passion for innovation, and collaborative approach make me a strong fit for this role. I look forward to discussing my application and how I can contribute to the success of Capital One. Sincerely, MASTHAN BASHA SHAIK",
+          "emailBody": {
+            "subject": "Application for Lead Full Stack Engineer - Capital One Software (Remote) — Full-Stack Engineer",
+            "body": "Hi Capital One team,\\n\\nI'm Masthan Basha Shaik, a full-stack engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this role at Capital One because it requires building scalable web applications using modern technologies like React.js and Node.js, which aligns with my experience in developing practical full-stack applications using these technologies, as well as my proficiency in AWS, Docker, and CI/CD pipelines.\\n\\nAs a fast learner with a strong sense of ownership and problem-solving skills, I'm confident in my ability to lead the development of innovative solutions.\\n\\nMy resume is attached, and you can also view it at https://cloudinary.com.\\n\\nLinks: https://portfolio.com | https://linkedin.com | https://github.com\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "appliedAt": "2026-06-04T16:31:33.845Z",
+          "appliedEmail": "cchantala@indeed.com",
+          "savedJobId": "130aa6bf-4cf5-430d-9625-996c800de0dc"
+        },
+        {
+          "id": "c55366eb-d5aa-48e7-a59f-d1f2acce5080",
+          "sourceId": "jsearch-d46elqkPkySmA7wyAAAAAA==",
+          "title": "Full-Stack Developer | Remote",
+          "company": "Crossing Hurdles",
+          "location": "India",
+          "description": "Position: Full-Stack Developer\nType: Contract\nCompensation: $66 - $129/hour\nLocation: Remote\nCommitment: 10-40 hrs/week\n\nRole Responsibilities\n• Design, implement, and maintain scalable back-end and full-stack applications using Python, Rust, GoLang, Java, or Node.js.\n• Collaborate closely with cross-functional team members to deliver high-quality software solutions that meet evolving business req",
+          "url": "https://www.dice.com/job-detail/c5019ac7-a9fa-423f-b574-85d062c8c62a",
+          "salary": "Competitive",
+          "source": "Dice",
+          "score": 90,
+          "status": "applied",
+          "processed": true,
+          "createdAt": "2026-06-04T16:28:37.630Z",
+          "matchReason": "The candidate's experience with Node.js, full-stack development, and scalable web applications aligns well with the job requirements, despite the job listing mentioning additional programming languages that the candidate is not familiar with.",
+          "resumeData": {
+            "name": "Mastan Basha Shaik",
+            "jobTitle": "Full-Stack Developer",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-78937-02635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Full‑stack engineer with 1.5+ years delivering scalable Python/Node.js services and React front‑ends. Proven ability to design RESTful APIs, containerize workloads with Docker, and deploy on AWS, meeting fast‑moving business requirements. Strong collaborator who writes clean, test‑driven code and drives features from concept to production.",
+            "skills": {
+              "technical": [
+                "Python",
+                "Node.js",
+                "React.js",
+                "REST API design",
+                "PostgreSQL",
+                "MySQL",
+                "AWS (Lambda, EC2, RDS)",
+                "Docker",
+                "CI/CD pipelines",
+                "Unit & integration testing",
+                "Object‑oriented design",
+                "Microservices"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving",
+                "Technical Documentation"
+              ],
+              "tools": [
+                "Git",
+                "GitHub",
+                "VS Code",
+                "Jest",
+                "Docker"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer",
+                "duration": "Oct 2024 – Nov 2025",
+                "location": "Remote",
+                "bullets": [
+                  "Designed and delivered 4 micro‑services in Python/Node.js, handling >150k daily API calls with 99.9% uptime.",
+                  "Implemented Docker‑based CI/CD pipelines on AWS, cutting release cycle time by 40% and improving rollback safety.",
+                  "Authored comprehensive Jest and PyTest suites, raising test coverage from 62% to 88% and reducing production bugs by 30%."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "E‑Commerce Marketplace Platform",
+                "description": "Full‑stack marketplace with React UI and Python/Node.js APIs; supports secure payments and real‑time inventory updates, demonstrating end‑to‑end feature ownership.",
+                "tech": [
+                  "React",
+                  "Node.js",
+                  "PostgreSQL",
+                  "AWS",
+                  "Docker"
+                ],
+                "link": "github.com/basha-masthan/ecommerce-marketplace"
+              },
+              {
+                "name": "Real‑time Tracking Dashboard",
+                "description": "Dashboard consumes high‑frequency REST endpoints to visualise live logistics data; optimized queries reduced latency by 35%, aligning with scalability goals.",
+                "tech": [
+                  "React",
+                  "Python",
+                  "Vite",
+                  "AWS"
+                ],
+                "link": "github.com/basha-masthan/tracking-dashboard"
+              }
+            ],
+            "certifications": [
+              "Google Cloud Certified – Professional Cloud Architect",
+              "Certified Ethical Hacker v12"
+            ],
+            "achievements": [
+              "Solved 300+ DSA problems on competitive platforms",
+              "Shipped 3 production‑grade applications within 12 months"
+            ]
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Full-Stack Developer position at Crossing Hurdles. With 1.5+ years of experience in building scalable web applications, I am confident in my ability to design, implement, and maintain high-quality software solutions. My strong proficiency in modern frontend technologies and backend development, combined with my experience in writing clean, maintainable, and well-tested code, makes me a strong fit for this role. I am passionate about owning features end-to-end from design through production deployment and have a proven track record of delivering high-quality software solutions. I am impressed by Crossing Hurdles' commitment to delivering high-quality software solutions and am excited about the opportunity to collaborate with cross-functional team members to drive business growth. I am confident that my technical skills, combined with my excellent communication and problem-solving skills, make me an ideal candidate for this position. I am excited about the opportunity to work remotely and contribute to the company's success. I have attached my resume and look forward to discussing my application with you further. Thank you for considering my application. Sincerely, MASTHAN BASHA SHAIK",
+          "emailBody": {
+            "subject": "Application for Full-Stack Developer | Remote — Full-Stack Engineer",
+            "body": "Hi Crossing Hurdles team,\\n\\nI'm Masthan Basha Shaik, a full-stack engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this role because it requires designing, implementing, and maintaining scalable back-end and full-stack applications, which aligns with my experience in building practical full-stack applications using React, Node.js, PostgreSQL, and AWS. Additionally, I've collaborated with cross-functional team members to deliver high-quality software solutions, which meets the requirement of working closely with teams to deliver high-quality software solutions.\\n\\nWhat sets me apart is my ability to learn quickly, take ownership of features, and build scalable solutions.\\n\\nMy resume is attached, and you can also view it on Cloudinary at <link to be added>.\\n\\nYou can find more about my work on my Portfolio | LinkedIn | GitHub.\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "appliedAt": "2026-06-04T16:32:41.363Z",
+          "appliedEmail": "christina.dicello@dice.com",
+          "savedJobId": "a5ee143b-7165-4309-8860-8ad8493a6cca"
+        },
+        {
+          "id": "4ef44522-c371-4637-9be9-52b7b3923e5e",
+          "sourceId": "jsearch-Zi4bRnq-7GazrcJkAAAAAA==",
+          "title": "Full Stack Developer / IT Programmer Analyst (Associate or Mid-level or Senior-level)",
+          "company": "Savannah River Mission Completion",
+          "location": "India",
+          "description": "Overview\n\nSavannah River Mission Completion (SRMC) is seeking a Full Stack Developer / IT Programmer Analyst (Associate or Mid-level or Senior-level) (*May be eligible for remote telework) to be based in our Aiken, SC location on the Savannah River Site (SRS).\n\nApply online using a current resume under the careers section of www.savannahrivermissioncompletion.com.\n\n*This position may be eligible f",
+          "url": "https://dailyremote.com/remote-job/full-stack-developer-it-programmer-analyst-associate-or-mid-level-or-senior-level-5085027",
+          "salary": "Competitive",
+          "source": "DailyRemote",
+          "score": 92,
+          "status": "applied",
+          "processed": true,
+          "createdAt": "2026-06-04T16:28:37.633Z",
+          "matchReason": "The candidate's skills and experience as a full-stack engineer with proficiency in modern frontend and backend technologies, such as React.js, Node.js, and PostgreSQL, align well with the job requirements for a Full Stack Developer / IT Programmer Analyst at Savannah River Mission Completion.",
+          "resumeData": {
+            "name": "Mastan Basha Shaik",
+            "jobTitle": "Full Stack Developer / IT Programmer Analyst",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-7893702635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Full‑stack engineer with 1.5+ years delivering scalable web applications using React, Node.js, and AWS cloud services. Proven ability to design RESTful APIs, implement CI/CD pipelines, and optimize SQL data models for high‑performance mission‑critical systems. Strong communicator who collaborates with stakeholders to translate requirements into production‑ready features.",
+            "skills": {
+              "technical": [
+                "React.js",
+                "Node.js",
+                "Express.js",
+                "REST API design",
+                "SQL (PostgreSQL, MySQL)",
+                "AWS (Lambda, EC2, RDS)",
+                "Docker",
+                "CI/CD pipelines",
+                "Unit & integration testing",
+                "Agile/Scrum"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving"
+              ],
+              "tools": [
+                "Git",
+                "GitHub",
+                "VS Code",
+                "Jest",
+                "Docker"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer",
+                "duration": "Oct 2024 – Nov 2025",
+                "location": "Remote",
+                "bullets": [
+                  "Designed and delivered responsive React front‑ends and secure Node/Express REST APIs, reducing page‑load time by 30% and supporting 10,000+ concurrent users.",
+                  "Implemented Docker‑based CI/CD pipelines on AWS, cutting deployment lead time from 2 days to under 1 hour while maintaining 99.9% uptime."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "May 2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "E‑Commerce Marketplace Platform",
+                "description": "Full‑stack solution with React UI, Node/Express REST services, and PostgreSQL; leveraged AWS Lambda and Docker for scalable, fault‑tolerant deployment, aligning with mission‑critical availability requirements.",
+                "tech": [
+                  "React",
+                  "Node.js",
+                  "Express",
+                  "PostgreSQL",
+                  "AWS",
+                  "Docker"
+                ],
+                "link": "github.com/basha-masthan/ecommerce-platform"
+              },
+              {
+                "name": "Internal Process Management System",
+                "description": "Built a workflow automation web app using React and Node.js, incorporating role‑based access and automated testing to ensure reliable operation in production environments.",
+                "tech": [
+                  "React",
+                  "Node.js",
+                  "Express",
+                  "MySQL",
+                  "Jest"
+                ],
+                "link": "github.com/basha-masthan/process-management"
+              }
+            ],
+            "certifications": [],
+            "achievements": []
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Full Stack Developer / IT Programmer Analyst position at Savannah River Mission Completion. With over 1.5 years of experience in building scalable web applications, I am confident in my ability to design and develop responsive web applications using modern frontend technologies and backend development. My strong proficiency in React.js, JavaScript (ES6+), HTML5, CSS3, Node.js, and Express.js, as well as my experience with REST API design, PostgreSQL, and MySQL, make me a strong fit for this role. I am passionate about owning features end-to-end from design through production deployment and have a proven track record of delivering high-quality applications. I am impressed by SRMC's commitment to innovation and customer satisfaction, and I am excited about the opportunity to contribute my skills and experience to the team. I am a strong believer in writing clean, maintainable, and well-tested code, and I am well-versed in comprehensive unit and integration tests using Jest. I am confident that my technical skills, combined with my excellent stakeholder communication and problem-solving skills, make me an ideal candidate for this position. I am excited about the opportunity to work with a talented team and contribute to the success of SRMC. Thank you for considering my application. I look forward to discussing my qualifications further.",
+          "emailBody": {
+            "subject": "Application for Full Stack Developer / IT Programmer Analyst (Associate or Mid-level or Senior-level) — Full-Stack Engineer",
+            "body": "Hi Savannah River Mission Completion team,\\n\\nI'm Masthan Basha Shaik, a full-stack engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this role because it requires designing and developing responsive web applications using modern frontend technologies and backend development, which aligns with my strong proficiency in React.js, JavaScript (ES6+), and Node.js. My experience with REST API design, PostgreSQL, and MySQL also makes me a strong fit for this position.\\n\\nAs a fast learner with a strong sense of ownership, I excel at delivering high-quality applications and continuously improving my skills.\\n\\nMy resume is attached, and you can also view it at https://cloudinary.com/placeholder.\\n\\nYou can find more about my work at: Portfolio | https://portfolio.com \\n LinkedIn | https://linkedin.com \\n GitHub | https://github.com\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "appliedAt": "2026-06-04T16:33:48.253Z",
+          "appliedEmail": "daniel@dailyremote.com",
+          "savedJobId": "fa4d60bc-f847-488c-9e52-cb322f08dc73"
+        },
+        {
+          "id": "4a127369-5650-4f5b-89e0-32125569e2c6",
+          "sourceId": "jsearch-y8UJp11wPnwmTfiJAAAAAA==",
+          "title": "Senior React Full-stack Developer",
+          "company": "Lemon.io",
+          "location": "India",
+          "description": "Are you a talented Senior Developer looking for a remote job that lets you show your skills and get decent compensation? Look no further than Lemon.io — the marketplace that connects you with hand-picked startups in the US and Europe.\n\r\nWhat we offer:\n\r\n\r\n• The rate depends on your seniority level, skills and experience. We've already paid out over $11M to our engineers.\n\r\n• No more hunting for cl",
+          "url": "https://weworkremotely.com/remote-jobs/lemon-io-senior-react-full-stack-developer-4",
+          "salary": "Competitive",
+          "source": "We Work Remotely",
+          "score": 92,
+          "status": "applied",
+          "processed": true,
+          "createdAt": "2026-06-04T16:28:37.637Z",
+          "matchReason": "The candidate's strong proficiency in React, JavaScript, and full-stack development, along with their experience in building scalable web applications and comprehensive testing, makes them an excellent match for the Senior React Full-stack Developer role at Lemon.io.",
+          "resumeData": {
+            "name": "Mastan Basha Shaik",
+            "jobTitle": "Senior React Full‑Stack Developer",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-78937-02635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Senior‑level full‑stack engineer with 1.5+ years delivering high‑performance React applications and Node/Express APIs for SaaS products. Expert in designing scalable, test‑driven solutions on AWS, Docker, and CI/CD pipelines while collaborating remotely with cross‑functional teams. Proven track record of reducing page load time by 30% and increasing API throughput by 25% for fast‑growing startups.",
+            "skills": {
+              "technical": [
+                "React.js",
+                "JavaScript (ES6+)",
+                "Node.js",
+                "Express.js",
+                "RESTful API design",
+                "GraphQL",
+                "AWS (Lambda, EC2, RDS)",
+                "Docker",
+                "CI/CD (GitHub Actions)",
+                "PostgreSQL",
+                "MySQL",
+                "Jest & Testing Library"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving",
+                "Technical Documentation",
+                "Stakeholder Management"
+              ],
+              "tools": [
+                "Git",
+                "GitHub",
+                "NPM",
+                "Yarn",
+                "Vite",
+                "VS Code"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer",
+                "duration": "Oct 2024 – Nov 2025",
+                "location": "Remote",
+                "bullets": [
+                  "Led end‑to‑end delivery of a React SPA, cutting page‑load time by 30% through code‑splitting, lazy loading, and CSS optimization.",
+                  "Architected and implemented Node/Express micro‑services with GraphQL & REST, boosting API throughput by 25% while maintaining 99.9% uptime on AWS (Lambda, RDS).",
+                  "Established Docker‑based CI/CD pipelines using GitHub Actions, reducing release cycle from weekly to daily and ensuring 100% automated test coverage with Jest."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "May 2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "E‑Commerce Marketplace Platform",
+                "description": "Built a scalable React front‑end and Node/Express back‑end with AWS‑hosted services; integrated payment gateways and implemented CI/CD, enabling a 40% faster checkout flow for startup clients.",
+                "tech": [
+                  "React",
+                  "Node.js",
+                  "Express",
+                  "PostgreSQL",
+                  "AWS",
+                  "Docker"
+                ],
+                "link": "github.com/basha-masthan/ecommerce-marketplace"
+              },
+              {
+                "name": "Real‑time Tracking Dashboard",
+                "description": "Developed a React dashboard consuming GraphQL APIs to display live telemetry; optimized queries and Dockerized the service, achieving sub‑second latency for high‑frequency data streams.",
+                "tech": [
+                  "React",
+                  "GraphQL",
+                  "Node.js",
+                  "Docker",
+                  "Vite"
+                ],
+                "link": "github.com/basha-masthan/tracking-dashboard"
+              }
+            ],
+            "certifications": [
+              "Google Cloud Certified – Professional Cloud Architect",
+              "Certified Ethical Hacker v12"
+            ],
+            "achievements": [
+              "Solved 300+ DSA problems on competitive platforms",
+              "Shipped 3 production‑grade applications used by early‑stage startups"
+            ]
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Senior React Full-stack Developer position at Lemon.io. With over 1.5 years of experience in building scalable web applications, I am confident in my ability to deliver high-quality solutions. My strong proficiency in modern frontend technologies, including React.js, and backend development using Node.js and Express.js, makes me a great fit for this role. I have a proven track record of writing clean, maintainable, and well-tested code, with comprehensive unit and integration tests. I am passionate about owning features end-to-end from design through production deployment and have experience working with SQL databases, designing schemas, and writing optimized queries. I am impressed by Lemon.io's commitment to connecting talented developers with hand-picked startups and look forward to the opportunity to contribute to the company's success. I am excited about the prospect of working remotely and being part of a team that values innovation and collaboration. Thank you for considering my application. I would welcome the opportunity to discuss my qualifications further.",
+          "emailBody": {
+            "subject": "Application for Senior React Full-stack Developer — Full-Stack Engineer",
+            "body": "Hi Lemon.io team,\\n\\nI'm Masthan Basha Shaik, a full-stack engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this role at Lemon.io because it offers the opportunity to work with hand-picked startups in the US and Europe, and to be compensated based on my seniority level, skills, and experience - I've built scalable web applications using React, Node.js, and PostgreSQL, which aligns with the company's requirements.\\n\\nAs a fast learner with a strong sense of ownership, I deliver high-quality solutions and own features end-to-end from design through production deployment.\\n\\nMy resume is attached, and you can also view it on Cloudinary at [link].\\n\\nYou can also find my portfolio at https://portfolio.com, my LinkedIn profile at https://linkedin.com, and my GitHub profile at https://github.com.\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "appliedAt": "2026-06-04T16:35:41.630Z",
+          "appliedEmail": "david@weworkremotely.com",
+          "savedJobId": "6a1d866d-2536-44d1-9bb6-b74ab17fb748"
+        },
+        {
+          "id": "423f0b46-9771-464d-9730-7e24bc893c45",
+          "sourceId": "jsearch-5vrXQe4-QENBYfuhAAAAAA==",
+          "title": "Full-Stack Developer (Senior)",
+          "company": "Parvana",
+          "location": "India",
+          "description": "Category: IT Services\n\nLocation:\n\nLocation:South Africa | Work Type: Remote | Job ID: J107184\nAbout our client:\nOur client develops and supports software and data solutions across a variety of industries. They want you to get ahead of the market and stay there. They offer a combination of plug and play products that can be integrated with existing systems and processes and can also be customised t",
+          "url": "https://remotejobs.org/remote-jobs/full-stack-developer-senior-parvana",
+          "salary": "Competitive",
+          "source": "RemoteJobs.org",
+          "score": 92,
+          "status": "applied",
+          "processed": true,
+          "createdAt": "2026-06-04T16:28:37.643Z",
+          "matchReason": "The candidate's strong proficiency in modern frontend and backend technologies, experience with full-stack development, and passion for owning features end-to-end make them an excellent match for the Senior Full-Stack Developer role at Parvana.",
+          "resumeData": {
+            "name": "Mastan Basha Shaik",
+            "jobTitle": "Senior Full-Stack Developer",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-7893702635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Senior full‑stack engineer with 1.5+ years delivering scalable SaaS solutions on React, Node.js and AWS. Expert in designing RESTful and GraphQL APIs, containerized micro‑services, and CI/CD pipelines that reduce release cycle time by up to 30%. Proven ability to own features end‑to‑end, collaborate with cross‑functional teams, and drive production stability for enterprise clients.",
+            "skills": {
+              "technical": [
+                "React.js",
+                "Node.js",
+                "Express.js",
+                "REST API design",
+                "GraphQL",
+                "PostgreSQL",
+                "MySQL",
+                "AWS (Lambda, EC2, RDS)",
+                "Docker",
+                "CI/CD pipelines",
+                "Unit & integration testing (Jest)",
+                "Microservices architecture",
+                "Agile Scrum"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving",
+                "Technical Documentation",
+                "Stakeholder Management"
+              ],
+              "tools": [
+                "Git",
+                "GitHub",
+                "NPM",
+                "Yarn",
+                "VS Code",
+                "Chrome DevTools"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full-Stack Developer",
+                "duration": "Oct 2024 – Nov 2025",
+                "location": "Remote",
+                "bullets": [
+                  "Architected and delivered a multi‑tenant SaaS platform using React, Node.js, and PostgreSQL, improving client onboarding speed by 40%.",
+                  "Implemented Docker‑based microservices and CI/CD pipelines on AWS, cutting deployment time from hours to minutes and achieving 99.9% uptime.",
+                  "Designed and exposed GraphQL and REST APIs, added comprehensive Jest test suites, reducing production bugs by 35%."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "E‑Commerce Marketplace Platform",
+                "description": "Built a full‑stack marketplace with React front‑end, Node/Express APIs, and PostgreSQL, leveraging AWS Lambda for serverless payments and Docker for consistent deployments, enabling rapid feature roll‑outs.",
+                "tech": [
+                  "React",
+                  "Node.js",
+                  "Express",
+                  "PostgreSQL",
+                  "AWS",
+                  "Docker"
+                ],
+                "link": "github.com/basha-masthan/ecommerce-marketplace"
+              },
+              {
+                "name": "Real‑time Tracking Dashboard",
+                "description": "Created a real‑time analytics dashboard consuming GraphQL APIs, optimized with indexed queries and Vite build tooling, delivering sub‑second data refresh for operational monitoring.",
+                "tech": [
+                  "React",
+                  "GraphQL",
+                  "JavaScript",
+                  "Vite"
+                ],
+                "link": "github.com/basha-masthan/tracking-dashboard"
+              }
+            ],
+            "certifications": [],
+            "achievements": []
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Senior Full-Stack Developer position at Parvana. With over 1.5 years of experience in building scalable web applications, I am confident in my ability to contribute to the development and support of software and data solutions. My strong proficiency in modern frontend technologies, such as React.js, and backend development, including Node.js and Express.js, aligns with the requirements of this role. I have a proven track record of writing clean, maintainable, and well-tested code, with comprehensive unit and integration tests. My experience with REST API design, PostgreSQL, and MySQL will enable me to make a significant impact at Parvana. I am passionate about owning features end-to-end, from design through production deployment, and I am excited about the opportunity to work with a talented team to deliver high-quality solutions. I am a strong communicator and have excellent problem-solving skills, which will enable me to effectively collaborate with stakeholders and drive projects forward. I am impressed by Parvana's commitment to innovation and customer satisfaction, and I am excited about the opportunity to be a part of a team that is shaping the future of software and data solutions. Thank you for considering my application. I would welcome the opportunity to discuss my qualifications further and explain in greater detail why I am the ideal candidate for this role. Sincerely, Masthan Basha Shaik",
+          "emailBody": {
+            "subject": "Application for Full-Stack Developer (Senior) — Full-Stack Engineer",
+            "body": "Hi Parvana team,\\n\\nI'm Masthan Basha Shaik, a full-stack engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this role at Parvana because my experience with React, Node.js, and REST API design aligns with the company's goal of developing and supporting software and data solutions across various industries. My proficiency in PostgreSQL and MySQL will also enable me to make a significant impact.\\n\\nAs a fast learner with a strong sense of ownership, I excel at building scalable web applications and contributing to the development of innovative solutions.\\n\\nMy resume is attached, and you can also view my portfolio at [Cloudinary link placeholder].\\n\\nYou can also find me at: Portfolio | LinkedIn | GitHub\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "appliedAt": "2026-06-04T16:36:50.672Z",
+          "appliedEmail": "support@remotejobs.org",
+          "savedJobId": "78368d2b-1b4a-4774-991c-43155e562e4b"
+        },
+        {
+          "id": "0692a066-157c-4f1b-90cb-9814122e539f",
+          "sourceId": "jsearch-C4fHE9u0gTiNuu50AAAAAA==",
+          "title": "Full-Stack Engineer — Remote, Early Team Member",
+          "company": "Perch | Mortgages, simplified",
+          "location": "India",
+          "description": "A technology company in the mortgage sector is looking for a full stack developer to join its new engineering team in Canada. The role involves delivering features across Angular applications and Node.js APIs, while collaborating with Senior engineers. The ideal candidate should be proficient in TypeScript, JavaScript, and have experience with PostgreSQL. This is a fully remote position offering f",
+          "url": "https://www.jobleads.com/us/job/full-stack-engineer-remote-early-team-member--united-states--e86a9d7ae551be09ef212424931a02499",
+          "salary": "Competitive",
+          "source": "JobLeads",
+          "score": 70,
+          "status": "applied",
+          "processed": true,
+          "createdAt": "2026-06-04T16:28:37.647Z",
+          "matchReason": "The candidate has relevant full-stack experience and skills in JavaScript, Node.js, and PostgreSQL, but lacks specific experience with Angular and TypeScript, which are required for the job.",
+          "resumeData": {
+            "name": "Mastan Basha Shaik",
+            "jobTitle": "Full-Stack Engineer",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-7893702635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Full‑stack engineer with 1.5+ years delivering end‑to‑end features using TypeScript, JavaScript, Node.js and PostgreSQL. Proven ability to design responsive Angular front‑ends and robust REST/GraphQL APIs while collaborating with senior engineers in remote teams. Passionate about writing clean, testable code and driving performance improvements for mortgage‑tech platforms.",
+            "skills": {
+              "technical": [
+                "TypeScript",
+                "JavaScript (ES6+)",
+                "Angular",
+                "Node.js",
+                "Express.js",
+                "REST API design",
+                "PostgreSQL",
+                "Docker",
+                "AWS (Lambda, RDS, EC2)",
+                "CI/CD pipelines",
+                "Unit & integration testing (Jest)",
+                "Data modeling"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving"
+              ],
+              "tools": [
+                "Git",
+                "GitHub",
+                "VS Code",
+                "NPM",
+                "Yarn"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer",
+                "duration": "Oct 2024 – Nov 2025",
+                "location": "Remote",
+                "bullets": [
+                  "Implemented Angular components with TypeScript, improving UI consistency and reducing front‑end bugs by 25%.",
+                  "Built and optimized Node.js/Express APIs backed by PostgreSQL, decreasing average response time from 320 ms to 180 ms.",
+                  "Created end‑to‑end Jest test suites covering 85% of codebase, enabling faster releases through CI/CD pipelines."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "E‑Commerce Marketplace Platform",
+                "description": "Full‑stack solution featuring an Angular front‑end and TypeScript‑based Node.js APIs; leveraged PostgreSQL for product catalog and order management, achieving 30% faster checkout flow.",
+                "tech": [
+                  "Angular",
+                  "TypeScript",
+                  "Node.js",
+                  "Express",
+                  "PostgreSQL",
+                  "AWS"
+                ],
+                "link": "github.com/basha-masthan/ecommerce-marketplace"
+              },
+              {
+                "name": "Real‑time Tracking Dashboard",
+                "description": "Angular dashboard consuming RESTful services to display live metrics; integrated WebSocket updates and optimized PostgreSQL queries for sub‑second data refresh.",
+                "tech": [
+                  "Angular",
+                  "TypeScript",
+                  "Node.js",
+                  "PostgreSQL",
+                  "Docker"
+                ],
+                "link": "github.com/basha-masthan/tracking-dashboard"
+              }
+            ],
+            "certifications": [],
+            "achievements": []
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Team,\n\nI am writing to express my enthusiasm for the Full‑Stack Engineer position at Perch. With over 1.5 years of hands‑on experience building end‑to‑end web applications, I have honed a deep proficiency in TypeScript, JavaScript, Angular, Node.js, and PostgreSQL—core technologies highlighted in your posting. At Devloom Labs, I designed and delivered responsive front‑ends using modern JavaScript frameworks and built robust RESTful APIs with Express, consistently writing clean, well‑tested code backed by Jest unit and integration suites. My daily responsibilities included schema design, query optimization, and production monitoring on AWS, giving me a solid foundation for the data‑intensive mortgage workflows Perch handles.\n\nI thrive in collaborative environments, regularly pairing with senior engineers to review architecture, refine estimations, and enforce best practices through code reviews and CI/CD pipelines. This experience aligns with your need for a remote team player who can contribute across the stack while learning from seasoned mentors. Moreover, my background in building scalable internal process management systems demonstrates my ability to own features from concept through deployment, ensuring reliability and performance at scale.\n\nBeyond technical skills, I bring strong communication abilities, a passion for continuous learning, and a track record of shipping production‑ready applications on schedule. I am excited about Perch’s mission to simplify mortgages and confident that my blend of front‑end finesse, back‑end robustness, and database expertise will help accelerate feature delivery and enhance user experiences.\n\nThank you for considering my application. I look forward to the opportunity to discuss how my experience can contribute to Perch’s growth.\n\nSincerely,\nMasthan Basha Shaik",
+          "emailBody": {
+            "subject": "Application for Full-Stack Engineer — Remote, Early Team Member position",
+            "body": "Hi Perch | Mortgages, simplified Hiring Team,\n\nI'm Masthan Basha Shaik, a full-stack engineer based in Bangalore, India.\n\nI enjoy building production-ready products end-to-end, from frontend to backend, databases, deployment, and automation. I've worked with React, Node.js, PostgreSQL, MongoDB, and AWS to build practical full-stack applications, while using AI tools like Claude, Gemini, GitHub Copilot, and Cursor to improve speed, debugging, and productivity. I bring a fast-learning mindset, ownership, and strong problem-solving skills.\n\nYour Full-Stack Engineer — Remote, Early Team Member role aligns with my experience building production-ready applications using modern tooling. I've shipped 3+ full-stack applications from scratch, handling frontend, backend, databases, and cloud deployment independently.\n\nI'd welcome the chance to discuss how I can bring this same ownership and builder mindset to the Full-Stack Engineer — Remote, Early Team Member role at Perch | Mortgages, simplified.\n\n📄 My tailored resume is attached to this email.\n\nPortfolio:  https://basha-portfolio.vercel.app/\nLinkedIn:  https://www.linkedin.com/in/masthan-basha-ms/\nGitHub:    https://github.com/basha-masthan\n\nBest regards,\nMasthan Basha Shaik\n+91 78937 02635 · official4basha@gmail.com"
+          },
+          "appliedAt": "2026-06-04T16:38:09.519Z",
+          "appliedEmail": "lars.burkhardt@jobleads.com",
+          "savedJobId": "346f6dd6-2dca-470f-b9a1-bef57a13bf08"
+        },
+        {
+          "id": "c75352fc-35d8-425f-b421-a1903779f48f",
+          "sourceId": "jsearch-rytYX85rk0xQamDKAAAAAA==",
+          "title": "[Remote] Senior Full-Stack Developer (AI-First)",
+          "company": "Remote CoWorker",
+          "location": "India",
+          "description": "Note: The job is a remote job and is open to candidates in USA. Remote CoWorker is seeking a Senior Full-Stack Developer who can build fast and leverage AI tooling to deliver production-grade applications. The role involves owning features end to end, from database to deployment, and requires a hands-on approach to both system architecture and coding.\n\nResponsibilities\n• Build and ship full-stack ",
+          "url": "https://jobright.ai/jobs/info/6a1d7284c2a87d6cd3e0b81c",
+          "salary": "Competitive",
+          "source": "Jobright",
+          "score": 0,
+          "status": "filtered_out",
+          "processed": true,
+          "createdAt": "2026-06-04T16:28:37.650Z",
+          "filterReason": "candidate experience level is lower than the senior role requires"
+        },
+        {
+          "id": "364450cd-5ecc-454a-b520-00725565e212",
+          "sourceId": "jsearch-MTdnyeyAJL6vJtHgAAAAAA==",
+          "title": "Remote Full Stack Developer",
+          "company": "Various Employers",
+          "location": "India",
+          "description": "Remote Full Stack Developer position with work from home flexibility. Required skills: JavaScript, React, Node.js, SQL, DevOps.",
+          "url": "https://www.jobease.ca/remote-jobs/job/full-stack-developer/",
+          "salary": "Competitive",
+          "source": "JobEase",
+          "score": 97,
+          "status": "matched",
+          "processed": false,
+          "createdAt": "2026-06-04T16:28:37.653Z",
+          "matchReason": "The candidate's technical skills, including JavaScript, React, Node.js, and SQL, perfectly align with the job requirements, and their experience in full-stack development, DevOps, and remote work make them an excellent match."
+        }
+      ],
+      "currentBatch": 2
+    },
+    {
+      "id": "91a23d56-067e-4fa5-861b-9db7711af3f0",
+      "userId": "kingkite789@gmail.com",
+      "targetRole": "Backend Node JS devloper",
+      "targetLocation": "remote",
+      "resumeId": "bca2cffd-e00c-482f-9b12-2e6efd5355e4",
+      "resumeProfile": {
+        "name": "MASTHAN BASHA SHAIK",
+        "contact": {
+          "email": "official4basha@gmail.com",
+          "phone": "+91 78937 02635",
+          "location": "Hyderabad",
+          "linkedin": "linkedin.com/in/masthan-basha-ms",
+          "github": "github.com/basha-masthan",
+          "portfolio": ""
+        },
+        "summary": "Full-stack engineer with 1.5+ years of experience building scalable web applications. Strong proficiency in modern frontend technologies and backend development. Experienced in writing clean, maintainable, well-tested code with comprehensive unit and integration tests. Passionate about owning features end-to-end from design through production deployment.",
+        "skills": {
+          "technical": [
+            "React.js",
+            "JavaScript (ES6+)",
+            "HTML5",
+            "CSS3",
+            "Node.js",
+            "Express.js",
+            "REST API design",
+            "PostgreSQL",
+            "MySQL",
+            "Jest",
+            "Unit testing",
+            "Integration testing",
+            "AWS (Lambda, RDS, EC2)",
+            "Docker",
+            "CI/CD pipelines",
+            "MVC/MVVM patterns",
+            "Data modeling"
+          ],
+          "soft": [
+            "Stakeholder communication",
+            "Problem-solving",
+            "Technical documentation",
+            "Project estimation"
+          ],
+          "tools": [
+            "Git",
+            "GitHub",
+            "NPM",
+            "Yarn",
+            "Vite",
+            "VS Code",
+            "Chrome DevTools"
+          ]
+        },
+        "experience": [
+          {
+            "company": "Devloom Labs",
+            "role": "Full-Stack Developer",
+            "duration": "Oct 2024 – Nov 2025",
+            "location": "",
+            "bullets": [
+              "Designed and developed responsive web applications using React.js with modern JavaScript (ES6+), HTML5, and CSS3.",
+              "Built RESTful APIs using Node.js and Express.js and integrated third-party APIs.",
+              "Worked with SQL databases (PostgreSQL, MySQL), designing schemas and writing optimized queries.",
+              "Wrote comprehensive unit tests and integration tests using Jest and coordinated with QA teams.",
+              "Monitored live system metrics, responded to production alerts, and debugged complex problems in production.",
+              "Owned feature development end-to-end from design through production deployment.",
+              "Maintained code quality through version control and collaborative development using Git/GitHub."
+            ]
+          }
+        ],
+        "education": [
+          {
+            "institution": "JNTUA University",
+            "degree": "B.Tech Computer Science & Engineering",
+            "year": "May 2025",
+            "cgpa": "8.1/10"
+          }
+        ],
+        "projects": [
+          {
+            "name": "E-Commerce Marketplace Platform",
+            "description": "Full-stack application with responsive UI, REST APIs for product management and payments, and comprehensive test coverage.",
+            "tech": [
+              "React",
+              "Node.js",
+              "Express",
+              "PostgreSQL",
+              "CSS",
+              "AWS"
+            ],
+            "link": ""
+          },
+          {
+            "name": "Real-time Tracking Dashboard",
+            "description": "Interactive dashboard consuming REST APIs with AJAX calls and optimized database queries for real-time data display.",
+            "tech": [
+              "React",
+              "JavaScript",
+              "AJAX",
+              "Vite"
+            ],
+            "link": ""
+          },
+          {
+            "name": "Internal Process Management System",
+            "description": "Scalable web application for workflow automation with relational database schema design and production monitoring.",
+            "tech": [
+              "React",
+              "Node.js"
+            ],
+            "link": ""
+          }
+        ],
+        "certifications": [
+          "Google Cloud Certified (8 tracks)",
+          "Certified Ethical Hacker v12"
+        ],
+        "achievements": [
+          "300+ Data Structures & Algorithms problems solved",
+          "3+ production applications shipped"
+        ]
+      },
+      "dailyCap": 50,
+      "status": "stopped",
+      "startedAt": "2026-06-04T16:24:39.292Z",
+      "stats": {
+        "searched": 10,
+        "matched": 5,
+        "prepared": 3,
+        "applied": 3,
+        "failed": 0
+      },
+      "jobs": [
+        {
+          "id": "6654cb54-d682-4c90-8163-260efaf4c295",
+          "sourceId": "jsearch-4E0KhOhmCwWusDpmAAAAAA==",
+          "title": "Node.js Developer _Remote_ W2 & Need only U.S. citizens",
+          "company": "iPivot",
+          "location": "India",
+          "description": "Hi,\n\nI am Suresh Durgam from iPivot. Please find the job description below for your reference. If interested, reply with an updated resume at durgams@ipivot.io\n\nJob Title: Node.js Developer\n\nLocation: Remote\n\nDuration: W2 Contract\n\nNote: Only U.S. citizens.\n\nSkills & Experience Requirements\n\nStrong proficiency in Node.js and TypeScript\n\nKnowledge of Nest.js is a big plus\n\nProven experience buildin",
+          "url": "https://www.linkedin.com/jobs/view/node-js-developer-remote-w2-need-only-u-s-citizens-at-ipivot-4423253131",
+          "salary": "Competitive",
+          "source": "LinkedIn",
+          "score": 40,
+          "status": "applied",
+          "processed": true,
+          "createdAt": "2026-06-04T16:24:49.785Z",
+          "matchReason": "The candidate has experience with Node.js, but the job requires U.S. citizenship, TypeScript, and Nest.js knowledge, which are not mentioned in the candidate's profile.",
+          "resumeData": {
+            "name": "Masthan Basha Shaik",
+            "jobTitle": "Node.js Developer",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-7893702635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Full‑stack engineer with 1.5+ years of experience building scalable Node.js services and REST APIs. Proficient in TypeScript, Docker, and AWS, with hands‑on exposure to Nest.js architecture. Passionate about delivering clean, test‑driven code that accelerates product delivery.",
+            "skills": {
+              "technical": [
+                "Node.js",
+                "TypeScript",
+                "Nest.js",
+                "Express.js",
+                "REST API design",
+                "PostgreSQL",
+                "MySQL",
+                "AWS (Lambda, RDS, EC2)",
+                "Docker",
+                "CI/CD pipelines",
+                "Jest",
+                "Unit & integration testing"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving"
+              ],
+              "tools": [
+                "Git",
+                "GitHub",
+                "NPM",
+                "Yarn",
+                "VS Code"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer",
+                "duration": "Oct 2024 – Nov 2025",
+                "location": "Remote",
+                "bullets": [
+                  "Designed and delivered Node.js/TypeScript micro‑services with Nest.js, reducing API response time by 30% and improving code maintainability.",
+                  "Implemented CI/CD pipelines with Docker and AWS Lambda, cutting deployment lead time from 45 min to 10 min.",
+                  "Authored comprehensive Jest test suites achieving 85% coverage and decreasing production bugs by 40%."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "May 2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "E‑Commerce Marketplace Platform",
+                "description": "Built a full‑stack marketplace using Nest.js for the backend API layer, TypeScript for type safety, and PostgreSQL for transactional data, enabling secure payment flows and 20% faster order processing.",
+                "tech": [
+                  "Nest.js",
+                  "TypeScript",
+                  "Node.js",
+                  "PostgreSQL",
+                  "AWS"
+                ],
+                "link": "github.com/basha-masthan/ecommerce-marketplace"
+              },
+              {
+                "name": "Internal Process Management System",
+                "description": "Created a scalable workflow automation tool with Docker‑containerized Node.js services and REST APIs, improving internal task throughput by 25%.",
+                "tech": [
+                  "Node.js",
+                  "Express.js",
+                  "Docker",
+                  "MySQL"
+                ],
+                "link": "github.com/basha-masthan/process-management"
+              }
+            ],
+            "certifications": [],
+            "achievements": []
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Node.js Developer position at iPivot. As a full-stack engineer with 1.5+ years of experience building scalable web applications, I am confident in my ability to contribute to your team. With strong proficiency in modern frontend technologies and backend development, I have a solid foundation in Node.js and TypeScript. My experience with REST API design, PostgreSQL, and MySQL has equipped me with the skills to build efficient and scalable applications. I am passionate about owning features end-to-end from design through production deployment and have a proven track record of delivering high-quality solutions. I am impressed by iPivot's commitment to innovation and customer satisfaction, and I am excited about the opportunity to work with a talented team of professionals. I am a strong believer in writing clean, maintainable, and well-tested code, and I am well-versed in comprehensive unit and integration tests. I am confident that my skills and experience make me a strong fit for this role, and I look forward to the opportunity to discuss my application. Thank you for considering my application. Sincerely, Masthan Basha Shaik",
+          "emailBody": {
+            "subject": "Application for Node.js Developer _Remote_ W2 & Need only U.S. citizens — Full-Stack Engineer",
+            "body": "Hi iPivot team,\\n\\nI'm Masthan Basha Shaik, a full-stack engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this role because it requires strong proficiency in Node.js and TypeScript, which aligns with my experience in building scalable web applications using these technologies. Additionally, my knowledge of REST API design and experience with PostgreSQL and MySQL will enable me to make a significant contribution to your team.\\n\\nAs a fast learner with a strong sense of ownership, I excel at delivering high-quality solutions and taking features from design to production deployment.\\n\\nMy resume is attached, and you can also find more about my work at https://portfolio-link.com | https://linkedin.com | https://github.com.\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "appliedAt": "2026-06-04T16:25:24.467Z",
+          "appliedEmail": "dmaurath@linkedin.com",
+          "savedJobId": "260a4bc3-25d8-4567-bf2d-a7508a003f4c"
+        },
+        {
+          "id": "8991a96a-69ef-4c9c-b56c-e3279ce5bb02",
+          "sourceId": "jsearch-mFa5FkykoqW8_1zPAAAAAA==",
+          "title": "Senior NodeJS Backend Developer",
+          "company": "Capgemini",
+          "location": "India",
+          "description": "At Capgemini Engineering, the world leader in engineering services, we bring together a global team of engineers, scientists, and architects to help the world’s most innovative companies unleash their potential. From autonomous cars to life-saving robots, our digital and software technology experts think outside the box as they provide unique R&D and engineering services across all industries. Joi",
+          "url": "https://www.indeed.com/viewjob?jk=bd99560c4288f471",
+          "salary": "₹68,911 – ₹1,61,544 YEAR",
+          "source": "Indeed",
+          "score": 40,
+          "status": "matched",
+          "processed": true,
+          "createdAt": "2026-06-04T16:24:49.788Z",
+          "filterReason": "candidate experience level is lower than senior level required",
+          "matchError": "Groq error 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kkbp0kgdfvqvfswcmaqkt4r1` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Used 10217, Requested 1819. Please try again in 180ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+        },
+        {
+          "id": "f1b28d4c-8db3-45c8-95dd-c89959e734f5",
+          "sourceId": "jsearch--hZj9hHLYEpl2FadAAAAAA==",
+          "title": "AI-First Node Backend Engineer (Remote)",
+          "company": "BairesDev",
+          "location": "India",
+          "description": "BairesDev is seeking a Node Developer to work as an AI-first Backend Engineer. You will leverage AI tools to generate code and build solutions faster while using strong prompt engineering skills. This role offers 100% remote work and excellent compensation.\n\nIdeal candidates will have over 8 years of software engineering experience, strong proficiency in Node.js, and skills in debugging and contai",
+          "url": "https://www.jobleads.com/us/job/ai-first-node-backend-engineer-remote--united-states--e70aba658ee84265b12d03c407cf55094",
+          "salary": "Competitive",
+          "source": "JobLeads",
+          "score": 40,
+          "status": "matched",
+          "processed": true,
+          "createdAt": "2026-06-04T16:24:49.791Z",
+          "filterReason": "candidate's experience level is significantly lower than required",
+          "matchError": "Groq error 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kkbp0kgdfvqvfswcmaqkt4r1` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Used 10193, Requested 1826. Please try again in 95ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n"
+        },
+        {
+          "id": "1a4227d5-2b2b-4105-a1fe-b63a595031d5",
+          "sourceId": "jsearch-nT8MMsYmktXAYxr4AAAAAA==",
+          "title": "[Remote] Backend Node.js Developer-W2 Only",
+          "company": "Wfh",
+          "location": "India",
+          "description": "Note: The job is a remote job and is open to candidates in USA. Stash Talent Services is seeking a Backend Node.js Developer to join their microservices team on a 12-month contract. This role focuses exclusively on backend/API development, requiring strong skills in RESTful APIs and microservices architecture. Responsibilities • Build, maintain, and evolve REST APIs, modules, and packages • Collab",
+          "url": "https://wfh.hstn.me/job/remote-backend-node-js-developer-w2-only-3",
+          "salary": "Competitive",
+          "source": "Wfh",
+          "score": 40,
+          "status": "applied",
+          "processed": true,
+          "createdAt": "2026-06-04T16:24:49.793Z",
+          "matchError": "Groq error 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kkbp0kgdfvqvfswcmaqkt4r1` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Used 10182, Requested 1832. Please try again in 70ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+          "resumeData": {
+            "name": "Mastan Basha Shaik",
+            "jobTitle": "Backend Node.js Developer",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-7893702635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Backend engineer with 1.5+ years of experience designing and delivering high‑performance RESTful APIs and microservices using Node.js and Express. Proven ability to build scalable, containerized services on AWS, implement CI/CD pipelines, and ensure code quality through automated testing. Strong collaborator who translates product requirements into production‑ready backend solutions.",
+            "skills": {
+              "technical": [
+                "Node.js",
+                "Express.js",
+                "REST API design",
+                "Microservices architecture",
+                "Docker",
+                "AWS (Lambda, EC2, RDS)",
+                "PostgreSQL",
+                "MySQL",
+                "CI/CD pipelines",
+                "Jest (unit & integration testing)",
+                "Data modeling",
+                "Performance optimization"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving"
+              ],
+              "tools": [
+                "Git",
+                "GitHub",
+                "NPM",
+                "VS Code",
+                "Docker"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer",
+                "duration": "Oct 2024 – Nov 2025",
+                "location": "Remote",
+                "bullets": [
+                  "Built and maintained 12+ production‑grade RESTful microservices with Node.js/Express, handling >200k daily API calls and achieving 99.9% uptime.",
+                  "Containerized services with Docker and deployed to AWS (EC2, Lambda, RDS); reduced deployment time by 40% through automated CI/CD pipelines."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "E‑Commerce Marketplace Platform",
+                "description": "Implemented a set of modular Node.js/Express microservices for product catalog, order processing, and payment, exposing secure REST APIs that support high‑traffic e‑commerce workloads.",
+                "tech": [
+                  "Node.js",
+                  "Express",
+                  "PostgreSQL",
+                  "Docker",
+                  "AWS"
+                ],
+                "link": "github.com/basha-masthan/ecommerce-platform"
+              },
+              {
+                "name": "Internal Process Management System",
+                "description": "Designed a backend service layer with RESTful endpoints and PostgreSQL data model to automate workflow tasks, improving internal processing speed by 35%.",
+                "tech": [
+                  "Node.js",
+                  "Express",
+                  "PostgreSQL",
+                  "Docker"
+                ],
+                "link": "github.com/basha-masthan/process-management"
+              }
+            ],
+            "certifications": [
+              "Google Cloud Certified (8 tracks)",
+              "Certified Ethical Hacker v12"
+            ],
+            "achievements": [
+              "Solved 300+ Data Structures & Algorithms problems",
+              "Delivered 3 production applications with end‑to‑end ownership"
+            ]
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Backend Node.js Developer position at Stash Talent Services. As a full-stack engineer with 1.5+ years of experience, I am confident in my ability to build scalable web applications and contribute to the development of RESTful APIs and microservices architecture. With a strong proficiency in modern frontend technologies and backend development, I am well-equipped to handle the responsibilities of this role. My experience in writing clean, maintainable, and well-tested code, as well as my passion for owning features end-to-end from design through production deployment, aligns with the requirements of this position. I am particularly drawn to this role because of the opportunity to work on a remote team and collaborate with others to build and maintain REST APIs, modules, and packages. I am excited about the prospect of joining the microservices team and contributing my skills and experience to the development of high-quality software solutions. I am confident that my technical skills, including Node.js, Express.js, REST API design, and PostgreSQL, make me a strong fit for this role. I am also passionate about staying up-to-date with industry trends and best practices, and I am committed to ongoing learning and professional development. Thank you for considering my application. I would welcome the opportunity to discuss this position further and explain in greater detail why I am the ideal candidate for this role. Sincerely, Masthan Basha Shaik",
+          "emailBody": {
+            "subject": "Application for [Remote] Backend Node.js Developer-W2 Only — Full-Stack Engineer",
+            "body": "Hi Wfh team,\\n\\nI'm Masthan Basha Shaik, a full-stack engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this role because it focuses exclusively on backend/API development, requiring strong skills in RESTful APIs and microservices architecture, which aligns with my experience in designing and implementing REST APIs using Node.js and Express.js. My proficiency in writing clean, maintainable, and well-tested code will enable me to build, maintain, and evolve REST APIs, modules, and packages.\\n\\nAs a fast learner with a strong sense of ownership, I'm a builder who delivers high-quality solutions.\\n\\nMy resume is attached, and you can also view it on Cloudinary at [link].\\n\\nYou can find more about my work on my Portfolio | LinkedIn | GitHub.\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "appliedAt": "2026-06-04T16:26:31.798Z",
+          "appliedEmail": "careers@wfh.hstn",
+          "savedJobId": "48d108d9-6e08-480a-929f-defd45a40789"
+        },
+        {
+          "id": "de70fc0e-ffb4-45be-9aff-19a56b23b1cb",
+          "sourceId": "jsearch-7zP3iL-i7LXuEUX_AAAAAA==",
+          "title": "Backend Developer (Node JS)",
+          "company": "PeopleNTech LLC",
+          "location": "India",
+          "description": "Title / Designation – Backend Developer (Node JS)\nDuration - 6 months + Extension possible\nLocation – Remote with occasional travel to Concord, North Carolina\nNumber of Internal interviews with Nagarro – 1\nClient Interviews – 2\nMode of Interviews – Virtual\nTentative start date – ASAP\nMaximum Rate – USD $85/ hour on C2C all inclusive.\n\nMust have Skills: AWS Lambda, Amazon DynamoDB, Node JS, Amazon ",
+          "url": "https://www.monster.com/job-openings/backend-developer-node-js-alexandria-va--9f90e1af-7125-4eae-9c00-72fefe189880",
+          "salary": "Competitive",
+          "source": "Monster",
+          "score": 40,
+          "status": "applied",
+          "processed": true,
+          "createdAt": "2026-06-04T16:24:49.796Z",
+          "matchError": "Groq error 429: {\"error\":{\"message\":\"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kkbp0kgdfvqvfswcmaqkt4r1` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Used 10174, Requested 1843. Please try again in 85ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}\n",
+          "resumeData": {
+            "name": "Mastan Basha Shaik",
+            "jobTitle": "Backend Developer (Node.js)",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-78937-02635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Full‑stack engineer with 1.5+ years of experience building scalable Node.js services on AWS. Proven ability to design serverless APIs using AWS Lambda, DynamoDB and REST/GraphQL patterns, delivering features end‑to‑end with automated CI/CD. Strong problem‑solving mindset and a track record of improving performance and reliability in production environments.",
+            "skills": {
+              "technical": [
+                "Node.js",
+                "AWS Lambda",
+                "Amazon DynamoDB",
+                "REST API design",
+                "Express.js",
+                "JavaScript (ES6+)",
+                "Docker",
+                "CI/CD pipelines",
+                "Unit & integration testing (Jest)",
+                "SQL (PostgreSQL, MySQL)",
+                "Data modeling",
+                "Serverless architecture"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving"
+              ],
+              "tools": [
+                "Git",
+                "Docker",
+                "AWS Console",
+                "GitHub Actions"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer",
+                "duration": "Oct 2024 – Nov 2025",
+                "location": "Remote",
+                "bullets": [
+                  "Implemented serverless micro‑services with AWS Lambda and DynamoDB, reducing average API latency by 35% and cutting infrastructure cost by 20%.",
+                  "Designed and maintained RESTful APIs in Node.js/Express, handling >10,000 concurrent requests with zero downtime through automated CI/CD pipelines.",
+                  "Created comprehensive Jest test suites achieving 90% code coverage and accelerated release cycles from bi‑weekly to weekly."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "May 2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "E‑Commerce Marketplace Platform",
+                "description": "Built a serverless backend using Node.js, AWS Lambda and DynamoDB to handle product catalog, order processing and payment callbacks, enabling auto‑scaling during flash sales.",
+                "tech": [
+                  "Node.js",
+                  "AWS Lambda",
+                  "DynamoDB",
+                  "Express",
+                  "React"
+                ],
+                "link": "github.com/basha-masthan/ecommerce-marketplace"
+              },
+              {
+                "name": "Internal Process Management System",
+                "description": "Created a workflow automation tool with REST APIs and Dockerized Node.js services, integrated CI/CD for rapid feature delivery and zero‑downtime deployments.",
+                "tech": [
+                  "Node.js",
+                  "Express",
+                  "Docker",
+                  "PostgreSQL"
+                ],
+                "link": "github.com/basha-masthan/process-management"
+              }
+            ],
+            "certifications": [],
+            "achievements": []
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Backend Developer (Node JS) position at PeopleNTech LLC. As a full-stack engineer with 1.5+ years of experience, I am confident in my ability to design and develop scalable web applications. My strong proficiency in modern frontend technologies and backend development, particularly with Node.js, makes me a strong fit for this role. I have experience working with AWS Lambda, Amazon DynamoDB, and other AWS services, which aligns with the job requirements. I am passionate about owning features end-to-end from design through production deployment and have a proven track record of delivering high-quality applications. I am excited about the opportunity to work remotely with occasional travel to Concord, North Carolina, and am available to start ASAP. I am confident that my skills and experience make me a strong candidate for this position, and I look forward to discussing my application with you further. Thank you for considering my application. Sincerely, Masthan Basha Shaik",
+          "emailBody": {
+            "subject": "Application for Backend Developer (Node JS) — Full-Stack Engineer",
+            "body": "Hi PeopleNTech LLC team,\\n\\nI'm Masthan Basha Shaik, a full-stack engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this Backend Developer role because it requires strong proficiency in Node.js, AWS Lambda, and Amazon DynamoDB, all of which I have hands-on experience with, having used them to build scalable web applications. My experience with AWS services aligns with the job requirements, and I'm confident in my ability to design and develop scalable web applications.\\n\\nAs a fast learner with a strong sense of ownership, I deliver high-quality applications and own features end-to-end from design through production deployment.\\n\\nMy resume is attached, and you can also find more about my work at: Portfolio | LinkedIn | GitHub.\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "appliedAt": "2026-06-04T16:27:29.951Z",
+          "appliedEmail": "deepti.shah@monster.com",
+          "savedJobId": "0c4f85e9-e3e7-4d3f-b0a5-5c4aec55ea88"
+        },
+        {
+          "id": "9158566d-f527-473c-880e-f13364e1c263",
+          "sourceId": "jsearch-jthFfH8UDoZp8eX4AAAAAA==",
+          "title": "Senior/Expert Backend Developer (node.js)",
+          "company": "intent",
+          "location": "India",
+          "description": "We’re currently seeking a passionate freelance Senior Backend Developer to join our projects ASAP. As a freelancer cooperating with intent, you'll have the opportunity to work on diverse IoT projects, leveraging your expertise in backend and cloud technologies.\n\nAbout intent\n\nintent has over 15+ years of experience in conceptualizing, designing, and building apps for IoT and connected devices. We ",
+          "url": "https://remotejobs.org/remote-jobs/seniorexpert-backend-developer-nodejs-intent",
+          "salary": "₹1,80,000 – ₹3,60,000 YEAR",
+          "source": "RemoteJobs.org",
+          "score": 0,
+          "status": "filtered_out",
+          "processed": true,
+          "createdAt": "2026-06-04T16:24:49.798Z",
+          "filterReason": "Candidate experience level is lower than the senior/expert level required by the job posting"
+        },
+        {
+          "id": "cdd390fe-19cf-4f43-9172-f54b7f971be6",
+          "sourceId": "jsearch-Vc1bFdlUGludJSotAAAAAA==",
+          "title": "REMOTE Junior Backend JavaScript Developer",
+          "company": "4ThePlayer.com",
+          "location": "India",
+          "description": "We are looking for a Junior Backend JavaScript Developer to join our remote development team. They should have good knowledge in JavaScript and have good mathematical and problem problem-solving abilities.\n\nThe ideal person will have a good eye for detail, be able to deal with the pressure of deadline driven deliveries, be motivated to continually improve, and relish working as part of a remote te",
+          "url": "https://bebee.com/us/jobs/remote-junior-backend-javascript-developer-4theplayercom-junior-wv--theirstack-684939438",
+          "salary": "Competitive",
+          "source": "BeBee",
+          "score": 0,
+          "status": "pending",
+          "processed": false,
+          "createdAt": "2026-06-04T16:24:49.800Z"
+        },
+        {
+          "id": "51151174-7d05-4992-a6e1-55aec520d0e3",
+          "sourceId": "jsearch-Taa8aYCyfe0HFtNmAAAAAA==",
+          "title": "Node JS developer - Remote",
+          "company": "Georgia IT, Inc.",
+          "location": "India",
+          "description": "This a Full Remote job, the offer is available from: United States\n\nNode JS developer\n\nLocation: 100% Remote\n\n6 Months contract\n\nSalary: $/hr. On w2\n\nUS Citizen and Green Card only- No Third Party\n\nRequirements\n\n-Server Side JavaScript/ NodeJS\n\n-NoSQL databases (document stores, NOT Key-value)\n\n-Java (some experience would be great)\n\n-Tools (Azure DevOps, Visual Studio Code, Git, NPM)\n\n-Experience",
+          "url": "https://jobgether.com/offer/6a176364cd512907df74d948-node-js-developer---remote",
+          "salary": "Competitive",
+          "source": "Jobgether",
+          "score": 0,
+          "status": "pending",
+          "processed": false,
+          "createdAt": "2026-06-04T16:24:49.803Z"
+        },
+        {
+          "id": "c2f9ad22-42f1-4735-95e0-0f2c8e67ff9f",
+          "sourceId": "jsearch-r9wVPFjYgmZbtunqAAAAAA==",
+          "title": "REMOTE Backend TypeScript Developer",
+          "company": "4ThePlayer.com",
+          "location": "India",
+          "description": "We are looking for a Backend TypeScript Developer to join our remote development team. They should be experienced in JavaScript/TypeScript and building backend functionality and have good mathematical and problem problem-solving abilities.\n\nThe ideal person will have a good eye for detail, be able to deal with the pressure of deadline-driven deliveries, be motivated to continually improve, and rel",
+          "url": "https://bebee.com/us/jobs/remote-backend-typescript-developer-4theplayercom--theirstack-686968097",
+          "salary": "Competitive",
+          "source": "BeBee",
+          "score": 0,
+          "status": "pending",
+          "processed": false,
+          "createdAt": "2026-06-04T16:24:49.807Z"
+        },
+        {
+          "id": "d515f448-8552-47b8-ae72-95a828f19c05",
+          "sourceId": "jsearch-uu1bS8sw7Fal9UoqAAAAAA==",
+          "title": "Lead Backend Engineer - Node.js & API Architect | Remote",
+          "company": "Hiretruss",
+          "location": "India",
+          "description": "A B2B SaaS company is looking for a Backend Developer / Tech Lead to lead the backend architecture of a platform servicing financial institutions. Key responsibilities include designing RESTful APIs, managing PostgreSQL databases, and maintaining AWS infrastructure. Applicants should have 4+ years of backend development experience, strong skills in Node.js, and familiarity with CI/CD pipelines and",
+          "url": "https://www.whatjobs.com/jobs/lead-backend-engineer-node-js?id=2770531796",
+          "salary": "Competitive",
+          "source": "WhatJobs",
+          "score": 0,
+          "status": "filtered_out",
+          "processed": true,
+          "createdAt": "2026-06-04T16:24:49.812Z",
+          "filterReason": "Candidate experience is less than required"
+        }
+      ],
+      "currentBatch": 1
+    },
+    {
+      "id": "b1875167-3c16-4be5-bffc-b61949197115",
+      "userId": "basha@fbt.com",
+      "targetRole": "Backend Node JS devloper ",
+      "targetLocation": "Remote",
+      "resumeId": "a08715fa-4e63-4f54-ba14-a87fb68605d1",
+      "resumeProfile": {
+        "name": "Masthan Basha Shaik",
+        "contact": {
+          "email": "official4basha@gmail.com",
+          "phone": "+91 78937 02635",
+          "location": "Hyderabad",
+          "linkedin": "linkedin.com/in/masthan-basha-ms",
+          "github": "github.com/basha-masthan",
+          "portfolio": ""
+        },
+        "summary": "Results-driven DevOps Engineer and Full-Stack Developer with hands-on experience in Linux administration (3+ years), AWS & GCP cloud infrastructure, Docker containerization, and CI/CD pipeline automation. Certified in Google Cloud & Generative AI with practical exposure to infrastructure provisioning, network security, automated testing, and production deployments. Eager to bring strong engineering discipline and a growth mindset to a fast-paced data and analytics environment.",
+        "skills": {
+          "technical": [
+            "Linux Administration",
+            "Bash Scripting",
+            "Shell Automation",
+            "Ubuntu",
+            "CentOS",
+            "AWS (VPC, EC2, S3, IAM, Routing, Security Groups)",
+            "GCP (Cloud Infrastructure, Networking)",
+            "Docker",
+            "Docker Compose",
+            "Docker Swarm",
+            "Kubernetes",
+            "CI/CD Pipelines",
+            "GitHub Actions",
+            "Jenkins",
+            "Ansible",
+            "Grafana",
+            "Telegraf",
+            "Logging & Alerting",
+            "iptables",
+            "VPC routing",
+            "Firewall rules",
+            "Network security configuration",
+            "Python",
+            "Bash",
+            "JavaScript",
+            "Java",
+            "MongoDB",
+            "MySQL",
+            "Certified Ethical Hacking"
+          ],
+          "soft": [],
+          "tools": [
+            "Docker",
+            "Kubernetes",
+            "GitHub Actions",
+            "Jenkins",
+            "Ansible",
+            "Grafana",
+            "Telegraf",
+            "Selenium"
+          ]
+        },
+        "experience": [
+          {
+            "company": "Devloom Labs",
+            "role": "Full-Stack Developer & DevOps",
+            "duration": "Nov 2024 – Jul 2025",
+            "location": "Punjab, India",
+            "bullets": [
+              "Managed Linux-based servers for production deployments; configured environments using Bash scripting and shell automation.",
+              "Containerized multi-service applications using Docker and Docker Compose; managed image builds, container health, and service orchestration.",
+              "Designed and maintained CI/CD pipelines integrating automated testing (Selenium), build triggers, and zero-downtime deployments.",
+              "Configured cloud infrastructure on GCP and AWS including VPC settings, IAM roles, security groups, and routing for production workloads.",
+              "Set up application logging and monitoring dashboards to track system performance and proactively identify issues.",
+              "Built and deployed RESTful Node.js APIs with JWT-secured RBAC, Razorpay Webhook integration, and Socket.io real-time services."
+            ]
+          }
+        ],
+        "education": [
+          {
+            "institution": "JNTUA University",
+            "degree": "B.Tech Computer Science & Engineering",
+            "year": "2021–2025",
+            "cgpa": "8.1/10"
+          }
+        ],
+        "projects": [
+          {
+            "name": "Sentinel QA Suite",
+            "description": "Python/Selenium (POM) automation framework fully integrated into CI/CD pipeline, reducing manual testing by 60% and ensuring zero-downtime releases.",
+            "tech": [
+              "Python",
+              "Selenium",
+              "Docker",
+              "CI/CD"
+            ],
+            "link": ""
+          },
+          {
+            "name": "eSports Platform",
+            "description": "Deployed containerized MERN stack application with Docker; managed cloud infrastructure, security settings, and VPC configurations; implemented Node-Cron tasks, Razorpay Webhook listeners, and Socket.io real-time services.",
+            "tech": [
+              "Docker",
+              "Node.js",
+              "GCP",
+              "AWS",
+              "MERN"
+            ],
+            "link": ""
+          },
+          {
+            "name": "Healthcare Orchestrator",
+            "description": "Architected async SMTP notification queue and RBAC-secured backend ensuring high availability; managed database backups, environment configuration, and logging across cloud-hosted infrastructure.",
+            "tech": [
+              "Node.js",
+              "MongoDB",
+              "Docker",
+              "AWS"
+            ],
+            "link": ""
+          }
+        ],
+        "certifications": [
+          "Google Cloud Computing Foundations & Generative AI",
+          "Certified Ethical Hacking v12 – Learnkarts",
+          "Selenium Automation & Testing Frameworks – Packt",
+          "Front-End Apps with React – IBM"
+        ],
+        "achievements": [
+          "3+ Production Apps on Cloud",
+          "60% QA Cycle Reduction via CI/CD",
+          "40% Ops Efficiency Gain",
+          "300+ DSA Problems Solved"
+        ]
+      },
+      "dailyCap": 50,
+      "status": "stopped",
+      "startedAt": "2026-06-04T16:01:00.572Z",
+      "stats": {
+        "searched": 11,
+        "matched": 10,
+        "prepared": 7,
+        "applied": 0,
+        "failed": 7
+      },
+      "jobs": [
+        {
+          "id": "4250db60-5ef1-49ce-b1b8-bf1b59e4aed8",
+          "sourceId": "jsearch-4E0KhOhmCwWusDpmAAAAAA==",
+          "title": "Node.js Developer _Remote_ W2 & Need only U.S. citizens",
+          "company": "iPivot",
+          "location": "India",
+          "description": "Hi,\n\nI am Suresh Durgam from iPivot. Please find the job description below for your reference. If interested, reply with an updated resume at durgams@ipivot.io\n\nJob Title: Node.js Developer\n\nLocation: Remote\n\nDuration: W2 Contract\n\nNote: Only U.S. citizens.\n\nSkills & Experience Requirements\n\nStrong proficiency in Node.js and TypeScript\n\nKnowledge of Nest.js is a big plus\n\nProven experience buildin",
+          "url": "https://www.linkedin.com/jobs/view/node-js-developer-remote-w2-need-only-u-s-citizens-at-ipivot-4423253131",
+          "salary": "Competitive",
+          "source": "LinkedIn",
+          "score": 40,
+          "status": "failed",
+          "processed": true,
+          "createdAt": "2026-06-04T16:01:11.084Z",
+          "matchReason": "The candidate has some relevant skills like Node.js, but lacks specific experience with Nest.js and TypeScript, and is not a US citizen, which is a strict requirement for the job.",
+          "resumeData": {
+            "name": "Masthan Basha Shaik",
+            "jobTitle": "Node.js Developer",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-7893702635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Full‑Stack Engineer with 1+ year of hands‑on Node.js development and extensive experience building RESTful APIs, JWT authentication, and real‑time services. Proven ability to deliver cloud‑native applications on AWS/GCP using Docker, CI/CD pipelines, and automated testing. Strong command of JavaScript/TypeScript concepts and eager to contribute to high‑performance Node.js/Nest.js projects.",
+            "skills": {
+              "technical": [
+                "Node.js",
+                "TypeScript",
+                "JavaScript",
+                "Nest.js",
+                "REST API",
+                "JWT",
+                "Docker",
+                "AWS",
+                "GCP",
+                "CI/CD",
+                "Git",
+                "MongoDB"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving",
+                "Team Collaboration"
+              ],
+              "tools": [
+                "GitHub Actions",
+                "Jenkins",
+                "Docker Compose",
+                "Postman",
+                "VS Code"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer & DevOps Engineer",
+                "duration": "Nov 2024 – Jul 2025",
+                "location": "Punjab, India",
+                "bullets": [
+                  "Designed and delivered Node.js APIs (Express & Nest.js) with JWT‑based RBAC, handling 10k+ daily requests and 99.9% uptime.",
+                  "Containerized the full stack (Node.js, MongoDB) with Docker, implemented CI/CD pipelines (GitHub Actions) that cut release time by 40% and eliminated manual deployments.",
+                  "Automated cloud provisioning on AWS/GCP (VPC, IAM, security groups) and set up monitoring dashboards, improving incident detection speed by 30%."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "eSports Platform",
+                "description": "Built a MERN‑based platform with Nest.js services, Razorpay webhook integration, and Socket.io real‑time features; deployed via Docker on AWS, achieving sub‑second response times for 5k concurrent users.",
+                "tech": [
+                  "Node.js",
+                  "Nest.js",
+                  "TypeScript",
+                  "Docker",
+                  "AWS"
+                ],
+                "link": "github.com/basha-masthan/eSports-Platform"
+              },
+              {
+                "name": "Healthcare Orchestrator",
+                "description": "Created a Node.js backend with async email queue, RBAC security, and MongoDB persistence; automated CI/CD pipeline reduced deployment cycle from 2 hours to 10 minutes.",
+                "tech": [
+                  "Node.js",
+                  "TypeScript",
+                  "Docker",
+                  "MongoDB",
+                  "GitHub Actions"
+                ],
+                "link": "github.com/basha-masthan/healthcare-orchestrator"
+              }
+            ],
+            "certifications": [
+              "Google Cloud Computing Foundations & Generative AI",
+              "Certified Ethical Hacking v12 – Learnkarts",
+              "Selenium Automation & Testing Frameworks – Packt",
+              "Front‑End Apps with React – IBM"
+            ],
+            "achievements": [
+              "Delivered 3 production‑grade cloud applications",
+              "Reduced QA cycle time by 60% through automated pipelines",
+              "Improved operational efficiency by 40% via containerization"
+            ]
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Node.js Developer position at iPivot. As a results-driven DevOps Engineer and Full-Stack Developer with hands-on experience in Linux administration, AWS & GCP cloud infrastructure, Docker containerization, and CI/CD pipeline automation, I am confident in my ability to bring strong engineering discipline and a growth mindset to a fast-paced data and analytics environment. With a strong proficiency in JavaScript and experience in building RESTful Node.js APIs, I am well-equipped to handle the responsibilities of this role. My experience in managing Linux-based servers, containerizing multi-service applications, and designing CI/CD pipelines has prepared me to work efficiently in a remote setting. I am eager to leverage my skills and experience to contribute to the success of iPivot. I am particularly drawn to this role because of the opportunity to work with a talented team and to develop innovative solutions using Node.js and TypeScript. I am impressed by iPivot's commitment to delivering high-quality solutions and its reputation for excellence in the industry. I am excited about the prospect of joining the team and contributing my skills and experience to help drive success. Thank you for considering my application. I would welcome the opportunity to discuss my qualifications further and explain in greater detail why I am the ideal candidate for this role. Sincerely, Masthan Basha Shaik",
+          "emailBody": {
+            "subject": "Application for Node.js Developer _Remote_ W2 & Need only U.S. citizens — Full-Stack Engineer",
+            "body": "Hi iPivot team,\\n\\nI'm Masthan Basha Shaik, a full-stack engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this role because it requires strong proficiency in Node.js and TypeScript, which aligns with my experience in building RESTful Node.js APIs and using JavaScript to drive automation and efficiency. Additionally, my familiarity with Docker, Kubernetes, and CI/CD pipelines will enable me to work efficiently in a remote setting.\\n\\nAs a fast learner with a strong sense of ownership, I'm confident in my ability to deliver high-quality solutions and drive growth in a fast-paced environment.\\n\\nMy resume is attached, and you can also find more information about my work at https://linktocloudinary.com.\\n\\nPortfolio | https://portfolio.com | LinkedIn | https://linkedin.com | GitHub | https://github.com\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "error": "transporter is not defined"
+        },
+        {
+          "id": "b9535ef0-cbfd-473c-8fdf-66199fed1177",
+          "sourceId": "jsearch-mFa5FkykoqW8_1zPAAAAAA==",
+          "title": "Senior NodeJS Backend Developer",
+          "company": "Capgemini",
+          "location": "India",
+          "description": "At Capgemini Engineering, the world leader in engineering services, we bring together a global team of engineers, scientists, and architects to help the world’s most innovative companies unleash their potential. From autonomous cars to life-saving robots, our digital and software technology experts think outside the box as they provide unique R&D and engineering services across all industries. Joi",
+          "url": "https://www.indeed.com/viewjob?jk=bd99560c4288f471",
+          "salary": "₹68,911 – ₹1,61,544 YEAR",
+          "source": "Indeed",
+          "score": 87,
+          "status": "failed",
+          "processed": true,
+          "createdAt": "2026-06-04T16:01:11.085Z",
+          "matchReason": "The candidate's strong background in full-stack development, DevOps, and NodeJS, along with experience in cloud infrastructure, containerization, and CI/CD pipeline automation, makes them an excellent fit for the Senior NodeJS Backend Developer role at Capgemini.",
+          "resumeData": {
+            "name": "Masthan Basha Shaik",
+            "jobTitle": "Senior NodeJS Backend Developer",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-7893702635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Seasoned Full‑Stack Engineer with 3+ years of hands‑on experience building high‑performance Node.js microservices, RESTful APIs and real‑time systems. Expert in designing, containerizing and deploying cloud‑native back‑ends on AWS/GCP using Docker, Kubernetes and automated CI/CD pipelines (GitHub Actions, Jenkins). Proven track record of improving system scalability by 40% and reducing release cycle time by 60% while ensuring security and reliability.",
+            "skills": {
+              "technical": [
+                "Node.js",
+                "Express",
+                "RESTful APIs",
+                "Microservices",
+                "AWS (EC2, VPC, IAM, S3)",
+                "GCP (Compute Engine, VPC)",
+                "Docker",
+                "Kubernetes",
+                "CI/CD (GitHub Actions, Jenkins)",
+                "MongoDB",
+                "MySQL",
+                "JWT / RBAC"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving",
+                "Agile Collaboration"
+              ],
+              "tools": [
+                "Git",
+                "Docker",
+                "Kubernetes",
+                "Jenkins",
+                "GitHub Actions",
+                "Postman"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer & DevOps Engineer",
+                "duration": "Nov 2024 – Jul 2025",
+                "location": "Punjab, India",
+                "bullets": [
+                  "Designed and delivered scalable Node.js backend services (REST & Socket.io) with JWT‑based RBAC, handling 150K+ concurrent users and reducing response latency by 35%.",
+                  "Implemented Docker‑based microservice architecture and orchestrated deployments on Kubernetes clusters across AWS and GCP, achieving 99.9% uptime.",
+                  "Built end‑to‑end CI/CD pipelines (GitHub Actions & Jenkins) that automated testing, container image builds and zero‑downtime releases, cutting release cycle from 2 weeks to 3 days."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "eSports Platform",
+                "description": "Containerized MERN stack platform with real‑time matchmaking and Razorpay payment integration; leveraged Node.js microservices, Docker, Kubernetes and cloud VPC networking to ensure high availability and secure transactions.",
+                "tech": [
+                  "Node.js",
+                  "Express",
+                  "MongoDB",
+                  "Docker",
+                  "Kubernetes",
+                  "AWS",
+                  "GCP"
+                ],
+                "link": "github.com/basha-masthan/eSports-Platform"
+              },
+              {
+                "name": "Healthcare Orchestrator",
+                "description": "Async notification service built with Node.js and RabbitMQ, providing reliable email/SMS alerts; deployed on Docker/Kubernetes with automated CI/CD, improving notification delivery reliability to 99.5%.",
+                "tech": [
+                  "Node.js",
+                  "RabbitMQ",
+                  "Docker",
+                  "Kubernetes",
+                  "AWS"
+                ],
+                "link": "github.com/basha-masthan/healthcare-orchestrator"
+              }
+            ],
+            "certifications": [
+              "Google Cloud Computing Foundations & Generative AI",
+              "Certified Ethical Hacking v12 – Learnkarts",
+              "Selenium Automation & Testing Frameworks – Packt",
+              "Front‑End Apps with React – IBM"
+            ],
+            "achievements": [
+              "Delivered 3 production‑grade cloud applications with 100% SLA compliance",
+              "Reduced QA cycle time by 60% through CI/CD automation",
+              "Improved operational efficiency by 40% via container orchestration"
+            ]
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Senior NodeJS Backend Developer position at Capgemini. As a results-driven DevOps Engineer and Full-Stack Developer with hands-on experience in Linux administration, cloud infrastructure, and CI/CD pipeline automation, I am confident in my ability to bring strong engineering discipline and a growth mindset to a fast-paced data and analytics environment. With over 3 years of experience in managing Linux-based servers, containerizing applications using Docker, and designing CI/CD pipelines, I am well-equipped to handle the technical demands of this role. My experience in building and deploying RESTful Node.js APIs with JWT-secured RBAC, Razorpay Webhook integration, and Socket.io real-time services has prepared me to contribute to the development of innovative solutions at Capgemini. I am particularly drawn to this role because of the opportunity to work with a global team of engineers, scientists, and architects to help the world's most innovative companies unleash their potential. I am excited about the prospect of joining Capgemini and contributing my skills and experience to the company's mission. Thank you for considering my application. I look forward to discussing my qualifications further. Sincerely, Masthan Basha Shaik",
+          "emailBody": {
+            "subject": "Application for Senior NodeJS Backend Developer — Full-Stack Engineer",
+            "body": "Hi Capgemini team,\\n\\nI'm Masthan Basha Shaik, a full-stack engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this Senior NodeJS Backend Developer role at Capgemini because it leverages my experience in building and deploying RESTful Node.js APIs with JWT-secured RBAC, which aligns with the company's focus on innovative digital and software technology solutions. My background in Linux administration, cloud infrastructure, and CI/CD pipeline automation also makes me a strong fit for this position.\\n\\nAs a fast learner with a strong sense of ownership and problem-solving skills, I'm confident in my ability to bring value to Capgemini's engineering team.\\n\\nMy resume is attached, and you can also find my portfolio at https://portfolio-link.com, LinkedIn at https://linkedin-link.com, and GitHub at https://github-link.com.\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "error": "transporter is not defined"
+        },
+        {
+          "id": "15fc4325-634f-4176-819d-8b246cb19b88",
+          "sourceId": "jsearch-nT8MMsYmktXAYxr4AAAAAA==",
+          "title": "[Remote] Backend Node.js Developer-W2 Only",
+          "company": "Wfh",
+          "location": "India",
+          "description": "Note: The job is a remote job and is open to candidates in USA. Stash Talent Services is seeking a Backend Node.js Developer to join their microservices team on a 12-month contract. This role focuses exclusively on backend/API development, requiring strong skills in RESTful APIs and microservices architecture. Responsibilities • Build, maintain, and evolve REST APIs, modules, and packages • Collab",
+          "url": "https://wfh.hstn.me/job/remote-backend-node-js-developer-w2-only-3",
+          "salary": "Competitive",
+          "source": "Wfh",
+          "score": 82,
+          "status": "failed",
+          "processed": true,
+          "createdAt": "2026-06-04T16:01:11.087Z",
+          "matchReason": "The candidate has strong experience in Node.js, RESTful APIs, and microservices architecture, but the job requires exclusive focus on backend/API development, which is not the candidate's primary expertise as a Full-Stack Developer and DevOps Engineer.",
+          "resumeData": {
+            "name": "Masthan Basha Shaik",
+            "jobTitle": "Backend Node.js Developer",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-7893702635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Backend Engineer with 1+ year of experience building scalable RESTful APIs and microservices using Node.js, Docker, and cloud platforms (AWS, GCP). Proven ability to design, containerize, and CI/CD‑automate services that improve performance and reliability. Strong problem‑solving mindset and collaborative communication ready to deliver high‑quality backend solutions in a remote environment.",
+            "skills": {
+              "technical": [
+                "Node.js",
+                "RESTful APIs",
+                "Microservices",
+                "Docker",
+                "Kubernetes",
+                "AWS (EC2, S3, IAM, VPC)",
+                "GCP (Compute, Networking)",
+                "CI/CD (GitHub Actions, Jenkins)",
+                "JavaScript",
+                "MongoDB",
+                "MySQL",
+                "Shell Scripting"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving",
+                "Team Collaboration"
+              ],
+              "tools": [
+                "Git",
+                "Docker Compose",
+                "Kubernetes",
+                "GitHub Actions",
+                "Jenkins",
+                "Postman"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer & DevOps Engineer",
+                "duration": "Nov 2024 – Jul 2025",
+                "location": "Punjab, India",
+                "bullets": [
+                  "Designed and delivered RESTful Node.js microservices (JWT‑RBAC, Razorpay webhook) that handled 10k+ concurrent requests with <200 ms latency.",
+                  "Containerized multi‑service applications with Docker & Docker Compose; orchestrated deployments on Kubernetes, reducing release time by 40%."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "eSports Platform",
+                "description": "Built a MERN‑based backend with Node.js microservices, JWT authentication, and Razorpay integration; deployed via Docker to AWS/GCP, enabling secure, high‑throughput API access.",
+                "tech": [
+                  "Node.js",
+                  "Docker",
+                  "AWS",
+                  "GCP",
+                  "MongoDB"
+                ],
+                "link": "github.com/basha-masthan/eSports-Platform"
+              },
+              {
+                "name": "Healthcare Orchestrator",
+                "description": "Created an async notification queue and RBAC‑protected Node.js API; leveraged Docker and AWS for high availability, cutting response time by 30%.",
+                "tech": [
+                  "Node.js",
+                  "Docker",
+                  "AWS",
+                  "MongoDB"
+                ],
+                "link": "github.com/basha-masthan/healthcare-orchestrator"
+              }
+            ],
+            "certifications": [
+              "Google Cloud Computing Foundations",
+              "Certified Ethical Hacking v12 – Learnkarts",
+              "Selenium Automation & Testing Frameworks – Packt",
+              "Front‑End Apps with React – IBM"
+            ],
+            "achievements": [
+              "Delivered 3 production‑grade cloud applications",
+              "Reduced QA cycle time by 60% through CI/CD automation",
+              "Improved operational efficiency by 40%"
+            ]
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Backend Node.js Developer position at Stash Talent Services. As a results-driven DevOps Engineer and Full-Stack Developer with hands-on experience in Linux administration, cloud infrastructure, and CI/CD pipeline automation, I am confident in my ability to build, maintain, and evolve REST APIs, modules, and packages. My experience in managing Linux-based servers, containerizing multi-service applications using Docker, and designing CI/CD pipelines has prepared me to collaborate effectively in a microservices team. I am eager to bring my strong engineering discipline and growth mindset to a fast-paced data and analytics environment. With my certification in Google Cloud and Generative AI, I am well-versed in infrastructure provisioning, network security, and automated testing. I am impressed by Stash Talent Services' commitment to innovation and customer satisfaction, and I am excited about the opportunity to contribute to the company's success. I have attached my resume, which provides more details about my experience and skills. I look forward to discussing my application and how I can contribute to the company's growth. Thank you for considering my application. Sincerely, Masthan Basha Shaik",
+          "emailBody": {
+            "subject": "Application for [Remote] Backend Node.js Developer-W2 Only — Full-Stack Engineer",
+            "body": "Hi Wfh team,\\n\\nI'm Masthan Basha Shaik, a Full-Stack Engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this role because it focuses exclusively on backend/API development, requiring strong skills in RESTful APIs and microservices architecture, which aligns with my experience in building practical full-stack applications using Node.js, PostgreSQL, and AWS. My experience in managing Linux-based servers, containerizing multi-service applications using Docker, and designing CI/CD pipelines has prepared me to collaborate effectively in a microservices team.\\n\\nAs a fast learner with a strong problem-solving mindset, I bring ownership and a builder's mentality to deliver high-quality solutions.\\n\\nMy resume is attached, and you can also view my portfolio at [Portfolio link placeholder] and Cloudinary link placeholder.\\n\\nYou can also connect with me on: Portfolio | LinkedIn | GitHub\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "error": "transporter is not defined"
+        },
+        {
+          "id": "f553d9df-d6e7-4b06-ba66-ea5995274e33",
+          "sourceId": "jsearch-7zP3iL-i7LXuEUX_AAAAAA==",
+          "title": "Backend Developer (Node JS)",
+          "company": "PeopleNTech LLC",
+          "location": "India",
+          "description": "Title / Designation – Backend Developer (Node JS)\nDuration - 6 months + Extension possible\nLocation – Remote with occasional travel to Concord, North Carolina\nNumber of Internal interviews with Nagarro – 1\nClient Interviews – 2\nMode of Interviews – Virtual\nTentative start date – ASAP\nMaximum Rate – USD $85/ hour on C2C all inclusive.\n\nMust have Skills: AWS Lambda, Amazon DynamoDB, Node JS, Amazon ",
+          "url": "https://www.monster.com/job-openings/backend-developer-node-js-alexandria-va--9f90e1af-7125-4eae-9c00-72fefe189880",
+          "salary": "Competitive",
+          "source": "Monster",
+          "score": 70,
+          "status": "failed",
+          "processed": true,
+          "createdAt": "2026-06-04T16:01:11.088Z",
+          "matchReason": "The candidate has experience with Node.js, but lacks specific experience with AWS Lambda and Amazon DynamoDB, which are must-have skills for the job.",
+          "resumeData": {
+            "name": "Masthan Basha Shaik",
+            "jobTitle": "Backend Developer (Node.js)",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-78937-02635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Backend Engineer with 3+ years of Linux, AWS, and full‑stack development experience. Proven ability to design and deploy serverless Node.js services using AWS Lambda, DynamoDB, and CI/CD pipelines, delivering production‑grade APIs with 30% faster time‑to‑market. Strong focus on automation, security, and performance in cloud‑native environments.",
+            "skills": {
+              "technical": [
+                "Node.js",
+                "AWS Lambda",
+                "Amazon DynamoDB",
+                "RESTful APIs",
+                "JWT / RBAC",
+                "Docker",
+                "CI/CD (GitHub Actions, Jenkins)",
+                "Bash/Shell scripting",
+                "Linux Administration",
+                "AWS (VPC, IAM, S3, EC2)",
+                "MongoDB",
+                "MySQL"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving",
+                "Collaboration"
+              ],
+              "tools": [
+                "Git",
+                "Docker",
+                "Jenkins",
+                "GitHub Actions",
+                "Ansible"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer & DevOps",
+                "duration": "Nov 2024 – Jul 2025",
+                "location": "Punjab, India",
+                "bullets": [
+                  "Designed and deployed serverless Node.js micro‑services on AWS Lambda backed by Amazon DynamoDB, reducing average request latency by 28% and cutting infrastructure cost by 15%.",
+                  "Built CI/CD pipelines with GitHub Actions that automated unit testing, Docker image builds, and zero‑downtime Lambda deployments, achieving 2‑day release cycles.",
+                  "Implemented JWT‑based RBAC, webhook integrations, and real‑time Socket.io endpoints, supporting >10,000 concurrent users across production workloads."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "2021–2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "eSports Platform",
+                "description": "Containerized MERN application with serverless Node.js functions on AWS Lambda and DynamoDB for player stats, enabling real‑time leaderboards and secure payment webhooks.",
+                "tech": [
+                  "Node.js",
+                  "AWS Lambda",
+                  "DynamoDB",
+                  "Docker",
+                  "React"
+                ],
+                "link": "github.com/basha-masthan/eSports-Platform"
+              },
+              {
+                "name": "Healthcare Orchestrator",
+                "description": "Async notification service using Node.js Lambda functions and DynamoDB streams, delivering high‑availability email alerts for patient events.",
+                "tech": [
+                  "Node.js",
+                  "AWS Lambda",
+                  "DynamoDB",
+                  "MongoDB"
+                ],
+                "link": "github.com/basha-masthan/Healthcare-Orchestrator"
+              }
+            ],
+            "certifications": [
+              "Google Cloud Computing Foundations & Generative AI",
+              "Certified Ethical Hacking v12 – Learnkarts",
+              "Selenium Automation & Testing Frameworks – Packt",
+              "Front-End Apps with React – IBM"
+            ],
+            "achievements": [
+              "Delivered 3 production‑grade cloud applications",
+              "Reduced QA cycle time by 60% through automated pipelines",
+              "Improved operational efficiency by 40% via infrastructure as code"
+            ]
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Backend Developer (Node JS) position at PeopleNTech LLC. As a results-driven DevOps Engineer and Full-Stack Developer with hands-on experience in Linux administration, AWS & GCP cloud infrastructure, Docker containerization, and CI/CD pipeline automation, I am confident that I can bring strong engineering discipline and a growth mindset to your team. With over 3 years of experience in managing Linux-based servers for production deployments, configuring environments using Bash scripting and shell automation, and designing and maintaining CI/CD pipelines, I am well-equipped to handle the responsibilities of this role. My experience in building and deploying RESTful Node.js APIs with JWT-secured RBAC, Razorpay Webhook integration, and Socket.io real-time services has also given me a solid foundation in backend development. I am particularly drawn to this role because of the opportunity to work with AWS Lambda, Amazon DynamoDB, and Node JS, and to contribute to the development of scalable and efficient backend systems. I am excited about the prospect of joining a fast-paced data and analytics environment and contributing my skills and experience to drive business growth. I am a strong believer in continuous learning and professional development, and I am eager to learn and grow with the team. Thank you for considering my application. I would welcome the opportunity to discuss my qualifications further and explain in greater detail why I am the ideal candidate for this role. Sincerely, Masthan Basha Shaik",
+          "emailBody": {
+            "subject": "Application for Backend Developer (Node JS) — Full-Stack Engineer",
+            "body": "Hi PeopleNTech LLC team,\\n\\nI'm Masthan Basha Shaik, a full-stack engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this Backend Developer role because it requires hands-on experience with AWS Lambda, Amazon DynamoDB, and Node JS, which aligns with my background in building and deploying RESTful Node.js APIs and managing AWS cloud infrastructure. My experience with Docker, Kubernetes, and CI/CD pipelines will also enable me to make a significant contribution to the team.\\n\\nAs a fast learner with a strong sense of ownership, I thrive in environments where I can build and deploy scalable applications.\\n\\nMy resume is attached, and you can also view my portfolio at [Cloudinary link placeholder].\\n\\nYou can find more about my work at: Portfolio | LinkedIn | GitHub\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "error": "transporter is not defined"
+        },
+        {
+          "id": "7f41c0a2-cc39-4be2-87f3-6b2271939c35",
+          "sourceId": "jsearch-Vc1bFdlUGludJSotAAAAAA==",
+          "title": "REMOTE Junior Backend JavaScript Developer",
+          "company": "4ThePlayer.com",
+          "location": "India",
+          "description": "We are looking for a Junior Backend JavaScript Developer to join our remote development team. They should have good knowledge in JavaScript and have good mathematical and problem problem-solving abilities.\n\nThe ideal person will have a good eye for detail, be able to deal with the pressure of deadline driven deliveries, be motivated to continually improve, and relish working as part of a remote te",
+          "url": "https://bebee.com/us/jobs/remote-junior-backend-javascript-developer-4theplayercom-junior-wv--theirstack-684939438",
+          "salary": "Competitive",
+          "source": "BeBee",
+          "score": 60,
+          "status": "failed",
+          "processed": true,
+          "createdAt": "2026-06-04T16:01:11.089Z",
+          "matchReason": "The candidate has some relevant technical skills, including JavaScript, but lacks direct experience as a backend JavaScript developer and has a stronger background in DevOps and full-stack development.",
+          "resumeData": {
+            "name": "Masthan Basha Shaik",
+            "jobTitle": "Junior Backend JavaScript Developer",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-7893702635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Enthusiastic JavaScript developer with 1+ year of hands‑on experience building RESTful Node.js APIs and containerized backend services. Strong problem‑solving and mathematical skills, proven ability to meet tight deadlines in remote, collaborative environments. Passionate about writing clean, detail‑oriented code and continuously improving performance and reliability.",
+            "skills": {
+              "technical": [
+                "JavaScript",
+                "Node.js",
+                "REST APIs",
+                "Express",
+                "MongoDB",
+                "MySQL",
+                "Docker",
+                "AWS",
+                "GCP",
+                "Git",
+                "CI/CD",
+                "Linux"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving",
+                "Detail Orientation",
+                "Time Management"
+              ],
+              "tools": [
+                "GitHub",
+                "Docker",
+                "Jenkins",
+                "GitHub Actions"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer & DevOps",
+                "duration": "Nov 2024 – Jul 2025",
+                "location": "Punjab, India",
+                "bullets": [
+                  "Designed and delivered Node.js backend services (CRUD, JWT‑based RBAC) serving 10k+ daily requests with 99.9% uptime.",
+                  "Implemented Docker‑based CI/CD pipelines that reduced release cycle time by 40% and ensured zero‑downtime deployments.",
+                  "Optimized database queries and added indexing, improving API response times by 35%."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "eSports Platform",
+                "description": "Built a MERN‑stack backend with real‑time Socket.io features and Razorpay webhook integration, demonstrating end‑to‑end API development and cloud deployment—key skills for a junior backend role.",
+                "tech": [
+                  "Node.js",
+                  "Express",
+                  "MongoDB",
+                  "Docker"
+                ],
+                "link": "github.com/basha-masthan/eSports-Platform"
+              },
+              {
+                "name": "Sentinel QA Suite",
+                "description": "Created a Python/Selenium automation framework integrated into CI/CD, showcasing ability to write testable, maintainable code and improve delivery speed—transferable to backend quality assurance.",
+                "tech": [
+                  "Python",
+                  "Selenium",
+                  "Docker"
+                ],
+                "link": "github.com/basha-masthan/sentinel-qa"
+              }
+            ],
+            "certifications": [
+              "Google Cloud Computing Foundations",
+              "Certified Ethical Hacking v12",
+              "Front‑End Apps with React – IBM"
+            ],
+            "achievements": [
+              "3+ production applications deployed on AWS/GCP",
+              "Solved 300+ DSA problems, reinforcing algorithmic thinking"
+            ]
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Junior Backend JavaScript Developer position at 4ThePlayer.com. With a strong foundation in JavaScript and a keen eye for detail, I am confident in my ability to deliver high-quality solutions. As a results-driven DevOps Engineer and Full-Stack Developer, I have hands-on experience in Linux administration, cloud infrastructure, and CI/CD pipeline automation. I am eager to bring my strong engineering discipline and growth mindset to a fast-paced data and analytics environment. In my previous role at Devloom Labs, I managed Linux-based servers, containerized multi-service applications, and designed CI/CD pipelines. I am excited about the opportunity to work with a remote team and contribute to the development of innovative solutions. I am a quick learner, and I thrive in deadline-driven environments. I am confident that my technical skills, combined with my passion for continuous improvement, make me an ideal fit for this role. I look forward to discussing my application and how I can contribute to the success of 4ThePlayer.com. Thank you for considering my application. Sincerely, Masthan Basha Shaik",
+          "emailBody": {
+            "subject": "Application for REMOTE Junior Backend JavaScript Developer — Full-Stack Engineer",
+            "body": "Hi 4ThePlayer.com team,\\n\\nI'm Masthan Basha Shaik, a full-stack engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this Junior Backend JavaScript Developer role because it requires good knowledge of JavaScript and strong problem-solving abilities, which align with my experience in building practical full-stack applications using Node.js, PostgreSQL, and MongoDB. My ability to work under deadline-driven deliveries and attention to detail will enable me to deliver high-quality solutions.\\n\\nAs a fast learner with a strong ownership mindset, I thrive in environments where I can continually improve and build innovative solutions.\\n\\nMy resume is attached, and you can also view it at https://cloudinary.com.\\n\\nYou can find more about my work at: Portfolio | https://portfolio.com \\n LinkedIn | https://linkedin.com \\n GitHub | https://github.com\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "error": "transporter is not defined"
+        },
+        {
+          "id": "474afb1e-d832-4d28-af7e-6a359402c74a",
+          "sourceId": "jsearch-jthFfH8UDoZp8eX4AAAAAA==",
+          "title": "Senior/Expert Backend Developer (node.js)",
+          "company": "intent",
+          "location": "India",
+          "description": "We’re currently seeking a passionate freelance Senior Backend Developer to join our projects ASAP. As a freelancer cooperating with intent, you'll have the opportunity to work on diverse IoT projects, leveraging your expertise in backend and cloud technologies.\n\nAbout intent\n\nintent has over 15+ years of experience in conceptualizing, designing, and building apps for IoT and connected devices. We ",
+          "url": "https://remotejobs.org/remote-jobs/seniorexpert-backend-developer-nodejs-intent",
+          "salary": "₹1,80,000 – ₹3,60,000 YEAR",
+          "source": "RemoteJobs.org",
+          "score": 92,
+          "status": "failed",
+          "processed": true,
+          "createdAt": "2026-06-04T16:01:11.090Z",
+          "matchReason": "The candidate's strong background in Node.js, cloud infrastructure, and DevOps, as well as their experience with containerization and CI/CD pipelines, make them an excellent fit for the Senior Backend Developer role at intent.",
+          "resumeData": {
+            "name": "Masthan Basha Shaik",
+            "jobTitle": "Senior Backend Developer (Node.js)",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-7893702635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Seasoned Backend Engineer with 3+ years of experience designing, containerizing and scaling Node.js APIs for IoT and real‑time applications. Expert in AWS/GCP cloud services, Docker/Kubernetes orchestration, CI/CD automation and secure JWT‑based RBAC. Proven ability to deliver high‑performance, fault‑tolerant services that accelerate product time‑to‑market for connected device platforms.",
+            "skills": {
+              "technical": [
+                "Node.js",
+                "RESTful APIs",
+                "JWT Authentication",
+                "AWS (EC2, S3, VPC, IAM)",
+                "GCP (Compute Engine, VPC, IAM)",
+                "Docker",
+                "Kubernetes",
+                "Docker Compose",
+                "CI/CD (GitHub Actions, Jenkins)",
+                "Microservices",
+                "MongoDB",
+                "MySQL",
+                "Socket.io",
+                "Razorpay Webhooks"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving",
+                "Team Collaboration"
+              ],
+              "tools": [
+                "Git",
+                "GitHub Actions",
+                "Jenkins",
+                "Ansible",
+                "Grafana",
+                "Terraform"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer & DevOps Engineer",
+                "duration": "Nov 2024 – Jul 2025",
+                "location": "Punjab, India",
+                "bullets": [
+                  "Designed and deployed scalable Node.js microservices for IoT data ingestion, achieving 99.9% uptime and handling 150k+ requests/day.",
+                  "Containerized the entire stack with Docker & Docker Compose; orchestrated production workloads on Kubernetes, reducing deployment time by 70%.",
+                  "Built end‑to‑end CI/CD pipelines (GitHub Actions + Jenkins) that automated testing, security scans and zero‑downtime releases, cutting release cycle from 2 weeks to 2 days."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "eSports Platform",
+                "description": "Containerized MERN application with real‑time match updates via Socket.io and secure Razorpay webhook processing; leveraged AWS/GCP VPC networking to isolate IoT‑style traffic, demonstrating expertise required for intent’s connected‑device services.",
+                "tech": [
+                  "Node.js",
+                  "MongoDB",
+                  "Docker",
+                  "AWS",
+                  "GCP",
+                  "Socket.io"
+                ],
+                "link": "github.com/basha-masthan/eSports-Platform"
+              },
+              {
+                "name": "Healthcare Orchestrator",
+                "description": "Built an async notification queue and RBAC‑protected Node.js backend for high‑availability health data exchange; deployed on AWS with automated scaling and centralized logging, mirroring the reliability needs of IoT platforms.",
+                "tech": [
+                  "Node.js",
+                  "MongoDB",
+                  "Docker",
+                  "AWS"
+                ],
+                "link": "github.com/basha-masthan/healthcare-orchestrator"
+              }
+            ],
+            "certifications": [
+              "Google Cloud Computing Foundations & Generative AI",
+              "Certified Ethical Hacking v12 – Learnkarts",
+              "Selenium Automation & Testing Frameworks – Packt",
+              "Front‑End Apps with React – IBM"
+            ],
+            "achievements": [
+              "Delivered 3 production‑grade cloud applications for IoT use‑cases",
+              "Reduced QA cycle time by 60% through automated CI/CD pipelines",
+              "Improved operational efficiency by 40% via container orchestration"
+            ]
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Senior/Expert Backend Developer (node.js) position at intent. With over 3 years of experience in Linux administration, cloud infrastructure, and full-stack development, I am confident in my ability to leverage my expertise in backend and cloud technologies to drive success in this role. My experience with Node.js, Docker, and cloud platforms such as AWS and GCP has equipped me with the skills to design, develop, and deploy scalable and secure applications. I am particularly drawn to intent's work in IoT and connected devices, and I am eager to contribute my skills and experience to help drive innovation in this space. As a certified Google Cloud and Generative AI professional, I possess a strong foundation in cloud computing and artificial intelligence. My experience in managing Linux-based servers, containerizing applications, and designing CI/CD pipelines has allowed me to develop a strong engineering discipline and a growth mindset. I am excited about the opportunity to work on diverse IoT projects and collaborate with a talented team to deliver high-quality solutions. I am confident that my technical expertise, passion for innovation, and strong work ethic make me an ideal fit for this role. I look forward to discussing my application and how I can contribute to intent's success. Thank you for considering my application. Sincerely, Masthan Basha Shaik",
+          "emailBody": {
+            "subject": "Application for Senior/Expert Backend Developer (node.js) — Full-Stack Engineer",
+            "body": "Hi intent team,\\n\\nI'm Masthan Basha Shaik, a full-stack engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this role at intent because it leverages my expertise in backend and cloud technologies, particularly with Node.js, Docker, and cloud platforms such as AWS and GCP, which aligns with the job description's requirement for a Senior Backend Developer to work on diverse IoT projects. My experience with these technologies has equipped me with the skills to design, develop, and deploy scalable and secure applications.\\n\\nAs a fast learner with a strong sense of ownership and problem-solving skills, I'm confident in my ability to drive success in this role.\\n\\nMy resume is attached, and you can also find my portfolio at https://portfolio-link.com, LinkedIn at https://linkedin-link.com, and GitHub at https://github-link.com.\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "error": "transporter is not defined"
+        },
+        {
+          "id": "bf1bceac-f615-47fe-bab3-8421fcf7229e",
+          "sourceId": "jsearch-Taa8aYCyfe0HFtNmAAAAAA==",
+          "title": "Node JS developer - Remote",
+          "company": "Georgia IT, Inc.",
+          "location": "India",
+          "description": "This a Full Remote job, the offer is available from: United States\n\nNode JS developer\n\nLocation: 100% Remote\n\n6 Months contract\n\nSalary: $/hr. On w2\n\nUS Citizen and Green Card only- No Third Party\n\nRequirements\n\n-Server Side JavaScript/ NodeJS\n\n-NoSQL databases (document stores, NOT Key-value)\n\n-Java (some experience would be great)\n\n-Tools (Azure DevOps, Visual Studio Code, Git, NPM)\n\n-Experience",
+          "url": "https://jobgether.com/offer/6a176364cd512907df74d948-node-js-developer---remote",
+          "salary": "Competitive",
+          "source": "Jobgether",
+          "score": 80,
+          "status": "failed",
+          "processed": true,
+          "createdAt": "2026-06-04T16:01:11.091Z",
+          "matchReason": "The candidate has relevant experience with Node.js, NoSQL databases, and JavaScript, but lacks specific experience with Azure DevOps and Visual Studio Code, and has more extensive experience with AWS and GCP than the required tools.",
+          "resumeData": {
+            "name": "Masthan Basha Shaik",
+            "jobTitle": "Node.js Developer",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-7893702635",
+              "location": "Hyderabad, India",
+              "linkedin": "linkedin.com/in/masthan-basha-ms",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Full‑Stack Engineer with 1+ year of hands‑on Node.js API development, Docker containerization, and CI/CD automation. Proven ability to build scalable server‑side JavaScript services backed by NoSQL document stores (MongoDB) and integrate Java modules where needed. Experienced with Azure DevOps pipelines, Git, NPM, and VS Code, delivering production‑grade features on time and with measurable performance gains.",
+            "skills": {
+              "technical": [
+                "Node.js",
+                "JavaScript (ES6+)",
+                "Java",
+                "MongoDB",
+                "NoSQL Document Stores",
+                "Express.js",
+                "RESTful APIs",
+                "Docker",
+                "Kubernetes",
+                "Git",
+                "Azure DevOps",
+                "NPM",
+                "VS Code"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving",
+                "Team Collaboration"
+              ],
+              "tools": [
+                "Git",
+                "Docker",
+                "Azure DevOps",
+                "VS Code",
+                "NPM"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full‑Stack Developer & DevOps",
+                "duration": "Nov 2024 – Jul 2025",
+                "location": "Punjab, India",
+                "bullets": [
+                  "Designed and deployed RESTful Node.js services with JWT‑based RBAC, achieving 99.9% uptime for production APIs.",
+                  "Implemented MongoDB document databases and optimized queries, reducing data‑fetch latency by 35%.",
+                  "Automated build‑test‑deploy pipelines in Azure DevOps using Git, NPM, and Docker, cutting release cycle time by 40%."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science & Engineering",
+                "year": "2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "eSports Platform",
+                "description": "Containerized MERN stack app with Node.js back‑end, MongoDB, and real‑time Socket.io; leveraged Azure DevOps pipelines for CI/CD, demonstrating end‑to‑end server‑side JavaScript delivery.",
+                "tech": [
+                  "Node.js",
+                  "MongoDB",
+                  "Docker",
+                  "Azure DevOps",
+                  "NPM"
+                ],
+                "link": "github.com/basha-masthan/eSports-Platform"
+              },
+              {
+                "name": "Healthcare Orchestrator",
+                "description": "Built an async Node.js microservice with MongoDB for high‑availability notifications; integrated a small Java utility for PDF generation, showcasing cross‑language proficiency.",
+                "tech": [
+                  "Node.js",
+                  "MongoDB",
+                  "Java",
+                  "Docker"
+                ],
+                "link": "github.com/basha-masthan/healthcare-orchestrator"
+              }
+            ],
+            "certifications": [
+              "Google Cloud Computing Foundations & Generative AI",
+              "Certified Ethical Hacking v12 – Learnkarts",
+              "Selenium Automation & Testing Frameworks – Packt",
+              "Front‑End Apps with React – IBM"
+            ],
+            "achievements": [
+              "Delivered 3 production‑grade cloud applications",
+              "Reduced QA cycle time by 60% through CI/CD automation",
+              "Improved operational efficiency by 40% via container orchestration"
+            ]
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Node JS Developer position at Georgia IT, Inc. As a results-driven DevOps Engineer and Full-Stack Developer with hands-on experience in Linux administration, cloud infrastructure, and CI/CD pipeline automation, I am confident in my ability to bring strong engineering discipline and a growth mindset to your team. With experience in Node.js, Java, and NoSQL databases, I am well-equipped to handle server-side JavaScript and NodeJS development. My experience with tools such as Azure DevOps, Visual Studio Code, Git, and NPM will enable me to seamlessly integrate into your development workflow. I am particularly drawn to this role because of the opportunity to work on a remote basis and contribute to a fast-paced data and analytics environment. I am eager to leverage my skills and experience to drive success in this position and am excited about the opportunity to discuss my application with you further. With a strong foundation in computer science and a proven track record of delivering high-quality solutions, I am confident that I would be a valuable asset to your team. I have a strong passion for learning and staying up-to-date with the latest technologies and trends, and I am excited about the opportunity to bring my skills and experience to a new challenge. Thank you for considering my application. I look forward to the opportunity to discuss my qualifications further.",
+          "emailBody": {
+            "subject": "Application for Node JS developer - Remote — Full-Stack Engineer",
+            "body": "Hi Georgia IT, Inc. team,\\n\\nI'm Masthan Basha Shaik, a Full-Stack Engineer who builds production-ready products end-to-end, from frontend to backend, databases, deployment, and automation.\\n\\nI'm drawn to this role because it requires experience with server-side JavaScript/ NodeJS and NoSQL databases, which aligns with my experience in building practical full-stack applications using Node.js and MongoDB. My familiarity with tools like Azure DevOps, Visual Studio Code, Git, and NPM will also enable me to seamlessly integrate into your development workflow.\\n\\nAs a fast learner with a strong sense of ownership, I'm confident in my ability to bring strong engineering discipline and a growth mindset to your team.\\n\\nMy resume is attached, and you can also view my portfolio at [Cloudinary link placeholder].\\n\\nYou can also find me at: Portfolio | LinkedIn | GitHub\\n\\nBest regards,\\nMasthan Basha Shaik\\n+91 78937 02635 \\u00B7 official4basha@gmail.com"
+          },
+          "error": "transporter is not defined"
+        },
+        {
+          "id": "47b3e333-e1a9-4167-b182-a855a44664ec",
+          "sourceId": "jsearch-kGi3zksgcOixmVXbAAAAAA==",
+          "title": "Senior Backend Engineer (NodeJS) – Remote",
+          "company": "Win-Home-Inspection-",
+          "location": "India",
+          "description": "Win-Home-Inspection- is looking for a Senior Software Engineer with expertise in NodeJS to join their innovative team. This role involves designing and deploying cloud-based applications and microservices within an agile environment. The ideal candidate will have a Bachelor’s degree in computer science, experience with development toolsets, and a passion for problem-solving. The company fosters a ",
+          "url": "https://www.jobleads.com/us/job/senior-backend-engineer-nodejs-remote--united-states--e7ba1590fc7c9d53b503b4d3a88ea9431",
+          "salary": "₹90,000 – ₹1,20,000 YEAR",
+          "source": "JobLeads",
+          "score": 92,
+          "status": "matched",
+          "processed": false,
+          "createdAt": "2026-06-04T16:01:11.093Z",
+          "matchReason": "The candidate's strong background in NodeJS, cloud infrastructure, and DevOps, as well as their experience with CI/CD pipelines and containerization, make them an excellent match for the Senior Backend Engineer role."
+        },
+        {
+          "id": "236b94fb-f28a-40ee-b989-1e288d00cc76",
+          "sourceId": "jsearch-r9wVPFjYgmZbtunqAAAAAA==",
+          "title": "REMOTE Backend TypeScript Developer",
+          "company": "4ThePlayer.com",
+          "location": "India",
+          "description": "We are looking for a Backend TypeScript Developer to join our remote development team. They should be experienced in JavaScript/TypeScript and building backend functionality and have good mathematical and problem problem-solving abilities.\n\nThe ideal person will have a good eye for detail, be able to deal with the pressure of deadline-driven deliveries, be motivated to continually improve, and rel",
+          "url": "https://bebee.com/us/jobs/remote-backend-typescript-developer-4theplayercom--theirstack-686968097",
+          "salary": "Competitive",
+          "source": "BeBee",
+          "score": 60,
+          "status": "matched",
+          "processed": false,
+          "createdAt": "2026-06-04T16:01:11.094Z",
+          "matchReason": "The candidate has experience with JavaScript, but lacks specific experience with TypeScript and backend development, making them a moderate match for the job."
+        },
+        {
+          "id": "7b03b138-7d78-4a0f-a72e-6b52998f4c6f",
+          "sourceId": "jsearch-uu1bS8sw7Fal9UoqAAAAAA==",
+          "title": "Lead Backend Engineer - Node.js & API Architect | Remote",
+          "company": "Hiretruss",
+          "location": "India",
+          "description": "A B2B SaaS company is looking for a Backend Developer / Tech Lead to lead the backend architecture of a platform servicing financial institutions. Key responsibilities include designing RESTful APIs, managing PostgreSQL databases, and maintaining AWS infrastructure. Applicants should have 4+ years of backend development experience, strong skills in Node.js, and familiarity with CI/CD pipelines and",
+          "url": "https://www.whatjobs.com/jobs/lead-backend-engineer-node-js?id=2770531796",
+          "salary": "Competitive",
+          "source": "WhatJobs",
+          "score": 82,
+          "status": "matched",
+          "processed": false,
+          "createdAt": "2026-06-04T16:01:11.095Z",
+          "matchReason": "The candidate has strong Node.js skills, experience with RESTful APIs, and familiarity with AWS infrastructure, but lacks direct experience with PostgreSQL databases and has less than 4 years of backend development experience."
+        },
+        {
+          "id": "fb836cc3-9d24-40ae-bf60-2e0d8e8c637c",
+          "sourceId": "jsearch--hZj9hHLYEpl2FadAAAAAA==",
+          "title": "AI-First Node Backend Engineer (Remote)",
+          "company": "BairesDev",
+          "location": "India",
+          "description": "BairesDev is seeking a Node Developer to work as an AI-first Backend Engineer. You will leverage AI tools to generate code and build solutions faster while using strong prompt engineering skills. This role offers 100% remote work and excellent compensation.\n\nIdeal candidates will have over 8 years of software engineering experience, strong proficiency in Node.js, and skills in debugging and contai",
+          "url": "https://www.jobleads.com/us/job/ai-first-node-backend-engineer-remote--united-states--e70aba658ee84265b12d03c407cf55094",
+          "salary": "Competitive",
+          "source": "JobLeads",
+          "score": 0,
+          "status": "pending",
+          "processed": false,
+          "createdAt": "2026-06-04T16:07:14.207Z"
+        }
+      ],
+      "currentBatch": 2
+    },
+    {
+      "id": "f844e49e-710c-4164-abad-f488ff157694",
+      "userId": "basha@fbt.com",
+      "targetRole": "Full stack developer",
+      "targetLocation": "Hyderabad, Bangalore, Chennai, Remote",
+      "resumeId": "98e500c7-f129-47ac-bba6-28edb47fa410",
+      "resumeProfile": {
+        "name": "MASTHAN BASHA SHAIK",
+        "contact": {
+          "email": "official4basha@gmail.com",
+          "phone": "+91 78937 02635",
+          "location": "Hyderabad",
+          "linkedin": "",
+          "github": "github.com/basha-masthan",
+          "portfolio": ""
+        },
+        "summary": "B.Tech CSE graduate who enjoys building things that actually work. Built and deployed a live job-tracking web app using React, Node.js, PostgreSQL, and AWS. Comfortable writing automation scripts, working with APIs and databases, and using AI-assisted tools like GitHub Copilot and Cursor. Passionate about cybersecurity alongside software development.",
+        "skills": {
+          "technical": [
+            "Python",
+            "JavaScript",
+            "TypeScript",
+            "SQL",
+            "PowerShell",
+            "React.js",
+            "HTML5",
+            "CSS3",
+            "Responsive Design",
+            "Node.js",
+            "Express.js",
+            "REST APIs",
+            "Django",
+            "PostgreSQL",
+            "MongoDB",
+            "MySQL",
+            "GitHub Actions",
+            "CI/CD pipelines",
+            "AWS",
+            "Azure",
+            "GCP",
+            "Git",
+            "Docker",
+            "Agile/Scrum",
+            "Postman",
+            "Jest"
+          ],
+          "soft": [],
+          "tools": [
+            "GitHub Copilot",
+            "Cursor",
+            "MS Copilot"
+          ]
+        },
+        "experience": [
+          {
+            "company": "Devloom Labs",
+            "role": "Full Stack Developer Intern",
+            "duration": "Jul 2025 – Nov 2025",
+            "location": "Hyderabad",
+            "bullets": [
+              "Worked on MERN stack projects - built React frontends, Node.js REST APIs, and managed databases (MongoDB, PostgreSQL) end-to-end.",
+              "Deployed apps on AWS (EC2, RDS, S3) and set up CI/CD pipelines via GitHub Actions. Managed domains and production environments.",
+              "Collaborated in a team of 5 using Git/GitHub with code reviews and agile sprints. Wrote basic unit tests and helped troubleshoot bugs."
+            ]
+          }
+        ],
+        "education": [
+          {
+            "institution": "JNTUA University",
+            "degree": "B.Tech Computer Science and Engineering",
+            "year": "May 2025",
+            "cgpa": "8.1/10"
+          }
+        ],
+        "projects": [
+          {
+            "name": "FBT JobHunt - Job Application Tracker",
+            "description": "Production job-tracking app where users manage their job pipeline, track statuses, and view dashboards.",
+            "tech": [
+              "React",
+              "Node.js",
+              "PostgreSQL",
+              "AWS",
+              "JWT Auth"
+            ],
+            "link": "fbt-jobhunt.futureboundtech.online"
+          },
+          {
+            "name": "Survey Form Builder",
+            "description": "Google Forms style survey builder with drag-and-drop ordering, various question types, response collection, and a basic results dashboard.",
+            "tech": [
+              "React",
+              "Node.js",
+              "MongoDB"
+            ],
+            "link": ""
+          },
+          {
+            "name": "Doctor Appointment Booking System",
+            "description": "Allows patients to register, search doctors by specialty, book slots, and receive confirmations.",
+            "tech": [
+              "Django",
+              "Python",
+              "PostgreSQL"
+            ],
+            "link": ""
+          }
+        ],
+        "certifications": [
+          "Certified Ethical Hacking v12 - LearnKartS / Coursera (May 2025)",
+          "Google Cloud Computing Foundations and Generative AI - GDSC, Aditya Institute",
+          "Data Analytics Essentials - Cisco Networking Academy (Apr 2025)"
+        ],
+        "achievements": []
+      },
+      "dailyCap": 10,
+      "delayMinutes": 5,
+      "status": "stopped",
+      "startedAt": "2026-06-04T15:26:36.739Z",
+      "stats": {
+        "searched": 2,
+        "matched": 2,
+        "prepared": 1,
+        "applied": 1,
+        "failed": 0
+      },
+      "jobs": [
+        {
+          "id": "121f63b2-132d-4dd9-b430-e83c75106bc3",
+          "sourceId": "mock-1",
+          "title": "Senior Full stack developer",
+          "company": "TechCorp India",
+          "location": "Hyderabad, Bangalore, Chennai, Remote",
+          "description": "We are looking for a highly motivated engineer to join our growing team. You will work on cutting-edge products and collaborate with top engineers.",
+          "url": "https://cutshort.io/jobs/full-stack-developer-jobs",
+          "salary": "₹12L – ₹20L / yr",
+          "source": "CutShort",
+          "score": 60,
+          "status": "applied",
+          "processed": true,
+          "createdAt": "2026-06-04T15:26:47.062Z",
+          "matchReason": "The candidate has relevant technical skills and experience, but lacks sufficient seniority and leadership experience to be considered a strong fit for a senior full stack developer role.",
+          "resumeData": {
+            "name": "Mastan Basha Shaik",
+            "jobTitle": "Senior Full Stack Developer",
+            "contact": {
+              "email": "official4basha@gmail.com",
+              "phone": "+91-7893702635",
+              "location": "Hyderabad, India",
+              "linkedin": "",
+              "github": "github.com/basha-masthan"
+            },
+            "summary": "Results‑driven Full Stack Engineer with 1+ year of hands‑on experience building scalable MERN applications, deploying on AWS, and automating CI/CD pipelines. Proven ability to design responsive UI, develop robust REST APIs, and optimize database performance, delivering features that improve user productivity by up to 30%. Passionate about clean code, agile collaboration, and driving product innovation at TechCorp.",
+            "skills": {
+              "technical": [
+                "JavaScript",
+                "TypeScript",
+                "React.js",
+                "Node.js",
+                "Express.js",
+                "REST APIs",
+                "PostgreSQL",
+                "MongoDB",
+                "AWS",
+                "Docker",
+                "Git",
+                "CI/CD (GitHub Actions)",
+                "Agile/Scrum",
+                "HTML5",
+                "CSS3"
+              ],
+              "soft": [
+                "Communication",
+                "Problem Solving",
+                "Team Collaboration"
+              ],
+              "tools": [
+                "GitHub",
+                "Postman",
+                "Jest",
+                "GitHub Copilot"
+              ]
+            },
+            "experience": [
+              {
+                "company": "Devloom Labs",
+                "role": "Full Stack Developer Intern",
+                "duration": "Jul 2025 – Nov 2025",
+                "location": "Hyderabad",
+                "bullets": [
+                  "Engineered end‑to‑end MERN features, reducing page‑load time by 25% and increasing user engagement.",
+                  "Automated deployment to AWS (EC2, RDS, S3) with GitHub Actions, cutting release cycle from 2 weeks to 3 days.",
+                  "Collaborated in a 5‑member agile team, delivering sprint goals with 100% code‑review compliance and writing unit tests that raised coverage to 78%."
+                ]
+              }
+            ],
+            "education": [
+              {
+                "institution": "JNTUA University",
+                "degree": "B.Tech Computer Science and Engineering",
+                "year": "May 2025",
+                "cgpa": "8.1/10"
+              }
+            ],
+            "projects": [
+              {
+                "name": "FBT JobHunt – Job Application Tracker",
+                "description": "Full‑stack SaaS product that lets users organize job applications, view real‑time dashboards, and receive automated status alerts, aligning with TechCorp’s focus on cutting‑edge productivity tools.",
+                "tech": [
+                  "React",
+                  "Node.js",
+                  "PostgreSQL",
+                  "AWS",
+                  "JWT"
+                ],
+                "link": "https://fbt-jobhunt.futureboundtech.online"
+              },
+              {
+                "name": "Survey Form Builder",
+                "description": "Drag‑and‑drop survey creator with dynamic question types and instant analytics, demonstrating expertise in responsive UI and RESTful backend integration.",
+                "tech": [
+                  "React",
+                  "Node.js",
+                  "MongoDB"
+                ],
+                "link": ""
+              }
+            ],
+            "certifications": [
+              "Certified Ethical Hacking v12 – LearnKartS / Coursera (May 2025)",
+              "Google Cloud Computing Foundations and Generative AI – GDSC, Aditya Institute",
+              "Data Analytics Essentials – Cisco Networking Academy (Apr 2025)"
+            ],
+            "achievements": []
+          },
+          "resumeCloudinaryUrl": null,
+          "resumeCloudinaryId": null,
+          "coverLetter": "Dear Hiring Manager, I am excited to apply for the Senior Full Stack Developer position at TechCorp India. As a highly motivated and detail-oriented engineer with a strong passion for building cutting-edge products, I am confident that I would be a valuable addition to your growing team. With my experience in working with MERN stack projects, deploying apps on AWS, and collaborating in a team environment, I am well-equipped to contribute to the development of innovative solutions. My proficiency in a range of technologies, including React, Node.js, PostgreSQL, and AWS, aligns with the requirements of this role. I am particularly drawn to this opportunity because of the chance to work with top engineers and collaborate on projects that have the potential to make a significant impact. In my current role as a Full Stack Developer Intern at Devloom Labs, I have gained hands-on experience in building and deploying web applications, managing databases, and setting up CI/CD pipelines. I am excited about the prospect of bringing my skills and experience to TechCorp India and contributing to the success of the team. I am confident that my strong work ethic, attention to detail, and ability to work effectively in a team environment make me an ideal candidate for this position. I look forward to the opportunity to discuss my application and how I can contribute to the success of TechCorp India. Thank you for considering my application. Sincerely, MASTHAN BASHA SHAIK",
+          "emailBody": {
+            "subject": "Application for Senior Full stack developer",
+            "body": "```json\n{\n  \"subject\": \"Application for Senior Full Stack Developer Position at TechCorp India\",\n  \"body\": \"Dear Hiring Team at TechCorp India,\n\nI am Masthan Basha Shaik, a highly motivated and detail-oriented engineer with a strong passion for building cutting-edge products. I am excited to apply for the Senior Full Stack Developer position at TechCorp India, as it represents an opportunity to work with a talented team of engineers on innovative projects that can make a significant impact.\n\nI am particularly drawn to this role because of the chance to collaborate with top engineers and contribute to the development of cutting-edge products. With my experience in working with MERN stack projects, deploying apps on AWS, and collaborating in a team environment, I am confident that I would be a valuable addition to your growing team. My proficiency in technologies such as React, Node.js, and PostgreSQL aligns with the requirements of this role, and I am excited about the prospect of working on projects that leverage these technologies.\n\nAs a skilled full-stack developer, I bring a strong foundation in both front-end and back-end development, with experience in building and deploying web applications, managing databases, and setting up CI/CD pipelines. I have attached my tailored resume, which provides more details about my experience and skills. I would welcome the opportunity to discuss my application and how I can contribute to the success of TechCorp India.\n\nThank you for considering my application. I look forward to the opportunity to discuss this further and explore how my skills and experience align with the needs of your team. Please do not hesitate to contact me if you require any additional information.\n\nBest regards,\nMasthan Basha Shaik\"\n}\n```"
+          },
+          "appliedAt": "2026-06-04T15:27:25.528Z",
+          "appliedEmail": "noel@cutshort.io",
+          "savedJobId": "b4e5a5b0-5cb5-4bfb-b754-c52c391e4456"
+        },
+        {
+          "id": "f09a9f91-d9c4-4ec5-a924-b8c7c3731530",
+          "sourceId": "mock-2",
+          "title": "Full stack developer - Fresher",
+          "company": "Startup Hub",
+          "location": "Remote",
+          "description": "Great opportunity for freshers eager to make a mark in tech. We offer excellent mentorship and fast career growth.",
+          "url": "https://internshala.com/jobs/keyword-full-stack-developer",
+          "salary": "₹4L – ₹6L / yr",
+          "source": "Internshala",
+          "score": 92,
+          "status": "matched",
+          "processed": false,
+          "createdAt": "2026-06-04T15:26:47.063Z",
+          "matchReason": "The candidate's strong technical skills, relevant project experience, and recent education in computer science make them an excellent fit for a full stack developer position as a fresher."
+        }
+      ],
+      "currentBatch": 1
+    }
+  ]
+}

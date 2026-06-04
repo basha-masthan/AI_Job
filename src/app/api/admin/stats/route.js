@@ -3,6 +3,8 @@ import fs from 'fs';
 import path from 'path';
 import { getSession } from '@/lib/auth';
 
+export const dynamic = 'force-dynamic';
+
 // Note: In production with a real DB, you'd query the DB directly.
 // Here we are reading the local JSON stores.
 const DATA_DIR = path.join(process.cwd(), 'data');

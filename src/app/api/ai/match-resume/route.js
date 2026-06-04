@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { matchResumeToJD } from '@/lib/ai';
+import { matchResumeToJD } from '@/lib/bedrock';
 import { getAllResumes } from '@/lib/store';
 
 export async function POST(request) {

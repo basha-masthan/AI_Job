@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth';
+
+export const dynamic = 'force-dynamic';
 import { getUserByEmail } from '@/lib/users';
 import { getGoogleOAuthClient } from '@/lib/google';
 import { google } from 'googleapis';

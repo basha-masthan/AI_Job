@@ -3,16 +3,13 @@ import { useState, useEffect, useRef } from 'react';
 import Sidebar from '@/components/Sidebar';
 import ScoreRing from '@/components/ScoreRing';
 
-const ROLES = [
-  'Senior React Developer', 'Full Stack Engineer', 'Frontend Developer',
-  'Backend Developer (Node.js)', 'Python Developer', 'Data Engineer',
-  'DevOps Engineer', 'AI/ML Engineer', 'Product Manager',
-];
+
 
 export default function MockInterviewPage() {
-  const [role, setRole] = useState('Senior React Developer');
+  const [role, setRole] = useState('');
   const [difficulty, setDifficulty] = useState('mid');
   const [mode, setMode] = useState('text'); // 'text' or 'voice'
+  const [jobDescription, setJobDescription] = useState(''); // optional job description
   
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
@@ -43,6 +40,8 @@ export default function MockInterviewPage() {
   const recordedChunksRef = useRef([]);
   const handleUserUtteranceRef = useRef(null);
   const sessionStateRef = useRef(sessionState);
+  const silenceTimeoutRef = useRef(null);
+  const finalTranscriptRef = useRef('');
 
   // Keep callback up to date without triggering dependency re-runs
   useEffect(() => {
@@ -73,7 +72,7 @@ export default function MockInterviewPage() {
       setPrefillJd(jd);
       setPrefillTitle(title || '');
       setPrefillCompany(company || '');
-      setRole(title || 'Frontend Developer');
+      setRole(title || '');
     }
 
     // Fetch initial history
@@ -87,7 +86,7 @@ export default function MockInterviewPage() {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SpeechRecognition) {
         recognitionRef.current = new SpeechRecognition();
-        recognitionRef.current.continuous = false;
+        recognitionRef.current.continuous = true;
         recognitionRef.current.interimResults = true;
         
         recognitionRef.current.onresult = (event) => {
@@ -98,8 +97,18 @@ export default function MockInterviewPage() {
             else interimTranscript += event.results[i][0].transcript;
           }
           setTranscript(interimTranscript || finalTranscript);
-          if (finalTranscript && handleUserUtteranceRef.current) {
-            handleUserUtteranceRef.current(finalTranscript);
+          
+          if (finalTranscript) {
+            finalTranscriptRef.current = finalTranscript;
+            // Clear existing timeout
+            if (silenceTimeoutRef.current) clearTimeout(silenceTimeoutRef.current);
+            
+            // Set 2 second silence timeout before confirming the answer
+            silenceTimeoutRef.current = setTimeout(() => {
+              if (finalTranscriptRef.current && handleUserUtteranceRef.current) {
+                handleUserUtteranceRef.current(finalTranscriptRef.current);
+              }
+            }, 2000); // 2 seconds of silence to confirm answer
           }
         };
 
@@ -164,7 +173,7 @@ export default function MockInterviewPage() {
         const res = await fetch('/api/training/generate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ type: 'mock-interview', role, difficulty, jobDescription: prefillJd || undefined }),
+          body: JSON.stringify({ type: 'mock-interview', role, difficulty, jobDescription: jobDescription || prefillJd || undefined }),
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || 'Failed to generate questions');
@@ -203,6 +212,7 @@ export default function MockInterviewPage() {
   }
 
   const stopMedia = () => {
+    if (silenceTimeoutRef.current) clearTimeout(silenceTimeoutRef.current);
     if (streamRef.current) streamRef.current.getTracks().forEach(track => track.stop());
     if (recognitionRef.current) recognitionRef.current.stop();
     if (synthesisRef.current) synthesisRef.current.cancel();
@@ -217,6 +227,8 @@ export default function MockInterviewPage() {
       try {
         setSessionState('listening');
         setTranscript('');
+        finalTranscriptRef.current = '';
+        if (silenceTimeoutRef.current) clearTimeout(silenceTimeoutRef.current);
         recognitionRef.current.start();
       } catch (e) { }
     }
@@ -297,7 +309,7 @@ export default function MockInterviewPage() {
       const res = await fetch('/api/training/evaluate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'mock-interview', questions, answers, role, difficulty }),
+        body: JSON.stringify({ type: 'mock-interview', questions, answers, role, difficulty, jobDescription: jobDescription || prefillJd || undefined }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Evaluation failed');
@@ -323,6 +335,7 @@ export default function MockInterviewPage() {
         formData.append('messages', JSON.stringify(voiceMessages));
         formData.append('role', role);
         formData.append('difficulty', difficulty);
+        formData.append('jobDescription', jobDescription || prefillJd || '');
 
         const res = await fetch('/api/training/evaluate-voice', {
           method: 'POST',
@@ -348,6 +361,7 @@ export default function MockInterviewPage() {
     setEvaluation(null);
     setError('');
     setVoiceMessages([]);
+    setJobDescription('');
   }
 
   // ── Setup Screen ──
@@ -384,9 +398,25 @@ export default function MockInterviewPage() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
               <div>
                 <label className="form-label" style={{ marginBottom: 8, display: 'block' }}>Target Role</label>
-                <select value={role} onChange={e => setRole(e.target.value)} className="form-select">
-                  {ROLES.map(r => <option key={r} value={r}>{r}</option>)}
-                </select>
+                <input 
+                  type="text"
+                  value={role} 
+                  onChange={e => setRole(e.target.value)} 
+                  className="form-select"
+                  placeholder="e.g., Senior React Developer, Full Stack Engineer, etc."
+                  style={{ padding: 12, borderRadius: 8 }}
+                />
+              </div>
+
+              <div>
+                <label className="form-label" style={{ marginBottom: 8, display: 'block' }}>Job Description <span style={{ color: 'var(--text-secondary)', fontSize: 12, fontWeight: 400 }}>(Optional)</span></label>
+                <textarea 
+                  value={jobDescription} 
+                  onChange={e => setJobDescription(e.target.value)} 
+                  className="form-select"
+                  placeholder="Paste the job description to get more tailored interview questions..."
+                  style={{ minHeight: 120, fontFamily: 'inherit', padding: 12, borderRadius: 8 }}
+                />
               </div>
 
               <div>

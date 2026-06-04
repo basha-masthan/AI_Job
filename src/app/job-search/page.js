@@ -42,7 +42,7 @@ const STORAGE_KEY = 'jh_india_jobs_v2';
 
 export default function IndiaJobsPage() {
   const router = useRouter();
-  const [query, setQuery] = useState('Frontend Developer');
+  const [query, setQuery] = useState('');
   const [location, setLocation] = useState('India');
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -139,13 +139,7 @@ export default function IndiaJobsPage() {
     }));
   };
 
-  // Auto-search on mount
-  useEffect(() => {
-    if (hasRestored && !initialLoadDone.current) {
-      initialLoadDone.current = true;
-      if (jobs.length === 0) handleSearch();
-    }
-  }, [hasRestored]);
+
 
   const sortedJobs = [...jobs];
   if (sortBy === 'salary-high') {
@@ -225,9 +219,15 @@ export default function IndiaJobsPage() {
                 <div style={{ width: 1, height: 20, background: 'var(--border)' }} />
 
                 <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                  <span style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 700 }}>EXP:</span>
+                  <span style={{ fontSize: 11, color: filters.experience ? 'var(--accent-primary)' : 'var(--text-muted)', fontWeight: 700 }}>EXP:</span>
                   <select className="form-input" value={filters.experience} onChange={e => setFilters({ ...filters, experience: e.target.value })}
-                    style={{ fontSize: 12, padding: '4px 10px', height: 32, borderRadius: 8, width: 150 }}>
+                    style={{ 
+                      fontSize: 12, padding: '4px 10px', height: 32, borderRadius: 8, width: 150,
+                      border: filters.experience ? '1px solid var(--accent-primary)' : '1px solid var(--border)',
+                      background: filters.experience ? 'rgba(99,102,241,0.1)' : undefined,
+                      color: filters.experience ? 'var(--accent-primary)' : undefined,
+                      fontWeight: filters.experience ? 700 : undefined,
+                    }}>
                     {EXPERIENCE_LEVELS.map(el => <option key={el.value} value={el.value}>{el.label}</option>)}
                   </select>
                 </div>
@@ -270,22 +270,23 @@ export default function IndiaJobsPage() {
           {/* Job Cards */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             {loading ? (
-              // Skeleton cards
-              [1, 2, 3, 4, 5].map(i => (
-                <div key={i} className="card" style={{ padding: 24, borderRadius: 18, display: 'flex', gap: 20, alignItems: 'flex-start', opacity: 0.5 }}>
-                  <div style={{ width: 52, height: 52, borderRadius: 14, background: 'var(--bg-secondary)' }} />
-                  <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                    <div style={{ height: 16, width: '40%', borderRadius: 6, background: 'var(--bg-secondary)' }} />
-                    <div style={{ height: 12, width: '25%', borderRadius: 6, background: 'var(--bg-secondary)' }} />
-                    <div style={{ height: 10, width: '70%', borderRadius: 6, background: 'var(--bg-secondary)' }} />
-                  </div>
-                  <div style={{ width: 110, height: 36, borderRadius: 10, background: 'var(--bg-secondary)' }} />
-                </div>
-              ))
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '60px 0', gap: 16 }}>
+                <img 
+                  src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700"
+                  alt="Searching jobs..."
+                  style={{ width: 120, height: 120, objectFit: 'contain' }}
+                />
+                <div style={{ fontSize: 14, color: 'var(--text-secondary)', fontWeight: 500 }}>Searching across all job portals...</div>
+                <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>This may take a few seconds</div>
+              </div>
             ) : sortedJobs.length === 0 ? (
               <div className="card" style={{ padding: 60, textAlign: 'center' }}>
-                <div style={{ fontSize: 40, marginBottom: 12 }}>🔍</div>
-                <p style={{ fontSize: 16, fontWeight: 500, color: 'var(--text-secondary)' }}>No jobs found. Try adjusting your search or filters.</p>
+                <div style={{ fontSize: 40, marginBottom: 12 }}>{jobs.length === 0 && !lastSearch.query ? '🔍' : '😕'}</div>
+                <p style={{ fontSize: 16, fontWeight: 500, color: 'var(--text-secondary)' }}>
+                  {jobs.length === 0 && !lastSearch.query
+                    ? 'Search for jobs above to get started'
+                    : 'No jobs found matching your filters. Try adjusting your search or experience level.'}
+                </p>
               </div>
             ) : (
               sortedJobs.map(job => <JobCard key={job.id} job={job} router={router} onViewDetails={handleViewDetails} />)

@@ -99,6 +99,57 @@ export async function GET(request) {
 
   allJobs.sort((a, b) => getPriorityScore(b) - getPriorityScore(a));
 
+  // ── Experience Level Filter (enforced server-side) ──
+  if (experience && experience.trim() !== '') {
+    const parts = experience.split('-').map(s => parseInt(s));
+    const filterMin = parts[0] || 0;
+    const filterMax = parts[1] || filterMin + 10;
+
+    // Helper: parse years from job experience string
+    const parseExpRange = (expStr) => {
+      if (!expStr || typeof expStr !== 'string') return null;
+      const t = expStr.toLowerCase();
+
+      // Fresher / entry level keywords → treat as 0-1 years
+      if (/fresher|entry[\s-]level|0\s*years?|no\s*exp|graduate/i.test(t)) {
+        return { min: 0, max: 1 };
+      }
+
+      // "X+ years" pattern
+      const plusMatch = t.match(/(\d+)\s*\+\s*years?/);
+      if (plusMatch) {
+        const n = parseInt(plusMatch[1]);
+        return { min: n, max: n + 8 };
+      }
+
+      // "X-Y years" or "X to Y years" pattern
+      const rangeMatch = t.match(/(\d+)[\s-–]+(?:to\s+)?(\d+)\s*(?:years?|yrs?)/);
+      if (rangeMatch) {
+        return { min: parseInt(rangeMatch[1]), max: parseInt(rangeMatch[2]) };
+      }
+
+      // Single number like "3 years"
+      const singleMatch = t.match(/(\d+)\s*(?:years?|yrs?)/);
+      if (singleMatch) {
+        const n = parseInt(singleMatch[1]);
+        return { min: Math.max(0, n - 1), max: n + 2 };
+      }
+
+      return null;
+    };
+
+    allJobs = allJobs.filter(job => {
+      const jobExpRange = parseExpRange(job.experience);
+
+      // If job has no experience field, be lenient — include it
+      if (!jobExpRange) return true;
+
+      // Overlap check: job's exp range overlaps with filter range
+      return jobExpRange.max >= filterMin && jobExpRange.min <= filterMax;
+    });
+  }
+
+
   // Enforce page size for lazy loading
   const total = allJobs.length;
   const paginated = allJobs.slice(0, PAGE_SIZE);
@@ -128,7 +179,20 @@ async function fetchJSearchJobs(query, location, experience, isRemote, jobType, 
   if (!keys.RAPID_JSEARCH) return [];
   try {
     const locationStr = isRemote ? 'India remote' : location;
-    const q = `${query} jobs in ${locationStr}`;
+
+    // Map experience range to a descriptive keyword for better API results
+    let expKeyword = '';
+    if (experience) {
+      const [minExp] = experience.split('-').map(Number);
+      if (minExp === 0) expKeyword = 'fresher entry level';
+      else if (minExp <= 3) expKeyword = 'junior';
+      else if (minExp <= 5) expKeyword = 'mid-level';
+      else expKeyword = 'senior';
+    }
+
+    const q = expKeyword
+      ? `${expKeyword} ${query} jobs in ${locationStr}`
+      : `${query} jobs in ${locationStr}`;
     const url = `https://jsearch.p.rapidapi.com/search?query=${encodeURIComponent(q)}&num_pages=1&page=${page}&date_posted=month`;
     const res = await fetch(url, {
       headers: {
@@ -158,6 +222,8 @@ async function fetchJSearchJobs(query, location, experience, isRemote, jobType, 
         source: j.job_publisher || 'JSearch',
         logo: j.employer_logo || null,
         noLoginRequired: !!j.job_apply_link,
+        // Extract experience requirement from job description for filtering
+        experience: extractExperience(j.job_description || ''),
       }));
   } catch (e) {
     console.warn('[JSearch] Error:', e.message);
@@ -266,6 +332,37 @@ async function fetchRemotiveJobs(query, keys) {
     console.warn('[Remotive] Error:', e.message);
     return [];
   }
+}
+
+// Extract experience string from a job description text
+function extractExperience(text) {
+  if (!text) return null;
+  const t = text.toLowerCase();
+
+  // Check fresher/entry-level keywords first
+  if (/\b(fresher|fresh\s+graduate|0\s*[–-]\s*1\s*year|entry[\s-]level|no\s+experience\s+required)\b/.test(t)) {
+    return '0-1 years';
+  }
+
+  // Look for "X-Y years" or "X to Y years" patterns
+  const rangeMatch = t.match(/(\d+)\s*(?:–|-|to)\s*(\d+)\s*(?:years?|yrs?)\s*(?:of\s+)?(?:experience)?/);
+  if (rangeMatch) {
+    return `${rangeMatch[1]}-${rangeMatch[2]} years`;
+  }
+
+  // Look for "X+ years" pattern
+  const plusMatch = t.match(/(\d+)\s*\+\s*(?:years?|yrs?)\s*(?:of\s+)?(?:experience)?/);
+  if (plusMatch) {
+    return `${plusMatch[1]}+ years`;
+  }
+
+  // Look for "minimum X years" pattern
+  const minMatch = t.match(/(?:minimum|min|at\s+least)\s+(\d+)\s*(?:years?|yrs?)\s*(?:of\s+)?(?:experience)?/);
+  if (minMatch) {
+    return `${minMatch[1]}+ years`;
+  }
+
+  return null;
 }
 
 function formatPosted(dateStr) {

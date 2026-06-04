@@ -53,6 +53,9 @@ export function getApiKey(keyName) {
   if (keyName === 'TAVILY_API_KEY') {
     return process.env['TAVILY_API_KEY_1'] || process.env['TAVILY_API_KEY_2'] || '';
   }
+  if (keyName === 'HUNTER_API_KEY') {
+    return process.env['HUNTER_API_KEY_1'] || process.env['HUNTER_API_KEY_2'] || '';
+  }
   return '';
 }
 
@@ -94,6 +97,20 @@ export function getOpenRouterKeys() {
   }
   return keys.length > 0 ? keys : [''];
 }
+
+export function getHunterKeys() {
+  const keys = [];
+  for (let i = 1; i <= 3; i++) {
+    const key = getApiKey(`HUNTER_API_KEY_${i}`);
+    if (key && !keys.includes(key)) keys.push(key);
+  }
+  if (keys.length === 0) {
+    const singleKey = getApiKey('HUNTER_API_KEY');
+    if (singleKey) keys.push(singleKey);
+  }
+  return keys.length > 0 ? keys : [''];
+}
+
 export function getSetting(keyName, defaultValue = '') {
   const settings = readSettings();
   return settings[keyName] ?? defaultValue;

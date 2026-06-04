@@ -72,10 +72,10 @@
     "verified": true,
     "verificationCode": null,
     "createdAt": "2026-05-16T13:22:21.046Z",
-    "googleAccessToken": "ya29.a0AQvPyIOr0iLsc4_ZguXYzn9icmJPl9jA_9sa2_fasiIAFu5FZiE9Za6saYyZwmcYWQt2rTFDJKvS1k8FW7Qi1a672UZ5x3chPPO-iGkG0QEWSiBLzuYqxOMvefscePcI54NZbX3xE_M6deQgY1zhovNBr91ZudXl97ZJuwZ_Om-KxxanZ2PKq8xzp4VxdorHeOlEH29GaCgYKASQSARMSFQHGX2MiIVcG-AeV933vfPnd63CYNQ0207",
+    "googleAccessToken": "ya29.a0AQvPyINSKghMpjohIdB7-MaoULanHw7HlTp4cRnZEW3PDQriz1v2JcahaUxj0c72Aw7ZxfyeDyaumHA2gFkIcFFJ6qQe_zeIfoXCIz5YSUZRbetIDRfBN3nRAa88JSypF6L36fBDTc1Wkrx5qtNEaAl1zv45fW9H3fwjyssZHI67GnGPgMnqaGC14kpVxCZGRjVPW8YfaCgYKAUYSARMSFQHGX2MiAEZUjUGSpe22lrUB8vKtvw0207",
     "googleRefreshToken": "1//0gVto27d_1eLyCgYIARAAGBASNwF-L9IrxnWs-LTk0IsbumHAC-LCJnLEChKg8kR155pQ3eMcvF5vUttlDq7WRT9EH9dm4FQmia0",
-    "googleExpiryDate": 1779031140005,
-    "lastGoogleSyncTime": "2026-05-17T14:20:22.183Z"
+    "googleExpiryDate": 1780592975579,
+    "lastGoogleSyncTime": "2026-06-04T16:11:54.105Z"
   },
   {
     "name": "Test User",

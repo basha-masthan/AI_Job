@@ -251,7 +251,14 @@ export default function JobTracker() {
         )}
 
         {loading ? (
-          <div className="empty-state"><div className="spinner spinner-lg" /></div>
+          <div className="empty-state">
+            <img 
+              src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700"
+              alt="Loading..."
+              style={{ width: 100, height: 100, objectFit: 'contain', opacity: 0.85 }}
+            />
+            <div style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 8 }}>Loading your applications...</div>
+          </div>
         ) : view === 'kanban' ? (
           <div className="kanban-board">
             {COLUMNS.map(col => {

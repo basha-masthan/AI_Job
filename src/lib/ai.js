@@ -412,7 +412,8 @@ CRITICAL RULES:
    - Skills: Only list the top 12-15 most relevant skills.
 3. FRESHER/INTERN LOGIC: If candidate has little experience, transform their academic projects into a "Professional Internship" or "Technical Residency" related to the JD.
 4. IMPACT: Use quantified bullets (e.g., "Improved performance by 30%").
-5. JSON ONLY: Return valid JSON matching the structure provided.`;
+5. SKILL BRIDGING: If the JD lists skills the candidate doesn't explicitly have, ADD those skills to the resume by incorporating them into existing project descriptions, adding new projects, or modifying bullet points — but only for skills that are reasonably adjacent to the candidate's existing tech stack. Never claim experience with a skill that requires years of specialization (e.g., don't add "5 years of Rust" if they've never used it). Do add reasonable adjacent skills like "GraphQL" alongside existing "REST API" experience, or "Docker" alongside existing cloud experience.
+6. JSON ONLY: Return valid JSON matching the structure provided.`;
 
   const profileContext = userProfile
     ? `\n\nCandidate's existing profile/background (Source Data):\n${JSON.stringify(userProfile, null, 2)}`
@@ -684,5 +685,57 @@ Return JSON:
   }
 
   return safeJSONParse(text);
+}
+
+/**
+ * Generate a personalized application email for a specific job
+ */
+export async function generateApplicationEmail(jobTitle, companyName, jobDescription, candidateProfile, coverLetter = '') {
+  const system = `You are a professional career coach and email writer. Write a compelling, personalized job application email.
+The email should be concise (3-4 paragraphs), professional, and tailored to the specific role and company.
+Include: greeting, who you are, why you're interested, what makes you a great fit, and call to action.
+Do NOT use placeholders like [Your Name]. Write as if you are the candidate.
+Return valid JSON only: {"subject": "...", "body": "..."}`;
+
+  const user = `Write a job application email for:
+
+ROLE: ${jobTitle}
+COMPANY: ${companyName}
+JOB DESCRIPTION: ${(jobDescription || '').substring(0, 2000)}
+
+CANDIDATE NAME: ${candidateProfile?.name || 'Applicant'}
+CANDIDATE SKILLS: ${JSON.stringify(candidateProfile?.skills || [])}
+CANDIDATE SUMMARY: ${(candidateProfile?.summary || '').substring(0, 500)}
+
+${coverLetter ? `COVER LETTER REFERENCE:\n${coverLetter.substring(0, 1000)}` : ''}
+
+Return JSON:
+{
+  "subject": "Compelling email subject line mentioning the role and company",
+  "body": "Full email body with greeting, introduction, why interested, relevant skills, call to action, and signature"
+}`;
+
+  try {
+    const text = await callGroq([
+      { role: 'system', content: system },
+      { role: 'user', content: user },
+    ], 2048);
+    const result = safeJSONParse(text);
+    if (result?.subject && result?.body) return result;
+  } catch {}
+
+  return {
+    subject: `Application for ${jobTitle} position at ${companyName}`,
+    body: `Dear Hiring Team at ${companyName},
+
+I am writing to express my strong interest in the ${jobTitle} position. With my background in ${(candidateProfile?.skills?.technical || []).slice(0, 3).join(', ') || 'relevant technologies'}, I am confident I can contribute effectively to your team.
+
+Please find my tailored resume attached for your review. I would welcome the opportunity to discuss how my skills and experience align with ${companyName}'s needs.
+
+Thank you for your consideration.
+
+Best regards,
+${candidateProfile?.name || 'Applicant'}`
+  };
 }
 

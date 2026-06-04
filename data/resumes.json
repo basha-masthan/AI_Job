@@ -2935,5 +2935,237 @@
     "profileExtracted": true,
     "userId": "basha@fbt.com",
     "updatedAt": "2026-05-17T14:50:29.920Z"
+  },
+  {
+    "id": "98e500c7-f129-47ac-bba6-28edb47fa410",
+    "fileName": "Masthan_Basha_SWE.pdf",
+    "cloudinaryUrl": "https://res.cloudinary.com/db4am4mqh/raw/upload/v1779346397/job-hunt-resumes/manual_98e500c7-f129-47ac-bba6-28edb47fa410",
+    "cloudinaryPublicId": "job-hunt-resumes/manual_98e500c7-f129-47ac-bba6-28edb47fa410",
+    "fileType": "application/pdf",
+    "notes": "",
+    "source": "manual-upload",
+    "isFavorite": false,
+    "extractedProfile": {
+      "name": "MASTHAN BASHA SHAIK",
+      "contact": {
+        "email": "official4basha@gmail.com",
+        "phone": "+91 78937 02635",
+        "location": "Hyderabad",
+        "linkedin": "",
+        "github": "github.com/basha-masthan",
+        "portfolio": ""
+      },
+      "summary": "B.Tech CSE graduate who enjoys building things that actually work. Built and deployed a live job-tracking web app using React, Node.js, PostgreSQL, and AWS. Comfortable writing automation scripts, working with APIs and databases, and using AI-assisted tools like GitHub Copilot and Cursor. Passionate about cybersecurity alongside software development.",
+      "skills": {
+        "technical": [
+          "Python",
+          "JavaScript",
+          "TypeScript",
+          "SQL",
+          "PowerShell",
+          "React.js",
+          "HTML5",
+          "CSS3",
+          "Responsive Design",
+          "Node.js",
+          "Express.js",
+          "REST APIs",
+          "Django",
+          "PostgreSQL",
+          "MongoDB",
+          "MySQL",
+          "GitHub Actions",
+          "CI/CD pipelines",
+          "AWS",
+          "Azure",
+          "GCP",
+          "Git",
+          "Docker",
+          "Agile/Scrum",
+          "Postman",
+          "Jest"
+        ],
+        "soft": [],
+        "tools": [
+          "GitHub Copilot",
+          "Cursor",
+          "MS Copilot"
+        ]
+      },
+      "experience": [
+        {
+          "company": "Devloom Labs",
+          "role": "Full Stack Developer Intern",
+          "duration": "Jul 2025 – Nov 2025",
+          "location": "Hyderabad",
+          "bullets": [
+            "Worked on MERN stack projects - built React frontends, Node.js REST APIs, and managed databases (MongoDB, PostgreSQL) end-to-end.",
+            "Deployed apps on AWS (EC2, RDS, S3) and set up CI/CD pipelines via GitHub Actions. Managed domains and production environments.",
+            "Collaborated in a team of 5 using Git/GitHub with code reviews and agile sprints. Wrote basic unit tests and helped troubleshoot bugs."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA University",
+          "degree": "B.Tech Computer Science and Engineering",
+          "year": "May 2025",
+          "cgpa": "8.1/10"
+        }
+      ],
+      "projects": [
+        {
+          "name": "FBT JobHunt - Job Application Tracker",
+          "description": "Production job-tracking app where users manage their job pipeline, track statuses, and view dashboards.",
+          "tech": [
+            "React",
+            "Node.js",
+            "PostgreSQL",
+            "AWS",
+            "JWT Auth"
+          ],
+          "link": "fbt-jobhunt.futureboundtech.online"
+        },
+        {
+          "name": "Survey Form Builder",
+          "description": "Google Forms style survey builder with drag-and-drop ordering, various question types, response collection, and a basic results dashboard.",
+          "tech": [
+            "React",
+            "Node.js",
+            "MongoDB"
+          ],
+          "link": ""
+        },
+        {
+          "name": "Doctor Appointment Booking System",
+          "description": "Allows patients to register, search doctors by specialty, book slots, and receive confirmations.",
+          "tech": [
+            "Django",
+            "Python",
+            "PostgreSQL"
+          ],
+          "link": ""
+        }
+      ],
+      "certifications": [
+        "Certified Ethical Hacking v12 - LearnKartS / Coursera (May 2025)",
+        "Google Cloud Computing Foundations and Generative AI - GDSC, Aditya Institute",
+        "Data Analytics Essentials - Cisco Networking Academy (Apr 2025)"
+      ],
+      "achievements": []
+    },
+    "profileExtracted": true,
+    "createdAt": "2026-05-21T06:53:17.321Z",
+    "userId": "basha@fbt.com",
+    "updatedAt": "2026-05-21T06:54:13.642Z",
+    "data": {
+      "name": "MASTHAN BASHA SHAIK",
+      "contact": {
+        "email": "official4basha@gmail.com",
+        "phone": "+91 78937 02635",
+        "location": "Hyderabad",
+        "linkedin": "",
+        "github": "github.com/basha-masthan",
+        "portfolio": ""
+      },
+      "summary": "B.Tech CSE graduate who enjoys building things that actually work. Built and deployed a live job-tracking web app using React, Node.js, PostgreSQL, and AWS. Comfortable writing automation scripts, working with APIs and databases, and using AI-assisted tools like GitHub Copilot and Cursor. Passionate about cybersecurity alongside software development.",
+      "skills": {
+        "technical": [
+          "Python",
+          "JavaScript",
+          "TypeScript",
+          "SQL",
+          "PowerShell",
+          "React.js",
+          "HTML5",
+          "CSS3",
+          "Responsive Design",
+          "Node.js",
+          "Express.js",
+          "REST APIs",
+          "Django",
+          "PostgreSQL",
+          "MongoDB",
+          "MySQL",
+          "GitHub Actions",
+          "CI/CD pipelines",
+          "AWS",
+          "Azure",
+          "GCP",
+          "Git",
+          "Docker",
+          "Agile/Scrum",
+          "Postman",
+          "Jest"
+        ],
+        "soft": [],
+        "tools": [
+          "GitHub Copilot",
+          "Cursor",
+          "MS Copilot"
+        ]
+      },
+      "experience": [
+        {
+          "company": "Devloom Labs",
+          "role": "Full Stack Developer Intern",
+          "duration": "Jul 2025 – Nov 2025",
+          "location": "Hyderabad",
+          "bullets": [
+            "Worked on MERN stack projects - built React frontends, Node.js REST APIs, and managed databases (MongoDB, PostgreSQL) end-to-end.",
+            "Deployed apps on AWS (EC2, RDS, S3) and set up CI/CD pipelines via GitHub Actions. Managed domains and production environments.",
+            "Collaborated in a team of 5 using Git/GitHub with code reviews and agile sprints. Wrote basic unit tests and helped troubleshoot bugs."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "JNTUA University",
+          "degree": "B.Tech Computer Science and Engineering",
+          "year": "May 2025",
+          "cgpa": "8.1/10"
+        }
+      ],
+      "projects": [
+        {
+          "name": "FBT JobHunt - Job Application Tracker",
+          "description": "Production job-tracking app where users manage their job pipeline, track statuses, and view dashboards.",
+          "tech": [
+            "React",
+            "Node.js",
+            "PostgreSQL",
+            "AWS",
+            "JWT Auth"
+          ],
+          "link": "fbt-jobhunt.futureboundtech.online"
+        },
+        {
+          "name": "Survey Form Builder",
+          "description": "Google Forms style survey builder with drag-and-drop ordering, various question types, response collection, and a basic results dashboard.",
+          "tech": [
+            "React",
+            "Node.js",
+            "MongoDB"
+          ],
+          "link": ""
+        },
+        {
+          "name": "Doctor Appointment Booking System",
+          "description": "Allows patients to register, search doctors by specialty, book slots, and receive confirmations.",
+          "tech": [
+            "Django",
+            "Python",
+            "PostgreSQL"
+          ],
+          "link": ""
+        }
+      ],
+      "certifications": [
+        "Certified Ethical Hacking v12 - LearnKartS / Coursera (May 2025)",
+        "Google Cloud Computing Foundations and Generative AI - GDSC, Aditya Institute",
+        "Data Analytics Essentials - Cisco Networking Academy (Apr 2025)"
+      ],
+      "achievements": []
+    }
   }
 ]

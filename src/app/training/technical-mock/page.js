@@ -11,7 +11,8 @@ const TECH_STACKS = [
 ];
 
 export default function TechnicalMockPage() {
-  const [techStack, setTechStack] = useState('React');
+  const [techStack, setTechStack] = useState('');
+  const [description, setDescription] = useState('');
   const [difficulty, setDifficulty] = useState('mid');
   const [questions, setQuestions] = useState([]);
   const [selected, setSelected] = useState({});
@@ -22,6 +23,7 @@ export default function TechnicalMockPage() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
   const [started, setStarted] = useState(false);
+  const [codeSubmissions, setCodeSubmissions] = useState({});
   const timerRef = useRef(null);
 
   const [prefillJd, setPrefillJd] = useState('');
@@ -51,7 +53,7 @@ export default function TechnicalMockPage() {
       setPrefillJd(jd);
       setPrefillTitle(title || '');
       setPrefillCompany(company || '');
-      setTechStack(title || 'React');
+      setTechStack(title || '');
     }
     
     fetchHistory();
@@ -105,6 +107,7 @@ export default function TechnicalMockPage() {
     setError('');
     setQuestions([]);
     setSelected({});
+    setCodeSubmissions({});
     setCurrentQ(0);
     setResult(null);
     setTimer(30);
@@ -116,7 +119,7 @@ export default function TechnicalMockPage() {
           type: 'technical-mock',
           techStack,
           difficulty,
-          jobDescription: prefillJd || undefined
+          jobDescription: description || prefillJd || undefined
         }),
       });
       const data = await res.json();
@@ -140,7 +143,14 @@ export default function TechnicalMockPage() {
       const res = await fetch('/api/training/evaluate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'technical-mock', questions, answers, techStack, difficulty }),
+        body: JSON.stringify({ 
+          type: 'technical-mock', 
+          questions, 
+          answers, 
+          techStack, 
+          difficulty,
+          codeSubmissions 
+        }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Evaluation failed');
@@ -157,10 +167,13 @@ export default function TechnicalMockPage() {
     setStarted(false);
     setQuestions([]);
     setSelected({});
+    setCodeSubmissions({});
     setCurrentQ(0);
     setResult(null);
     setError('');
     setTimer(30);
+    setTechStack('');
+    setDescription('');
   }
 
   function selectOption(questionIndex, optionIndex) {
@@ -202,10 +215,26 @@ export default function TechnicalMockPage() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
               <div>
-                <label className="form-label" style={{ marginBottom: 8, display: 'block' }}>Tech Stack</label>
-                <select value={techStack} onChange={e => setTechStack(e.target.value)} className="form-select">
-                  {TECH_STACKS.map(t => <option key={t} value={t}>{t}</option>)}
-                </select>
+                <label className="form-label" style={{ marginBottom: 8, display: 'block' }}>Tech Stack / Language</label>
+                <input 
+                  type="text"
+                  value={techStack} 
+                  onChange={e => setTechStack(e.target.value)} 
+                  className="form-select"
+                  placeholder="e.g., React, Node.js, Python, Data Structures & Algorithms, etc."
+                  style={{ padding: 12, borderRadius: 8 }}
+                />
+              </div>
+
+              <div>
+                <label className="form-label" style={{ marginBottom: 8, display: 'block' }}>Description <span style={{ color: 'var(--text-secondary)', fontSize: 12, fontWeight: 400 }}>(Optional)</span></label>
+                <textarea 
+                  value={description} 
+                  onChange={e => setDescription(e.target.value)} 
+                  className="form-select"
+                  placeholder="Describe your skill level, focus areas, or any specific topics..."
+                  style={{ minHeight: 100, fontFamily: 'inherit', padding: 12, borderRadius: 8 }}
+                />
               </div>
 
               <div>
@@ -471,7 +500,82 @@ export default function TechnicalMockPage() {
                     </button>
                   );
                 })}
-              </div>
+               </div>
+
+               <div style={{ marginTop: 28, paddingTop: 24, borderTop: '1px solid var(--border)' }}>
+                 <h4 style={{ fontSize: 14, fontWeight: 700, marginBottom: 12, display: 'flex', alignItems: 'center', gap: 8 }}>
+                   💻 Code Solution <span style={{ fontSize: 12, fontWeight: 400, color: 'var(--text-secondary)' }}>(Optional)</span>
+                 </h4>
+                 <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+                   <button
+                     onClick={() => setCodeSubmissions(prev => ({ ...prev, [currentQ]: { ...prev[currentQ], platform: 'leetcode' } }))}
+                     style={{
+                       padding: '6px 12px',
+                       borderRadius: 6,
+                       fontSize: 12,
+                       fontWeight: 600,
+                       border: codeSubmissions[currentQ]?.platform === 'leetcode' ? '2px solid var(--accent-primary)' : '1px solid var(--border)',
+                       background: codeSubmissions[currentQ]?.platform === 'leetcode' ? 'rgba(99,102,241,0.1)' : 'transparent',
+                       color: 'var(--text-primary)',
+                       cursor: 'pointer',
+                     }}
+                   >
+                     LeetCode
+                   </button>
+                   <button
+                     onClick={() => setCodeSubmissions(prev => ({ ...prev, [currentQ]: { ...prev[currentQ], platform: 'hackerrank' } }))}
+                     style={{
+                       padding: '6px 12px',
+                       borderRadius: 6,
+                       fontSize: 12,
+                       fontWeight: 600,
+                       border: codeSubmissions[currentQ]?.platform === 'hackerrank' ? '2px solid var(--accent-primary)' : '1px solid var(--border)',
+                       background: codeSubmissions[currentQ]?.platform === 'hackerrank' ? 'rgba(99,102,241,0.1)' : 'transparent',
+                       color: 'var(--text-primary)',
+                       cursor: 'pointer',
+                     }}
+                   >
+                     HackerRank
+                   </button>
+                   <button
+                     onClick={() => setCodeSubmissions(prev => ({ ...prev, [currentQ]: { ...prev[currentQ], platform: 'custom' } }))}
+                     style={{
+                       padding: '6px 12px',
+                       borderRadius: 6,
+                       fontSize: 12,
+                       fontWeight: 600,
+                       border: codeSubmissions[currentQ]?.platform === 'custom' ? '2px solid var(--accent-primary)' : '1px solid var(--border)',
+                       background: codeSubmissions[currentQ]?.platform === 'custom' ? 'rgba(99,102,241,0.1)' : 'transparent',
+                       color: 'var(--text-primary)',
+                       cursor: 'pointer',
+                     }}
+                   >
+                     Custom
+                   </button>
+                 </div>
+                 {codeSubmissions[currentQ]?.platform && (
+                   <textarea
+                     value={codeSubmissions[currentQ]?.code || ''}
+                     onChange={(e) => setCodeSubmissions(prev => ({
+                       ...prev,
+                       [currentQ]: { ...prev[currentQ], code: e.target.value }
+                     }))}
+                     placeholder="Paste your code solution here..."
+                     style={{
+                       width: '100%',
+                       minHeight: 150,
+                       padding: 12,
+                       borderRadius: 8,
+                       fontFamily: 'Courier New, monospace',
+                       fontSize: 12,
+                       border: '1px solid var(--border)',
+                       background: 'var(--bg-secondary)',
+                       color: 'var(--text-primary)',
+                       resize: 'vertical',
+                     }}
+                   />
+                 )}
+               </div>
             </div>
           )}
 

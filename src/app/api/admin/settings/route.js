@@ -4,6 +4,8 @@ import path from 'path';
 import { getSession } from '@/lib/auth';
 import { invalidateSettingsCache, getStoragePath } from '@/lib/config';
 
+export const dynamic = 'force-dynamic';
+
 const SETTINGS_FILE = getStoragePath('settings.json');
 
 function readSettings() {

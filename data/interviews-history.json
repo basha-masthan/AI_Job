@@ -1,5 +1,389 @@
 [
   {
+    "id": "int_1779857091673_9ab0b9sbj",
+    "userId": "basha@fbt.com",
+    "type": "voice",
+    "role": "Software Support Engineer",
+    "difficulty": "hard",
+    "overallScore": 45,
+    "communication": 3,
+    "technicalAccuracy": 3,
+    "strengths": [
+      "Shows awareness of standard support processes such as reviewing stack traces, gathering environment details, and documenting issues.",
+      "Demonstrates a willingness to involve other teams (development, vendor) and to create knowledge‑base articles."
+    ],
+    "improvements": [
+      "Needs clearer, more structured communication; answers were rambling and often unintelligible.",
+      "Should provide concrete technical steps, specific tools, and precise terminology rather than vague generalities."
+    ],
+    "detailedFeedback": [
+      {
+        "score": 2,
+        "comment": "First answer: mentions reviewing the stack trace and asking for version/info, which is correct, but the explanation is disorganized and contains many incoherent phrases, making it hard to follow."
+      },
+      {
+        "score": 2,
+        "comment": "Second answer: attempts to talk about environment differences and remote debugging, but provides no concrete troubleshooting steps, log‑analysis techniques, or tool names."
+      },
+      {
+        "score": 3,
+        "comment": "Third answer: references unit and regression testing, which is appropriate, yet fails to describe how to set up test data, validate the fix, or define acceptance criteria."
+      },
+      {
+        "score": 2,
+        "comment": "Fourth answer: mentions documenting the issue, but gives no structure (e.g., reproducible steps, root‑cause analysis) and the language is vague."
+      },
+      {
+        "score": 3,
+        "comment": "Later answers about vendor collaboration, secure remote sessions, and proactive guidance contain the right concepts but lack specifics (e.g., VPN, MFA, log files, SLA metrics), reducing technical credibility."
+      }
+    ],
+    "videoUrl": "/uploads/interviews/interview_basha@fbt.com_1779857068766.webm",
+    "answers": [
+      {
+        "role": "user",
+        "content": "yes I am try to begin"
+      },
+      {
+        "role": "assistant",
+        "content": "Let's start with a scenario: a customer reports that their application is crashing with a null pointer exception. They've provided a stack trace, but no other details. How would you approach debugging this issue and what questions would you ask the customer to gather more information?"
+      },
+      {
+        "role": "user",
+        "content": "Yeah first time it carefully review the stack trace to Enter line number or method I would check the code at the location to see which object could be in a love and why and also I would like to customer for more details such as what action were the performing when the crash happens under issue response to laser and his life is there expand steps and which version of application are using and recent changes of made on the environment variables and environment settings and share the I didn't lock or input data"
+      },
+      {
+        "role": "assistant",
+        "content": "That's a good start, reviewing the stack trace and asking for more details about the customer's actions and environment. Now, suppose the customer provides the additional information and you've reviewed the code, but you're still unable to reproduce the issue in your test environment. What troubleshooting steps would you take next to try to isolate the problem, and how would you use tools like log files or debug logs to help with the diagnosis?"
+      },
+      {
+        "role": "user",
+        "content": "yes like don't respond for issue or tell about a compare enrollments like different between the customer enrollment and mine like a voice and app version configuration and some require details locks like a customer for application that issue and remote section allowed to a remote system"
+      },
+      {
+        "role": "assistant",
+        "content": "You'd try to identify any differences in configuration or environment between the customer's setup and your test environment. Now, let's say you've identified a potential cause of the issue and you need to create a patch or fix for the customer. How would you go about testing and validating the fix to ensure it resolves the null pointer exception and doesn't introduce any new issues, and what kind of testing would you recommend to the customer to verify the fix is working as expected?"
+      },
+      {
+        "role": "user",
+        "content": "yeah I will go with the unit testing and I don't regression testing to make sure fixture don't break existing function holidays and test for the environments in the similarity to the customer set up confirmation is resolved for valuation locks in output to ensured no new erase appear after applying the recommended the customer to test the patch with their real wall data and workforce perform user acceptance testing say you actually to confirm everything works as expected amount of application for any and behaviours after the fixed applied"
+      },
+      {
+        "role": "assistant",
+        "content": "You'd use unit testing and regression testing to validate the fix and ensure it doesn't break existing functionality. Now, suppose the issue is resolved and the customer is satisfied with the fix, but you've identified that this null pointer exception is a symptom of a larger design or architectural issue in the application. How would you approach documenting and escalating this issue to the development team, and what kind of recommendations would you make for refactoring or redesigning the affected code to prevent similar issues in the future?"
+      },
+      {
+        "role": "user",
+        "content": "yeah I would document the issue by clay decreasing the step to reduce the produce affected modulus starters and their elements of screenshots and iglored they tells about environmental frequency and impact on issue the planning team using out standard at taking at but tracking system"
+      },
+      {
+        "role": "assistant",
+        "content": "You'd thoroughly document the issue, including steps to reproduce, screenshots, and details about the environment and impact. Now, let's say the development team has implemented a redesign to address the underlying issue, and you're tasked with creating a knowledge base article to help other support engineers troubleshoot similar issues in the future. What kind of information would you include in the article, and how would you structure it to make it easy for others to follow and use as a reference?"
+      },
+      {
+        "role": "user",
+        "content": "yes like I would like the following like issue somebody believe this question the problem if you somebody by some rising the deep description about the problem which I expected for as an enrollment details like applications and all contributions with the issue as upload and structure how the how to can overcome on the way the days of step by step clear step by step"
+      },
+      {
+        "role": "assistant",
+        "content": "You'd include a clear description of the problem, symptoms, and affected components, as well as step-by-step instructions on how to troubleshoot and resolve the issue. Now, suppose you're working with a complex software system that has multiple integrations with third-party services, and a customer reports an issue that involves one of these integrations. How would you approach troubleshooting an issue that spans multiple systems and vendors, and what kind of communication and collaboration would you need to have with the customer and other stakeholders to resolve the issue?"
+      },
+      {
+        "role": "user",
+        "content": "Latke song I will get there all available details about the issue that he had a message locks and extra steps the lead the problem and also which integrated integrations and components like Liga is in the issued by unless in the lordsing the filing parts the feeling parts and I check the health is there help the status of All property services valve and changes are outlets I would reduce by issue I will repres the issue in test environment updates about the interesting"
+      },
+      {
+        "role": "assistant",
+        "content": "You'd gather all available details about the issue, including any error messages, and identify which integrations and components are involved. Now, let's say you've isolated the issue to a specific integration with a third-party service, and you need to work with the vendor's support team to resolve the issue. How would you approach collaborating with the vendor's support team, and what kind of information would you need to provide to them to help troubleshoot and resolve the issue, such as logs, configuration details, or replication steps?"
+      },
+      {
+        "role": "user",
+        "content": "like I will including adder message locks configuration files and step by steps to produce a problem on Sunrise the data frequency by sure when did description by shoe business and configuration details of application steps that reduce show that screenshot ask me recording"
+      },
+      {
+        "role": "assistant",
+        "content": "You'd provide detailed information to the vendor's support team, including error messages, configuration files, and step-by-step instructions on how to reproduce the issue. Now, suppose the vendor's support team requests a remote session to troubleshoot the issue further, and you need to provide them with secure access to the customer's system. What security measures would you take to ensure the remote session is secure, and how would you verify the vendor's support team's identity and access permissions before granting them access to the system?"
+      },
+      {
+        "role": "user",
+        "content": "so I would use a remote access to I can don't expectant protected during defection like and before generating exercise under support team identify through official communication role based formations and motor the Seasons are sections real time unlock all activities for editing after the section immediately Reebok access Review that section locks will activities"
+      },
+      {
+        "role": "assistant",
+        "content": "You'd use a secure remote access method, verify the vendor's support team's identity through official communication channels, and limit their access to only the necessary sections and activities. Now, suppose the issue is resolved after the remote session, and you need to document the root cause and the steps taken to resolve the issue. How would you ensure that the knowledge gained from this experience is retained and shared with other support engineers, and what kind of process improvements would you recommend to prevent similar issues from occurring in the future?"
+      },
+      {
+        "role": "user",
+        "content": "yes of course I document issue and also by the cause of course and the resolution steps in our internal knowledge because for future reference and also key learning and share them and support team actually it's a platform some any communication to your friends and recommend declare review sections to discuss discuss the recent issues and Solutions so everyone stay updated for process in environment process environment"
+      },
+      {
+        "role": "assistant",
+        "content": "You'd document the issue, root cause, and resolution steps in your internal knowledge base for future reference, and share the key learnings with the support team through a collaborative platform. Now, let's say you've been working on this issue for an extended period, and you've developed a deep understanding of the customer's environment and the underlying technology. How would you leverage this expertise to provide proactive guidance and recommendations to the customer on how to optimize their system, prevent future issues, and improve overall performance and reliability?"
+      },
+      {
+        "role": "user",
+        "content": "analysing the use the customer enrollment and I using pattern points on the reason issues based on the based on Experience At suggest of our contribution security and resources management the obtained to their types and I recommend regular maintenance write software updates and back after preventive problems and tips of motor key address and setting up detection of issues in documentations are shared after come results I will increase the customer review"
+      },
+      {
+        "role": "assistant",
+        "content": "You'd analyze the customer's usage patterns and provide proactive guidance on security, resource management, and maintenance, including recommendations for regular software updates, backups, and preventive measures to avoid future issues. Now, suppose the customer has implemented your recommendations and is experiencing improved system performance and reliability. How would you measure the success of your support efforts and the impact of your recommendations on the customer's business, and what kind of metrics or key performance indicators would you use to demonstrate the value of your support services?"
+      }
+    ],
+    "createdAt": "2026-05-27T04:44:51.673Z"
+  },
+  {
+    "id": "int_1779459506724_1429dvsdv",
+    "userId": "basha@fbt.com",
+    "type": "voice",
+    "role": "mern stack developer",
+    "difficulty": "easy",
+    "overallScore": 28,
+    "communication": 2,
+    "technicalAccuracy": 2,
+    "strengths": [
+      "Shows some awareness that variables and schemas exist in JavaScript/Mongoose",
+      "Attempts to answer each question rather than remaining silent"
+    ],
+    "improvements": [
+      "Provide clear, structured explanations of concepts such as var/let/const, error handling, schema design, and JWT authentication",
+      "Use concrete examples or code snippets to demonstrate understanding"
+    ],
+    "detailedFeedback": [
+      {
+        "score": 2,
+        "comment": "When asked about var, let, and const, the candidate gave a garbled response that did not differentiate the three declarations or explain appropriate use‑cases in a MERN application."
+      },
+      {
+        "score": 2,
+        "comment": "The candidate could not articulate how to use try‑catch blocks or Express error‑handling middleware, offering only vague statements about \"variables\" without any technical detail."
+      },
+      {
+        "score": 2,
+        "comment": "In response to schema design and JWT authentication, the answer was nonspecific and lacked any mention of field types, validation, password hashing, token generation, or middleware flow."
+      }
+    ],
+    "videoUrl": "/uploads/interviews/interview_basha@fbt.com_1779459479353.webm",
+    "answers": [
+      {
+        "role": "user",
+        "content": "hello"
+      },
+      {
+        "role": "assistant",
+        "content": "What is the difference between var, let, and const in JavaScript, and when would you use each in a MERN stack application?"
+      },
+      {
+        "role": "user",
+        "content": "hello are you listening or not there are so many situations we are using menstrual like latent constant JavaScript"
+      },
+      {
+        "role": "assistant",
+        "content": "It sounds like you have some experience with JavaScript variables. Can you explain how you would handle errors in a MERN stack application, specifically using try-catch blocks and error handling middleware in Express?"
+      },
+      {
+        "role": "user",
+        "content": " that variable is usually"
+      },
+      {
+        "role": "assistant",
+        "content": "Let's move on to MongoDB. How would you design a MongoDB schema to store user data, including username, email, and password, in a MERN stack application?"
+      },
+      {
+        "role": "user",
+        "content": "yeah based on the data type a data type and variables is a mongoose schema and show the structure of database store in the theatre"
+      },
+      {
+        "role": "assistant",
+        "content": "So you're familiar with Mongoose schema. How would you implement authentication and authorization in a MERN stack application using JSON Web Tokens, and what role would middleware play in this process?"
+      }
+    ],
+    "createdAt": "2026-05-22T14:18:26.724Z"
+  },
+  {
+    "id": "int_1779346884106_gm3qf3mut",
+    "userId": "basha@fbt.com",
+    "type": "voice",
+    "role": "Backend Developer (Node.js)",
+    "difficulty": "easy",
+    "overallScore": 32,
+    "communication": 3,
+    "technicalAccuracy": 2,
+    "strengths": [
+      "Shows enthusiasm and willingness to answer questions",
+      "Uses some correct terminology (e.g., middleware, CRUD, JWT, bcrypt)"
+    ],
+    "improvements": [
+      "Needs to demonstrate concrete understanding of core JavaScript concepts (var/let/const, error handling)",
+      "Should provide clear, structured explanations of Node.js/Express patterns and libraries"
+    ],
+    "detailedFeedback": [
+      {
+        "score": 1,
+        "comment": "When asked about var, let, and const, the candidate talked about database character storage and constants, showing a lack of understanding of scope, hoisting, and immutability in JavaScript."
+      },
+      {
+        "score": 1,
+        "comment": "The explanation of error handling with try‑catch and error‑first callbacks was vague, mentioning only console logs and generic if/else checks without describing how to propagate errors or the role of the error object."
+      },
+      {
+        "score": 1,
+        "comment": "The response to module creation and module.exports was unrelated to modules, mentioning Mongoose instead of showing how to use `module.exports` or `exports`."
+      },
+      {
+        "score": 2,
+        "comment": "For designing a RESTful API, the candidate repeated CRUD terminology but did not outline routes, HTTP methods, or Express code structure."
+      },
+      {
+        "score": 2,
+        "comment": "Middleware answer was incomplete; the candidate only mentioned authentication and used an unfinished phrase, without describing the middleware signature `(req, res, next)` or its chaining behavior."
+      },
+      {
+        "score": 1,
+        "comment": "JWT authentication explanation was missing; the candidate talked about email verification with SMTP, not about token generation, verification, or protecting routes."
+      },
+      {
+        "score": 2,
+        "comment": "Password hashing answer referenced “bear Crypto” and vague layering, failing to name bcrypt, salt rounds, or proper async usage."
+      },
+      {
+        "score": 2,
+        "comment": "MongoDB connection answer mentioned a connection string but did not discuss `mongoose.connect`, handling connection events, or security considerations."
+      },
+      {
+        "score": 2,
+        "comment": "Schema vs. model explanation was superficial; the candidate said a schema is “architecture of database” without describing how Mongoose schemas define field types and how models provide CRUD interfaces."
+      },
+      {
+        "score": 2,
+        "comment": "Express routing answer was fragmented, mentioning ports and generic “posting data” without demonstrating `app.get('/users', ...)` or the differences among HTTP verbs."
+      },
+      {
+        "score": 2,
+        "comment": "Response handling and `res.json`/`res.send` explanation lacked detail; the candidate talked about “reading responses from the database” without clarifying how Express sends JSON payloads."
+      },
+      {
+        "score": 2,
+        "comment": "Error handling in Express routes and the purpose of `next` were not addressed; the candidate gave a generic statement about processing responses."
+      }
+    ],
+    "videoUrl": "/uploads/interviews/interview_basha@fbt.com_1779346834416.webm",
+    "answers": [
+      {
+        "role": "user",
+        "content": "yes I am ready to begin in interview"
+      },
+      {
+        "role": "assistant",
+        "content": "What is your understanding of the difference between var, let, and const in JavaScript, and when would you use each in a Node.js application?"
+      },
+      {
+        "role": "user",
+        "content": "based on the database the different type of data types used for a character storage and constant is used"
+      },
+      {
+        "role": "assistant",
+        "content": "That's a good start, but let's dive deeper into Node.js specifics. How would you handle errors in a Node.js application using try-catch blocks and error-first callbacks, and what is the purpose of the error object in a callback function?"
+      },
+      {
+        "role": "user",
+        "content": "using console not finding errors and using callback functions and identify the error using if else condition and try and catchers"
+      },
+      {
+        "role": "assistant",
+        "content": "Using console logs and callbacks can help identify errors. Now, let's talk about Node.js modules. How would you create and export a simple Node.js module, and what is the purpose of the module.exports object in a Node.js module?"
+      },
+      {
+        "role": "user",
+        "content": "model expert is used for the database of"
+      },
+      {
+        "role": "assistant",
+        "content": "It seems like you're referring to Mongoose, a popular ORM for MongoDB in Node.js. How would you design a simple RESTful API using Node.js and Express.js to perform CRUD operations on a resource, such as a user or a product?"
+      },
+      {
+        "role": "user",
+        "content": "yeah adaptations is disturb like create read and update delete operations used mainly for a database operations using Apex calls from front and back in"
+      },
+      {
+        "role": "assistant",
+        "content": "It sounds like you're familiar with CRUD operations. Let's move on to middleware. What is the purpose of middleware functions in Express.js, and how would you use them to handle tasks such as authentication or logging in a Node.js application?"
+      },
+      {
+        "role": "user",
+        "content": "authentication authorisation for authentication I use m"
+      },
+      {
+        "role": "assistant",
+        "content": "It seems like you're referring to using middleware for authentication and authorization. How would you implement authentication using JSON Web Tokens, or JWT, in a Node.js application to secure routes and verify user identities?"
+      },
+      {
+        "role": "user",
+        "content": "yeah authentication is built without a patient with the email using SMTP"
+      },
+      {
+        "role": "assistant",
+        "content": "It sounds like you're referring to using email verification with SMTP. How would you handle password hashing and salting in a Node.js application to securely store user passwords, and what library would you use, such as bcrypt?"
+      },
+      {
+        "role": "user",
+        "content": "yeah using bear Crypto is layer 10 pay grade for hashing the"
+      },
+      {
+        "role": "assistant",
+        "content": "It seems like you're familiar with using libraries for hashing and encryption. Let's move on to database connections. How would you establish a connection to a MongoDB database using Mongoose in a Node.js application, and what is the purpose of the connection string?"
+      },
+      {
+        "role": "user",
+        "content": "yeah using MongoDB connection string only we have to store the data from front end to database using mongoose URL which is helping username and password user"
+      },
+      {
+        "role": "assistant",
+        "content": "It sounds like you're familiar with connecting to a MongoDB database using Mongoose. How would you handle schema definition and model creation in Mongoose, and what is the difference between a schema and a model in a MongoDB database?"
+      },
+      {
+        "role": "user",
+        "content": "schema is architecture of database like"
+      },
+      {
+        "role": "assistant",
+        "content": "A schema defines the structure of the database. How would you use Mongoose to define a schema for a collection, such as a user collection, and what data types would you use to define the fields, such as string, number, or date?"
+      },
+      {
+        "role": "user",
+        "content": "yeah I can use some"
+      },
+      {
+        "role": "assistant",
+        "content": "Let's move on to API design. How would you design a simple API endpoint using Express.js to retrieve a list of users, and what HTTP method would you use, such as GET or POST?"
+      },
+      {
+        "role": "user",
+        "content": "basing aging Express rising app a developed an App in expression of local port number 300 and 3000"
+      },
+      {
+        "role": "assistant",
+        "content": "It sounds like you're familiar with running an Express app on a local port. How would you handle routing in an Express app, and what is the difference between app.get, app.post, app.put, and app.delete in terms of HTTP request methods?"
+      },
+      {
+        "role": "user",
+        "content": "don't get the data from the database and we have to posting the data from the server and"
+      },
+      {
+        "role": "assistant",
+        "content": "It seems like you're referring to sending and receiving data between the client and server. How would you use Express.js to send a response back to the client, such as sending a JSON object, and what is the purpose of the res.json or res.send methods in an Express route handler?"
+      },
+      {
+        "role": "user",
+        "content": "yeah because we just read the responses Database from the server so we have to process the responses into a front end view"
+      },
+      {
+        "role": "assistant",
+        "content": "It sounds like you're familiar with sending data from the server to the client. How would you handle errors and exceptions in an Express route handler, such as catching and logging errors, and what is the purpose of the next function in an Express middleware or route handler?"
+      }
+    ],
+    "createdAt": "2026-05-21T07:01:24.106Z"
+  },
+  {
     "id": "int_1779080675398_gd5jbixn6",
     "userId": "basha@fbt.com",
     "type": "voice",

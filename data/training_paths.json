@@ -455,5 +455,222 @@
     "userId": "basha@fbt.com",
     "updatedAt": "2026-05-17T19:48:16.992Z",
     "createdAt": "2026-05-17T19:48:12.090Z"
+  },
+  {
+    "role": "hr manager",
+    "level": "beginner",
+    "title": "HR Manager Beginner Roadmap",
+    "description": "Master the fundamentals of human resources management and gain the skills to succeed as an HR manager",
+    "chapters": [
+      {
+        "id": "chap-1",
+        "title": "Chapter 1: Introduction to HR Management",
+        "modules": [
+          {
+            "id": "chap-1-mod-1",
+            "title": "What is HR Management?",
+            "description": "Understand the role and responsibilities of an HR manager"
+          },
+          {
+            "id": "chap-1-mod-2",
+            "title": "HR Functions and Processes",
+            "description": "Learn about the key functions and processes in HR management"
+          }
+        ]
+      },
+      {
+        "id": "chap-2",
+        "title": "Chapter 2: Recruitment and Hiring",
+        "modules": [
+          {
+            "id": "chap-2-mod-1",
+            "title": "The Recruitment Process",
+            "description": "Learn how to plan, execute, and manage recruitment efforts"
+          },
+          {
+            "id": "chap-2-mod-2",
+            "title": "Interviewing and Selection Techniques",
+            "description": "Develop skills to conduct effective interviews and make informed hiring decisions"
+          }
+        ]
+      },
+      {
+        "id": "chap-3",
+        "title": "Chapter 3: Employee Onboarding and Development",
+        "modules": [
+          {
+            "id": "chap-3-mod-1",
+            "title": "Onboarding Best Practices",
+            "description": "Learn how to create a comprehensive onboarding program for new employees"
+          },
+          {
+            "id": "chap-3-mod-2",
+            "title": "Employee Training and Development",
+            "description": "Understand how to design and deliver effective training programs"
+          }
+        ]
+      },
+      {
+        "id": "chap-4",
+        "title": "Chapter 4: Employee Relations and Communications",
+        "modules": [
+          {
+            "id": "chap-4-mod-1",
+            "title": "Building Positive Employee Relations",
+            "description": "Learn how to foster a positive work environment and manage employee conflicts"
+          },
+          {
+            "id": "chap-4-mod-2",
+            "title": "Effective Communication Strategies",
+            "description": "Develop skills to communicate effectively with employees, management, and stakeholders"
+          }
+        ]
+      },
+      {
+        "id": "chap-5",
+        "title": "Chapter 5: Compensation, Benefits, and Compliance",
+        "modules": [
+          {
+            "id": "chap-5-mod-1",
+            "title": "Compensation and Benefits Administration",
+            "description": "Understand how to design and manage compensation and benefits programs"
+          },
+          {
+            "id": "chap-5-mod-2",
+            "title": "Labor Laws and Compliance",
+            "description": "Learn about key labor laws and regulations, and how to ensure compliance"
+          }
+        ]
+      }
+    ],
+    "moduleContent": {
+      "chap-1-mod-1": "# Introduction to HR Management\nAs a beginner in the field of Human Resources, it is essential to understand the role and responsibilities of an HR manager. HR management is a vital function in any organization, responsible for managing the most valuable asset of the company: its employees. In this module, we will delve into the world of HR management, exploring its definition, key responsibilities, and best practices.\n\n## Definition of HR Management\nHR management refers to the process of planning, organizing, and controlling the activities and policies related to the workforce of an organization. It involves managing the entire employee lifecycle, from recruitment and selection to training, development, and termination. The primary goal of HR management is to create a positive and productive work environment that supports the organization's overall mission and objectives.\n\n## Key Responsibilities of an HR Manager\nAn HR manager is responsible for a wide range of tasks, including:\n\n* Recruitment and selection: identifying and attracting top talent to fill job openings\n* Training and development: providing employees with the skills and knowledge needed to perform their jobs effectively\n* Employee relations: managing employee conflicts, grievances, and disciplinary actions\n* Benefits and compensation: designing and implementing compensation and benefits packages that attract and retain top talent\n* Compliance: ensuring that the organization is in compliance with all relevant laws and regulations related to employment\n* Performance management: developing and implementing performance management systems to evaluate employee performance and provide feedback\n\n## Best Practices in HR Management\nTo be effective, HR managers should follow best practices in HR management, including:\n\n* Developing a comprehensive HR strategy that aligns with the organization's overall mission and objectives\n* Building strong relationships with employees, management, and other stakeholders\n* Staying up-to-date with the latest trends and developments in HR management\n* Using data and analytics to inform HR decisions\n* Fostering a positive and inclusive work culture that supports diversity, equity, and inclusion\n\n## The Importance of HR Management\nHR management is critical to the success of any organization. Effective HR management can lead to:\n\n* Improved employee engagement and retention\n* Increased productivity and performance\n* Better compliance with laws and regulations\n* Enhanced reputation and brand image\n* Improved bottom-line results\n\n## Common HR Management Challenges\nHR managers often face a range of challenges, including:\n\n* Managing conflicting priorities and demands\n* Dealing with difficult employees or managers\n* Staying up-to-date with changing laws and regulations\n* Managing budget constraints and limited resources\n* Balancing the needs of different stakeholders\n\n## Conclusion\nIn conclusion, HR management is a vital function that plays a critical role in the success of any organization. As a beginner in the field of HR, it is essential to understand the role and responsibilities of an HR manager, as well as the best practices and challenges associated with HR management. By following the principles and practices outlined in this module, you will be well on your way to becoming a successful HR manager.\n\n## Quiz: What is HR Management?\nTest your understanding of HR management with the following questions:\n\n1. What is the primary goal of HR management?\na) To increase profits\nb) To create a positive and productive work environment\nc) To reduce costs\nd) To improve customer satisfaction\n\n2. What is the role of an HR manager in recruitment and selection?\na) To conduct interviews only\nb) To identify and attract top talent to fill job openings\nc) To make job offers only\nd) To conduct background checks only\n\n3. What is the purpose of performance management in HR management?\na) To evaluate employee performance and provide feedback\nb) To increase employee salaries\nc) To reduce employee benefits\nd) To terminate employees\n\n4. What is the importance of compliance in HR management?\na) To avoid legal issues\nb) To increase employee engagement\nc) To improve productivity\nd) To reduce costs\n\n5. What is the role of an HR manager in employee relations?\na) To manage employee conflicts and grievances\nb) To conduct performance evaluations only\nc) To provide training and development only\nd) To manage benefits and compensation only\n\n6. What is the purpose of HR strategy in HR management?\na) To align HR activities with the organization's overall mission and objectives\nb) To reduce HR costs\nc) To improve employee satisfaction\nd) To increase employee turnover\n\n7. What is the importance of data and analytics in HR management?\na) To inform HR decisions\nb) To reduce HR costs\nc) To improve employee satisfaction\nd) To increase employee turnover\n\n8. What is the role of an HR manager in benefits and compensation?\na) To design and implement compensation and benefits packages\nb) To conduct performance evaluations only\nc) To provide training and development only\nd) To manage employee relations only\n\n9. What is the purpose of HR management in an organization?\na) To create a positive and productive work environment\nb) To increase profits only\nc) To reduce costs only\nd) To improve customer satisfaction only\n\n10. What is the importance of building strong relationships with employees, management, and other stakeholders in HR management?\na) To improve communication and trust\nb) To reduce HR costs\nc) To improve employee satisfaction\nd) To increase employee turnover\n\n## Answers\n1. b) To create a positive and productive work environment\n2. b) To identify and attract top talent to fill job openings\n3. a) To evaluate employee performance and provide feedback\n4. a) To avoid legal issues\n5. a) To manage employee conflicts and grievances\n6. a) To align HR activities with the organization's overall mission and objectives\n7. a) To inform HR decisions\n8. a) To design and implement compensation and benefits packages\n9. a) To create a positive and productive work environment\n10. a) To improve communication and trust",
+      "chap-1-mod-2": "# HR Functions and Processes\nAs a beginner in the field of Human Resources (HR), it is essential to understand the key functions and processes that are involved in HR management. In this module, we will explore the various aspects of HR functions and processes, including recruitment, talent management, benefits administration, and employee relations.\n\n## Introduction to HR Functions\nHR functions are the core activities that are performed by the HR department to support the organization's goals and objectives. These functions can be broadly categorized into several areas, including:\n\n* Recruitment and selection: This involves attracting, selecting, and hiring the best candidates to fill job openings within the organization.\n* Talent management: This involves developing and implementing strategies to attract, retain, and develop talented employees.\n* Benefits administration: This involves designing and implementing employee benefits programs, such as health insurance, retirement plans, and paid time off.\n* Employee relations: This involves managing the relationship between the organization and its employees, including handling employee complaints, grievances, and conflicts.\n* Training and development: This involves providing employees with the skills and knowledge they need to perform their jobs effectively.\n\n## Recruitment and Selection Process\nThe recruitment and selection process is a critical function of HR management. It involves several steps, including:\n\n1. Job analysis: This involves analyzing the job requirements and responsibilities to determine the skills and qualifications needed for the job.\n2. Job description: This involves creating a detailed job description that outlines the job responsibilities, skills, and qualifications.\n3. Job posting: This involves advertising the job opening through various channels, such as job boards, social media, and employee referrals.\n4. Application screening: This involves reviewing and screening applications to select the most qualified candidates.\n5. Interviews: This involves conducting interviews with the selected candidates to assess their skills, experience, and fit for the job.\n6. Job offer: This involves extending a job offer to the selected candidate, including salary, benefits, and other terms of employment.\n\n## Talent Management\nTalent management is a critical function of HR management that involves developing and implementing strategies to attract, retain, and develop talented employees. This includes:\n\n* Succession planning: This involves identifying and developing future leaders to replace current leaders when they leave or retire.\n* Performance management: This involves setting goals, providing feedback, and evaluating employee performance to ensure that employees are meeting their job requirements.\n* Career development: This involves providing employees with opportunities for growth and development, such as training, mentoring, and job rotation.\n* Employee engagement: This involves creating a positive work environment that motivates and engages employees, including recognizing and rewarding employee contributions.\n\n## Benefits Administration\nBenefits administration is an important function of HR management that involves designing and implementing employee benefits programs. This includes:\n\n* Health insurance: This involves providing employees with health insurance coverage, including medical, dental, and vision benefits.\n* Retirement plans: This involves providing employees with retirement plans, such as 401(k) or pension plans.\n* Paid time off: This involves providing employees with paid time off, including vacation, sick leave, and holidays.\n* Other benefits: This includes other benefits, such as life insurance, disability insurance, and employee assistance programs.\n\n## Employee Relations\nEmployee relations is a critical function of HR management that involves managing the relationship between the organization and its employees. This includes:\n\n* Employee communications: This involves communicating with employees about company policies, procedures, and news.\n* Employee complaints: This involves handling employee complaints and grievances, including investigating and resolving disputes.\n* Conflict resolution: This involves resolving conflicts between employees, including mediating disputes and providing counseling.\n* Employee recognition: This involves recognizing and rewarding employee contributions, including employee recognition programs and awards.\n\n## Best Practices\nTo be effective in HR management, it is essential to follow best practices, including:\n\n* Developing a comprehensive HR strategy that aligns with the organization's goals and objectives.\n* Creating a positive work environment that motivates and engages employees.\n* Providing employees with opportunities for growth and development.\n* Communicating effectively with employees about company policies, procedures, and news.\n* Handling employee complaints and grievances in a fair and timely manner.\n\n## Quiz\nTest your understanding of HR functions and processes with the following quiz:\n\n1. What is the primary function of the recruitment and selection process?\na) To develop and implement employee benefits programs\nb) To manage the relationship between the organization and its employees\nc) To attract, select, and hire the best candidates to fill job openings\nd) To provide employees with opportunities for growth and development\n\n2. What is the purpose of job analysis in the recruitment and selection process?\na) To create a detailed job description\nb) To advertise the job opening\nc) To screen applications\nd) To determine the skills and qualifications needed for the job\n\n3. What is talent management, and why is it important?\na) Talent management is the process of recruiting and selecting employees, and it is important because it helps to attract the best candidates.\nb) Talent management is the process of developing and implementing strategies to attract, retain, and develop talented employees, and it is important because it helps to improve employee performance and retention.\nc) Talent management is the process of providing employees with benefits and compensation, and it is important because it helps to motivate employees.\nd) Talent management is the process of managing employee relations, and it is important because it helps to resolve conflicts.\n\n4. What is the purpose of benefits administration in HR management?\na) To develop and implement employee benefits programs\nb) To manage the relationship between the organization and its employees\nc) To provide employees with opportunities for growth and development\nd) To attract, select, and hire the best candidates to fill job openings\n\n5. What is employee relations, and why is it important?\na) Employee relations is the process of managing the relationship between the organization and its employees, and it is important because it helps to resolve conflicts and improve employee engagement.\nb) Employee relations is the process of recruiting and selecting employees, and it is important because it helps to attract the best candidates.\nc) Employee relations is the process of providing employees with benefits and compensation, and it is important because it helps to motivate employees.\nd) Employee relations is the process of developing and implementing employee benefits programs, and it is important because it helps to improve employee retention.\n\n6. What is the purpose of performance management in talent management?\na) To set goals and provide feedback to employees\nb) To develop and implement employee benefits programs\nc) To manage the relationship between the organization and its employees\nd) To attract, select, and hire the best candidates to fill job openings\n\n7. What is succession planning, and why is it important?\na) Succession planning is the process of identifying and developing future leaders, and it is important because it helps to ensure continuity and stability in the organization.\nb) Succession planning is the process of recruiting and selecting employees, and it is important because it helps to attract the best candidates.\nc) Succession planning is the process of providing employees with benefits and compensation, and it is important because it helps to motivate employees.\nd) Succession planning is the process of managing employee relations, and it is important because it helps to resolve conflicts.\n\n8. What is the purpose of employee recognition programs in HR management?\na) To provide employees with opportunities for growth and development\nb) To manage the relationship between the organization and its employees\nc) To recognize and reward employee contributions\nd) To attract, select, and hire the best candidates to fill job openings\n\n9. What is the importance of communication in HR management?\na) Communication is important because it helps to resolve conflicts and improve employee engagement.\nb) Communication is important because it helps to attract the best candidates.\nc) Communication is important because it helps to motivate employees.\nd) Communication is important because it helps to improve employee retention.\n\n10. What is the purpose of HR strategy in HR management?\na) To develop and implement employee benefits programs\nb) To manage the relationship between the organization and its employees\nc) To provide employees with opportunities for growth and development\nd) To align HR functions with the organization's goals and objectives\n\n## Answers\n1. c) To attract, select, and hire the best candidates to fill job openings\n2. d) To determine the skills and qualifications needed for the job\n3. b) Talent management is the process of developing and implementing strategies to attract, retain, and develop talented employees, and it is important because it helps to improve employee performance and retention.\n4. a) To develop and implement employee benefits programs\n5. a) Employee relations is the process of managing the relationship between the organization and its employees, and it is important because it helps to resolve conflicts and improve employee engagement.\n6. a) To set goals and provide feedback to employees\n7. a) Succession planning is the process of identifying and developing future leaders, and it is important because it helps to ensure continuity and stability in the organization.\n8. c) To recognize and reward employee contributions\n9. a) Communication is important because it helps to resolve conflicts and improve employee engagement.\n10. d) To align HR functions with the organization's goals and objectives"
+    },
+    "id": "c35353c7-30bf-4af7-b1a2-96fe4646c6df",
+    "userId": "basha@fbt.com",
+    "updatedAt": "2026-05-21T06:54:07.956Z",
+    "createdAt": "2026-05-21T06:53:49.718Z"
+  },
+  {
+    "role": "Job Description What you'll be doing?  • Utilize programming expertise to troubleshoot and diagnose software issues, offering clear and actionable solutions. • Perform regular maintenance and updates to the applications • Follow standard procedures for proper escalation of unresolved issues to the appropriate internal teams • Reporting software bugs and supportability concerns along with customer suggestions to the product teams. • Proven ability to analyze, diagnose, and resolve complex technical issues efficiently. • Requirement gathering and analysis of customer requirements. • Development and configuration of client instances during onboarding • Document technical solutions, known issues, and best practices in a clear and concise manner. • Follow the SLA for issues with respect to the severity. Desired qualifications include  • Experience in debugging and interpreting code to identify and address software-related issues • Ability to multi-task and work with minimal supervision • Knowledge of JavaScript, HTML, JSON, and Angular • Basic concepts of Python and REST APIs • Strong problem-solving skills • Excellent written and verbal communication skills",
+    "level": "beginner",
+    "title": "Software Support Specialist Roadmap",
+    "description": "Master the skills required to troubleshoot, diagnose, and resolve software issues, and provide excellent customer support as a software support specialist",
+    "chapters": [
+      {
+        "id": "chap-1",
+        "title": "Chapter 1: Introduction to Programming Fundamentals",
+        "modules": [
+          {
+            "id": "chap-1-mod-1",
+            "title": "Introduction to JavaScript",
+            "description": "Learn the basics of JavaScript, including data types, variables, functions, and control structures"
+          },
+          {
+            "id": "chap-1-mod-2",
+            "title": "Introduction to HTML and JSON",
+            "description": "Understand the basics of HTML, JSON, and how they are used in web development"
+          },
+          {
+            "id": "chap-1-mod-3",
+            "title": "Introduction to Angular",
+            "description": "Get familiar with the Angular framework and its applications"
+          }
+        ]
+      },
+      {
+        "id": "chap-2",
+        "title": "Chapter 2: Debugging and Troubleshooting",
+        "modules": [
+          {
+            "id": "chap-2-mod-1",
+            "title": "Debugging Techniques",
+            "description": "Learn various debugging techniques, including console logging, debugging tools, and error handling"
+          },
+          {
+            "id": "chap-2-mod-2",
+            "title": "Interpreting Code and Identifying Issues",
+            "description": "Understand how to interpret code, identify software-related issues, and develop clear and actionable solutions"
+          },
+          {
+            "id": "chap-2-mod-3",
+            "title": "Introduction to Python and REST APIs",
+            "description": "Get familiar with the basics of Python and REST APIs, and understand their applications in software development"
+          }
+        ]
+      },
+      {
+        "id": "chap-3",
+        "title": "Chapter 3: Customer Support and Communication",
+        "modules": [
+          {
+            "id": "chap-3-mod-1",
+            "title": "Effective Communication Skills",
+            "description": "Develop excellent written and verbal communication skills to provide top-notch customer support"
+          },
+          {
+            "id": "chap-3-mod-2",
+            "title": "Customer Requirement Gathering and Analysis",
+            "description": "Learn how to gather and analyze customer requirements, and develop solutions to meet their needs"
+          },
+          {
+            "id": "chap-3-mod-3",
+            "title": "Documenting Technical Solutions and Best Practices",
+            "description": "Understand the importance of documenting technical solutions, known issues, and best practices, and learn how to do it effectively"
+          }
+        ]
+      },
+      {
+        "id": "chap-4",
+        "title": "Chapter 4: Software Maintenance and Updates",
+        "modules": [
+          {
+            "id": "chap-4-mod-1",
+            "title": "Regular Maintenance and Updates",
+            "description": "Learn how to perform regular maintenance and updates to applications, and understand the importance of following standard procedures"
+          },
+          {
+            "id": "chap-4-mod-2",
+            "title": "Escalation Procedures and SLA Management",
+            "description": "Understand how to follow standard procedures for proper escalation of unresolved issues, and manage SLAs with respect to issue severity"
+          },
+          {
+            "id": "chap-4-mod-3",
+            "title": "Reporting Software Bugs and Supportability Concerns",
+            "description": "Learn how to report software bugs and supportability concerns, and provide customer suggestions to product teams"
+          }
+        ]
+      },
+      {
+        "id": "chap-5",
+        "title": "Chapter 5: Onboarding and Configuration",
+        "modules": [
+          {
+            "id": "chap-5-mod-1",
+            "title": "Development and Configuration of Client Instances",
+            "description": "Learn how to develop and configure client instances during onboarding, and understand the importance of following best practices"
+          },
+          {
+            "id": "chap-5-mod-2",
+            "title": "Multi-Tasking and Working with Minimal Supervision",
+            "description": "Develop the ability to multi-task and work with minimal supervision, and understand the importance of time management and prioritization"
+          },
+          {
+            "id": "chap-5-mod-3",
+            "title": "Final Project and Assessment",
+            "description": "Apply the skills and knowledge gained throughout the roadmap to a real-world project, and assess your progress and understanding"
+          }
+        ]
+      }
+    ],
+    "moduleContent": {
+      "chap-1-mod-1": "# Introduction to JavaScript\nJavaScript is a high-level, dynamic, and interpreted programming language that is primarily used for client-side scripting on the web. It is used to create interactive web pages, web applications, and mobile applications. In this module, we will cover the basics of JavaScript, including data types, variables, functions, and control structures.\n\n## Data Types in JavaScript\nJavaScript has several built-in data types, including:\n\n* Numbers: whole numbers or decimals, e.g. 10, 3.14\n* Strings: sequences of characters, e.g. \"hello\", 'hello'\n* Booleans: true or false values\n* Null: a special value that represents the absence of any object value\n* Undefined: a special value that represents an uninitialized variable\n* Objects: collections of key-value pairs, e.g. {name: \"John\", age: 30}\n* Arrays: ordered collections of values, e.g. [1, 2, 3]\n\n## Variables in JavaScript\nIn JavaScript, variables are used to store and manipulate data. There are several ways to declare variables in JavaScript, including:\n\n* Var: The var keyword is used to declare a variable. It can be reassigned and updated.\n* Let: The let keyword is used to declare a variable that can be reassigned and updated, but it is block-scoped.\n* Const: The const keyword is used to declare a constant variable that cannot be reassigned or updated.\n\nExample:\n```javascript\nvar name = \"John\";\nlet age = 30;\nconst country = \"USA\";\n```\n\n## Functions in JavaScript\nFunctions are reusable blocks of code that perform a specific task. They can take arguments and return values. In JavaScript, functions can be defined using the function keyword or as arrow functions.\n\nExample:\n```javascript\nfunction greet(name) {\n  console.log(\"Hello, \" + name);\n}\n\nconst greet = (name) => {\n  console.log(\"Hello, \" + name);\n}\n```\n\n## Control Structures in JavaScript\nControl structures are used to control the flow of a program's execution. The most common control structures in JavaScript are:\n\n* Conditional statements: if, else, switch\n* Loops: for, while, do-while\n* Jump statements: break, continue, return\n\nExample:\n```javascript\nif (age > 18) {\n  console.log(\"You are an adult\");\n} else {\n  console.log(\"You are a minor\");\n}\n\nfor (let i = 0; i < 5; i++) {\n  console.log(i);\n}\n```\n\n## Best Practices\nHere are some best practices to keep in mind when writing JavaScript code:\n\n* Use meaningful variable names and follow a consistent naming convention\n* Use functions to organize and reuse code\n* Use control structures to control the flow of a program's execution\n* Use comments to explain the purpose of a piece of code\n* Test and debug code thoroughly to ensure it works as expected\n\n## Common JavaScript Errors\nHere are some common JavaScript errors to watch out for:\n\n* Syntax errors: missing or mismatched brackets, parentheses, or semicolons\n* Runtime errors: errors that occur during the execution of a program, such as null pointer exceptions or division by zero\n* Logic errors: errors that occur due to incorrect logic or algorithms\n\n## Conclusion\nIn this module, we covered the basics of JavaScript, including data types, variables, functions, and control structures. We also discussed best practices and common errors to watch out for. With this foundation, you can start building your own JavaScript applications and exploring more advanced topics.\n\n## Quiz\n1. What is the purpose of the var keyword in JavaScript?\na) To declare a constant variable\nb) To declare a variable that can be reassigned and updated\nc) To declare a function\nd) To declare an object\n\n2. What is the difference between let and const in JavaScript?\na) Let is block-scoped, while const is not\nb) Let can be reassigned, while const cannot\nc) Let is used for functions, while const is used for variables\nd) Let is used for objects, while const is used for arrays\n\n3. What is the purpose of the if statement in JavaScript?\na) To declare a variable\nb) To declare a function\nc) To control the flow of a program's execution\nd) To loop through an array\n\n4. What is the purpose of the for loop in JavaScript?\na) To declare a variable\nb) To declare a function\nc) To control the flow of a program's execution\nd) To loop through an array\n\n5. What is the purpose of comments in JavaScript?\na) To explain the purpose of a piece of code\nb) To declare a variable\nc) To declare a function\nd) To control the flow of a program's execution\n\n6. What is a syntax error in JavaScript?\na) An error that occurs during the execution of a program\nb) An error that occurs due to incorrect logic or algorithms\nc) A missing or mismatched bracket, parenthesis, or semicolon\nd) A null pointer exception\n\n7. What is a runtime error in JavaScript?\na) An error that occurs during the execution of a program\nb) An error that occurs due to incorrect logic or algorithms\nc) A missing or mismatched bracket, parenthesis, or semicolon\nd) A null pointer exception\n\n8. What is a logic error in JavaScript?\na) An error that occurs during the execution of a program\nb) An error that occurs due to incorrect logic or algorithms\nc) A missing or mismatched bracket, parenthesis, or semicolon\nd) A null pointer exception\n\n9. What is the purpose of testing and debugging in JavaScript?\na) To explain the purpose of a piece of code\nb) To declare a variable\nc) To declare a function\nd) To ensure that code works as expected\n\n10. What is the purpose of using meaningful variable names in JavaScript?\na) To declare a constant variable\nb) To declare a variable that can be reassigned and updated\nc) To make code more readable and maintainable\nd) To control the flow of a program's execution\n\n## Answers\n1. b) To declare a variable that can be reassigned and updated\n2. b) Let can be reassigned, while const cannot\n3. c) To control the flow of a program's execution\n4. d) To loop through an array\n5. a) To explain the purpose of a piece of code\n6. c) A missing or mismatched bracket, parenthesis, or semicolon\n7. a) An error that occurs during the execution of a program\n8. b) An error that occurs due to incorrect logic or algorithms\n9. d) To ensure that code works as expected\n10. c) To make code more readable and maintainable",
+      "chap-1-mod-3": "# Introduction to Angular\nAngular is a popular JavaScript framework used for building single-page applications, progressive web apps, and mobile applications. It was created by Google and is widely used in the industry for developing complex and scalable applications. In this module, we will introduce you to the basics of Angular and its applications.\n\n## What is Angular?\nAngular is a client-side framework that allows you to build dynamic web applications. It provides a robust set of tools and libraries that make it easy to build complex applications. Angular is based on the Model-View-Controller (MVC) pattern, which separates the application logic into three interconnected components.\n\n## Key Features of Angular\nSome of the key features of Angular include:\n\n* **Templates**: Angular uses HTML templates to define the user interface of an application. Templates are used to bind data to the UI and to define the structure of the application.\n* **Components**: Angular components are the building blocks of an application. They are used to define the UI and the behavior of an application.\n* **Services**: Angular services are used to share data between components. They are used to encapsulate business logic and to provide a way to communicate between components.\n* **Dependency Injection**: Angular uses dependency injection to provide components with the services they need. This makes it easy to test and maintain applications.\n* **Routing**: Angular provides a built-in routing system that makes it easy to navigate between different parts of an application.\n\n## Angular Applications\nAngular can be used to build a wide range of applications, including:\n\n* **Single-Page Applications**: Angular is well-suited for building single-page applications, where the entire application is loaded on a single page.\n* **Progressive Web Apps**: Angular can be used to build progressive web apps, which provide a native app-like experience to users.\n* **Mobile Applications**: Angular can be used to build mobile applications, using frameworks such as Ionic and NativeScript.\n\n## Setting up an Angular Project\nTo get started with Angular, you need to set up a new project. You can use the Angular CLI to create a new project. The Angular CLI provides a set of tools and commands that make it easy to create, build, and test Angular applications.\n\n## Basic Angular Concepts\nSome basic Angular concepts include:\n\n* **Modules**: Angular modules are used to organize an application into logical parts. A module is a container for a set of related components, services, and other modules.\n* **Components**: Angular components are the building blocks of an application. They are used to define the UI and the behavior of an application.\n* **Templates**: Angular templates are used to define the user interface of an application. Templates are used to bind data to the UI and to define the structure of the application.\n\n## Example Angular Code\nHere is an example of a simple Angular component:\n```javascript\nimport { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  template: `\n    <h1>Hello World!</h1>\n  `\n})\nexport class AppComponent {\n  title = 'My First Angular App';\n}\n```\nThis code defines a simple Angular component that displays a heading with the text \"Hello World!\".\n\n## Best Practices\nSome best practices for working with Angular include:\n\n* **Use the Angular CLI**: The Angular CLI provides a set of tools and commands that make it easy to create, build, and test Angular applications.\n* **Use modules**: Angular modules are used to organize an application into logical parts.\n* **Use components**: Angular components are the building blocks of an application.\n* **Use templates**: Angular templates are used to define the user interface of an application.\n\n## Quiz\nTest your understanding of Angular with the following quiz:\n\n1. What is Angular?\na) A server-side framework\nb) A client-side framework\nc) A database management system\nd) A programming language\n\n2. What is the purpose of Angular templates?\na) To define the user interface of an application\nb) To define the business logic of an application\nc) To define the database schema of an application\nd) To define the routing of an application\n\n3. What is the purpose of Angular components?\na) To define the user interface of an application\nb) To define the business logic of an application\nc) To define the database schema of an application\nd) To define the routing of an application\n\n4. What is the purpose of Angular services?\na) To share data between components\nb) To define the user interface of an application\nc) To define the business logic of an application\nd) To define the database schema of an application\n\n5. What is the purpose of the Angular CLI?\na) To create, build, and test Angular applications\nb) To define the user interface of an application\nc) To define the business logic of an application\nd) To define the database schema of an application\n\n6. What is the difference between a single-page application and a progressive web app?\na) A single-page application is loaded on a single page, while a progressive web app provides a native app-like experience\nb) A single-page application provides a native app-like experience, while a progressive web app is loaded on a single page\nc) A single-page application is used for desktop applications, while a progressive web app is used for mobile applications\nd) A single-page application is used for mobile applications, while a progressive web app is used for desktop applications\n\n7. What is the purpose of Angular routing?\na) To navigate between different parts of an application\nb) To define the user interface of an application\nc) To define the business logic of an application\nd) To define the database schema of an application\n\n8. What is the purpose of Angular dependency injection?\na) To provide components with the services they need\nb) To define the user interface of an application\nc) To define the business logic of an application\nd) To define the database schema of an application\n\n9. What is the purpose of Angular modules?\na) To organize an application into logical parts\nb) To define the user interface of an application\nc) To define the business logic of an application\nd) To define the database schema of an application\n\n10. What is the difference between Angular and React?\na) Angular is a client-side framework, while React is a server-side framework\nb) Angular is a server-side framework, while React is a client-side framework\nc) Angular is used for building single-page applications, while React is used for building progressive web apps\nd) Angular is used for building progressive web apps, while React is used for building single-page applications\n\nAnswers:\n1. b) A client-side framework\n2. a) To define the user interface of an application\n3. a) To define the user interface of an application\n4. a) To share data between components\n5. a) To create, build, and test Angular applications\n6. a) A single-page application is loaded on a single page, while a progressive web app provides a native app-like experience\n7. a) To navigate between different parts of an application\n8. a) To provide components with the services they need\n9. a) To organize an application into logical parts\n10. a) Angular is a client-side framework, while React is a client-side library"
+    },
+    "id": "d5b9ff58-5ba3-46f2-893a-8b8c280d8331",
+    "userId": "basha@fbt.com",
+    "updatedAt": "2026-05-26T07:45:05.097Z",
+    "createdAt": "2026-05-26T07:44:39.748Z"
   }
 ]

@@ -1,0 +1,48 @@
+[
+  {
+    "id": "b37b5320-1406-4945-8d05-d172ec4b3614",
+    "userId": "pc2laptop1@gmail.com",
+    "title": "what is the aws",
+    "messages": [
+      {
+        "id": "b2254f33-206d-4a80-b935-49f19449727f",
+        "question": "what is the aws",
+        "results": [
+          {
+            "name": "Gemini 2.0",
+            "status": "error",
+            "answer": "Failed: Gemini error 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\nPlease retry in 35.79126263s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Learn more about Gemini API quotas\",\n            \"url\": \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.QuotaFailure\",\n        \"violations\": [\n          {\n            \"quotaMetric\": \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\",\n            \"quotaId\": \"GenerateContentInputTokensPerModelPerMinute-FreeTier\",\n            \"quotaDimensions\": {\n              \"location\": \"global\",\n              \"model\": \"gemini-2.0-flash\"\n            }\n          },\n          {\n            \"quotaMetric\": \"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\n            \"quotaId\": \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\",\n            \"quotaDimensions\": {\n              \"location\": \"global\",\n              \"model\": \"gemini-2.0-flash\"\n            }\n          },\n          {\n            \"quotaMetric\": \"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\n            \"quotaId\": \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\n            \"quotaDimensions\": {\n              \"location\": \"global\",\n              \"model\": \"gemini-2.0-flash\"\n            }\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.RetryInfo\",\n        \"retryDelay\": \"35s\"\n      }\n    ]\n  }\n}\n"
+          },
+          {
+            "name": "Groq (Llama 3)",
+            "status": "success",
+            "answer": "Amazon Web Services (AWS), a cloud computing platform.",
+            "duration": 384
+          },
+          {
+            "name": "Cerebras (Llama 3.1)",
+            "status": "success",
+            "answer": "AWS stands for Amazon Web Services, which is a comprehensive cloud computing platform provided by Amazon. It offers a wide range of services, including computing power, storage, databases, analytics, machine learning, and more, to help businesses scale and operate efficiently.",
+            "duration": 882
+          },
+          {
+            "name": "OpenRouter (GPT/Claude)",
+            "status": "success",
+            "answer": "AWS (Amazon Web Services) is Amazon’s comprehensive cloud‑computing platform offering on‑demand services such as compute (EC2), storage (S3), databases, networking, AI, and more, enabling businesses to build and scale applications without managing physical infrastructure.",
+            "duration": 4509
+          },
+          {
+            "name": "HuggingFace (DeepSeek)",
+            "status": "success",
+            "answer": "AWS (Amazon Web Services) is a comprehensive cloud computing platform offering on-demand services like computing power, storage, databases, machine learning, and more, enabling businesses to scale and innovate without managing physical infrastructure.",
+            "duration": 5670
+          }
+        ],
+        "consensus": "Consensus: The majority of AI models agree that AWS stands for Amazon Web Services, a comprehensive cloud computing platform that offers a wide range of services to help businesses scale and operate efficiently. All models consistently describe AWS as a cloud computing platform provided by Amazon, with various services including computing power, storage, databases, and more.",
+        "createdAt": "2026-05-21T06:52:30.131Z"
+      }
+    ],
+    "createdAt": "2026-05-21T06:52:30.131Z",
+    "updatedAt": "2026-05-21T06:52:30.133Z"
+  }
+]
