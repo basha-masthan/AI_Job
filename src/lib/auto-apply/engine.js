@@ -6,7 +6,6 @@ import { getApiKey } from '@/lib/config';
 import { invokeAI, safeJSONParse, generateResumeFromJD, generateApplicationEmail } from '@/lib/ai';
 import { saveJob, checkAlreadyApplied, checkAlreadyAppliedByEmail, getAllResumes } from '@/lib/store';
 import { findCompanyEmail } from '@/lib/email-discovery';
-import { uploadToCloudinary } from '@/lib/cloudinary';
 import { generateAndUploadResumePDF } from '@/lib/pdf-generator';
 import { searchJobs } from './search';
 

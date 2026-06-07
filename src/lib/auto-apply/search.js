@@ -379,7 +379,10 @@ async function phase2ScrapeAndVerify(candidates, progressFn, isActive) {
             };
           }
 
-          if (scraped.text.length > 1000 && !scraped.text.toLowerCase().includes('search results')) {
+          const botPatterns = ['security check', 'security verification', 'verify you are a human', 'cf-browser-verification', 'just a moment'];
+          const isBotPage = botPatterns.some(p => scraped.text.toLowerCase().includes(p));
+
+          if (!isBotPage && scraped.text.length > 1000 && !scraped.text.toLowerCase().includes('search results')) {
             return {
               ...candidate,
               verified: true,
