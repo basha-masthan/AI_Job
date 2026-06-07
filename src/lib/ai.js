@@ -2,18 +2,19 @@
  * AI Client - Strictly OpenRouter
  */
 
-import { getApiKey, getSetting, getGroqKeys, getOpenRouterKeys } from '@/lib/config';
+import { getApiKey, getSetting, getGroqKeys, getOpenRouterKeys, getMistralKeys, getCohereKeys, getOpenAIKeys } from '@/lib/config';
 
 const OPENROUTER_BASE = 'https://openrouter.ai/api/v1/chat/completions';
 const GROQ_BASE = 'https://api.groq.com/openai/v1/chat/completions';
 const HF_BASE = 'https://router.huggingface.co/v1';
 const CEREBRAS_BASE = 'https://api.cerebras.ai/v1/chat/completions';
+const OPENAI_BASE = 'https://api.openai.com/v1/chat/completions';
 
 function getActiveAIProvider() {
   return getSetting('activeAIProvider', 'openrouter');
 }
 
-export async function callOpenRouter(messages, maxTokens = 4096, retries = 2) {
+export async function callOpenRouter(messages, maxTokens = 4096, retries = 2, customModel = null) {
   const keys = getOpenRouterKeys();
   let lastErr = null;
   
@@ -29,7 +30,7 @@ export async function callOpenRouter(messages, maxTokens = 4096, retries = 2) {
           'X-Title': 'JobHunt AI Pro',
         },
         body: JSON.stringify({
-          model: getApiKey('OPENROUTER_MODEL') || 'openai/gpt-oss-120b:free',
+          model: customModel || getApiKey('OPENROUTER_MODEL') || 'openai/gpt-oss-120b:free',
           messages,
           max_tokens: maxTokens,
           temperature: 0.3,
@@ -170,6 +171,128 @@ export async function callCerebras(messages, maxTokens = 4096) {
   return data.choices[0].message.content;
 }
 
+export async function callMistral(messages, maxTokens = 4096) {
+  const keys = getMistralKeys();
+  let lastErr = null;
+  
+  for (const apiKey of keys) {
+    if (!apiKey) continue;
+    const res = await fetch('https://api.mistral.ai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: getApiKey('MISTRAL_MODEL') || 'mistral-large-latest',
+        messages,
+        max_tokens: maxTokens,
+        temperature: 0.3,
+      }),
+    });
+
+    if (!res.ok) {
+      const err = await res.text();
+      lastErr = new Error(`Mistral error ${res.status}: ${err}`);
+      if (res.status === 429) continue;
+      continue;
+    }
+
+    const data = await res.json();
+    return data.choices[0].message.content;
+  }
+  throw lastErr || new Error('All Mistral keys failed.');
+}
+
+export async function callCohere(messages, maxTokens = 4096) {
+  const keys = getCohereKeys();
+  let lastErr = null;
+
+  // Convert generic messages (role: 'system'/'user'/'assistant') to Cohere chat format
+  const cohereMessages = messages.map(m => {
+    if (m.role === 'system') return { role: 'SYSTEM', message: m.content };
+    if (m.role === 'user') return { role: 'USER', message: m.content };
+    if (m.role === 'assistant') return { role: 'CHATBOT', message: m.content };
+    return { role: 'USER', message: m.content };
+  });
+  
+  for (const apiKey of keys) {
+    if (!apiKey) continue;
+    const res = await fetch('https://api.cohere.ai/v1/chat', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: getApiKey('COHERE_MODEL') || 'command-r-plus',
+        chat_history: cohereMessages.slice(0, -1),
+        message: cohereMessages[cohereMessages.length - 1].message,
+        temperature: 0.3,
+        max_tokens: maxTokens
+      }),
+    });
+
+    if (!res.ok) {
+      const err = await res.text();
+      lastErr = new Error(`Cohere error ${res.status}: ${err}`);
+      if (res.status === 429) continue;
+      continue;
+    }
+
+    const data = await res.json();
+    return data.text;
+  }
+  throw lastErr || new Error('All Cohere keys failed.');
+}
+
+export async function callOpenAI(messages, maxTokens = 4096, customModel = null) {
+  const keys = getOpenAIKeys();
+  const model = customModel || getApiKey('OPENAI_MODEL') || 'gpt-4o';
+  let lastErr = null;
+
+  for (const apiKey of keys) {
+    if (!apiKey) continue;
+    const res = await fetch(OPENAI_BASE, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ model, messages, max_tokens: maxTokens, temperature: 0.3 }),
+    });
+    if (!res.ok) {
+      const err = await res.text();
+      lastErr = new Error(`OpenAI error ${res.status}: ${err}`);
+      if (res.status === 429) continue;
+      continue;
+    }
+    const data = await res.json();
+    return data.choices[0].message.content;
+  }
+  // Fallback to gpt-4o-mini if primary model fails with quota errors
+  if (model !== 'gpt-4o-mini') {
+    try {
+      const fallbackKeys = getOpenAIKeys();
+      for (const apiKey of fallbackKeys) {
+        if (!apiKey) continue;
+        const res = await fetch(OPENAI_BASE, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ model: 'gpt-4o-mini', messages, max_tokens: maxTokens, temperature: 0.3 }),
+        });
+        if (!res.ok) continue;
+        const data = await res.json();
+        return data.choices[0].message.content;
+      }
+    } catch {}
+  }
+  throw lastErr || new Error('All OpenAI keys failed.');
+}
+
 export async function invokeAI(systemPrompt, userPrompt, maxTokens = 4096) {
   const provider = getActiveAIProvider();
 
@@ -179,11 +302,14 @@ export async function invokeAI(systemPrompt, userPrompt, maxTokens = 4096) {
   ];
 
   const providers = [
+    { name: 'openai', fn: () => callOpenAI(messages, maxTokens), key: 'OPENAI_API_KEY' },
     { name: 'cerebras', fn: () => callCerebras(messages, maxTokens), key: 'CEREBRAS_API_KEY' },
-    { name: 'gemini', fn: () => callGemini(systemPrompt, userPrompt, maxTokens), key: 'GEMINI_API_KEY' },
     { name: 'groq', fn: () => callGroq(messages, maxTokens), key: 'GROQ_API_KEY' },
-    { name: 'huggingface', fn: () => callHuggingFace(messages, maxTokens), key: 'HF_TOKEN' },
+    { name: 'mistral', fn: () => callMistral(messages, maxTokens), key: 'MISTRAL_API_KEY' },
+    { name: 'cohere', fn: () => callCohere(messages, maxTokens), key: 'COHERE_API_KEY' },
     { name: 'openrouter', fn: () => callOpenRouter(messages, maxTokens), key: 'OPENROUTER_API_KEY' },
+    { name: 'huggingface', fn: () => callHuggingFace(messages, maxTokens), key: 'HF_TOKEN' },
+    { name: 'gemini', fn: () => callGemini(systemPrompt, userPrompt, maxTokens), key: 'GEMINI_API_KEY' },
   ];
 
   const preferredIndex = providers.findIndex(p => p.name === provider);
@@ -589,47 +715,6 @@ function keywordFallback(subject, body) {
   };
 }
 
-export async function extractJobDetails(rawText, url) {
-  const system = `You are a job data extraction specialist.
-Extract structured information from job posting text.
-Return valid JSON only — no markdown, no explanation.`;
-
-  const user = `Extract all job details from this scraped job posting text.
-  
-  IMPORTANT: If the CONTENT below appears to be a "Sign In" page, a "Security Verification" page, a "Bot Challenge", or contains NO actual job information (like just a header and footer), DO NOT attempt to guess the details. Instead, return a JSON object with only one field: {"error": "blocked_by_bot_protection"}.
-
-URL: ${url}
-CONTENT:
-${rawText.substring(0, 8000)}
-
-Return ONLY this JSON structure:
-{
-  "title": "Exact job title",
-  "company": "Company name",
-  "location": "City, Country / Remote / Hybrid",
-  "type": "Full-time / Part-time / Contract / Internship",
-  "experience": "X-Y years or Fresher",
-  "salary": "Range or Not specified",
-  "description": "Full job description paragraph",
-  "requirements": ["requirement 1", "requirement 2"],
-  "responsibilities": ["responsibility 1", "responsibility 2"],
-  "skills": ["skill1", "skill2", "skill3"],
-  "benefits": ["benefit1", "benefit2"],
-  "applyLink": "${url}",
-  "postedDate": "Date or Unknown",
-  "deadline": "Deadline or Not specified"
-}`;
-
-  let text;
-  try {
-    text = await callGroq([
-      { role: 'system', content: system },
-      { role: 'user', content: user },
-    ], 4096);
-  } catch {
-    text = await invokeAI(system, user, 4096);
-  }
-
   const details = safeJSONParse(text);
   
   if (!details) {
@@ -644,8 +729,43 @@ Return ONLY this JSON structure:
 }
 
 /**
- * Generate a complete application kit (Cover Letter + Question Answers)
+ * Generate targeted search query variations for maximum job coverage
  */
+export async function generateSearchQueries({ targetRole, skills = [], experience = '' }) {
+  const system = `You are a job search query optimization expert. Generate 5-6 highly targeted search query variations for maximum job coverage.
+Each query should be a standalone search string that covers different angles of the target role.
+Return ONLY a JSON array of strings. No explanation, no markdown.`;
+
+  const user = `Generate 5-6 search query variations for:
+- Target Role: ${targetRole}
+- Key Skills: ${skills.slice(0, 10).join(', ')}
+- Experience Level: ${experience || 'Any'}
+
+Rules:
+1. Include the primary role as-is
+2. Include variations with alternative titles (e.g., "MERN Developer" → "Full Stack Developer", "JavaScript Developer")
+3. Include skill-focused queries (e.g., "React Node.js Developer")
+4. Include shorter/broader queries for maximum coverage
+5. Do NOT add seniority prefixes unless the target experience is senior (5+)
+6. Each query should be 1-5 words
+
+Return: ["query1", "query2", "query3", "query4", "query5", "query6"]`;
+
+  try {
+    const text = await invokeAI(system, user, 1024);
+    const queries = safeJSONParse(text, []);
+    if (Array.isArray(queries) && queries.length >= 2) {
+      return queries.slice(0, 6);
+    }
+  } catch {}
+
+  return [targetRole];
+}
+
+// <｜end▁of▁thinking｜>
+
+// <｜｜DSML｜｜invoke name="todowrite">
+// <｜｜DSML｜｜parameter name="todos" string="false">[{"priority":"high","content":"Fix Autopilot page.js - add missing batchResults state hook","status":"completed"},{"priority":"high","content":"Update N8NPipelinePanel.js - add hrEmail step and update log parser","status":"completed"},{"priority":"high","content":"Add generateSearchQueries helper in ai.js","status":"completed"},{"priority":"high","content":"Update job-search-mcp.js - multi-API queries, strict filters, Jina/Tavily extraction","status":"in_progress"},{"priority":"high","content":"Update autopilot-engine.js stepSearch - query generator, parallel searches, strict filtering","status":"pending"},{"priority":"high","content":"Verify all changes with syntax checks","status":"pending"}]
 export async function generateApplicationToolkit(jobDescription, userProfile) {
   const system = `You are a career coach and job application expert. 
 Generate a tailored application kit for the candidate.
@@ -737,5 +857,162 @@ Thank you for your consideration.
 Best regards,
 ${candidateProfile?.name || 'Applicant'}`
   };
+}
+
+/**
+ * Perform a single unified LLM analysis of the candidate's profile against the job description.
+ * Rates experience level match and ATS score in one API call.
+ */
+export async function analyzeJobMatch(job, resumeProfile) {
+  const candidate = {
+    skills: [
+      ...(resumeProfile.skills?.technical || []),
+      ...(resumeProfile.skills?.tools || []),
+      ...(resumeProfile.skills?.soft || [])
+    ],
+    experience: (resumeProfile.experience || []).map(exp => ({
+      role: exp.role,
+      company: exp.company,
+      duration: exp.duration,
+      bullets: (exp.bullets || []).slice(0, 2)
+    })),
+    projects: (resumeProfile.projects || []).map(proj => ({
+      name: proj.name,
+      description: proj.description,
+      tech: proj.tech
+    }))
+  };
+
+  const system = `You are an expert ATS (Applicant Tracking System) and executive recruiter.
+Analyze the candidate's profile against the job description.
+Return ONLY raw JSON matching this exact schema:
+{
+  "experienceMatch": boolean,
+  "experienceScore": number,
+  "atsScore": number,
+  "missingSkills": string[],
+  "strengths": string[],
+  "resumeRequired": boolean,
+  "recommendation": "APPLY" | "SKIP"
+}`;
+
+  const user = `CANDIDATE PROFILE:
+${JSON.stringify({ candidate }, null, 2)}
+
+JOB DESCRIPTION:
+Title: ${job.title}
+Company: ${job.company}
+Location: ${job.location || 'Remote'}
+Description: ${job.description}
+
+Tasks:
+1. Determine if candidate's experience is acceptable (do NOT automatically reject if candidate has 1.5 years and job requires 3 years, but skills strongly match). Set experienceMatch = true if acceptable.
+2. Calculate ATS score (0-100) / apply probability.
+3. List strengths and missing skills.
+4. Recommend APPLY if experienceMatch is true and atsScore >= 50, otherwise SKIP.
+
+Return JSON only.`;
+
+  const messages = [
+    { role: 'system', content: system },
+    { role: 'user', content: user }
+  ];
+
+  let text = '';
+  let lastError = null;
+
+  // Failover Chain: Groq -> OpenRouter (DeepSeek V3) -> OpenAI (gpt-4o-mini)
+  
+  // 1. Try Groq (llama-3.3-70b-versatile)
+  if (getApiKey('GROQ_API_KEY_1') || getApiKey('GROQ_API_KEY')) {
+    try {
+      text = await callGroq(messages, 1024);
+      if (text) {
+        const parsed = safeJSONParse(text);
+        if (parsed && typeof parsed.atsScore === 'number') return parsed;
+      }
+    } catch (err) {
+      lastError = err;
+      console.warn(`Groq job analysis failed: ${err.message}, trying fallback...`);
+    }
+  }
+
+  // 2. Try OpenRouter (deepseek/deepseek-chat)
+  if (getApiKey('OPENROUTER_API_KEY_1') || getApiKey('OPENROUTER_API_KEY')) {
+    try {
+      text = await callOpenRouter(messages, 1024, 2, 'deepseek/deepseek-chat');
+      if (text) {
+        const parsed = safeJSONParse(text);
+        if (parsed && typeof parsed.atsScore === 'number') return parsed;
+      }
+    } catch (err) {
+      lastError = err;
+      console.warn(`OpenRouter job analysis failed: ${err.message}, trying fallback...`);
+    }
+  }
+
+  // 3. Try OpenAI (gpt-4o-mini)
+  if (getApiKey('OPENAI_API_KEY_1') || getApiKey('OPENAI_API_KEY')) {
+    try {
+      text = await callOpenAI(messages, 1024, 'gpt-4o-mini');
+      if (text) {
+        const parsed = safeJSONParse(text);
+        if (parsed && typeof parsed.atsScore === 'number') return parsed;
+      }
+    } catch (err) {
+      lastError = err;
+      console.warn(`OpenAI job analysis failed: ${err.message}`);
+    }
+  }
+
+  // Final fallback if all failed or returned malformed JSON
+  return {
+    experienceMatch: true,
+    experienceScore: 70,
+    atsScore: 65,
+    missingSkills: [],
+    strengths: candidate.skills.slice(0, 5),
+    resumeRequired: true,
+    recommendation: 'APPLY',
+    error: lastError ? lastError.message : 'All LLM models failed'
+  };
+}
+
+// ── Job Verification ────────────────────────────────────────────
+export async function verifyJobContent(scrapedText, url) {
+  const system = `You are a job detection expert. Analyze the text content and determine if it represents a SINGLE individual job posting.
+
+Return JSON only:
+{
+  "valid": boolean,
+  "title": "extracted job title or null",
+  "company": "extracted company name or null",
+  "description": "full job description text (omit navigation, headers, footers, ads)",
+  "experience": "extracted experience requirement or null",
+  "skills": ["skill1", "skill2"],
+  "location": "extracted location or null",
+  "email": "any hiring/HR email found or null"
+}
+
+Reject (valid=false) if content is: a search results page showing multiple jobs, a category/listing page, a company careers overview page, a "jobs matching" or "showing X of Y" page, or if text is too short (<300 chars) to be a real job posting.
+
+Accept (valid=true) if: it has one clear job title, company name, job description paragraphs, and application-related content.`;
+
+  const user = `URL: ${url}\n\nPAGE CONTENT:\n${(scrapedText || '').substring(0, 8000)}`;
+
+  try {
+    const text = await Promise.race([
+      invokeAI(system, user, 600),
+      new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 12000)),
+    ]);
+    const result = safeJSONParse(text, { valid: false });
+    if (result.valid && result.description && result.description.length < 200) {
+      result.valid = false;
+    }
+    return result;
+  } catch (err) {
+    console.warn('[verifyJobContent] failed:', err.message);
+    return { valid: false, error: err.message };
+  }
 }
 
