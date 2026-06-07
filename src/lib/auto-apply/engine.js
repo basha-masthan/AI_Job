@@ -260,7 +260,7 @@ async function runPipeline(runId) {
 
 async function stepSearch(run) {
   addRunLog(run.id, 'Search', `🔍 Searching for ${run.targetRole} jobs...`, 'info');
-  updateRun(run.id, { searchPhase: 'discovering', currentBatch: (run.currentBatch || 0) + 1 });
+  updateRun(run.id, { searchPhase: 'discovering' });
 
   const progressFn = (phase, message, current, total) => {
     updateRun(run.id, {
@@ -271,20 +271,27 @@ async function stepSearch(run) {
     addRunLog(run.id, phase === 'scraping' ? 'Scraping' : 'Search', message, 'info');
   };
 
-  const isActive = () => !!(activeEngine && activeEngine.runId === run.id && getRun(run.id)?.status === 'running');
+  const isEngineRunning = () => !!(activeEngine && activeEngine.runId === run.id && getRun(run.id)?.status === 'running');
 
   const result = await searchJobs({
     targetRole: run.targetRole,
     targetLocation: run.targetLocation,
     experienceLevels: run.experienceLevels,
     skills: run.resumeProfile?.skills?.technical || [],
-  }, progressFn, isActive);
+  }, progressFn, isEngineRunning);
 
   if (result.jobs.length === 0) {
-    addRunLog(run.id, 'Search', `⚠️ ${result.message || 'No jobs found'}`, 'warning');
-    updateRun(run.id, { searchPhase: 'exhausted', searchMessage: result.message || 'No jobs found' });
+    const emptyCount = (run.emptySearchCount || 0) + 1;
+    addRunLog(run.id, 'Search', `⚠️ Empty search (${emptyCount}/3): ${result.message || 'No jobs found'}`, 'warning');
+    if (emptyCount >= 3) {
+      updateRun(run.id, { searchPhase: 'exhausted', searchMessage: 'Search sources exhausted after 3 empty rounds', emptySearchCount: emptyCount });
+      return;
+    }
+    updateRun(run.id, { emptySearchCount: emptyCount, searchMessage: result.message || 'No jobs found' });
     return;
   }
+
+  updateRun(run.id, { emptySearchCount: 0 }); // reset counter on success
 
   const existingIds = new Set(run.jobs.map(j => j.sourceId || j.id));
   let added = 0;
