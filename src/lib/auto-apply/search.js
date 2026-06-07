@@ -258,8 +258,8 @@ async function searchSiteRestrictedSerper(query, location) {
   const siteQueries = [
     `site:linkedin.com/jobs/view "${query}" ${location}`,
     `site:in.indeed.com/viewjob "${query}" ${location}`,
-    `site:naukri.com (campus/rolesense | job-list) "${query}"`,
-    `site:glassdoor.com/job-listing "${query}"`,
+    `site:naukri.com (campus/rolesense | job-list) "${query}" ${location}`,
+    `site:glassdoor.com/job-listing "${query}" ${location}`,
   ];
 
   const results = [];
