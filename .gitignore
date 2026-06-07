@@ -9,3 +9,17 @@ node_modules
 .next
 
 .vercel
+
+# Superpowers / agent workspace files
+*.md
+!README.md
+.opencode/
+
+# Auto-generated data files
+data/*.json
+
+# Uploads
+public/uploads/
+
+# Scratch files
+scratch/
