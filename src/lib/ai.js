@@ -715,19 +715,6 @@ function keywordFallback(subject, body) {
   };
 }
 
-  const details = safeJSONParse(text);
-  
-  if (!details) {
-    throw new Error('AI could not parse the job content. Please try manual paste.');
-  }
-
-  if (details.error === 'blocked_by_bot_protection') {
-    throw new Error('This site is protected by a login wall or bot challenge. Please use the Manual Paste tab to provide the job description directly.');
-  }
-
-  return details;
-}
-
 /**
  * Generate targeted search query variations for maximum job coverage
  */
@@ -765,7 +752,6 @@ Return: ["query1", "query2", "query3", "query4", "query5", "query6"]`;
 // <｜end▁of▁thinking｜>
 
 // <｜｜DSML｜｜invoke name="todowrite">
-// <｜｜DSML｜｜parameter name="todos" string="false">[{"priority":"high","content":"Fix Autopilot page.js - add missing batchResults state hook","status":"completed"},{"priority":"high","content":"Update N8NPipelinePanel.js - add hrEmail step and update log parser","status":"completed"},{"priority":"high","content":"Add generateSearchQueries helper in ai.js","status":"completed"},{"priority":"high","content":"Update job-search-mcp.js - multi-API queries, strict filters, Jina/Tavily extraction","status":"in_progress"},{"priority":"high","content":"Update autopilot-engine.js stepSearch - query generator, parallel searches, strict filtering","status":"pending"},{"priority":"high","content":"Verify all changes with syntax checks","status":"pending"}]
 export async function generateApplicationToolkit(jobDescription, userProfile) {
   const system = `You are a career coach and job application expert. 
 Generate a tailored application kit for the candidate.
@@ -1002,7 +988,7 @@ Accept (valid=true) if: it has one clear job title, company name, job descriptio
 
   try {
     const text = await Promise.race([
-      invokeAI(system, user, 600),
+      invokeAI(system, user, 1024),
       new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 12000)),
     ]);
     const result = safeJSONParse(text, { valid: false });
