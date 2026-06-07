@@ -98,6 +98,32 @@ export function getOpenRouterKeys() {
   return keys.length > 0 ? keys : [''];
 }
 
+export function getMistralKeys() {
+  const keys = [];
+  for (let i = 1; i <= 3; i++) {
+    const key = getApiKey(`MISTRAL_API_KEY_${i}`);
+    if (key && !keys.includes(key)) keys.push(key);
+  }
+  if (keys.length === 0) {
+    const singleKey = getApiKey('MISTRAL_API_KEY');
+    if (singleKey) keys.push(singleKey);
+  }
+  return keys.length > 0 ? keys : [''];
+}
+
+export function getCohereKeys() {
+  const keys = [];
+  for (let i = 1; i <= 3; i++) {
+    const key = getApiKey(`COHERE_API_KEY_${i}`);
+    if (key && !keys.includes(key)) keys.push(key);
+  }
+  if (keys.length === 0) {
+    const singleKey = getApiKey('COHERE_API_KEY');
+    if (singleKey) keys.push(singleKey);
+  }
+  return keys.length > 0 ? keys : [''];
+}
+
 export function getHunterKeys() {
   const keys = [];
   for (let i = 1; i <= 3; i++) {
@@ -106,6 +132,44 @@ export function getHunterKeys() {
   }
   if (keys.length === 0) {
     const singleKey = getApiKey('HUNTER_API_KEY');
+    if (singleKey) keys.push(singleKey);
+  }
+  return keys.length > 0 ? keys : [''];
+}
+
+export function getCoresignalKey() {
+  return process.env.CORESIGNAL_API_KEY || 'f9PsqgV7xBBB0zkrR1oDuNCn2BSUORuZ';
+}
+
+export function getOpenAIKeys() {
+  const keys = [];
+  for (let i = 1; i <= 2; i++) {
+    const key = getApiKey(`OPENAI_API_KEY_${i}`);
+    if (key && !keys.includes(key)) keys.push(key);
+  }
+  if (keys.length === 0) {
+    const singleKey = getApiKey('OPENAI_API_KEY');
+    if (singleKey) keys.push(singleKey);
+  }
+  return keys.length > 0 ? keys : [''];
+}
+
+export function getSerperKey() {
+  return getApiKey('SERPER_API_KEY') || 'dda58ce4c8a6238a447510f8536ad4581f200731';
+}
+
+export function getOcrSpaceKey() {
+  return getApiKey('OCR_SPACE_API_KEY') || '';
+}
+
+export function getAffindaKeys() {
+  const keys = [];
+  for (let i = 1; i <= 2; i++) {
+    const key = getApiKey(`AFFINDA_API_KEY_${i}`);
+    if (key && !keys.includes(key)) keys.push(key);
+  }
+  if (keys.length === 0) {
+    const singleKey = getApiKey('AFFINDA_API_KEY');
     if (singleKey) keys.push(singleKey);
   }
   return keys.length > 0 ? keys : [''];

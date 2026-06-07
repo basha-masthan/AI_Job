@@ -38,7 +38,7 @@ export async function POST(request) {
     const messages = messagesResponse.data || [];
     console.log(`Nylas Sync: Fetched ${messages.length} messages for ${user.email}`);
 
-    const userJobs = getAllJobs(session.email);
+    const userJobs = await getAllJobs(session.email);
     const updates = [];
 
     for (const message of messages) {
@@ -69,7 +69,7 @@ export async function POST(request) {
               if (update.notes) {
                 existing.notes = (existing.notes || '') + `\nUpdate [${new Date().toLocaleDateString()}]: ${update.notes}`;
               }
-              saveJob(existing, session.email);
+              await saveJob(existing, session.email);
               updates.push(existing);
             }
           } else {
@@ -87,7 +87,7 @@ export async function POST(request) {
               notes: update.notes || `Auto-detected from Nylas Email: "${message.subject}"`,
               source: 'nylas-email-sync',
             };
-            saveJob(newJob, session.email);
+            await saveJob(newJob, session.email);
             updates.push(newJob);
             userJobs.push(newJob);
           }

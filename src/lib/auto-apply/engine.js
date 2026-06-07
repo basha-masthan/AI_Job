@@ -392,17 +392,30 @@ async function processJob(runId, job) {
       return;
     }
 
+    // ── 1. Find email first ──────────────────────────────
+    let emails = [];
+    const directEmail = job.appliedEmail || job.directEmail;
+    if (directEmail) {
+      emails = [directEmail];
+      addRunLog(runId, 'Email', `Using direct email from job post: ${directEmail}`, 'success');
+    } else {
+      emails = await findCompanyEmail(job.company, job.url);
+    }
+
+    if (!emails || emails.length === 0) {
+      updateRunJob(runId, job.id, { status: 'failed', error: 'No email found', processed: true });
+      incRunStat(runId, 'failed');
+      addRunLog(runId, 'No Email', `Could not find HR email for ${job.company}`, 'error');
+      return;
+    }
+
+    addRunLog(runId, 'Email', `Found ${emails.length} contact(s) for ${job.company}`, 'success');
+
+    // ── 2. Prepare the resume (ATS check & tailor) ──────────────────────────────
     const score = await atsScoreJob(job, run.resumeProfile);
     updateRunJob(runId, job.id, { score, status: 'matched' });
     incRunStat(runId, 'scored');
     addRunLog(runId, 'ATS Score', `${job.title} — ${score}%`, 'success');
-
-    if (score < 45) {
-      updateRunJob(runId, job.id, { status: 'skipped', processed: true, skipReason: `ATS ${score}% < 45%` });
-      incRunStat(runId, 'skipped');
-      addRunLog(runId, 'Skipped', `${job.title} — ATS ${score}% too low`, 'info');
-      return;
-    }
 
     let resumeUrl = null;
     if (score < 70) {
@@ -420,16 +433,6 @@ async function processJob(runId, job) {
         addRunLog(runId, 'Resume', `PDF generation failed: ${err.message}`, 'warning');
       }
     }
-
-    const emails = await findCompanyEmail(job.company, job.url);
-    if (!emails || emails.length === 0) {
-      updateRunJob(runId, job.id, { status: 'failed', error: 'No email found', processed: true });
-      incRunStat(runId, 'failed');
-      addRunLog(runId, 'No Email', `Could not find HR email for ${job.company}`, 'error');
-      return;
-    }
-
-    addRunLog(runId, 'Email', `Found ${emails.length} contact(s) for ${job.company}`, 'success');
 
     const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
     const smtpPort = parseInt(process.env.SMTP_PORT || '587');

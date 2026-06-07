@@ -92,7 +92,6 @@ async function tryCareerPageFallback(jobUrl) {
       text = await jinaRes.text();
     }
 
-    // If careers page didn't work, try the raw Jina on the original URL (may get partial)
     if (!text || text.length < 200) {
       const rawRes = await fetch(`https://r.jina.ai/${jobUrl}`, {
         headers: { 'Accept': 'text/plain' },

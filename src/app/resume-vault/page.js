@@ -8,6 +8,8 @@ export default function ResumeVault() {
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState(null);
   const [deleteId, setDeleteId] = useState(null);
+  const [editId, setEditId] = useState(null);
+  const [editName, setEditName] = useState('');
   const [error, setError] = useState('');
 
   // Upload state
@@ -108,6 +110,27 @@ export default function ResumeVault() {
     setDeleteId(null);
     setSelected(null);
     loadResumes();
+  }
+
+  async function handleEditName(id) {
+    if (!editName.trim()) {
+      setError('Name cannot be empty');
+      return;
+    }
+    try {
+      const res = await fetch(`/api/resumes/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fileName: editName.trim() }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Update failed');
+      setEditId(null);
+      setEditName('');
+      loadResumes();
+    } catch (err) {
+      setError(err.message);
+    }
   }
 
   function getScoreColor(score) {
@@ -348,6 +371,7 @@ export default function ResumeVault() {
                       icon={getFileIcon(r)}
                       onView={() => setSelected(r)}
                       onDelete={() => setDeleteId(r.id)}
+                      onEdit={() => { setEditId(r.id); setEditName(r.fileName || ''); }}
                       onToggleFavorite={() => handleToggleFavorite(r.id)}
                       tagColor="tag-cyan"
                       tagLabel="Uploaded"
@@ -372,6 +396,7 @@ export default function ResumeVault() {
                       icon="🤖"
                       onView={() => setSelected(r)}
                       onDelete={() => setDeleteId(r.id)}
+                      onEdit={() => { setEditId(r.id); setEditName(r.fileName || ''); }}
                       onToggleFavorite={() => handleToggleFavorite(r.id)}
                       tagColor="tag-primary"
                       tagLabel="AI-Generated"
@@ -388,7 +413,7 @@ export default function ResumeVault() {
           <div className="modal-overlay" onClick={() => setSelected(null)}>
             <div className="modal modal-lg" onClick={e => e.stopPropagation()}>
               <div className="modal-header">
-                <span className="modal-title">{getFileIcon(selected)} {selected.data?.name || selected.fileName || 'Resume'}</span>
+                <span className="modal-title">{getFileIcon(selected)} {selected.fileName || selected.data?.name || 'Resume'}</span>
                 <div className="flex-row">
                   {selected.cloudinaryUrl && (
                     <a
@@ -407,7 +432,7 @@ export default function ResumeVault() {
               {selected.source === 'manual-upload' ? (
                 <div style={{ textAlign: 'center', padding: '40px 20px' }}>
                   <div style={{ fontSize: 64, marginBottom: 16 }}>{getFileIcon(selected)}</div>
-                  <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 8 }}>{selected.fileName}</div>
+                  <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 8 }}>{selected.fileName || selected.data?.name || 'Resume'}</div>
                   <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 6 }}>
                     {selected.jobTitle && <span>Label: {selected.jobTitle}</span>}
                   </div>
@@ -415,15 +440,67 @@ export default function ResumeVault() {
                     Uploaded {new Date(selected.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
                   </div>
                   {selected.cloudinaryUrl ? (
-                    <a href={selected.cloudinaryUrl} target="_blank" rel="noreferrer" className="btn btn-primary">
+                    <a href={`/api/resumes/${selected.id}/download`} className="btn btn-primary">
                       📥 Download / View File
                     </a>
                   ) : (
                     <div className="alert alert-info">File URL not available</div>
                   )}
                 </div>
+              ) : selected.cloudinaryUrl ? (
+                <div>
+                  <div style={{ display: 'flex', gap: 10, marginBottom: 14, flexWrap: 'wrap' }}>
+                    <a
+                      href={`/api/resumes/${selected.id}/download`}
+                      className="btn btn-primary btn-sm"
+                    >
+                      📥 Download PDF
+                    </a>
+                    <a
+                      href={`/api/resumes/${selected.id}/download?inline=1`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-secondary btn-sm"
+                    >
+                      👁️ Open in New Tab
+                    </a>
+                    {selected.pdfSize && (
+                      <span style={{ fontSize: 11, color: 'var(--text-muted)', alignSelf: 'center' }}>
+                        {(selected.pdfSize / 1024).toFixed(1)} KB PDF
+                      </span>
+                    )}
+                  </div>
+                  <iframe
+                    src={`/api/resumes/${selected.id}/download?inline=1`}
+                    title={selected.fileName || selected.data?.name || 'Resume'}
+                    style={{ width: '100%', height: '70vh', border: '1px solid var(--border)', borderRadius: 8 }}
+                  />
+                </div>
               ) : (
-                <div className="resume-viewer" dangerouslySetInnerHTML={{ __html: buildResumeHTML(selected.data) }} />
+                <div>
+                  <div className="alert alert-info" style={{ marginBottom: 12 }}>
+                    ⚠️ This AI resume doesn't have a PDF yet. Click below to generate one.
+                  </div>
+                  <button
+                    className="btn btn-primary btn-sm"
+                    style={{ marginBottom: 16 }}
+                    onClick={async () => {
+                      try {
+                        setError('');
+                        const res = await fetch(`/api/resumes/${selected.id}/generate-pdf`, { method: 'POST' });
+                        const data = await res.json();
+                        if (!res.ok) throw new Error(data.error || 'PDF generation failed');
+                        loadResumes();
+                        setSelected({ ...selected, cloudinaryUrl: data.cloudinaryUrl, fileType: 'application/pdf' });
+                      } catch (err) {
+                        setError(err.message);
+                      }
+                    }}
+                  >
+                    📄 Generate PDF Now
+                  </button>
+                  <div className="resume-viewer" dangerouslySetInnerHTML={{ __html: buildResumeHTML(selected.data) }} />
+                </div>
               )}
             </div>
           </div>
@@ -447,12 +524,41 @@ export default function ResumeVault() {
             </div>
           </div>
         )}
+
+        {/* ── Edit Name Modal ── */}
+        {editId && (
+          <div className="modal-overlay" onClick={() => setEditId(null)}>
+            <div className="modal" style={{ maxWidth: 450 }} onClick={e => e.stopPropagation()}>
+              <div className="modal-header">
+                <span className="modal-title">✏️ Edit Resume Name</span>
+                <button className="modal-close" onClick={() => setEditId(null)}>✕</button>
+              </div>
+              <div className="form-group" style={{ marginBottom: 16 }}>
+                <label className="form-label">Resume Name</label>
+                <input
+                  type="text"
+                  className="form-input"
+                  value={editName}
+                  onChange={e => setEditName(e.target.value)}
+                  placeholder="e.g., Senior Developer Resume"
+                  autoFocus
+                  onKeyDown={e => { if (e.key === 'Enter') handleEditName(editId); }}
+                />
+              </div>
+              {error && <div className="alert alert-error" style={{ marginBottom: 12 }}>⚠️ {error}</div>}
+              <div className="flex-row">
+                <button className="btn btn-primary" onClick={() => handleEditName(editId)}>Save</button>
+                <button className="btn btn-ghost" onClick={() => { setEditId(null); setEditName(''); setError(''); }}>Cancel</button>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );
 }
 
-function ResumeCard({ resume, icon, onView, onDelete, onToggleFavorite, tagColor, tagLabel }) {
+function ResumeCard({ resume, icon, onView, onDelete, onEdit, onToggleFavorite, tagColor, tagLabel }) {
   return (
     <div className={`resume-card ${resume.isFavorite ? 'favorite' : ''}`} style={{ position: 'relative' }}>
       <button 
@@ -472,12 +578,13 @@ function ResumeCard({ resume, icon, onView, onDelete, onToggleFavorite, tagColor
         }}>{icon}</div>
         <div className="flex-row" style={{ gap: 6 }}>
           <button className="btn btn-ghost btn-sm" onClick={onView}>View</button>
+          <button className="btn btn-ghost btn-sm" onClick={onEdit} title="Edit name">✏️</button>
           <button className="btn btn-danger btn-sm" onClick={onDelete}>🗑️</button>
         </div>
       </div>
 
       <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 2 }}>
-        {resume.data?.name || resume.fileName || 'Resume'}
+        {resume.fileName || resume.data?.name || 'Resume'}
       </div>
       <div style={{ fontSize: 12, marginBottom: 6, display: 'flex', alignItems: 'center', gap: 6 }}>
         <span className={`tag ${tagColor}`} style={{ fontSize: 10 }}>{tagLabel}</span>

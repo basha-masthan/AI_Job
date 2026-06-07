@@ -19,7 +19,8 @@ const NAV = [
   ]},
   { label: 'JOBS', items: [
     { href: '/job-search', icon: '🔍', label: 'India Jobs' },
-    { href: '/autopilot', icon: '🚀', label: 'Auto Apply' },
+    { href: '/auto-apply', icon: '🚀', label: 'Auto Apply' },
+    { href: '/recruiter-finder', icon: '🕵️', label: 'Recruiter Finder' },
     { href: '/jobs-applied', icon: '📨', label: 'Jobs Applied' },
     { href: '/job-tracker', icon: '📋', label: 'Job Tracker' },
     { href: '/job-fetcher', icon: '🔗', label: 'Job Fetcher' },

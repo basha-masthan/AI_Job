@@ -74,7 +74,7 @@ export async function POST(request) {
       return NextResponse.json({ success: true, message: 'No emails found matching criteria.', newJobs: [] });
     }
 
-    const existingJobs = getAllJobs(session.email);
+    const existingJobs = await getAllJobs(session.email);
     const newOrUpdatedJobs = [];
     const debugInfo = [];
 
@@ -133,7 +133,7 @@ export async function POST(request) {
               if (update.notes) {
                 existing.notes = (existing.notes || '') + `\nUpdate [${new Date().toLocaleDateString()}]: ${update.notes}`;
               }
-              saveJob(existing, session.email);
+              await saveJob(existing, session.email);
               newOrUpdatedJobs.push(existing);
             }
           } else {
@@ -150,7 +150,7 @@ export async function POST(request) {
               notes: update.notes || `Auto-detected from Google Email: "${nylasFormatMsg.subject}"`,
               source: 'google-email-sync',
             };
-            saveJob(newJob, session.email);
+            await saveJob(newJob, session.email);
             newOrUpdatedJobs.push(newJob);
             existingJobs.push(newJob);
           }

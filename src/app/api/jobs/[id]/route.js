@@ -12,7 +12,7 @@ export async function PATCH(request, { params }) {
     const job = jobs.find(j => j.id === params.id);
     if (!job) return NextResponse.json({ error: 'Job not found' }, { status: 404 });
     
-    const updated = saveJob({ ...job, ...updates }, session.email);
+    const updated = await saveJob({ ...job, ...updates }, session.email);
     return NextResponse.json({ success: true, job: updated });
   } catch (err) {
     return NextResponse.json({ error: err.message }, { status: 500 });
@@ -24,7 +24,7 @@ export async function DELETE(request, { params }) {
     const session = await getSession();
     if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     
-    deleteJob(params.id, session.email);
+    await deleteJob(params.id, session.email);
     return NextResponse.json({ success: true });
   } catch (err) {
     return NextResponse.json({ error: err.message }, { status: 500 });

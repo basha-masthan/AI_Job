@@ -1,0 +1,16 @@
+{
+  "mcpInstances": {},
+  "globalStats": {
+    "totalPositive": 0,
+    "totalNegative": 0,
+    "totalRewards": 0
+  },
+  "lastUpdated": null,
+  "mcpOrder": [
+    "job-search-mcp",
+    "company-verify-mcp",
+    "email-finder-mcp",
+    "jd-resume-matcher-mcp",
+    "email-sender-mcp"
+  ]
+}

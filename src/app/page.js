@@ -603,11 +603,11 @@ export default function HomePage() {
   return (
     <div className="app-shell">
       <Sidebar />
-      <main className="main-content" style={{ position: 'relative', display: 'flex', gap: '24px' }}>
+      <main className="main-content" style={{ position: 'relative', display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
         <div className="hero-glow" />
         
         {/* Left Column - Main Content */}
-        <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ flex: '2 1 500px', minWidth: 0 }}>
 
         <div className="page-header">
           <div className="flex-between" style={{ marginBottom: 8 }}>
@@ -728,63 +728,57 @@ export default function HomePage() {
         </div>
         </div>
 
-        {/* Right Column - Autopilot Status */}
-        <div style={{ width: '350px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <AutopilotWidget />
+        {/* Right Column - Auto Apply Status */}
+        <div className="auto-apply-widget-container" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <AutoApplyWidget />
         </div>
       </main>
     </div>
   );
 }
 
-function AutopilotWidget() {
-  const [autopilotState, setAutopilotState] = useState({ active: false, logs: [] });
-  const [activeRun, setActiveRun] = useState(null);
-  
+function AutoApplyWidget() {
+  const [state, setState] = useState({ active: false, run: null });
+
   useEffect(() => {
-    const fetchAutopilot = async () => {
+    const fetchStatus = async () => {
       try {
-        const res = await fetch('/api/autopilot/status');
+        const res = await fetch('/api/auto-apply/status');
         const data = await res.json();
-        if (data.success) {
-          setAutopilotState(data.state || { active: false, logs: [] });
-          setActiveRun(data.activeRun);
-        }
-      } catch (e) {}
+        setState(data);
+      } catch {}
     };
-    
-    fetchAutopilot();
-    const interval = setInterval(fetchAutopilot, 4000);
+    fetchStatus();
+    const interval = setInterval(fetchStatus, 4000);
     return () => clearInterval(interval);
   }, []);
 
-  const isRunning = autopilotState.active || activeRun?.status === 'running';
-  const isPaused = activeRun?.status === 'paused';
-  const stats = activeRun?.stats || {};
+  const run = state.run;
+  const isRunning = state.active && run?.status === 'running';
+  const isPaused = state.active && run?.status === 'paused';
+  const stats = run?.stats || {};
+  const logs = run?.logs || [];
 
   return (
-    <div className="card" style={{ height: 'calc(100vh - 48px)', display: 'flex', flexDirection: 'column', position: 'sticky', top: '24px' }}>
+    <div className="card auto-apply-widget" style={{ display: 'flex', flexDirection: 'column' }}>
       <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: '16px', marginBottom: '16px' }}>
         <h3 style={{ fontSize: '16px', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px' }}>
           <span style={{ width: 8, height: 8, borderRadius: '50%', background: isRunning ? '#10b981' : isPaused ? '#f59e0b' : '#64748b' }}></span>
-          Autopilot {isRunning ? 'Running' : isPaused ? 'Paused' : 'Idle'}
+          Auto Apply {isRunning ? 'Running' : isPaused ? 'Paused' : 'Idle'}
         </h3>
         <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px' }}>
-          Real-time auto-application tracking.
+          {isRunning ? `Applying to ${run.targetRole} jobs` : 'Auto-application process.'}
         </p>
 
-        {activeRun && (
+        {run && (
           <div style={{ display: 'flex', gap: 8, marginTop: 10, flexWrap: 'wrap' }}>
             {[
               { l: 'Search', v: stats.searched, c: '#3b82f6' },
-              { l: 'Match', v: stats.matched, c: '#8b5cf6' },
-              { l: 'Apply', v: stats.applied, c: '#10b981' },
+              { l: 'Scored', v: stats.scored, c: '#8b5cf6' },
+              { l: 'Applied', v: stats.applied, c: '#10b981' },
               { l: 'Fail', v: stats.failed, c: '#ef4444' },
             ].map(s => (
-              <div key={s.l} style={{
-                flex: 1, textAlign: 'center', padding: '4px 6px', borderRadius: 6,
-                background: `${s.c}15`, minWidth: 50,
-              }}>
+              <div key={s.l} style={{ flex: 1, textAlign: 'center', padding: '4px 6px', borderRadius: 6, background: `${s.c}15`, minWidth: 50 }}>
                 <div style={{ fontSize: 16, fontWeight: 700, color: s.c }}>{s.v || 0}</div>
                 <div style={{ fontSize: 9, color: 'var(--text-muted)' }}>{s.l}</div>
               </div>
@@ -794,15 +788,15 @@ function AutopilotWidget() {
       </div>
 
       <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        {autopilotState.logs.length === 0 ? (
+        {logs.length === 0 ? (
           <div className="empty-state" style={{ margin: 'auto' }}>
             <div className="empty-icon" style={{ fontSize: '32px' }}>💤</div>
-            <div className="empty-title" style={{ fontSize: '14px' }}>Autopilot is idle</div>
-            <div className="empty-desc" style={{ fontSize: '12px' }}>Configure in the Auto Apply tab.</div>
-            <Link href="/autopilot" className="btn btn-primary btn-sm" style={{ marginTop: '12px' }}>Configure</Link>
+            <div className="empty-title" style={{ fontSize: '14px' }}>Auto Apply is idle</div>
+            <div className="empty-desc" style={{ fontSize: '12px' }}>Configure and start in the Auto Apply page.</div>
+            <Link href="/auto-apply" className="btn btn-primary btn-sm" style={{ marginTop: '12px' }}>Configure</Link>
           </div>
         ) : (
-          autopilotState.logs.slice(0, 20).map((log, i) => (
+          logs.slice(0, 20).map((log, i) => (
             <div key={i} style={{
               fontSize: '12px', padding: '10px 12px', background: 'var(--bg-secondary)',
               borderRadius: '8px',
@@ -820,8 +814,8 @@ function AutopilotWidget() {
       
       {(isRunning || isPaused) && (
         <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid var(--border)' }}>
-          <Link href="/autopilot" className="btn btn-primary btn-sm btn-full" style={{ fontSize: '12px' }}>
-            {isRunning ? '🟢 View Pipeline' : '⏸️ Pipeline Paused'}
+          <Link href="/auto-apply" className="btn btn-primary btn-sm btn-full" style={{ fontSize: '12px' }}>
+            {isRunning ? '🟢 View Auto Apply' : '⏸️ Auto Apply Paused'}
           </Link>
         </div>
       )}

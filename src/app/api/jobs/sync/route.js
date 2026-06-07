@@ -29,7 +29,7 @@ export async function POST(request) {
       return NextResponse.json({ success: true, message: 'No emails found in your inbox.', newJobs: [] });
     }
 
-    const existingJobs = getAllJobs(session.email);
+    const existingJobs = await getAllJobs(session.email);
     const newOrUpdatedJobs = [];
     const debugInfo = [];
 
@@ -47,7 +47,7 @@ export async function POST(request) {
           if (existing) {
             if (existing.status.toLowerCase() !== update.status.toLowerCase()) {
               const updatedJob = { ...existing, status: update.status, lastUpdated: new Date().toISOString() };
-              saveJob(updatedJob, session.email);
+              await saveJob(updatedJob, session.email);
               newOrUpdatedJobs.push(updatedJob);
             }
           } else {
@@ -61,7 +61,7 @@ export async function POST(request) {
               notes: `Auto-detected from email: "${msg.subject}"`,
               source: 'email-sync',
             };
-            saveJob(newJob, session.email);
+            await saveJob(newJob, session.email);
             newOrUpdatedJobs.push(newJob);
             existingJobs.push(newJob);
           }

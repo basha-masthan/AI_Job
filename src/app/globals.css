@@ -2421,3 +2421,27 @@ body.sidebar-collapsed .main-content {
   border-top: 1px solid var(--border);
   background: var(--bg-card);
 }
+
+/* Auto Apply Widget Responsive Styles */
+.auto-apply-widget-container {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auto-apply-widget {
+  height: calc(100vh - 48px);
+  position: sticky;
+  top: 24px;
+}
+
+@media (max-width: 1200px) {
+  .auto-apply-widget-container {
+    width: 100% !important;
+  }
+  .auto-apply-widget {
+    height: auto !important;
+    position: static !important;
+  }
+}

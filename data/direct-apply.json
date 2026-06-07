@@ -1,0 +1,75 @@
+[
+  {
+    "id": "67287cd5-bd82-4a9d-8ae6-1a84b796754b",
+    "title": "Software Engineer Trainee Intern",
+    "role": "Software Engineer Trainee Intern",
+    "company": "Tantude",
+    "location": "Chennai",
+    "status": "applied",
+    "source": "direct-apply",
+    "appliedEmail": "info@tantude.com",
+    "trackingId": "67287cd5-bd82-4a9d-8ae6-1a84b796754b",
+    "emailOpened": false,
+    "emailOpenCount": 0,
+    "emailOpenedAt": null,
+    "resumeUrl": "https://res.cloudinary.com/db4am4mqh/raw/upload/v1778739626/job-hunt-resumes/manual_ae3c7c65-1d16-4e3f-ab54-4d3228880984",
+    "createdAt": "2026-06-05T18:48:16.089Z",
+    "userId": "official4basha@gmail.com",
+    "logs": [
+      {
+        "step": "🚀 Started",
+        "message": "Direct apply: \"Software Engineer Trainee Intern\" at \"Tantude\" (Chennai)",
+        "status": "info",
+        "time": "2026-06-05T18:48:07.649Z"
+      },
+      {
+        "step": "Email Discovery",
+        "message": "Searching emails for Tantude (tantude.com)...",
+        "status": "info",
+        "time": "2026-06-05T18:48:07.650Z"
+      },
+      {
+        "step": "Coresignal Miss",
+        "message": "Coresignal 404 — trying Hunter.io",
+        "status": "info",
+        "time": "2026-06-05T18:48:08.814Z"
+      },
+      {
+        "step": "Hunter.io ✓",
+        "message": "info@tantude.com (confidence: 40%) — proceeding",
+        "status": "success",
+        "time": "2026-06-05T18:48:10.273Z"
+      },
+      {
+        "step": "📧 Email Target",
+        "message": "Will send to: info@tantude.com",
+        "status": "success",
+        "time": "2026-06-05T18:48:10.273Z"
+      },
+      {
+        "step": "✍️ Email Draft",
+        "message": "Subject: \"Application for Software Engineer Trainee Intern — Masthan Basha Shaik (Full-Stack Engineer, 2024 Graduate)\"",
+        "status": "success",
+        "time": "2026-06-05T18:48:10.273Z"
+      },
+      {
+        "step": "📤 Sending",
+        "message": "Connecting to smtp.gmail.com:587 as futurebound.tech@gmail.com...",
+        "status": "info",
+        "time": "2026-06-05T18:48:10.274Z"
+      },
+      {
+        "step": "📎 Resume",
+        "message": "Resume fetched from Cloudinary (261KB)",
+        "status": "success",
+        "time": "2026-06-05T18:48:10.509Z"
+      },
+      {
+        "step": "✅ Sent!",
+        "message": "Application email successfully delivered to info@tantude.com",
+        "status": "success",
+        "time": "2026-06-05T18:48:16.088Z"
+      }
+    ]
+  }
+]

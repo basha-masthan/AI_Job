@@ -1,0 +1,98 @@
+{
+  "active": false,
+  "currentIndex": 11,
+  "totalCount": 12,
+  "steps": [
+    {
+      "id": "start",
+      "label": "Started (12/12)",
+      "status": "success",
+      "message": "Image 12 of 12"
+    },
+    {
+      "id": "read",
+      "label": "Reading image",
+      "status": "success",
+      "message": "Read & We're Hiring | MERN Stack Developer screenshot"
+    },
+    {
+      "id": "parse",
+      "label": "Extracting job details",
+      "status": "idle",
+      "message": ""
+    },
+    {
+      "id": "pdf",
+      "label": "Preparing resume",
+      "status": "success",
+      "message": "Resume ready"
+    },
+    {
+      "id": "mail",
+      "label": "Sending email",
+      "status": "success",
+      "message": "Sent to hr@savotechnologies.com"
+    },
+    {
+      "id": "save",
+      "label": "Saving to tracker",
+      "status": "success",
+      "message": "Saved"
+    }
+  ],
+  "logs": [
+    {
+      "title": "Applied",
+      "message": "✅ & We're Hiring | MERN Stack Developer @ We Offer -> hr@savotechnologies.com",
+      "type": "success",
+      "time": "2026-06-07T21:22:00.008Z"
+    },
+    {
+      "title": "Saved",
+      "message": "Job saved to tracker",
+      "type": "success",
+      "time": "2026-06-07T21:22:00.008Z"
+    },
+    {
+      "title": "Email Sent",
+      "message": "Application sent to hr@savotechnologies.com",
+      "type": "success",
+      "time": "2026-06-07T21:21:59.965Z"
+    },
+    {
+      "title": "Resume",
+      "message": "PDF ready",
+      "type": "success",
+      "time": "2026-06-07T21:21:52.908Z"
+    },
+    {
+      "title": "Email Found",
+      "message": "hr@savotechnologies.com",
+      "type": "success",
+      "time": "2026-06-07T21:21:52.905Z"
+    },
+    {
+      "title": "Parsed",
+      "message": "& We're Hiring | MERN Stack Developer @ We Offer",
+      "type": "success",
+      "time": "2026-06-07T21:21:52.843Z"
+    },
+    {
+      "title": "Image 12",
+      "message": "Processing...",
+      "type": "info",
+      "time": "2026-06-07T21:21:49.710Z"
+    }
+  ],
+  "result": {
+    "job": {
+      "title": "& We're Hiring | MERN Stack Developer",
+      "company": "We Offer",
+      "email": "hr@savotechnologies.com",
+      "location": ""
+    },
+    "applied": true,
+    "email": "hr@savotechnologies.com",
+    "savedJobId": "bfb5ebdc-5fb8-469f-9206-e787279accb5"
+  }
+}

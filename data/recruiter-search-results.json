@@ -1,0 +1,420 @@
+{
+  "jobs": [
+    {
+      "id": "rf_1780740253048_m1g55",
+      "company": "PropExpo",
+      "role": "Software Developer / Software Engineer (Remote) - Full Time / Part Time",
+      "location": "Remote",
+      "email": "_aCk7bCdJscj7@propexpo-hr.freshteam.com",
+      "emailStatus": "unknown",
+      "emailValid": true,
+      "experience": "2+ years",
+      "requirements": "ASP.NET, MVC, C#, Web API, JavaScript, SQL, AWS/Azure, GIT",
+      "confidence": 0.9,
+      "sourceUrl": "https://propexpo-hr.freshteam.com/jobs/aCk7bCdJscj7/software-developer-software-engineer-remote-full-time-part-time",
+      "sourceType": "job_board",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:04:13.048Z",
+      "applied": true,
+      "appliedAt": "2026-06-06T10:05:19.008Z"
+    },
+    {
+      "id": "rf_1780740220941_syfev",
+      "company": "JPMorganChase",
+      "role": "Experienced Software Engineer",
+      "location": "Hyderabad, Bangalore",
+      "email": "null",
+      "emailStatus": "unknown",
+      "emailValid": true,
+      "experience": null,
+      "requirements": null,
+      "confidence": 0.7,
+      "sourceUrl": "https://www.jpmorganchase.com/careers/explore-opportunities/programs/software-engineer-cohort",
+      "sourceType": "job_board",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:03:40.941Z"
+    },
+    {
+      "id": "rf_1780740221901_nbws3",
+      "company": "Uplers",
+      "role": "AI Engineer",
+      "location": "null",
+      "email": "null",
+      "emailStatus": "unknown",
+      "emailValid": true,
+      "experience": "null",
+      "requirements": "null",
+      "confidence": 0.7,
+      "sourceUrl": "https://www.uplers.com",
+      "sourceType": "job_board",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:03:41.901Z"
+    },
+    {
+      "id": "rf_1780740251972_l4alv",
+      "company": "Apple",
+      "role": "IN-Business Expert",
+      "location": "India (INDC)",
+      "email": "null",
+      "emailStatus": "unknown",
+      "emailValid": true,
+      "experience": "null",
+      "requirements": "null",
+      "confidence": 0.7,
+      "sourceUrl": "https://jobs.apple.com/en-in/search?location=india-INDC",
+      "sourceType": "job_board",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:04:11.972Z"
+    },
+    {
+      "id": "rf_1780740273108_d8g7f",
+      "company": "Akamai",
+      "role": "Cloud Native Developer",
+      "location": "null",
+      "email": "null",
+      "emailStatus": "unknown",
+      "emailValid": true,
+      "experience": "null",
+      "requirements": "null",
+      "confidence": 0.7,
+      "sourceUrl": "https://www.akamai.com/careers",
+      "sourceType": "job_board",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:04:33.108Z"
+    },
+    {
+      "id": "rf_1780740273638_i40mu",
+      "company": "Turing",
+      "role": "Software Developer",
+      "location": "Bangalore",
+      "email": "null",
+      "emailStatus": "unknown",
+      "emailValid": true,
+      "experience": "3+ years",
+      "requirements": "Programming languages, software design, Git, English fluency",
+      "confidence": 0.7,
+      "sourceUrl": "https://www.turing.com/jobs/software-developer-jobs-in-bangalore",
+      "sourceType": "job_board",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:04:33.638Z"
+    },
+    {
+      "id": "rf_1780740290014_e3oq1",
+      "company": "Gap Inc.",
+      "role": "Software Engineer",
+      "location": "Hyderabad",
+      "email": "null",
+      "emailStatus": "unknown",
+      "emailValid": true,
+      "experience": null,
+      "requirements": "Experience with WMS, WCS, WES, WMOS, Material Handling Systems",
+      "confidence": 0.7,
+      "sourceUrl": "https://www.gapinc.com/en-in/jobs/w32/00/software-engineer",
+      "sourceType": "job_board",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:04:50.014Z"
+    },
+    {
+      "id": "rf_1780740272547_7c778",
+      "company": "Silicon Labs",
+      "role": "Software developer",
+      "location": "Hyderabad, Bangalore",
+      "email": "null",
+      "emailStatus": "unknown",
+      "emailValid": true,
+      "experience": null,
+      "requirements": null,
+      "confidence": 0.5,
+      "sourceUrl": "https://www.silabs.com/about-us/careers",
+      "sourceType": "job_board",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:04:32.547Z"
+    },
+    {
+      "id": "rf_1780740297951_vuw27",
+      "company": "Groowviatech Solutions Private",
+      "role": "Software developer",
+      "location": "Hyderabad, Bangalore",
+      "email": "mahesh.theralla@groowviatech.com",
+      "emailStatus": "valid",
+      "emailValid": true,
+      "experience": null,
+      "requirements": null,
+      "confidence": 0.5,
+      "sourceUrl": "https://www.instagram.com/reel/DZFuQM_zHGE",
+      "sourceType": "other",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:04:57.951Z"
+    },
+    {
+      "id": "rf_1780740299047_ne1hu",
+      "company": "groups",
+      "role": "Software developer",
+      "location": "Hyderabad, Bangalore",
+      "email": "archana...@artech.com",
+      "emailStatus": "invalid",
+      "emailValid": false,
+      "experience": null,
+      "requirements": null,
+      "confidence": 0.5,
+      "sourceUrl": "https://groups.google.com/g/testing-experienced-openings/c/b0v2EV1O-VE",
+      "sourceType": "other",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:04:59.047Z"
+    },
+    {
+      "id": "rf_1780740302088_m0yz2",
+      "company": "Veena",
+      "role": "Software developer",
+      "location": "Hyderabad, Bangalore",
+      "email": "sriramkukka...@gmail.com",
+      "emailStatus": "invalid",
+      "emailValid": false,
+      "experience": null,
+      "requirements": null,
+      "confidence": 0.5,
+      "sourceUrl": "https://groups.google.com/g/testing-experienced-openings/c/j5y69xxOlG8",
+      "sourceType": "other",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:05:02.088Z"
+    },
+    {
+      "id": "rf_1780740303064_gdkf1",
+      "company": "deshawindia",
+      "role": "Software developer",
+      "location": "Hyderabad, Bangalore",
+      "email": "recruitment-nyc@world.deshaw.com",
+      "emailStatus": "accept_all",
+      "emailValid": true,
+      "experience": null,
+      "requirements": null,
+      "confidence": 0.5,
+      "sourceUrl": "https://www.deshawindia.com/careers/work-with-us",
+      "sourceType": "other",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:05:03.064Z"
+    },
+    {
+      "id": "rf_1780740305531_vzogu",
+      "company": "India",
+      "role": "Software developer",
+      "location": "Hyderabad, Bangalore",
+      "email": "sriramkukka...@gmail.com",
+      "emailStatus": "invalid",
+      "emailValid": false,
+      "experience": null,
+      "requirements": null,
+      "confidence": 0.5,
+      "sourceUrl": "https://groups.google.com/g/testing-experienced-openings/c/CQAzWVa0M-U",
+      "sourceType": "other",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:05:05.531Z"
+    },
+    {
+      "id": "rf_1780740219934_8m77s",
+      "company": "kareer9jobs",
+      "role": "Software Engineering Specialist",
+      "location": "Hyderabad",
+      "email": "careers@kareer9jobs.com",
+      "emailStatus": "hunter_discovered",
+      "emailValid": false,
+      "experience": "0–2 Years Experience",
+      "requirements": "Angular, JavaScript, modern DevOps practices",
+      "confidence": 0.7,
+      "sourceUrl": "https://www.instagram.com/reel/DViHOviksp4",
+      "sourceType": "job_board",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:03:39.934Z"
+    },
+    {
+      "id": "rf_1780740220942_itanp",
+      "company": "Microsoft",
+      "role": "Software Engineer II",
+      "location": "Hyderabad",
+      "email": "florian.schuster@microsoft.com",
+      "emailStatus": "hunter_discovered",
+      "emailValid": false,
+      "experience": null,
+      "requirements": null,
+      "confidence": 0.7,
+      "sourceUrl": "https://careers.microsoft.com/v2/global/en/locations/hyderabad.html",
+      "sourceType": "job_board",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:03:40.942Z"
+    },
+    {
+      "id": "rf_1780740290016_aviqt",
+      "company": "SUTHERLAND",
+      "role": "Software Engineer Development or Testing",
+      "location": "BANGALORE",
+      "email": "herb.beller@sutherland.com",
+      "emailStatus": "hunter_discovered",
+      "emailValid": false,
+      "experience": "Relevant years of experience in similar role",
+      "requirements": "HTML5, CSS3, REST APIs, GraphQL, PostgreSQL, Git, CI/CD, AWS/Azure/GCP",
+      "confidence": 0.7,
+      "sourceUrl": "https://www.instagram.com/reel/DYXiOxHocpL",
+      "sourceType": "job_board",
+      "source": "recruiter-finder",
+      "foundAt": "2026-06-06T10:04:50.016Z"
+    }
+  ],
+  "status": "complete",
+  "logs": [
+    {
+      "msg": "✅ Auto-apply complete!",
+      "time": "2026-06-06T10:05:34.453Z"
+    },
+    {
+      "msg": "❌ Failed to apply to Gap Inc.: No recipients defined",
+      "time": "2026-06-06T10:05:34.451Z"
+    },
+    {
+      "msg": "❌ Failed to apply to Turing: No recipients defined",
+      "time": "2026-06-06T10:05:32.800Z"
+    },
+    {
+      "msg": "❌ Failed to apply to Akamai: No recipients defined",
+      "time": "2026-06-06T10:05:30.943Z"
+    },
+    {
+      "msg": "❌ Failed to apply to Apple: No recipients defined",
+      "time": "2026-06-06T10:05:29.112Z"
+    },
+    {
+      "msg": "❌ Failed to apply to Uplers: No recipients defined",
+      "time": "2026-06-06T10:05:27.446Z"
+    },
+    {
+      "msg": "❌ Failed to apply to JPMorganChase: No recipients defined",
+      "time": "2026-06-06T10:05:25.786Z"
+    },
+    {
+      "msg": "✅ Email sent to _aCk7bCdJscj7@propexpo-hr.freshteam.com for PropExpo — Software Developer / Software Engineer (Remote) - Full Time / Part Time",
+      "time": "2026-06-06T10:05:19.006Z"
+    },
+    {
+      "msg": "📤 Will apply to 7 jobs with confidence >= 0.6 and valid email...",
+      "time": "2026-06-06T10:05:12.947Z"
+    },
+    {
+      "msg": "🤖 Auto-apply mode ON — sending applications...",
+      "time": "2026-06-06T10:05:12.945Z"
+    },
+    {
+      "msg": "✅ Search complete! Found 16 recruiter posts. 16 have emails.",
+      "time": "2026-06-06T10:05:12.943Z"
+    },
+    {
+      "msg": "📧 Hunter found: florian.schuster@microsoft.com for Microsoft",
+      "time": "2026-06-06T10:05:12.942Z"
+    },
+    {
+      "msg": "📧 Hunter found: herb.beller@sutherland.com for SUTHERLAND",
+      "time": "2026-06-06T10:05:12.445Z"
+    },
+    {
+      "msg": "📧 Hunter found: careers@kareer9jobs.com for kareer9jobs",
+      "time": "2026-06-06T10:05:12.325Z"
+    },
+    {
+      "msg": "🔍 No email in post for SUTHERLAND — trying Hunter.io...",
+      "time": "2026-06-06T10:05:06.664Z"
+    },
+    {
+      "msg": "🔍 No email in post for Microsoft — trying Hunter.io...",
+      "time": "2026-06-06T10:05:06.661Z"
+    },
+    {
+      "msg": "🔍 No email in post for kareer9jobs — trying Hunter.io...",
+      "time": "2026-06-06T10:05:06.657Z"
+    },
+    {
+      "msg": "🎯 Extracted 16 job posts! 13 have direct recruiter emails.",
+      "time": "2026-06-06T10:05:06.656Z"
+    },
+    {
+      "msg": "✅ Found: India — Software developer (📧 sriramkukka...@gmail.com)",
+      "time": "2026-06-06T10:05:04.964Z"
+    },
+    {
+      "msg": "✅ Found: deshawindia — Software developer (📧 recruitment-nyc@world.deshaw.com)",
+      "time": "2026-06-06T10:05:02.088Z"
+    },
+    {
+      "msg": "✅ Found: Veena — Software developer (📧 sriramkukka...@gmail.com)",
+      "time": "2026-06-06T10:05:00.967Z"
+    },
+    {
+      "msg": "✅ Found: groups — Software developer (📧 archana...@artech.com)",
+      "time": "2026-06-06T10:04:57.951Z"
+    },
+    {
+      "msg": "✅ Found: Groowviatech Solutions Private — Software developer (📧 mahesh.theralla@groowviatech.com)",
+      "time": "2026-06-06T10:04:51.909Z"
+    },
+    {
+      "msg": "✅ Found: SUTHERLAND — Software Engineer Development or Testing",
+      "time": "2026-06-06T10:04:50.015Z"
+    },
+    {
+      "msg": "✅ Found: Gap Inc. — Software Engineer (📧 null)",
+      "time": "2026-06-06T10:04:49.071Z"
+    },
+    {
+      "msg": "✅ Found: Turing — Software Developer (📧 null)",
+      "time": "2026-06-06T10:04:33.108Z"
+    },
+    {
+      "msg": "✅ Found: Akamai — Cloud Native Developer (📧 null)",
+      "time": "2026-06-06T10:04:32.547Z"
+    },
+    {
+      "msg": "✅ Found: Silicon Labs — null (📧 null)",
+      "time": "2026-06-06T10:04:31.500Z"
+    },
+    {
+      "msg": "✅ Found: PropExpo — Software Developer / Software Engineer (Remote) - Full Time / Part Time (📧 _aCk7bCdJscj7@propexpo-hr.freshteam.com)",
+      "time": "2026-06-06T10:04:11.972Z"
+    },
+    {
+      "msg": "✅ Found: Apple — IN-Business Expert (📧 null)",
+      "time": "2026-06-06T10:04:11.459Z"
+    },
+    {
+      "msg": "✅ Found: Uplers — AI Engineer (📧 null)",
+      "time": "2026-06-06T10:03:40.943Z"
+    },
+    {
+      "msg": "✅ Found: Microsoft — Software Engineer II",
+      "time": "2026-06-06T10:03:40.941Z"
+    },
+    {
+      "msg": "✅ Found: JPMorganChase — Experienced Software Engineer (📧 null)",
+      "time": "2026-06-06T10:03:39.934Z"
+    },
+    {
+      "msg": "✅ Found: kareer9jobs — Software Engineering Specialist",
+      "time": "2026-06-06T10:03:39.932Z"
+    },
+    {
+      "msg": "🧠 AI extracting job details from 31 pages...",
+      "time": "2026-06-06T10:03:16.021Z"
+    },
+    {
+      "msg": "📡 Found 31 unique pages from Tavily (42 raw, deduped to 31). Enriching & extracting...",
+      "time": "2026-06-06T10:03:16.019Z"
+    },
+    {
+      "msg": "🔍 Built 7 search queries for \"Software developer\" in Hyderabad, Bangalore...",
+      "time": "2026-06-06T10:03:08.001Z"
+    },
+    {
+      "msg": "🚀 Starting recruiter post search for \"Software developer\" in Hyderabad, Bangalore...",
+      "time": "2026-06-06T10:03:07.999Z"
+    }
+  ],
+  "startedAt": "2026-06-06T10:03:07.998Z",
+  "role": "Software developer",
+  "location": "Hyderabad, Bangalore"
+}

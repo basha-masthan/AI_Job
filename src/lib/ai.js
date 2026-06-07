@@ -606,13 +606,13 @@ Return ONLY a valid JSON object with this exact structure:
 }
 
 export async function extractJobUpdateFromEmail(subject, body, existingJobs = []) {
-  const system = `You are a career assistant AI. Your job is to read an email and determine if it's a job application update.
-If it is related to a job application (e.g., successful submission, interview invite, rejection, or next steps), extract the details.
+  const system = `You are a career assistant AI. Your job is to read an email and determine if it's a job application update, an auto-reply, or a support ticket.
+If it is related to a job application (e.g., successful submission, interview invite, rejection, next steps, or an automated support/Zendesk reply indicating a ticket was created for the application), extract the details.
 If it's just a newsletter, spam, or unrelated email, set "isJobRelated" to false.
 
 CRITICAL RULES:
 1. Return ONLY valid JSON.
-2. Standardize status to one of: "Applied", "Interview", "Offer", "Rejected".
+2. Standardize status to one of: "Applied", "Interview", "Offer", "Rejected", "Auto-Reply".
 3. Use the existing jobs context if it helps clarify the company or role.`;
 
   const user = `Existing Jobs context: ${JSON.stringify(existingJobs.map(j => ({ company: j.company, role: j.role })))}
@@ -621,35 +621,24 @@ Email Subject: ${subject}
 Email Body Snippet: ${body.substring(0, 2000)}
 
 INSTRUCTIONS:
-1. Is this email a job application confirmation, interview invite, shortlisting notice, or rejection?
+1. Is this email a job application confirmation, interview invite, shortlisting notice, rejection, or an automated support ticket reply?
 2. HIGH PRIORITY PLATFORMS: If the email subject or body mentions "Indeed", "LinkedIn", "Naukri", "Wellfound", "Cutshort", "Careers", or "HR", it is HIGHLY LIKELY to be job-related.
-3. KEYWORDS: If it contains "shortlisted", "application update", "successfully submitted", "thank you for applying", "next steps", or "interview", mark it as job-related (isJobRelated: true).
-4. EXTRACT DETAILS: Find the company and role. If you can't find the role, default to "Applicant". If it's a platform notification (e.g. "Jobs you don't want to miss"), extract the platform as the company (e.g., "Wellfound", "Indeed") if a specific company isn't clear.
-5. Standardize status: "Applied", "Interview", "Offer", "Rejected".
+3. KEYWORDS: If it contains "shortlisted", "application update", "successfully submitted", "thank you for applying", "next steps", "interview", or "ticket has been created", mark it as job-related (isJobRelated: true).
+4. EXTRACT DETAILS: Find the company and role. If you can't find the role, default to "Applicant". If it's a platform notification (e.g. "Jobs you don't want to miss"), extract the platform as the company.
+5. Standardize status: "Applied", "Interview", "Offer", "Rejected", "Auto-Reply". Use "Auto-Reply" for automated Zendesk/support ticket creations or "out of office" responses.
 
 Return JSON:
 {
   "isJobRelated": boolean,
   "company": "Company Name",
   "role": "Full Job Title (e.g. Senior Frontend Developer)",
-  "status": "Applied|Interview|Offer|Rejected",
+  "status": "Applied|Interview|Offer|Rejected|Auto-Reply",
   "location": "City, Country or Remote/Hybrid",
   "salary": "Package or Salary details if mentioned, else empty",
   "type": "Full-time|Part-time|Internship|Contract",
   "jobUrl": "Link to the application or job post if found in the text",
   "notes": "A brief summary of the email content or next steps mentioned"
 }`;
-
-  try {
-    const text = await callCerebras([
-      { role: 'system', content: system },
-      { role: 'user', content: user },
-    ], 1024);
-    const result = safeJSONParse(text);
-    if (result) return result;
-  } catch (e) {
-    console.warn(`Cerebras email analysis failed (${e.message}), trying configured AI provider...`);
-  }
 
   try {
     const text = await invokeAI(system, user, 1024);

@@ -66,6 +66,22 @@ export default function JobTracker() {
     }
   }
 
+  async function handleDisconnect() {
+    if (!confirm('Disconnect Google account? This will stop Gmail sync.')) return;
+    setSyncing(true);
+    try {
+      const res = await fetch('/api/google/disconnect', { method: 'POST' });
+      if (!res.ok) throw new Error('Disconnect failed');
+      setHasGoogle(false);
+      setSyncMessage('Google disconnected.');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSyncing(false);
+      setTimeout(() => setSyncMessage(''), 5000);
+    }
+  }
+
   async function handleSave() {
     if (!form.title || !form.company) { setError('Title and company are required.'); return; }
     setSaving(true); setError('');
@@ -192,9 +208,14 @@ export default function JobTracker() {
             <div className="flex-row">
               {/* Google Sync UI */}
               {hasGoogle ? (
-                <button className="btn btn-secondary" onClick={handleGoogleSync} disabled={syncing}>
-                  {syncing ? <><span className="spinner" /> Scanning...</> : '📥 Auto-Sync (Google)'}
-                </button>
+                <>
+                  <button className="btn btn-secondary" onClick={handleGoogleSync} disabled={syncing}>
+                    {syncing ? <><span className="spinner" /> Scanning...</> : '📥 Auto-Sync (Google)'}
+                  </button>
+                  <button className="btn btn-secondary" onClick={handleDisconnect} style={{ borderColor: '#ea4335', color: '#ea4335' }}>
+                    🔌 Disconnect
+                  </button>
+                </>
               ) : (
                 <a href="/api/google/auth" className="btn btn-primary" style={{ background: '#ea4335', borderColor: '#ea4335' }}>
                   ✉️ Connect Google Auth

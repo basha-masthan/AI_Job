@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getApiKey } from '@/lib/config';
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 20;
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
@@ -156,13 +156,22 @@ export async function GET(request) {
 
 
   if (paginated.length === 0) {
-    // Fallback: return curated mock with real individual job links
     return NextResponse.json({
-      jobs: getMockJobs(query, cityFilter),
-      total: 2,
+      jobs: [],
+      total: 0,
       page,
       hasMore: false,
-      fallback: true
+      message: 'No jobs found matching your criteria. Try broadening search terms or check API keys.',
+      sourceCounts: {
+        jsearch: jsearchJobs.length,
+        activeJobs: activeJobsDbJobs.length,
+        linkedin: linkedinApiJobs.length,
+        indeed: indeedApiJobs.length,
+        glassdoor: glassdoorApiJobs.length,
+        adzuna: adzunaJobs.length,
+        arbeitnow: arbeitnowJobs.length,
+        remotive: remotiveJobs.length
+      }
     });
   }
 
@@ -429,7 +438,14 @@ async function fetchActiveJobsDB(query, location, page, keys) {
     });
     if (!res.ok) return [];
     const data = await res.json();
-    const list = Array.isArray(data) ? data : (data.results || data.data || []);
+    let list = [];
+    if (Array.isArray(data)) list = data;
+    else if (Array.isArray(data.results)) list = data.results;
+    else if (Array.isArray(data.data)) list = data.data;
+    else if (Array.isArray(data.jobs)) list = data.jobs;
+    else if (typeof data.data === 'object' && data.data?.results) list = Array.isArray(data.data.results) ? data.data.results : [];
+    if (!Array.isArray(list)) { console.warn('[ActiveJobsDB] Unexpected format:', Object.keys(data).slice(0, 5)); return []; }
+
     return list.map((j, i) => {
       const jobUrl = j.url || j.job_apply_link || j.apply_link || j.link || '#';
       return {
@@ -468,7 +484,14 @@ async function fetchLinkedInJobSearchAPI(query, location, page, keys) {
     });
     if (!res.ok) return [];
     const data = await res.json();
-    const list = Array.isArray(data) ? data : (data.results || data.data || []);
+    let list = [];
+    if (Array.isArray(data)) list = data;
+    else if (Array.isArray(data.results)) list = data.results;
+    else if (Array.isArray(data.data)) list = data.data;
+    else if (Array.isArray(data.jobs)) list = data.jobs;
+    else if (typeof data.data === 'object' && data.data?.results) list = Array.isArray(data.data.results) ? data.data.results : [];
+    if (!Array.isArray(list)) { console.warn('[LinkedIn] Unexpected format:', Object.keys(data).slice(0, 5)); return []; }
+
     return list.map((j, i) => {
       const jobUrl = j.url || j.job_apply_link || j.apply_link || j.link || '#';
       return {
@@ -506,7 +529,14 @@ async function fetchIndeedJobsAPI(query, location, page, keys) {
     });
     if (!res.ok) return [];
     const data = await res.json();
-    const list = Array.isArray(data) ? data : (data.results || data.data || data.jobs || []);
+    let list = [];
+    if (Array.isArray(data)) list = data;
+    else if (Array.isArray(data.results)) list = data.results;
+    else if (Array.isArray(data.data)) list = data.data;
+    else if (Array.isArray(data.jobs)) list = data.jobs;
+    else if (typeof data.data === 'object' && data.data?.results) list = Array.isArray(data.data.results) ? data.data.results : [];
+    if (!Array.isArray(list)) { console.warn('[Indeed] Unexpected format:', Object.keys(data).slice(0, 5)); return []; }
+
     return list.map((j, i) => {
       const jobUrl = j.url || j.job_apply_link || j.apply_link || j.link || '#';
       return {
@@ -544,7 +574,16 @@ async function fetchGlassdoorJobsAPI(query, location, page, keys) {
     });
     if (!res.ok) return [];
     const data = await res.json();
-    const list = Array.isArray(data) ? data : (data.results || data.data || data.jobs || []);
+    let list = [];
+    if (Array.isArray(data)) list = data;
+    else if (Array.isArray(data.results)) list = data.results;
+    else if (Array.isArray(data.data)) list = data.data;
+    else if (Array.isArray(data.jobs)) list = data.jobs;
+    else if (typeof data.data === 'object' && data.data?.results) list = Array.isArray(data.data.results) ? data.data.results : [];
+    else list = data.data?.jobs || data?.jobs || [];
+
+    if (!Array.isArray(list)) { console.warn('[Glassdoor] Unexpected API format:', Object.keys(data).slice(0, 5)); return []; }
+
     return list.map((j, i) => {
       const jobUrl = j.url || j.job_apply_link || j.apply_link || j.link || '#';
       return {

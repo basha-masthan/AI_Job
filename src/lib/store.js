@@ -3,6 +3,8 @@ import path from 'path';
 import { v4 as uuid } from 'uuid';
 
 import { getStoragePath } from '@/lib/config';
+import dbConnect from '@/lib/mongodb';
+import Job from '@/models/Job';
 
 export const RESUMES_INDEX = getStoragePath('resumes.json');
 export const JOBS_INDEX = getStoragePath('jobs.json');
@@ -76,35 +78,123 @@ export function saveResume(resume, userId) {
   return resumeWithUser;
 }
 
-export function getAllJobs(userId) {
-  const all = readIndex(JOBS_INDEX);
-  if (!userId) return all;
-  return all.filter(j => j.userId === userId);
+export async function getAllJobs(userId) {
+  try {
+    await dbConnect();
+    const dbJobs = await Job.find(userId ? { userId } : {}).lean();
+    return dbJobs.map(j => ({
+      ...j,
+      id: j.id || j._id?.toString(),
+    }));
+  } catch (err) {
+    console.warn('[Store] MongoDB getAllJobs failed, falling back to JSON:', err.message);
+    const all = readIndex(JOBS_INDEX);
+    if (!userId) return all;
+    return all.filter(j => j.userId === userId);
+  }
 }
 
-export function saveJob(job, userId) {
+export async function saveJob(job, userId) {
   if (!userId) throw new Error('userId is required to save data');
-  const jobs = readIndex(JOBS_INDEX);
-  
-  if (!job.id) job.id = uuid();
-  const index = jobs.findIndex(j => j.id === job.id);
   
   const jobWithUser = { ...job, userId, updatedAt: new Date().toISOString() };
   if (!jobWithUser.createdAt) jobWithUser.createdAt = new Date().toISOString();
+  if (!jobWithUser.id) jobWithUser.id = uuid();
 
-  if (index !== -1) {
-    jobs[index] = jobWithUser;
-  } else {
-    jobs.push(jobWithUser);
+  try {
+    await dbConnect();
+    const updated = await Job.findOneAndUpdate(
+      { id: jobWithUser.id, userId },
+      jobWithUser,
+      { upsert: true, new: true, lean: true }
+    );
+    
+    // Simulating background sync to JSON for backup redundancy
+    try {
+      const jobs = readIndex(JOBS_INDEX);
+      const index = jobs.findIndex(j => j.id === jobWithUser.id);
+      if (index !== -1) jobs[index] = jobWithUser;
+      else jobs.push(jobWithUser);
+      writeIndex(JOBS_INDEX, jobs);
+    } catch {}
+    
+    return {
+      ...updated,
+      id: updated.id || updated._id?.toString()
+    };
+  } catch (err) {
+    console.warn('[Store] MongoDB saveJob failed, falling back to JSON:', err.message);
+    const jobs = readIndex(JOBS_INDEX);
+    const index = jobs.findIndex(j => j.id === jobWithUser.id);
+    if (index !== -1) {
+      jobs[index] = jobWithUser;
+    } else {
+      jobs.push(jobWithUser);
+    }
+    writeIndex(JOBS_INDEX, jobs);
+    return jobWithUser;
   }
-  writeIndex(JOBS_INDEX, jobs);
-  return jobWithUser;
 }
 
-export function deleteJob(id, userId) {
-  const jobs = readIndex(JOBS_INDEX);
-  const filtered = jobs.filter(j => !(j.id === id && j.userId === userId));
-  writeIndex(JOBS_INDEX, filtered);
+export async function deleteJob(id, userId) {
+  try {
+    await dbConnect();
+    await Job.deleteOne({ id, userId });
+  } catch (err) {
+    console.warn('[Store] MongoDB deleteJob failed:', err.message);
+  }
+  try {
+    const jobs = readIndex(JOBS_INDEX);
+    const filtered = jobs.filter(j => !(j.id === id && j.userId === userId));
+    writeIndex(JOBS_INDEX, filtered);
+  } catch {}
+}
+
+export async function checkAlreadyApplied(company, title, userId) {
+  if (!company || !title || !userId) return false;
+  try {
+    await dbConnect();
+    const cleanCompany = company.trim().toLowerCase();
+    const cleanTitle = title.trim().toLowerCase();
+
+    // Escape regex characters
+    const escapeRegExp = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+    const existing = await Job.findOne({
+      userId,
+      status: 'applied',
+      company: { $regex: new RegExp(`^${escapeRegExp(cleanCompany)}$`, 'i') },
+      title: { $regex: new RegExp(`^${escapeRegExp(cleanTitle)}$`, 'i') }
+    }).lean();
+
+    return !!existing;
+  } catch (err) {
+    console.warn('[Store] MongoDB checkAlreadyApplied failed, checking JSON:', err.message);
+    const jobs = readIndex(JOBS_INDEX);
+    return jobs.some(j => 
+      j.userId === userId &&
+      j.status === 'applied' &&
+      j.company?.toLowerCase() === company.toLowerCase() &&
+      (j.title?.toLowerCase() === title.toLowerCase() || j.role?.toLowerCase() === title.toLowerCase())
+    );
+  }
+}
+
+export async function checkAlreadyAppliedByEmail(email, userId) {
+  if (!email || !userId) return false;
+  try {
+    await dbConnect();
+    const existing = await Job.findOne({
+      userId,
+      status: 'applied',
+      appliedEmail: { $regex: new RegExp(`^${email.trim().toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`, 'i') },
+    }).lean();
+    return !!existing;
+  } catch (err) {
+    console.warn('[Store] checkAlreadyAppliedByEmail MongoDB failed:', err.message);
+    const jobs = readIndex(JOBS_INDEX);
+    return jobs.some(j => j.userId === userId && j.status === 'applied' && j.appliedEmail?.toLowerCase() === email.toLowerCase());
+  }
 }
 
 export function deleteResume(id, userId) {
@@ -118,6 +208,17 @@ export function toggleFavoriteResume(id, userId) {
   const index = resumes.findIndex(r => r.id === id && r.userId === userId);
   if (index !== -1) {
     resumes[index].isFavorite = !resumes[index].isFavorite;
+    writeIndex(RESUMES_INDEX, resumes);
+    return resumes[index];
+  }
+  return null;
+}
+
+export function updateResume(id, updates, userId) {
+  const resumes = readIndex(RESUMES_INDEX);
+  const index = resumes.findIndex(r => r.id === id && (!userId || r.userId === userId));
+  if (index !== -1) {
+    resumes[index] = { ...resumes[index], ...updates, updatedAt: new Date().toISOString() };
     writeIndex(RESUMES_INDEX, resumes);
     return resumes[index];
   }

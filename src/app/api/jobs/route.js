@@ -9,7 +9,7 @@ export async function GET() {
     if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     
     const user = getUserByEmail(session.email);
-    const jobs = getAllJobs(session.email);
+    const jobs = await getAllJobs(session.email);
     
     return NextResponse.json({ 
       success: true, 
@@ -30,7 +30,7 @@ export async function POST(request) {
     if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     
     const body = await request.json();
-    const job = saveJob(body, session.email);
+    const job = await saveJob(body, session.email);
     return NextResponse.json({ success: true, job });
   } catch (err) {
     return NextResponse.json({ error: err.message }, { status: 500 });
