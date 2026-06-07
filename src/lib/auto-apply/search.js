@@ -49,13 +49,16 @@ function isIndividualJobUrl(url) {
       'linkedin.com', 'indeed.com', 'glassdoor.com', 'naukri.com',
       'monster.com', 'dice.com', 'wellfound.com', 'angel.co',
       'ziprecruiter.com', 'simplyhired.com', 'careerbuilder.com',
+      'lever.co', 'greenhouse.io', 'workable.com', 'ashbyhq.com',
+      'bamboohr.com', 'workday.com', 'myworkdayjobs.com', 'taleo.net',
+      'icims.com', 'smartrecruiters.com', 'jobvite.com',
     ];
 
     if (jobDomains.some(d => host.includes(d))) {
       return /\/\d{6,}/.test(path) || /job/i.test(path);
     }
 
-    return true;
+    return false;
   } catch {
     return false;
   }
@@ -339,7 +342,7 @@ async function phase1Discovery({ targetRole, targetLocation, experienceLevels, s
 // PHASE 2 — Scrape each URL and AI-verify it's a real job posting
 // ═════════════════════════════════════════════════════════════════
 
-async function phase2ScrapeAndVerify(candidates, progressFn) {
+async function phase2ScrapeAndVerify(candidates, progressFn, isActive) {
   const verified = [];
   const MAX_CONCURRENT = 5;
   const results = [];
@@ -348,6 +351,8 @@ async function phase2ScrapeAndVerify(candidates, progressFn) {
   progressFn?.('scraping', `Scraping ${total} job URLs for verification...`, 0, total);
 
   for (let i = 0; i < candidates.length; i += MAX_CONCURRENT) {
+    if (isActive && !isActive()) break;
+
     const batch = candidates.slice(i, i + MAX_CONCURRENT);
     const batchResults = await Promise.allSettled(
       batch.map(async (candidate) => {
@@ -398,7 +403,7 @@ async function phase2ScrapeAndVerify(candidates, progressFn) {
       }
     }
 
-    progressFn?.('scraping', `Verified ${Math.min(i + MAX_CONCURRENT, total)}/${total} URLs...`, Math.min(i + MAX_CONCURRENT, total), total);
+    progressFn?.('scraping', `Verified ${results.length}/${total} URLs...`, results.length, total);
   }
 
   for (const r of results) {
@@ -432,7 +437,7 @@ async function phase2ScrapeAndVerify(candidates, progressFn) {
 // MAIN ENTRY
 // ═════════════════════════════════════════════════════════════════
 
-export async function searchJobs(args, progressFn) {
+export async function searchJobs(args, progressFn, isActive) {
   const { targetRole, targetLocation = 'India', experienceLevels = [], skills = [] } = args;
 
   // Phase 1: Discover candidate URLs
@@ -444,7 +449,7 @@ export async function searchJobs(args, progressFn) {
   }
 
   // Phase 2: Scrape + verify all candidates
-  const { verified, failed } = await phase2ScrapeAndVerify(candidates, progressFn);
+  const { verified, failed } = await phase2ScrapeAndVerify(candidates, progressFn, isActive);
 
   if (verified.length === 0) {
     return { jobs: [], queries: [], stats: {}, message: `Found ${candidates.length} URLs but none passed verification (${failed} failed).` };
