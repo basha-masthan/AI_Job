@@ -139,9 +139,16 @@ body {
   transition: var(--transition);
 }
 
+/* Sidebar collapsed (icon only) */
 .sidebar.collapsed {
   width: 80px;
   padding: 24px 12px;
+}
+
+/* Sidebar unpinned and hovered (expanded overlay) */
+.sidebar.unpinned-expanded {
+  width: 260px;
+  box-shadow: 4px 0 24px rgba(0,0,0,0.5);
 }
 
 .main-content {
@@ -152,7 +159,7 @@ body {
   transition: var(--transition);
 }
 
-body.sidebar-collapsed .main-content {
+body.sidebar-unpinned .main-content {
   margin-left: 80px;
 }
 
@@ -171,6 +178,24 @@ body.sidebar-collapsed .main-content {
 .sidebar.collapsed .sidebar-logo {
   justify-content: center;
   padding: 8px 0 24px;
+}
+
+.hamburger-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.hamburger-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
 }
 
 .sidebar-logo-icon {
@@ -199,34 +224,58 @@ body.sidebar-collapsed .main-content {
   -webkit-text-fill-color: var(--text-muted);
 }
 
-.collapse-toggle {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  border-radius: 6px;
-  padding: 4px 6px;
-  cursor: pointer;
-  font-size: 10px;
-  transition: var(--transition);
+/* Navigation Accordion Styles */
+.accordion-header {
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.accordion-header:hover {
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.accordion-header.collapsed-view {
   justify-content: center;
+  padding: 12px;
 }
 
-.collapse-toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--text-primary);
+.accordion-chevron {
+  font-size: 10px;
+  transition: transform 0.3s ease;
 }
 
-.sidebar.collapsed .collapse-toggle {
-  position: absolute;
-  right: -10px;
-  top: 30px;
-  background: var(--bg-card);
-  z-index: 101;
-  border-radius: 50%;
-  width: 20px; height: 20px;
-  padding: 0;
+.accordion-header.open .accordion-chevron {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 4px;
+  overflow: hidden;
+}
+
+.accordion-content.hide-in-collapsed {
+  display: none;
+}
+
+.nav-item.accordion-item {
+  padding-left: 16px;
 }
 
 .nav-container {

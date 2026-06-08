@@ -177,12 +177,8 @@ export default function SmtpSetupPage() {
               Your email is configured. You can now use the <strong>Auto Apply</strong> feature to send applications directly from your Gmail.
             </p>
             <button className="btn btn-primary btn-lg" style={{ width: '100%' }}
-              onClick={() => router.push('/autopilot')}>
-              🚀 Go to Auto Apply
-            </button>
-            <button className="btn btn-ghost btn-sm" style={{ width: '100%', marginTop: 8 }}
               onClick={() => router.push('/')}>
-              Take me to Dashboard
+              🚀 Go to Dashboard
             </button>
           </>
         )}

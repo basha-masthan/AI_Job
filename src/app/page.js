@@ -12,11 +12,20 @@ const STATUS_COLORS = {
   rejected: 'tag-rose',
 };
 
-const QUICK_ACTIONS = [
-  { href: '/job-search', icon: '🔍', label: 'Global Job Search', desc: 'Find jobs across all portals', color: 'var(--accent-primary)' },
-  { href: '/training', icon: '🎓', label: 'Training Portal', desc: 'Identify & fix skill gaps', color: 'var(--accent-cyan)' },
-  { href: '/resume-builder', icon: '✨', label: 'Build Tailored Resume', desc: 'Tailored from job description', color: 'var(--accent-emerald)' },
-  { href: '/job-fetcher', icon: '🔗', label: 'Fetch Job Details', desc: 'Paste any job URL', color: 'var(--accent-amber)' },
+const ALL_STAT_CARDS = [
+  { id: 'Total Resumes', label: 'Total Resumes', icon: '📄', color: 'rgba(99,102,241,0.15)', href: '/resume-vault' },
+  { id: 'Jobs Tracked', label: 'Jobs Tracked', icon: '💼', color: 'rgba(6,182,212,0.15)', href: '/job-tracker' },
+  { id: 'Applied', label: 'Applied', icon: '📨', color: 'rgba(16,185,129,0.15)', href: '/jobs-applied' },
+  { id: 'Interviews', label: 'Interviews', icon: '🎯', color: 'rgba(245,158,11,0.15)', href: '/job-tracker' },
+];
+
+const ALL_QUICK_ACTIONS = [
+  { id: 'Auto Apply', href: '/auto-apply', icon: '🚀', label: 'Auto Apply', desc: 'Configure automatic applications', color: 'var(--accent-primary)' },
+  { id: 'Resume Vault', href: '/resume-vault', icon: '🗄️', label: 'Resume Vault', desc: 'Manage all tailored resumes', color: '#8b5cf6' },
+  { id: 'Find Open role', href: '/job-search', icon: '🔍', label: 'Find Open role', desc: 'Search global job listings', color: '#06b6d4' },
+  { id: 'Job JD extract', href: '/job-fetcher', icon: '🔗', label: 'Job JD extract', desc: 'Paste any job URL', color: '#f59e0b' },
+  { id: 'Training Portal', href: '/training', icon: '🎓', label: 'Training Portal', desc: 'Identify & fix skill gaps', color: '#10b981' },
+  { id: 'Build Tailored Resume', href: '/resume-builder', icon: '✨', label: 'Build Tailored Resume', desc: 'Tailored from job description', color: '#ec4899' },
 ];
 
 /* ── Landing Page Data ── */
@@ -79,11 +88,33 @@ export default function HomePage() {
   // SMTP Onboarding Banner State
   const [smtpBanner, setSmtpBanner] = useState({ visible: false, dismissible: true });
 
+  // Dashboard Settings
+  const [dashboardSettings, setDashboardSettings] = useState({
+    stats: ['Total Resumes', 'Jobs Tracked', 'Applied', 'Interviews'],
+    links: ['Auto Apply', 'Resume Vault', 'Find Open role', 'Job JD extract', 'Training Portal']
+  });
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
+
   // Authenticated Dashboard Chat State
   const [chatSessions, setChatSessions] = useState([]);
   const [activeSessionId, setActiveSessionId] = useState(null);
   const [dashboardQuestion, setDashboardQuestion] = useState('');
   const [dashboardChatLoading, setDashboardChatLoading] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('dashboard_settings');
+    if (saved) {
+      try {
+        setDashboardSettings(JSON.parse(saved));
+      } catch {}
+    }
+  }, []);
+
+  const saveSettings = (newSettings) => {
+    setDashboardSettings(newSettings);
+    localStorage.setItem('dashboard_settings', JSON.stringify(newSettings));
+    setShowSettingsModal(false);
+  };
 
   async function handleTestBrain(e) {
     e.preventDefault();
@@ -602,21 +633,23 @@ export default function HomePage() {
   /* ═══════════════════════════════════════════════════
      AUTHENTICATED DASHBOARD — Preserved
      ═══════════════════════════════════════════════════ */
-  const statCards = [
-    { label: 'Total Resumes', value: stats.resumes, icon: '📄', color: 'rgba(99,102,241,0.15)' },
-    { label: 'Jobs Tracked', value: stats.jobs, icon: '💼', color: 'rgba(6,182,212,0.15)' },
-    { label: 'Applied', value: stats.applied, icon: '📨', color: 'rgba(16,185,129,0.15)' },
-    { label: 'Interviews', value: stats.interviews, icon: '🎯', color: 'rgba(245,158,11,0.15)' },
-  ];
+  const visibleStats = ALL_STAT_CARDS
+    .filter(s => dashboardSettings.stats.includes(s.id))
+    .map(s => ({
+      ...s,
+      value: stats[s.id === 'Total Resumes' ? 'resumes' : s.id === 'Jobs Tracked' ? 'jobs' : s.id.toLowerCase()] || 0
+    }));
+
+  const visibleLinks = ALL_QUICK_ACTIONS.filter(a => dashboardSettings.links.includes(a.id));
 
   return (
     <div className="app-shell">
       <Sidebar />
-      <main className="main-content" style={{ position: 'relative', display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
+      <main className="main-content" style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: '24px' }}>
         <div className="hero-glow" />
         
-        {/* Left Column - Main Content */}
-        <div style={{ flex: '2 1 500px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '32px' }}>
+        {/* Main Content (Full Width) */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
 
           {/* Premium Animated Header */}
           <div className="glass-card" style={{ padding: '32px', position: 'relative', overflow: 'hidden' }}>
@@ -669,32 +702,39 @@ export default function HomePage() {
           </div>
 
           <div className="stats-grid" style={{ gap: '20px' }}>
-            {statCards.map(s => (
-              <div key={s.label} className="glass-card hover-float" style={{ padding: '24px', display: 'flex', alignItems: 'center', gap: '20px' }}>
-                <div className="stat-icon" style={{ background: s.color, width: '56px', height: '56px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1)' }}>
-                  <span style={{ fontSize: 26 }}>{s.icon}</span>
-                </div>
-                <div>
-                  <div className="stat-value" style={{ fontSize: '28px', fontWeight: 800, background: 'var(--text-primary)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                    {dashboardLoading ? '—' : s.value}
+            {visibleStats.map(s => (
+              <Link href={s.href} key={s.id} style={{ textDecoration: 'none' }}>
+                <div className="glass-card hover-float" style={{ padding: '24px', display: 'flex', alignItems: 'center', gap: '20px', cursor: 'pointer' }}>
+                  <div className="stat-icon" style={{ background: s.color, width: '56px', height: '56px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1)' }}>
+                    <span style={{ fontSize: 26 }}>{s.icon}</span>
                   </div>
-                  <div className="stat-label" style={{ fontSize: '13px', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.5px', marginTop: '4px' }}>
-                    {s.label}
+                  <div>
+                    <div className="stat-value" style={{ fontSize: '28px', fontWeight: 800, background: 'var(--text-primary)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                      {dashboardLoading ? '—' : s.value}
+                    </div>
+                    <div className="stat-label" style={{ fontSize: '13px', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.5px', marginTop: '4px' }}>
+                      {s.label}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
           <div className="grid-2" style={{ gap: '24px' }}>
             {/* Quick Actions Bento */}
             <div className="glass-panel" style={{ padding: '24px' }}>
-              <h2 style={{ fontSize: 16, fontWeight: 700, marginBottom: 20, fontFamily: 'Space Grotesk', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span className="pulse-ring" style={{ width: '8px', height: '8px', background: 'var(--accent-primary)', display: 'inline-block', borderRadius: '50%' }}></span>
-                Quick Actions
-              </h2>
+              <div className="flex-between" style={{ marginBottom: 20 }}>
+                <h2 style={{ fontSize: 16, fontWeight: 700, fontFamily: 'Space Grotesk', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span className="pulse-ring" style={{ width: '8px', height: '8px', background: 'var(--accent-primary)', display: 'inline-block', borderRadius: '50%' }}></span>
+                  Quick Actions
+                </h2>
+                <button onClick={() => setShowSettingsModal(true)} className="btn btn-ghost btn-sm" style={{ background: 'rgba(255,255,255,0.05)', borderRadius: '6px' }}>
+                  ⚙️ Edit Dashboard
+                </button>
+              </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                {QUICK_ACTIONS.map(a => (
+                {visibleLinks.map(a => (
                   <Link key={a.href} href={a.href} style={{ textDecoration: 'none' }}>
                     <div className="glass-card hover-float" style={{ padding: 16, display: 'flex', alignItems: 'center', gap: 16 }}>
                       <div style={{
@@ -778,12 +818,70 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
-        {/* Right Column - Auto Apply Status */}
-        <div className="auto-apply-widget-container" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <AutoApplyWidget />
-        </div>
       </main>
+
+      {/* Settings Modal */}
+      {showSettingsModal && (
+        <div className="modal-backdrop" onClick={() => setShowSettingsModal(false)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(4px)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div className="glass-card" onClick={e => e.stopPropagation()} style={{ width: '100%', maxWidth: 500, padding: 32, position: 'relative' }}>
+            <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 24, color: 'var(--text-primary)' }}>Customize Dashboard</h2>
+            
+            <div style={{ marginBottom: 24 }}>
+              <h3 style={{ fontSize: 14, color: 'var(--text-secondary)', marginBottom: 12 }}>Visible Stat Cards</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                {ALL_STAT_CARDS.map(s => (
+                  <label key={s.id} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: 14, color: 'var(--text-primary)' }}>
+                    <input 
+                      type="checkbox" 
+                      checked={dashboardSettings.stats.includes(s.id)}
+                      onChange={(e) => {
+                        const newStats = e.target.checked 
+                          ? [...dashboardSettings.stats, s.id] 
+                          : dashboardSettings.stats.filter(id => id !== s.id);
+                        setDashboardSettings({ ...dashboardSettings, stats: newStats });
+                      }}
+                      style={{ accentColor: 'var(--accent-primary)' }}
+                    />
+                    {s.icon} {s.label}
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ marginBottom: 32 }}>
+              <h3 style={{ fontSize: 14, color: 'var(--text-secondary)', marginBottom: 12 }}>Visible Quick Links (Max 5)</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                {ALL_QUICK_ACTIONS.map(a => {
+                  const isChecked = dashboardSettings.links.includes(a.id);
+                  const disabled = !isChecked && dashboardSettings.links.length >= 5;
+                  return (
+                    <label key={a.id} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: disabled ? 'not-allowed' : 'pointer', fontSize: 14, color: disabled ? 'var(--text-muted)' : 'var(--text-primary)' }}>
+                      <input 
+                        type="checkbox" 
+                        checked={isChecked}
+                        disabled={disabled}
+                        onChange={(e) => {
+                          const newLinks = e.target.checked 
+                            ? [...dashboardSettings.links, a.id] 
+                            : dashboardSettings.links.filter(id => id !== a.id);
+                          setDashboardSettings({ ...dashboardSettings, links: newLinks });
+                        }}
+                        style={{ accentColor: 'var(--accent-primary)' }}
+                      />
+                      {a.label}
+                    </label>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="flex-row" style={{ gap: 12, justifyContent: 'flex-end' }}>
+              <button className="btn btn-ghost" onClick={() => setShowSettingsModal(false)}>Cancel</button>
+              <button className="btn btn-primary" onClick={() => saveSettings(dashboardSettings)}>Save Changes</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

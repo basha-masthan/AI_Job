@@ -7,23 +7,25 @@ const NAV = [
   { label: 'OVERVIEW', items: [
     { href: '/', icon: '⚡', label: 'Dashboard' },
   ]},
-  { label: 'TRAINING', items: [
-    { href: '/training', icon: '🎓', label: 'Training Portal' },
-    { href: '/training/progress', icon: '📈', label: 'Learning Progress' },
-    { href: '/training/mock-interview', icon: '🎤', label: 'Mock Interview' },
-    { href: '/training/technical-mock', icon: '🧪', label: 'Technical MCQ' },
+  { label: 'AUTO APPLY', items: [
+    { href: '/auto-apply', icon: '🚀', label: 'Auto Apply' },
+    { href: '/jobs-applied', icon: '📨', label: 'Applied Jobs' },
+    { href: '/job-tracker', icon: '📋', label: 'Job Tracker' },
+  ]},
+  { label: 'FIND OPEN ROLE', items: [
+    { href: '/job-search', icon: '🔍', label: 'Find Open role' },
+    { href: '/job-fetcher', icon: '🔗', label: 'Job JD extract' },
+    { href: '/recruiter-finder', icon: '🕵️', label: 'Recruiter Finder' },
   ]},
   { label: 'RESUME', items: [
     { href: '/resume-builder', icon: '✨', label: 'Resume Builder' },
     { href: '/resume-vault', icon: '🗄️', label: 'Resume Vault' },
   ]},
-  { label: 'JOBS', items: [
-    { href: '/job-search', icon: '🔍', label: 'India Jobs' },
-    { href: '/auto-apply', icon: '🚀', label: 'Auto Apply' },
-    { href: '/recruiter-finder', icon: '🕵️', label: 'Recruiter Finder' },
-    { href: '/jobs-applied', icon: '📨', label: 'Jobs Applied' },
-    { href: '/job-tracker', icon: '📋', label: 'Job Tracker' },
-    { href: '/job-fetcher', icon: '🔗', label: 'Job Fetcher' },
+  { label: 'TRAINING', items: [
+    { href: '/training', icon: '🎓', label: 'Training Portal' },
+    { href: '/training/progress', icon: '📈', label: 'Learning Progress' },
+    { href: '/training/mock-interview', icon: '🎤', label: 'Mock Interview' },
+    { href: '/training/technical-mock', icon: '🧪', label: 'Technical MCQ' },
   ]},
   { label: 'ADMIN', items: [
     { href: '/admin', icon: '👑', label: 'Control Center' },
@@ -34,13 +36,31 @@ export default function Sidebar() {
   const pathname = usePathname();
   const [userName, setUserName] = useState('User');
   const [userEmail, setUserEmail] = useState('');
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  
+  // Gmail-style Sidebar States
+  const [isPinned, setIsPinned] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+  
+  // Accordion State
+  const [openSections, setOpenSections] = useState({});
 
   useEffect(() => {
-    // Load collapse state
-    const saved = localStorage.getItem('sidebar_collapsed') === 'true';
-    setIsCollapsed(saved);
-    if (saved) document.body.classList.add('sidebar-collapsed');
+    // Load pinned state
+    const savedPin = localStorage.getItem('sidebar_pinned');
+    if (savedPin !== null) {
+      const pinned = savedPin === 'true';
+      setIsPinned(pinned);
+      if (!pinned) document.body.classList.add('sidebar-unpinned');
+    }
+
+    // Auto-open section that contains the active route
+    const initialOpen = {};
+    NAV.forEach(sec => {
+      if (sec.items.some(item => item.href === pathname)) {
+        initialOpen[sec.label] = true;
+      }
+    });
+    setOpenSections(initialOpen);
 
     fetch('/api/auth/me')
       .then(res => res.json())
@@ -51,17 +71,24 @@ export default function Sidebar() {
         }
       })
       .catch(console.error);
-  }, []);
+  }, [pathname]);
 
-  const toggleSidebar = () => {
-    const newState = !isCollapsed;
-    setIsCollapsed(newState);
-    localStorage.setItem('sidebar_collapsed', newState);
-    if (newState) {
-      document.body.classList.add('sidebar-collapsed');
+  const togglePin = () => {
+    const newState = !isPinned;
+    setIsPinned(newState);
+    localStorage.setItem('sidebar_pinned', newState);
+    if (!newState) {
+      document.body.classList.add('sidebar-unpinned');
     } else {
-      document.body.classList.remove('sidebar-collapsed');
+      document.body.classList.remove('sidebar-unpinned');
     }
+  };
+
+  const toggleSection = (label) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [label]: !prev[label]
+    }));
   };
 
   async function handleLogout() {
@@ -69,67 +96,115 @@ export default function Sidebar() {
     window.location.href = '/';
   }
 
-  // Filter navigation dynamically
   const filteredNav = NAV.filter(section => {
-    if (section.label === 'ADMIN') {
-      return userEmail === 'admin@fbt.com';
-    }
+    if (section.label === 'ADMIN') return userEmail === 'admin@fbt.com';
     return true;
   });
 
+  const isExpanded = isPinned || isHovered;
+  const sidebarClass = `sidebar ${!isExpanded ? 'collapsed' : ''} ${!isPinned && isHovered ? 'unpinned-expanded' : ''}`;
+
   return (
-    <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+    <aside 
+      className={sidebarClass}
+      onMouseEnter={() => !isPinned && setIsHovered(true)}
+      onMouseLeave={() => !isPinned && setIsHovered(false)}
+    >
       <div className="sidebar-logo">
-        <div className="sidebar-logo-icon" style={{ background: 'transparent' }}>
-          <img src="/logo.svg" alt="JobHunt AI Logo" style={{ width: 38, height: 38, borderRadius: 10 }} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <button onClick={togglePin} className="hamburger-btn" title={isPinned ? "Unpin Menu" : "Pin Menu"}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          
+          {isExpanded && (
+            <div className="sidebar-logo-text-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <img src="/logo.svg" alt="Logo" style={{ width: 28, height: 28, borderRadius: 6 }} />
+              <div>
+                <div className="sidebar-logo-text" style={{ fontSize: 15 }}>JobHunt AI</div>
+                <div className="sidebar-logo-sub" style={{ fontSize: 10 }}>Welcome, {userName.split(' ')[0]}</div>
+              </div>
+            </div>
+          )}
         </div>
-        {!isCollapsed && (
-          <div>
-            <div className="sidebar-logo-text">JobHunt AI</div>
-            <div className="sidebar-logo-sub">Welcome, {userName.split(' ')[0]}</div>
-          </div>
-        )}
-        <button onClick={toggleSidebar} className="collapse-toggle" title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}>
-          {isCollapsed ? '➡' : '⬅'}
-        </button>
       </div>
 
-      <div className="nav-container" style={{ overflowY: 'auto', flex: 1, paddingRight: '4px' }}>
-        {filteredNav.map(section => (
-          <div key={section.label} className="nav-section">
-            {!isCollapsed && <div className="nav-section-label">{section.label}</div>}
-            {section.items.map(item => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`nav-item${pathname === item.href ? ' active' : ''}`}
-                title={isCollapsed ? item.label : ''}
+      <div className="nav-container">
+        {filteredNav.map(section => {
+          const isOpen = openSections[section.label];
+          // For single-item sections like Overview, just render it without accordion
+          if (section.items.length === 1 && section.label === 'OVERVIEW') {
+            const item = section.items[0];
+            return (
+              <div key={section.label} className="nav-section">
+                <Link
+                  href={item.href}
+                  className={`nav-item${pathname === item.href ? ' active' : ''}`}
+                  title={!isExpanded ? item.label : ''}
+                >
+                  <span className="nav-icon">{item.icon}</span>
+                  {isExpanded && <span className="nav-label">{item.label}</span>}
+                </Link>
+              </div>
+            );
+          }
+
+          return (
+            <div key={section.label} className="nav-section accordion-section">
+              <button 
+                className={`accordion-header ${isOpen ? 'open' : ''} ${!isExpanded ? 'collapsed-view' : ''}`} 
+                onClick={() => isExpanded ? toggleSection(section.label) : null}
+                title={!isExpanded ? section.label : ''}
               >
-                <span className="nav-icon">{item.icon}</span>
-                {!isCollapsed && <span className="nav-label">{item.label}</span>}
-              </Link>
-            ))}
-          </div>
-        ))}
+                {isExpanded ? (
+                  <>
+                    <span className="accordion-title">{section.label}</span>
+                    <span className="accordion-chevron">▼</span>
+                  </>
+                ) : (
+                  <span className="nav-icon" style={{ fontSize: 16 }}>{section.items[0].icon}</span>
+                )}
+              </button>
+              
+              {(isOpen || !isExpanded) && (
+                <div className={`accordion-content ${!isExpanded ? 'hide-in-collapsed' : ''}`}>
+                  {section.items.map(item => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`nav-item accordion-item ${pathname === item.href ? ' active' : ''}`}
+                    >
+                      <span className="nav-icon">{item.icon}</span>
+                      <span className="nav-label">{item.label}</span>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       <div className="sidebar-footer">
-        <button 
-          onClick={handleLogout}
-          className="nav-item logout-btn" 
-          title={isCollapsed ? "Logout" : ""}
-        >
-          <span className="nav-icon">🚪</span> 
-          {!isCollapsed && <span className="nav-label">Logout</span>}
-        </button>
         <Link
           href="/profile"
           className={`nav-item${pathname === '/profile' ? ' active' : ''}`}
-          title={isCollapsed ? "My Profile" : ""}
+          title={!isExpanded ? "My Profile" : ""}
         >
           <span className="nav-icon">👤</span> 
-          {!isCollapsed && <span className="nav-label">My Profile</span>}
+          {isExpanded && <span className="nav-label">My Profile</span>}
         </Link>
+        <button 
+          onClick={handleLogout}
+          className="nav-item logout-btn" 
+          title={!isExpanded ? "Logout" : ""}
+        >
+          <span className="nav-icon">🚪</span> 
+          {isExpanded && <span className="nav-label">Logout</span>}
+        </button>
       </div>
     </aside>
   );
