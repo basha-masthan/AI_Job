@@ -992,3 +992,32 @@ Accept (valid=true) if: it has one clear job title, company name, job descriptio
   }
 }
 
+export async function extractJobDetails(rawText, urlOrSource) {
+  const system = `You are a job detail extractor. Given the following text from a job posting, extract the details.
+
+Return a JSON object with these fields (use null for anything not found, and extract key points into arrays):
+{
+  "title": "job title",
+  "company": "company name",
+  "location": "location if found",
+  "type": "employment type if found",
+  "experience": "experience if found",
+  "salary": "salary if found",
+  "description": "full job description found",
+  "applyLink": "${urlOrSource}",
+  "skills": ["extracted technical skills", "required tools", "programming languages"],
+  "responsibilities": ["extracted key duties and responsibilities"],
+  "requirements": ["extracted qualifications, education, and requirements"],
+  "benefits": ["extracted perks, benefits, and compensation details"]
+}
+
+Only include data that actually exists in the text.`;
+
+  try {
+    const result = await invokeAI(system, `Source: ${urlOrSource}\n\nJob Posting Text:\n${rawText.substring(0, 8000)}`, 3000);
+    return safeJSONParse(result, null) || { title: 'Unknown Role', company: 'Unknown Company', description: rawText.substring(0, 500) };
+  } catch (e) {
+    console.error('Failed to extract job details:', e);
+    return { title: 'Unknown Role', company: 'Unknown Company', description: rawText.substring(0, 500) };
+  }
+}

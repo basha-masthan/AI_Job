@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import fs from 'fs';
+import path from 'path';
 import { getSession } from '@/lib/auth';
 import dbConnect from '@/lib/mongodb';
 import User from '@/models/User';
@@ -29,12 +31,14 @@ export async function GET() {
     let totalUsers = 0;
     let verifiedUsers = 0;
     let nylasConnected = 0;
+    let users = [];
 
     try {
       await dbConnect();
       totalUsers = await User.countDocuments({});
       verifiedUsers = await User.countDocuments({ verified: true });
       nylasConnected = await User.countDocuments({ nylasGrantId: { $exists: true, $ne: null } });
+      users = await User.find({}).lean();
     } catch (mongoErr) {
       console.error('[admin/stats] MongoDB unavailable:', mongoErr.message);
     }

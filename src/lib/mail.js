@@ -1,18 +1,32 @@
 import nodemailer from 'nodemailer';
 
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: parseInt(process.env.SMTP_PORT),
-  secure: false, // true for 465, false for other ports
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+function createTransporter() {
+  const host = process.env.SMTP_HOST || 'smtp.gmail.com';
+  const port = parseInt(process.env.SMTP_PORT || '587');
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+
+  if (!user || !pass) {
+    throw new Error('SMTP credentials not configured. Set SMTP_USER and SMTP_PASS environment variables.');
+  }
+
+  return nodemailer.createTransport({
+    host,
+    port,
+    secure: port === 465,
+    auth: { user, pass },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
+  });
+}
 
 export async function sendVerificationEmail(email, code) {
+  const transporter = createTransporter();
+  const fromEmail = process.env.SMTP_USER || 'noreply@jobhuntai.com';
+
   const mailOptions = {
-    from: `"JobHunt AI Pro" <${process.env.SMTP_USER}>`,
+    from: `"JobHunt AI Pro" <${fromEmail}>`,
     to: email,
     subject: 'Verify your email - JobHunt AI Pro',
     html: `

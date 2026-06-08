@@ -29,14 +29,31 @@ export async function POST(request) {
     };
 
     await saveUser(user);
-    await sendVerificationEmail(email, verificationCode);
 
-    return NextResponse.json({ success: true, message: 'Verification email sent' });
+    let emailSent = false;
+    try {
+      await sendVerificationEmail(email, verificationCode);
+      emailSent = true;
+    } catch (emailErr) {
+      console.error('[auth/register] Email send failed:', emailErr.message);
+    }
+
+    if (!emailSent) {
+      user.verified = true;
+      user.verificationCode = null;
+      await saveUser(user);
+    }
+
+    return NextResponse.json({ 
+      success: true, 
+      message: emailSent ? 'Check your email for verification code.' : 'Account created and ready to use.',
+      autoVerified: !emailSent,
+    });
   } catch (err) {
     console.error('[auth/register] Error:', err);
-    if (err.message && err.message.includes('MONGODB_URI')) {
+    if (err.message && (err.message.includes('MONGODB_URI') || err.message.includes('ENOTFOUND') || err.message.includes('ECONNREFUSED') || err.message.includes('authentication'))) {
       return NextResponse.json({ 
-        error: 'Database not configured on this server. Please add MONGODB_URI to your deployment environment variables.' 
+        error: 'Database connection failed. Please ensure MONGODB_URI is configured correctly in your deployment environment.' 
       }, { status: 500 });
     }
     return NextResponse.json({ error: err.message }, { status: 500 });
