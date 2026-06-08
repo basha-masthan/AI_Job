@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import { safeWriteFileSync, safeReadFileSync, isFsWritable } from '@/lib/fs-safe';
 
 const jobsFile = path.join(process.cwd(), 'data', 'jobs.json');
 const runsFile = path.join(process.cwd(), 'data', 'auto-apply-runs.json');
@@ -17,22 +18,24 @@ export async function GET(req, { params }) {
 
   try {
     // Update job tracking status in jobs.json
-    if (fs.existsSync(jobsFile)) {
-      const data = JSON.parse(fs.readFileSync(jobsFile, 'utf-8'));
-      const job = data.jobs?.find(j => j.id === jobId || j.trackingId === jobId);
-      if (job) {
-        if (!job.emailOpened) {
-          job.emailOpened = true;
-          job.emailOpenedAt = new Date().toISOString();
-          job.emailOpenCount = 1;
-          console.log(`[EMAIL TRACKER] Job ${jobId} email OPENED by recruiter at ${job.company}`);
-        } else {
-          job.emailOpenCount = (job.emailOpenCount || 1) + 1;
-          job.emailLastOpenedAt = new Date().toISOString();
-          console.log(`[EMAIL TRACKER] Job ${jobId} email re-opened (total ${job.emailOpenCount}x) at ${job.company}`);
+    if (isFsWritable() && fs.existsSync(jobsFile)) {
+      try {
+        const data = JSON.parse(fs.readFileSync(jobsFile, 'utf-8'));
+        const job = data.jobs?.find(j => j.id === jobId || j.trackingId === jobId);
+        if (job) {
+          if (!job.emailOpened) {
+            job.emailOpened = true;
+            job.emailOpenedAt = new Date().toISOString();
+            job.emailOpenCount = 1;
+            console.log(`[EMAIL TRACKER] Job ${jobId} email OPENED by recruiter at ${job.company}`);
+          } else {
+            job.emailOpenCount = (job.emailOpenCount || 1) + 1;
+            job.emailLastOpenedAt = new Date().toISOString();
+            console.log(`[EMAIL TRACKER] Job ${jobId} email re-opened (total ${job.emailOpenCount}x) at ${job.company}`);
+          }
+          safeWriteFileSync(jobsFile, JSON.stringify(data, null, 2));
         }
-        fs.writeFileSync(jobsFile, JSON.stringify(data, null, 2));
-      }
+      } catch {}
     }
 
     // Also update in auto-apply-runs.json (new) and autopilot-runs.json (legacy)

@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 import { v4 as uuid } from 'uuid';
 import nodemailer from 'nodemailer';
 import { getApiKey } from '@/lib/config';
@@ -24,21 +25,39 @@ const dataDir = path.join(process.cwd(), 'data');
 const runsFile = path.join(dataDir, 'auto-apply-runs.json');
 
 let activeEngine = null;
+let _fsWritable = null;
+
+function isFsWritable() {
+  if (_fsWritable !== null) return _fsWritable;
+  try {
+    const tmp = path.join(os.tmpdir(), `fbt_write_test_${Date.now()}`);
+    fs.writeFileSync(tmp, 'test');
+    fs.unlinkSync(tmp);
+    _fsWritable = true;
+  } catch { _fsWritable = false; }
+  return _fsWritable;
+}
 
 function ensureFile() {
-  if (!fs.existsSync(runsFile)) {
-    fs.writeFileSync(runsFile, JSON.stringify({ runs: [] }));
-  }
+  if (!isFsWritable()) return;
+  try {
+    if (!fs.existsSync(runsFile)) {
+      fs.writeFileSync(runsFile, JSON.stringify({ runs: [] }));
+    }
+  } catch {}
 }
 
 function readRuns() {
   ensureFile();
-  try { return JSON.parse(fs.readFileSync(runsFile, 'utf-8')); }
-  catch { return { runs: [] }; }
+  try {
+    if (isFsWritable()) return JSON.parse(fs.readFileSync(runsFile, 'utf-8'));
+  } catch {}
+  return { runs: [] };
 }
 
 function writeRuns(data) {
-  fs.writeFileSync(runsFile, JSON.stringify(data, null, 2));
+  if (!isFsWritable()) return;
+  try { fs.writeFileSync(runsFile, JSON.stringify(data, null, 2)); } catch {}
 }
 
 function createRun({ userId, targetRole, targetLocation, experienceLevels, resumeId, dailyCap, stepMode, smtp }) {

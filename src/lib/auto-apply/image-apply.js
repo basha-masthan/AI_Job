@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 import { v4 as uuid } from 'uuid';
 import nodemailer from 'nodemailer';
 import { getOcrSpaceKey } from '@/lib/config';
@@ -20,21 +21,39 @@ const USER = {
 
 const dataDir = path.join(process.cwd(), 'data');
 const progressFile = path.join(dataDir, 'auto-apply-picture.json');
+let _fsWritable = null;
+
+function isFsWritable() {
+  if (_fsWritable !== null) return _fsWritable;
+  try {
+    const tmp = path.join(os.tmpdir(), `fbt_write_test_${Date.now()}`);
+    fs.writeFileSync(tmp, 'test');
+    fs.unlinkSync(tmp);
+    _fsWritable = true;
+  } catch { _fsWritable = false; }
+  return _fsWritable;
+}
 
 function ensureFile() {
-  if (!fs.existsSync(progressFile)) {
-    fs.writeFileSync(progressFile, JSON.stringify({ active: false, steps: [], logs: [], result: null }));
-  }
+  if (!isFsWritable()) return;
+  try {
+    if (!fs.existsSync(progressFile)) {
+      fs.writeFileSync(progressFile, JSON.stringify({ active: false, steps: [], logs: [], result: null }));
+    }
+  } catch {}
 }
 
 function readProgress() {
   ensureFile();
-  try { return JSON.parse(fs.readFileSync(progressFile, 'utf-8')); }
-  catch { return { active: false, steps: [], logs: [], result: null }; }
+  try {
+    if (isFsWritable()) return JSON.parse(fs.readFileSync(progressFile, 'utf-8'));
+  } catch {}
+  return { active: false, steps: [], logs: [], result: null };
 }
 
 function writeProgress(p) {
-  fs.writeFileSync(progressFile, JSON.stringify(p, null, 2));
+  if (!isFsWritable()) return;
+  try { fs.writeFileSync(progressFile, JSON.stringify(p, null, 2)); } catch {}
 }
 
 function appendLog(progress, title, message, type = 'info') {

@@ -1,26 +1,24 @@
 import fs from 'fs';
 import path from 'path';
 import { spawn } from 'child_process';
+import { safeEnsureFile, safeWriteFileSync, safeReadFileSync } from '@/lib/fs-safe';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const REWARDS_FILE = path.join(DATA_DIR, 'mcp-rewards.json');
 const MCP_DIR = path.join(process.cwd(), 'mcp');
 
 export function ensureRewardsFile() {
-  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
-  if (!fs.existsSync(REWARDS_FILE)) {
-    fs.writeFileSync(REWARDS_FILE, JSON.stringify({
-      mcpInstances: {},
-      globalStats: { totalPositive: 0, totalNegative: 0, totalRewards: 0 },
-      lastUpdated: new Date().toISOString()
-    }, null, 2));
-  }
+  safeEnsureFile(REWARDS_FILE, JSON.stringify({
+    mcpInstances: {},
+    globalStats: { totalPositive: 0, totalNegative: 0, totalRewards: 0 },
+    lastUpdated: new Date().toISOString()
+  }, null, 2));
 }
 
 export function getRewardsData() {
   ensureRewardsFile();
   try {
-    return JSON.parse(fs.readFileSync(REWARDS_FILE, 'utf-8'));
+    return JSON.parse(safeReadFileSync(REWARDS_FILE, '{}'));
   } catch {
     return { mcpInstances: {}, globalStats: { totalPositive: 0, totalNegative: 0, totalRewards: 0 } };
   }
@@ -28,7 +26,7 @@ export function getRewardsData() {
 
 export function saveRewardsData(data) {
   data.lastUpdated = new Date().toISOString();
-  fs.writeFileSync(REWARDS_FILE, JSON.stringify(data, null, 2));
+  safeWriteFileSync(REWARDS_FILE, JSON.stringify(data, null, 2));
 }
 
 export function recordReward(mcpName, actionType, points, metadata = {}) {

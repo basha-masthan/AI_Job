@@ -1,19 +1,18 @@
 import fs from 'fs';
 import { getStoragePath } from '@/lib/config';
 import { v4 as uuid } from 'uuid';
+import { safeEnsureFile, safeWriteFileSync, safeReadFileSync, isFsWritable } from '@/lib/fs-safe';
 
 const CHATS_FILE = getStoragePath('brain-chats.json');
 
 function ensureChatsFile() {
-  if (!fs.existsSync(CHATS_FILE)) {
-    fs.writeFileSync(CHATS_FILE, JSON.stringify([]));
-  }
+  safeEnsureFile(CHATS_FILE, JSON.stringify([]));
 }
 
 export function getUserChats(userId) {
   ensureChatsFile();
   try {
-    const all = JSON.parse(fs.readFileSync(CHATS_FILE, 'utf-8'));
+    const all = JSON.parse(safeReadFileSync(CHATS_FILE, '[]'));
     return all.filter(c => c.userId === userId).sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
   } catch (e) {
     console.error('Error reading brain-chats.json:', e);
@@ -41,7 +40,7 @@ export function saveChatSession(session) {
       all.push(session);
     }
     
-    fs.writeFileSync(CHATS_FILE, JSON.stringify(all, null, 2));
+    safeWriteFileSync(CHATS_FILE, JSON.stringify(all, null, 2));
     return session;
   } catch (e) {
     console.error('Error saving chat session:', e);
@@ -52,9 +51,9 @@ export function saveChatSession(session) {
 export function deleteChatSession(id, userId) {
   ensureChatsFile();
   try {
-    const all = JSON.parse(fs.readFileSync(CHATS_FILE, 'utf-8'));
+    const all = JSON.parse(safeReadFileSync(CHATS_FILE, '[]'));
     const filtered = all.filter(c => !(c.id === id && c.userId === userId));
-    fs.writeFileSync(CHATS_FILE, JSON.stringify(filtered, null, 2));
+    safeWriteFileSync(CHATS_FILE, JSON.stringify(filtered, null, 2));
     return true;
   } catch (e) {
     console.error('Error deleting chat session:', e);

@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 import { v4 as uuid } from 'uuid';
 
 import { getStoragePath } from '@/lib/config';
@@ -10,13 +11,30 @@ export const RESUMES_INDEX = getStoragePath('resumes.json');
 export const JOBS_INDEX = getStoragePath('jobs.json');
 export const PATHS_INDEX = getStoragePath('training_paths.json');
 
+let _fsWritable = null;
+
+function isFsWritable() {
+  if (_fsWritable !== null) return _fsWritable;
+  try {
+    const tmp = path.join(os.tmpdir(), `fbt_write_test_${Date.now()}`);
+    fs.writeFileSync(tmp, 'test');
+    fs.unlinkSync(tmp);
+    _fsWritable = true;
+  } catch { _fsWritable = false; }
+  return _fsWritable;
+}
+
 export function ensureDirs() {
-  if (!fs.existsSync(RESUMES_INDEX)) fs.writeFileSync(RESUMES_INDEX, JSON.stringify([]));
-  if (!fs.existsSync(JOBS_INDEX)) fs.writeFileSync(JOBS_INDEX, JSON.stringify([]));
-  if (!fs.existsSync(PATHS_INDEX)) fs.writeFileSync(PATHS_INDEX, JSON.stringify([]));
+  if (!isFsWritable()) return;
+  try {
+    if (!fs.existsSync(RESUMES_INDEX)) fs.writeFileSync(RESUMES_INDEX, JSON.stringify([]));
+    if (!fs.existsSync(JOBS_INDEX)) fs.writeFileSync(JOBS_INDEX, JSON.stringify([]));
+    if (!fs.existsSync(PATHS_INDEX)) fs.writeFileSync(PATHS_INDEX, JSON.stringify([]));
+  } catch {}
 }
 
 function readIndex(filePath) {
+  if (!isFsWritable()) return [];
   ensureDirs();
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
@@ -41,7 +59,8 @@ function readIndex(filePath) {
 }
 
 export function writeIndex(filePath, data) {
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+  if (!isFsWritable()) return;
+  try { fs.writeFileSync(filePath, JSON.stringify(data, null, 2)); } catch {}
 }
 
 // ─────────────────────────────────────────────────────────────

@@ -2,12 +2,13 @@ import fs from 'fs';
 import path from 'path';
 
 import { getStoragePath } from '@/lib/config';
+import { safeEnsureFile, safeWriteFileSync, safeReadFileSync } from '@/lib/fs-safe';
 
 const TRAINING_FILE = getStoragePath('training.json');
 const PROGRESS_FILE = getStoragePath('training-progress.json');
 
 export function ensureTrainingData() {
-  if (!fs.existsSync(PROGRESS_FILE)) fs.writeFileSync(PROGRESS_FILE, JSON.stringify([]));
+  safeEnsureFile(PROGRESS_FILE, JSON.stringify([]));
 }
 
 export function getTrainingData() {
@@ -56,7 +57,7 @@ export function saveProgress(userId, roleId, level, sectionId, moduleId) {
     entry.completedModules[sectionId].push(moduleId);
   }
   entry.updatedAt = new Date().toISOString();
-  fs.writeFileSync(PROGRESS_FILE, JSON.stringify(all, null, 2));
+  safeWriteFileSync(PROGRESS_FILE, JSON.stringify(all, null, 2));
   return entry;
 }
 
@@ -66,7 +67,7 @@ export function removeProgress(userId, roleId, level, sectionId, moduleId) {
   if (entry && entry.completedModules[sectionId]) {
     entry.completedModules[sectionId] = entry.completedModules[sectionId].filter(m => m !== moduleId);
     entry.updatedAt = new Date().toISOString();
-    fs.writeFileSync(PROGRESS_FILE, JSON.stringify(all, null, 2));
+    safeWriteFileSync(PROGRESS_FILE, JSON.stringify(all, null, 2));
   }
   return entry || null;
 }
@@ -91,7 +92,7 @@ export function saveInterviewHistory(userId, interview) {
     createdAt: new Date().toISOString()
   };
   all.unshift(entry);
-  fs.writeFileSync(INTERVIEWS_HISTORY_FILE, JSON.stringify(all, null, 2));
+  safeWriteFileSync(INTERVIEWS_HISTORY_FILE, JSON.stringify(all, null, 2));
   return entry;
 }
 
@@ -123,7 +124,7 @@ export function saveMcqHistory(userId, mcq) {
     createdAt: new Date().toISOString()
   };
   all.unshift(entry);
-  fs.writeFileSync(MCQS_HISTORY_FILE, JSON.stringify(all, null, 2));
+  safeWriteFileSync(MCQS_HISTORY_FILE, JSON.stringify(all, null, 2));
   return entry;
 }
 
