@@ -7356,5 +7356,30 @@
       "resumeUrl": "https://res.cloudinary.com/db4am4mqh/raw/upload/v1780840642/job-hunt-resumes/manual_365672fd-0f7e-40d3-b529-560e507b200a"
     },
     "updatedAt": "2026-06-07T21:21:59.965Z"
+  },
+  {
+    "id": "83a05af4-f716-4a63-8bae-3f0b6368772b",
+    "title": "& We're Hiring | MERN Stack Developer",
+    "company": "We Offer",
+    "role": "& We're Hiring | MERN Stack Developer",
+    "location": "Remote",
+    "salary": "Competitive",
+    "url": "",
+    "description": "",
+    "status": "applied",
+    "source": "picture-apply",
+    "appliedEmail": "hr@savotechnologies.com",
+    "userId": "basha@fbt.com",
+    "dateApplied": "2026-06-08",
+    "createdAt": "2026-06-08T13:34:45.908Z",
+    "emailContext": {
+      "subject": "Application for & We're Hiring | MERN Stack Developer position at We Offer",
+      "bodyText": "Dear Hiring Team at We Offer,\n\nI am writing to express my strong interest in the & We're Hiring | MERN Stack Developer position. With my background in Python, JavaScript, TypeScript, I am confident I can contribute effectively to your team.\n\nPlease find my tailored resume attached for your review. I would welcome the opportunity to discuss how my skills and experience align with We Offer's needs.\n\nThank you for your consideration.\n\nBest regards,\nMASTHAN BASHA SHAIK\n\n📄 Resume (PDF): https://res.cloudinary.com/db4am4mqh/raw/upload/v1779346397/job-hunt-resumes/manual_98e500c7-f129-47ac-bba6-28edb47fa410\n\n📇 Contact\nEmail: official4basha@gmail.com\nPhone: +91 78937 02635\nLinkedIn: https://www.linkedin.com/in/masthan-basha-ms/\nGitHub: https://github.com/basha-masthan\nPortfolio: https://basha-portfolio.vercel.app/\n\nBest regards,\nMASTHAN BASHA SHAIK\n+91 78937 02635 · official4basha@gmail.com · Hyderabad, India",
+      "sentAt": "2026-06-08T13:34:45.908Z"
+    },
+    "resumeContext": {
+      "resumeUrl": "https://res.cloudinary.com/db4am4mqh/raw/upload/v1779346397/job-hunt-resumes/manual_98e500c7-f129-47ac-bba6-28edb47fa410"
+    },
+    "updatedAt": "2026-06-08T13:34:45.908Z"
   }
 ]

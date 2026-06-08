@@ -160,7 +160,7 @@ export async function resetPictureProgress() {
   writeProgress(p); return p;
 }
 
-export async function startPictureApply({ images, userId, resumeId, useAiResume = false }) {
+export async function startPictureApply({ images, userId, resumeId, useAiResume = false, smtp }) {
   if (!images || images.length === 0) throw new Error('At least one image is required');
 
   const results = [];
@@ -329,10 +329,10 @@ export async function startPictureApply({ images, userId, resumeId, useAiResume 
       const resumeLine = resumeUrl ? `\n\n📄 Resume (PDF): ${resumeUrl}` : '';
       const body = `${bodyText.trim()}${resumeLine}${sig.block}${sig.closing}`;
 
-      const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
-      const smtpPort = parseInt(process.env.SMTP_PORT || '587');
-      const smtpUser = process.env.SMTP_USER;
-      const smtpPass = process.env.SMTP_PASS;
+      const smtpHost = smtp?.host || 'smtp.gmail.com';
+      const smtpPort = parseInt(smtp?.port || '587');
+      const smtpUser = smtp?.user;
+      const smtpPass = smtp?.pass;
 
       if (!smtpUser || !smtpPass) {
         setStep(progress, 'mail', 'error', 'SMTP not configured');

@@ -1,13 +1,13 @@
 {
   "active": false,
-  "currentIndex": 11,
-  "totalCount": 12,
+  "currentIndex": 0,
+  "totalCount": 1,
   "steps": [
     {
       "id": "start",
-      "label": "Started (12/12)",
+      "label": "Started (1/1)",
       "status": "success",
-      "message": "Image 12 of 12"
+      "message": "Image 1 of 1"
     },
     {
       "id": "read",
@@ -45,43 +45,49 @@
       "title": "Applied",
       "message": "✅ & We're Hiring | MERN Stack Developer @ We Offer -> hr@savotechnologies.com",
       "type": "success",
-      "time": "2026-06-07T21:22:00.008Z"
+      "time": "2026-06-08T13:34:45.965Z"
     },
     {
       "title": "Saved",
       "message": "Job saved to tracker",
       "type": "success",
-      "time": "2026-06-07T21:22:00.008Z"
+      "time": "2026-06-08T13:34:45.964Z"
     },
     {
       "title": "Email Sent",
       "message": "Application sent to hr@savotechnologies.com",
       "type": "success",
-      "time": "2026-06-07T21:21:59.965Z"
+      "time": "2026-06-08T13:34:45.907Z"
     },
     {
       "title": "Resume",
       "message": "PDF ready",
       "type": "success",
-      "time": "2026-06-07T21:21:52.908Z"
+      "time": "2026-06-08T13:34:37.846Z"
+    },
+    {
+      "title": "ATS Score Check",
+      "message": "Selected resume score: 91%",
+      "type": "info",
+      "time": "2026-06-08T13:34:37.845Z"
     },
     {
       "title": "Email Found",
       "message": "hr@savotechnologies.com",
       "type": "success",
-      "time": "2026-06-07T21:21:52.905Z"
+      "time": "2026-06-08T13:34:37.842Z"
     },
     {
       "title": "Parsed",
       "message": "& We're Hiring | MERN Stack Developer @ We Offer",
       "type": "success",
-      "time": "2026-06-07T21:21:52.843Z"
+      "time": "2026-06-08T13:34:37.770Z"
     },
     {
-      "title": "Image 12",
+      "title": "Image 1",
       "message": "Processing...",
       "type": "info",
-      "time": "2026-06-07T21:21:49.710Z"
+      "time": "2026-06-08T13:34:32.514Z"
     }
   ],
   "result": {
@@ -89,10 +95,11 @@
       "title": "& We're Hiring | MERN Stack Developer",
       "company": "We Offer",
       "email": "hr@savotechnologies.com",
-      "location": ""
+      "location": "",
+      "description": "& We're Hiring | MERN Stack Developer\nSavo Technologies is looking for a passionate and skilled MERN Stack Developer to\njoin our growing development team.\nPosition: MERN Stack Developer\nExperience Required: Minimum 1 Year\nSalary: Up to 750,000 per month\nWork Mode: Work From Office\nWorking Days: Monday to Friday\n° Location: Vijay Nagar, Indore\nM Skills Required:\n• MongoDB\n• Express js\n• React.js\n• Node.js\n• REST APIs\n• JavaScript / ES6\n• Git & GitHub Basics\n@ Responsibilities:\n• Develop and maintain scalable web applications\n• Build responsive and user-friendly interfaces using React.js\n• Create secure backend APIs with Node.js & Express.js\n• Manage and optimize MongoDB databases\n• Collaborate with designers and developers to deliver high-quality solutions\nWhat We Offer:\n• Friendly and Professional Work Environment\n• Career Growth Opportunities\n• Hands-on Learning & Development\n• Exposure to Real Client Projects\n• Competitive Salary Package\nInterested candidates can send their resume to: hr@savotechnologies.com\nE WhatsApp Resume: +91 7898852345"
     },
     "applied": true,
     "email": "hr@savotechnologies.com",
-    "savedJobId": "bfb5ebdc-5fb8-469f-9206-e787279accb5"
+    "savedJobId": "83a05af4-f716-4a63-8bae-3f0b6368772b"
   }
 }

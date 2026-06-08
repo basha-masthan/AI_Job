@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { startPictureApply, getPictureProgress, resetPictureProgress } from '@/lib/auto-apply/image-apply';
 import { getSession } from '@/lib/auth';
+import dbConnect from '@/lib/mongodb';
+import User from '@/models/User';
 
 export async function POST(req) {
   const session = await getSession();
@@ -15,6 +17,16 @@ export async function POST(req) {
     }
 
     const userId = session.email || session.user?.id || 'default';
+
+    let smtp = null;
+    try {
+      await dbConnect();
+      const user = await User.findOne({ email: session.email.toLowerCase() }).lean();
+      if (user?.smtp?.configured) {
+        smtp = { user: user.smtp.user, pass: user.smtp.pass, host: user.smtp.host, port: user.smtp.port };
+      }
+    } catch {}
+
     const result = await startPictureApply({
       images: images.map(img => ({
         base64: img.base64 || img.imageBase64,
@@ -23,6 +35,7 @@ export async function POST(req) {
       userId,
       resumeId,
       useAiResume: !!useAiResume,
+      smtp,
     });
 
     return NextResponse.json(result || {});
