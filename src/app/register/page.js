@@ -47,7 +47,7 @@ export default function RegisterPage() {
         body: JSON.stringify({ email, code }),
       });
       if (res.ok) {
-        router.push('/');
+        router.push('/smtp-setup');
       } else {
         const data = await res.json();
         setError(data.error || 'Verification failed');

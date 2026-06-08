@@ -31,7 +31,17 @@ function LoginForm() {
       });
       const data = await res.json();
       if (res.ok) {
-        router.push(redirectTo);
+        try {
+          const smtpRes = await fetch('/api/auth/smtp');
+          const smtpData = await smtpRes.json();
+          if (smtpData.success && !smtpData.smtpConfigured && !smtpData.onboardingComplete) {
+            router.push('/smtp-setup');
+          } else {
+            router.push(redirectTo);
+          }
+        } catch {
+          router.push(redirectTo);
+        }
       } else if (data.needsVerification) {
         setStep('verify');
       } else {

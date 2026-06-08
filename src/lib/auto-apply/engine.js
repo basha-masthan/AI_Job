@@ -41,7 +41,7 @@ function writeRuns(data) {
   fs.writeFileSync(runsFile, JSON.stringify(data, null, 2));
 }
 
-function createRun({ userId, targetRole, targetLocation, experienceLevels, resumeId, dailyCap, stepMode }) {
+function createRun({ userId, targetRole, targetLocation, experienceLevels, resumeId, dailyCap, stepMode, smtp }) {
   const allResumes = getAllResumes(userId);
   const resume = allResumes.find(r => r.id === resumeId);
   if (!resume) throw new Error('Resume not found');
@@ -62,6 +62,7 @@ function createRun({ userId, targetRole, targetLocation, experienceLevels, resum
     jobs: [],
     logs: [],
     currentJobIndex: 0,
+    smtp: smtp || null,
   };
 
   const data = readRuns();
@@ -469,13 +470,13 @@ async function processJob(runId, job) {
       }
     }
 
-    const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
-    const smtpPort = parseInt(process.env.SMTP_PORT || '587');
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS;
+    const smtpHost = run.smtp?.host || process.env.SMTP_HOST || 'smtp.gmail.com';
+    const smtpPort = parseInt(run.smtp?.port || process.env.SMTP_PORT || '587');
+    const smtpUser = run.smtp?.user || process.env.SMTP_USER;
+    const smtpPass = run.smtp?.pass || process.env.SMTP_PASS;
 
     if (!smtpUser || !smtpPass) {
-      updateRunJob(runId, job.id, { status: 'failed', error: 'SMTP not configured', processed: true });
+      updateRunJob(runId, job.id, { status: 'failed', error: 'SMTP not configured. Set up email in Settings > Email Setup.', processed: true });
       incRunStat(runId, 'failed');
       addRunLog(runId, 'SMTP', 'SMTP not configured', 'error');
       return;

@@ -43,6 +43,14 @@ const UserSchema = new mongoose.Schema({
     targetLocation: String,
     dailyCap: { type: Number, default: 50 },
   },
+  smtp: {
+    host: { type: String, default: 'smtp.gmail.com' },
+    port: { type: Number, default: 587 },
+    user: String,
+    pass: String,
+    configured: { type: Boolean, default: false },
+  },
+  onboardingComplete: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 }, {

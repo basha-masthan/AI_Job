@@ -76,6 +76,9 @@ export default function HomePage() {
   const [brainResults, setBrainResults] = useState(null);
   const [brainConsensus, setBrainConsensus] = useState('');
 
+  // SMTP Onboarding Banner State
+  const [smtpBanner, setSmtpBanner] = useState({ visible: false, dismissible: true });
+
   // Authenticated Dashboard Chat State
   const [chatSessions, setChatSessions] = useState([]);
   const [activeSessionId, setActiveSessionId] = useState(null);
@@ -125,8 +128,14 @@ export default function HomePage() {
             setActiveSessionId(data.chats[0].id);
           }
         }
-      })
-      .catch(console.error);
+      });
+    fetch('/api/auth/smtp')
+      .then(r => r.json())
+      .then(data => {
+        if (data.success && !data.smtpConfigured) {
+          setSmtpBanner({ visible: true, dismissible: true });
+        }
+      });
   }, [isAuthenticated]);
 
   async function handleDashboardChatSubmit(e) {
@@ -622,6 +631,33 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="flex-row" style={{ gap: '12px' }}>
+
+                {/* SMTP Onboarding Banner */}
+                {smtpBanner.visible && (
+                  <div style={{
+                    padding: '14px 18px', background: 'linear-gradient(135deg, #6366f110, #8b5cf620)',
+                    borderRadius: 12, border: '1px solid #6366f130', marginBottom: 0,
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
+                    width: '100%',
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13 }}>
+                      <span style={{ fontSize: 20 }}>📧</span>
+                      <div>
+                        <strong style={{ fontSize: 13 }}>Set up your email to start applying</strong>
+                        <p style={{ margin: 0, fontSize: 12, color: 'var(--text-secondary)' }}>
+                          Configure your Gmail with an App Password to send applications automatically.
+                        </p>
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>
+                      <Link href="/smtp-setup" className="btn btn-primary btn-sm">Setup Email</Link>
+                      {smtpBanner.dismissible && (
+                        <button onClick={() => setSmtpBanner({ visible: false, dismissible: false })}
+                          className="btn btn-ghost btn-sm" style={{ fontSize: 16, padding: '4px 10px' }}>✕</button>
+                      )}
+                    </div>
+                  </div>
+                )}
                 <Link href="/resume-builder" className="btn btn-primary hover-float" style={{ boxShadow: 'var(--shadow-glow)' }}>
                   ✨ New Resume
                 </Link>
