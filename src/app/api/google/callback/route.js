@@ -2,19 +2,20 @@ import { NextResponse } from 'next/server';
 import { getGoogleOAuthClient } from '@/lib/google';
 import { getSession } from '@/lib/auth';
 import { getUserByEmail, saveUser } from '@/lib/users';
+import { getAppUrl } from '@/lib/config';
 
 export async function GET(request) {
   try {
     const session = await getSession();
     if (!session) {
-      return NextResponse.redirect(new URL('/login', process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'));
+      return NextResponse.redirect(new URL('/login', getAppUrl()));
     }
 
     const { searchParams } = new URL(request.url);
     const code = searchParams.get('code');
 
     if (!code) {
-      return NextResponse.redirect(new URL('/job-tracker?error=NoCode', process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'));
+      return NextResponse.redirect(new URL('/?error=NoCode', getAppUrl()));
     }
 
     const oauth2Client = getGoogleOAuthClient();
@@ -22,7 +23,7 @@ export async function GET(request) {
 
     const user = await getUserByEmail(session.email);
     if (!user) {
-       return NextResponse.redirect(new URL('/job-tracker?error=UserNotFound', process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'));
+       return NextResponse.redirect(new URL('/?error=UserNotFound', getAppUrl()));
     }
 
     // Save tokens in DB
@@ -34,10 +35,10 @@ export async function GET(request) {
     
     await saveUser(user);
 
-    // Redirect to job tracker
-    return NextResponse.redirect(new URL('/job-tracker?success=GoogleConnected', process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'));
+    // Redirect to dashboard
+    return NextResponse.redirect(new URL('/?success=GoogleConnected', getAppUrl()));
   } catch (err) {
     console.error('Google Callback Error:', err);
-    return NextResponse.redirect(new URL('/job-tracker?error=AuthFailed', process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'));
+    return NextResponse.redirect(new URL('/?error=AuthFailed', getAppUrl()));
   }
 }

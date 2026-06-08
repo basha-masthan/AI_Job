@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getNylasClient } from '@/lib/nylas';
 import { getSession } from '@/lib/auth';
 import { getUserByEmail, saveUser } from '@/lib/users';
-import { getApiKey } from '@/lib/config';
+import { getApiKey, getAppUrl } from '@/lib/config';
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
@@ -15,7 +15,7 @@ export async function GET(request) {
   try {
     const session = await getSession();
     if (!session) {
-      return NextResponse.redirect(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/login?error=Please login first`);
+      return NextResponse.redirect(`${getAppUrl()}/login?error=Please login first`);
     }
 
     const nylas = getNylasClient();
@@ -24,7 +24,7 @@ export async function GET(request) {
       clientId: getApiKey('NYLAS_CLIENT_ID'),
       clientSecret: getApiKey('NYLAS_CLIENT_SECRET'),
       code: code,
-      redirectUri: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/nylas/callback`,
+      redirectUri: `${getAppUrl()}/api/nylas/callback`,
     });
 
     const { grantId, email } = response;
@@ -37,10 +37,10 @@ export async function GET(request) {
       console.log(`Successfully connected ${email} to user ${session.email} with Grant ID: ${grantId}`);
     }
 
-    // Redirect back to dashboard with success message
-    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/job-tracker?email_connected=true`);
+    // Redirect to dashboard
+    return NextResponse.redirect(`${getAppUrl()}/?email_connected=true`);
   } catch (err) {
     console.error('Nylas callback error:', err);
-    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/job-tracker?email_connected=false`);
+    return NextResponse.redirect(`${getAppUrl()}/?email_connected=false`);
   }
 }
