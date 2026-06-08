@@ -8,7 +8,7 @@ export async function GET() {
     const session = await getSession();
     if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     
-    const user = getUserByEmail(session.email);
+    const user = await getUserByEmail(session.email);
     const jobs = await getAllJobs(session.email);
     
     return NextResponse.json({ 

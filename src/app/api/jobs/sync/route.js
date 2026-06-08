@@ -10,7 +10,7 @@ export async function POST(request) {
     const session = await getSession();
     if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-    const user = getUserByEmail(session.email);
+    const user = await getUserByEmail(session.email);
     if (!user || !user.nylasGrantId) {
       return NextResponse.json({ error: 'Gmail not connected' }, { status: 400 });
     }
@@ -72,7 +72,7 @@ export async function POST(request) {
     }
 
     user.lastEmailSyncTime = new Date().toISOString();
-    saveUser(user);
+    await saveUser(user);
 
     return NextResponse.json({ 
       success: true, 

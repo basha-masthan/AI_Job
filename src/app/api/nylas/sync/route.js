@@ -16,7 +16,7 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const user = getUserByEmail(session.email);
+    const user = await getUserByEmail(session.email);
     if (!user?.nylasGrantId) {
       return NextResponse.json(
         { error: 'No email account connected. Please connect via Settings.' },

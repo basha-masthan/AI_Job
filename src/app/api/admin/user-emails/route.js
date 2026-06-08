@@ -23,7 +23,7 @@ export async function GET(request) {
     const userEmail = searchParams.get('email');
     if (!userEmail) return NextResponse.json({ error: 'Email parameter required' }, { status: 400 });
 
-    const user = getUserByEmail(userEmail);
+    const user = await getUserByEmail(userEmail);
     if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
     if (!user.googleRefreshToken) {

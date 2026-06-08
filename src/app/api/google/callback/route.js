@@ -20,7 +20,7 @@ export async function GET(request) {
     const oauth2Client = getGoogleOAuthClient();
     const { tokens } = await oauth2Client.getToken(code);
 
-    const user = getUserByEmail(session.email);
+    const user = await getUserByEmail(session.email);
     if (!user) {
        return NextResponse.redirect(new URL('/job-tracker?error=UserNotFound', process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'));
     }
@@ -32,7 +32,7 @@ export async function GET(request) {
     }
     user.googleExpiryDate = tokens.expiry_date;
     
-    saveUser(user);
+    await saveUser(user);
 
     // Redirect to job tracker
     return NextResponse.redirect(new URL('/job-tracker?success=GoogleConnected', process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'));

@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 
 const SOURCE_COLORS = {
   serper: '#3b82f6', adzuna: '#10b981', jsearch: '#8b5cf6',
@@ -688,8 +689,21 @@ export default function AutoApplyPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#0a0a0f', color: '#e0e0e0', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
       <div style={{ maxWidth: 960, margin: '0 auto', padding: '32px 24px' }}>
-        <div style={{ marginBottom: 24 }}>
+        <div style={{ marginBottom: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
           <h1 style={{ fontSize: 22, fontWeight: 700, margin: 0 }}>Auto Apply</h1>
+          <Link href="/" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            padding: '8px 16px', borderRadius: 8, border: '1px solid #2a2a3a',
+            background: 'rgba(255,255,255,0.03)', color: '#e0e0e0', fontSize: 13,
+            fontWeight: 600, textDecoration: 'none', transition: 'all 0.2s ease',
+            cursor: 'pointer'
+          }}
+          className="btn-ghost"
+          onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.borderColor = '#3b82f6'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.borderColor = '#2a2a3a'; }}
+          >
+            🏠 Home Dashboard
+          </Link>
         </div>
 
         <div className="tabs-container" style={{ display: 'flex', gap: 0, borderBottom: '2px solid #2a2a3a', marginBottom: 24, overflowX: 'auto', whiteSpace: 'nowrap', WebkitOverflowScrolling: 'touch' }}>

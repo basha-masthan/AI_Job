@@ -47,7 +47,7 @@ export async function POST(request) {
     const session = await getSession();
     if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-    const user = getUserByEmail(session.email);
+    const user = await getUserByEmail(session.email);
     if (!user || !user.googleRefreshToken) {
       return NextResponse.json({ error: 'Google not connected' }, { status: 400 });
     }
@@ -170,7 +170,7 @@ export async function POST(request) {
          if (currentCreds.refresh_token) user.googleRefreshToken = currentCreds.refresh_token;
     }
 
-    saveUser(user);
+    await saveUser(user);
 
     return NextResponse.json({ 
       success: true, 

@@ -6,6 +6,7 @@ import { getOcrSpaceKey } from '@/lib/config';
 import { callOpenAI, generateApplicationEmail, generateResumeFromJD, safeJSONParse } from '@/lib/ai';
 import { saveJob, getAllResumes, checkAlreadyApplied, checkAlreadyAppliedByEmail } from '@/lib/store';
 import { generateAndUploadResumePDF } from '@/lib/pdf-generator';
+import { atsScoreJob } from './engine';
 
 const USER = {
   name: 'Masthan Basha Shaik',
@@ -87,7 +88,7 @@ async function extractAndParse(base64Image, mimeType) {
   if (!text || text.length < 20) throw new Error('Could not read this image. Try a clearer screenshot.');
 
   const system = `You are a job posting parser. Extract ONLY what is visible in the text. Return raw JSON.`;
-  const user = `Extract from this text:\n\n${text.substring(0, 4000)}\n\nReturn JSON:\n{"title":"job title","company":"company name","email":"visible email address if any, else empty","location":"location if mentioned, else empty"}`;
+  const user = `Extract from this text:\n\n${text.substring(0, 4000)}\n\nReturn JSON:\n{"title":"job title","company":"company name","email":"visible email address if any, else empty","location":"location if mentioned, else empty","description":"detailed job description, requirements, and company info visible in the text"}`;
 
   try {
     const result = await callOpenAI([
@@ -95,7 +96,10 @@ async function extractAndParse(base64Image, mimeType) {
       { role: 'user', content: user },
     ], 600);
     const parsed = safeJSONParse(result, null);
-    if (parsed && parsed.title) return parsed;
+    if (parsed && parsed.title) {
+      if (!parsed.description) parsed.description = text;
+      return parsed;
+    }
   } catch {}
 
   const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
@@ -105,7 +109,7 @@ async function extractAndParse(base64Image, mimeType) {
   const emailMatch = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
   const email = emailMatch ? emailMatch[0] : '';
   const loc = text.match(/(Remote|Hybrid|Bangalore|Hyderabad|Mumbai|Delhi|Chennai|Pune|Gurgaon|NCR|India|United States|USA|Singapore|London|Toronto|Vancouver|San Francisco|New York)[^\n,]{0,40}/i);
-  return { title: title.substring(0, 200), company: company.substring(0, 100), email, location: loc ? loc[0].trim() : '' };
+  return { title: title.substring(0, 200), company: company.substring(0, 100), email, location: loc ? loc[0].trim() : '', description: text };
 }
 
 function buildSignature(profile) {
@@ -207,13 +211,48 @@ export async function startPictureApply({ images, userId, resumeId, useAiResume 
       appendLog(progress, 'Email Found', email, 'success');
 
       const allResumes = getAllResumes(userId);
-      const resume = allResumes.find(r => r.id === resumeId) || allResumes[0];
+      let resume = allResumes.find(r => r.id === resumeId) || allResumes[0];
       if (!resume) throw new Error('No resume found. Upload one first.');
-      const resumeProfile = resume.data || resume.extractedProfile || resume;
+      let resumeProfile = resume.data || resume.extractedProfile || resume;
+
+      // Check selected resume score against job description
+      let score = await atsScoreJob(job, resumeProfile);
+      appendLog(progress, 'ATS Score Check', `Selected resume score: ${score}%`, 'info');
 
       let resumeUrl = null;
-      setStep(progress, 'pdf', 'active', useAiResume ? 'Generating AI-tailored resume...' : 'Using selected resume...');
-      if (useAiResume) {
+      let selectedBetterFromVault = false;
+
+      if (score < 70) {
+        appendLog(progress, 'ATS Score Check', `Score is < 70%. Checking other resumes in vault...`, 'info');
+        try {
+          let bestScore = score;
+          let bestResume = null;
+
+          for (const resItem of allResumes) {
+            if (resItem.id === resume.id) continue;
+            const resProfile = resItem.data || resItem.extractedProfile || resItem;
+            const otherScore = await atsScoreJob(job, resProfile);
+            if (otherScore > bestScore) {
+              bestScore = otherScore;
+              bestResume = resItem;
+            }
+          }
+
+          if (bestScore >= 70 && bestResume) {
+            resume = bestResume;
+            resumeProfile = bestResume.data || bestResume.extractedProfile || bestResume;
+            score = bestScore;
+            resumeUrl = bestResume.cloudinaryUrl || null;
+            selectedBetterFromVault = true;
+            appendLog(progress, 'ATS Match Success', `Found better resume in vault: "${bestResume.fileName || bestResume.name}" (${score}%)`, 'success');
+          }
+        } catch (err) {
+          console.error('[Picture Apply Scan Resumes Error]', err.message);
+        }
+      }
+
+      setStep(progress, 'pdf', 'active', (useAiResume && score < 70) ? 'Generating AI-tailored resume...' : 'Using best matching resume...');
+      if (useAiResume && score < 70) {
         try {
           const jdText = `${job.title} at ${job.company}\n${(job.description || job.title)}`;
           const newResume = await generateResumeFromJD(jdText, resumeProfile);
@@ -221,15 +260,55 @@ export async function startPictureApply({ images, userId, resumeId, useAiResume 
             const pdfData = await generateAndUploadResumePDF(newResume, `picture_${uuid()}`);
             resumeUrl = pdfData?.url || null;
           }
-        } catch {}
+        } catch (err) {
+          console.error('[Picture Apply Tailoring Failed]', err.message);
+        }
       }
       if (!resumeUrl && resume.cloudinaryUrl) resumeUrl = resume.cloudinaryUrl;
       setStep(progress, 'pdf', resumeUrl ? 'success' : 'skipped', resumeUrl ? 'Resume ready' : 'Using original');
       appendLog(progress, 'Resume', resumeUrl ? 'PDF ready' : 'Using original', resumeUrl ? 'success' : 'warning');
 
-      const sig = buildSignature(resumeProfile);
-      const subject = `Application for ${job.title}${job.company ? ` — ${sig.name.split(' ').slice(-1)[0]}` : ''}`;
-      const body = `Hi ${job.company || 'Hiring'} Team,\n\nI'm ${sig.name}, a full-stack engineer based in ${sig.location}. I'm writing to express my interest in the ${job.title} role. My experience building production-ready applications aligns well with your needs.\n\nI've attached my resume for your review and would welcome the opportunity to discuss how my skills can contribute to your team.${resumeUrl ? `\n\n📄 Resume (PDF): ${resumeUrl}` : ''}${sig.block}\n\nLooking forward to hearing from you.${sig.closing}`;
+      // Dynamic Location Selection
+      let targetLocation = 'Hyderabad, India';
+      const postTextForLoc = `${job.location || ''} ${job.title || ''} ${job.company || ''} ${job.description || ''}`.toLowerCase();
+      if (postTextForLoc.includes('bangalore') || postTextForLoc.includes('bengaluru')) {
+        targetLocation = 'Bangalore, India';
+      } else if (postTextForLoc.includes('chennai')) {
+        targetLocation = 'Chennai, India';
+      } else if (postTextForLoc.includes('hyderabad')) {
+        targetLocation = 'Hyderabad, India';
+      }
+
+      const candidateProfileCopy = {
+        ...resumeProfile,
+        contact: {
+          ...(resumeProfile.contact || {}),
+          location: targetLocation
+        }
+      };
+
+      const sig = buildSignature(candidateProfileCopy);
+
+      let subject = `Application for ${job.title}${job.company ? ` — ${sig.name.split(' ').slice(-1)[0]}` : ''}`;
+      let bodyText = '';
+
+      try {
+        const jdText = `${job.title} at ${job.company}\n${(job.description || job.title)}`;
+        const emailData = await generateApplicationEmail(job.title, job.company || 'Hiring Team', jdText, candidateProfileCopy);
+        if (emailData && emailData.body) {
+          subject = emailData.subject || subject;
+          bodyText = emailData.body;
+        }
+      } catch (err) {
+        console.error('[Picture Apply AI Email Generation Failed]', err.message);
+      }
+
+      if (!bodyText) {
+        bodyText = `Hi ${job.company || 'Hiring'} Team,\n\nI'm ${sig.name}, a software engineer based in ${sig.location}. I'm writing to express my interest in the ${job.title} role. My experience building production-ready applications aligns well with your needs.\n\nI've attached my resume for your review and would welcome the opportunity to discuss how my skills can contribute to your team.`;
+      }
+
+      const resumeLine = resumeUrl ? `\n\n📄 Resume (PDF): ${resumeUrl}` : '';
+      const body = `${bodyText.trim()}${resumeLine}${sig.block}${sig.closing}`;
 
       const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
       const smtpPort = parseInt(process.env.SMTP_PORT || '587');

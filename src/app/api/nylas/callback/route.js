@@ -29,11 +29,11 @@ export async function GET(request) {
 
     const { grantId, email } = response;
 
-    const user = getUserByEmail(session.email);
+    const user = await getUserByEmail(session.email);
     if (user) {
       user.nylasGrantId = grantId;
       user.nylasEmail = email;
-      saveUser(user);
+      await saveUser(user);
       console.log(`Successfully connected ${email} to user ${session.email} with Grant ID: ${grantId}`);
     }
 

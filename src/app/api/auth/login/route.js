@@ -19,7 +19,7 @@ export async function POST(request) {
       return NextResponse.json({ success: true, user: { name: 'Admin', email: 'admin@fbt.com' } });
     }
 
-    const user = getUserByEmail(email);
+    const user = await getUserByEmail(email);
     if (!user) return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
 
     if (!user.verified) {
@@ -34,12 +34,13 @@ export async function POST(request) {
     cookies().set('session', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      maxAge: 60 * 60 * 24 * 7, // 1 week
+      maxAge: 60 * 60 * 24 * 7,
       path: '/',
     });
 
     return NextResponse.json({ success: true, user: { name: user.name, email: user.email } });
   } catch (err) {
+    console.error('[auth/login] Error:', err);
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }

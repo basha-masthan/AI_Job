@@ -9,7 +9,7 @@ export async function GET() {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const user = getUserByEmail(session.email);
+    const user = await getUserByEmail(session.email);
     if (!user) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
@@ -30,7 +30,7 @@ export async function PUT(request) {
 
     const body = await request.json();
     const { saveUser } = await import('@/lib/users');
-    const user = getUserByEmail(session.email);
+    const user = await getUserByEmail(session.email);
     if (!user) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
@@ -44,7 +44,7 @@ export async function PUT(request) {
       jobStatus: body.jobStatus !== undefined ? body.jobStatus : user.jobStatus,
     };
 
-    saveUser(updatedUser);
+    await saveUser(updatedUser);
 
     const { password, ...safeProfile } = updatedUser;
     return NextResponse.json({ success: true, profile: safeProfile });

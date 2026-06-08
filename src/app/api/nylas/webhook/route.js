@@ -52,7 +52,7 @@ export async function POST(request) {
       const grantId = data.data.grant_id;
 
       // ✅ Fix: Resolve the correct user from grantId — never expose all users' jobs
-      const allUsers = getAllUsers();
+      const allUsers = await getAllUsers();
       const matchedUser = allUsers.find(u => u.nylasGrantId === grantId);
 
       if (!matchedUser) {

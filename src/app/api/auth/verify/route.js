@@ -7,7 +7,7 @@ export async function POST(request) {
   try {
     const { email, code } = await request.json();
 
-    const user = getUserByEmail(email);
+    const user = await getUserByEmail(email);
     if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
     if (user.verificationCode !== code) {
@@ -16,7 +16,7 @@ export async function POST(request) {
 
     user.verified = true;
     user.verificationCode = null;
-    saveUser(user);
+    await saveUser(user);
 
     // Auto-login after verification
     const token = await createToken({ id: user.email, email: user.email, name: user.name });

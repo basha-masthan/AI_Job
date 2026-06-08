@@ -314,7 +314,7 @@ async function stepSearch(run) {
   updateRun(run.id, { searchPhase: 'complete' });
 }
 
-async function atsScoreJob(job, resumeProfile) {
+export async function atsScoreJob(job, resumeProfile) {
   const resumeText = [
     (resumeProfile?.skills?.technical || []).join(' '),
     (resumeProfile?.skills?.tools || []).join(' '),
@@ -412,17 +412,52 @@ async function processJob(runId, job) {
     addRunLog(runId, 'Email', `Found ${emails.length} contact(s) for ${job.company}`, 'success');
 
     // ── 2. Prepare the resume (ATS check & tailor) ──────────────────────────────
-    const score = await atsScoreJob(job, run.resumeProfile);
+    let activeResumeProfile = run.resumeProfile;
+    let activeResumeId = run.resumeId;
+    let score = await atsScoreJob(job, activeResumeProfile);
+    
+    addRunLog(runId, 'ATS Score Check', `Default resume score: ${score}%`, 'info');
+
+    let resumeUrl = null;
+
+    if (score < 70) {
+      addRunLog(runId, 'ATS Score Check', `Score is < 70%. Checking other resumes in vault...`, 'info');
+      try {
+        const allResumes = getAllResumes(run.userId);
+        let bestScore = score;
+        let bestResume = null;
+
+        for (const resItem of allResumes) {
+          if (resItem.id === run.resumeId) continue;
+          const resProfile = resItem.data || resItem.extractedProfile || resItem;
+          const otherScore = await atsScoreJob(job, resProfile);
+          if (otherScore > bestScore) {
+            bestScore = otherScore;
+            bestResume = resItem;
+          }
+        }
+
+        if (bestScore >= 70 && bestResume) {
+          activeResumeProfile = bestResume.data || bestResume.extractedProfile || bestResume;
+          activeResumeId = bestResume.id;
+          score = bestScore;
+          resumeUrl = bestResume.cloudinaryUrl || null;
+          addRunLog(runId, 'ATS Match Success', `Found better resume in vault: "${bestResume.fileName || bestResume.name}" (${score}%)`, 'success');
+        }
+      } catch (err) {
+        console.error('[Engine Scan Vault Resumes Error]', err.message);
+      }
+    }
+
     updateRunJob(runId, job.id, { score, status: 'matched' });
     incRunStat(runId, 'scored');
     addRunLog(runId, 'ATS Score', `${job.title} — ${score}%`, 'success');
 
-    let resumeUrl = null;
     if (score < 70) {
       addRunLog(runId, 'Resume', `Generating tailored resume (ATS ${score}%)...`, 'info');
       try {
         const jdText = `${job.title} at ${job.company}\n${job.description || ''}`;
-        const newResume = await generateResumeFromJD(jdText, run.resumeProfile);
+        const newResume = await generateResumeFromJD(jdText, activeResumeProfile);
         if (newResume) {
           const pdfData = await generateAndUploadResumePDF(newResume, `resume_${job.id}`);
           resumeUrl = pdfData?.url || null;
@@ -446,7 +481,7 @@ async function processJob(runId, job) {
       return;
     }
 
-    const profile = run.resumeProfile || {};
+    const profile = activeResumeProfile || {};
     const candidateName = profile.name || USER.name;
     const candidateEmail = profile.contact?.email || USER.email;
     const candidatePhone = profile.contact?.phone || USER.phone;
@@ -476,7 +511,7 @@ async function processJob(runId, job) {
     let emailData = { subject: `Application for ${job.title}`, body: '' };
     try {
       const jdText = `${job.title} at ${job.company}\n${job.description || ''}`;
-      emailData = await generateApplicationEmail(job.title, job.company, jdText, run.resumeProfile);
+      emailData = await generateApplicationEmail(job.title, job.company, jdText, activeResumeProfile);
     } catch {}
 
     if (!emailData.body || emailData.body.length < 100) {
@@ -499,7 +534,7 @@ I'm ${candidateName}, a full-stack engineer based in ${candidateLocation}. I'm w
 
     let pdfBuffer = null;
     let pdfFilename = null;
-    const resumeSourceUrl = resumeUrl || run.resumeId;
+    const resumeSourceUrl = resumeUrl || activeResumeId;
     if (resumeSourceUrl) {
       try {
         const pdfUrl = resumeUrl || (await getResumeCloudinaryUrl(resumeSourceUrl, run.userId));

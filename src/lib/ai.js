@@ -786,10 +786,10 @@ Return JSON:
  * Generate a personalized application email for a specific job
  */
 export async function generateApplicationEmail(jobTitle, companyName, jobDescription, candidateProfile, coverLetter = '') {
-  const system = `You are a professional career coach and email writer. Write a compelling, personalized job application email.
-The email should be concise (3-4 paragraphs), professional, and tailored to the specific role and company.
-Include: greeting, who you are, why you're interested, what makes you a great fit, and call to action.
-Do NOT use placeholders like [Your Name]. Write as if you are the candidate.
+  const system = `You are a professional career coach and email writer. Write a compelling, highly personalized job application email.
+The email should be professional, showcase candidate's value proposition, and be tailored to the specific role, company goals, and aims.
+Include: a professional greeting, who you are (incorporating their location), why you are genuinely interested in their company's goals/mission, what makes you a great fit (connecting your skills to the role details), and a clear call to action.
+Do NOT use placeholders like [Your Name]. Write as if you are the candidate. Do NOT write the final closing sign-off or candidate name at the end.
 Return valid JSON only: {"subject": "...", "body": "..."}`;
 
   const user = `Write a job application email for:
@@ -799,6 +799,7 @@ COMPANY: ${companyName}
 JOB DESCRIPTION: ${(jobDescription || '').substring(0, 2000)}
 
 CANDIDATE NAME: ${candidateProfile?.name || 'Applicant'}
+CANDIDATE LOCATION: ${candidateProfile?.contact?.location || 'Hyderabad, India'}
 CANDIDATE SKILLS: ${JSON.stringify(candidateProfile?.skills || [])}
 CANDIDATE SUMMARY: ${(candidateProfile?.summary || '').substring(0, 500)}
 
@@ -807,7 +808,7 @@ ${coverLetter ? `COVER LETTER REFERENCE:\n${coverLetter.substring(0, 1000)}` : '
 Return JSON:
 {
   "subject": "Compelling email subject line mentioning the role and company",
-  "body": "Full email body with greeting, introduction, why interested, relevant skills, call to action, and signature"
+  "body": "Full email body with greeting, introduction, why interested, relevant skills, and call to action (do not write the final closing/sign-off word like 'Sincerely' or candidate name at the end)"
 }`;
 
   try {

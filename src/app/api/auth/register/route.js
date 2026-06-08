@@ -11,7 +11,7 @@ export async function POST(request) {
       return NextResponse.json({ error: 'All fields are required' }, { status: 400 });
     }
 
-    const existingUser = getUserByEmail(email);
+    const existingUser = await getUserByEmail(email);
     if (existingUser && existingUser.verified) {
       return NextResponse.json({ error: 'User already exists' }, { status: 400 });
     }
@@ -28,12 +28,12 @@ export async function POST(request) {
       createdAt: new Date().toISOString(),
     };
 
-    saveUser(user);
+    await saveUser(user);
     await sendVerificationEmail(email, verificationCode);
 
     return NextResponse.json({ success: true, message: 'Verification email sent' });
   } catch (err) {
-    console.error('Registration error:', err);
+    console.error('[auth/register] Error:', err);
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
