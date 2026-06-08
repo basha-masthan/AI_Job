@@ -470,13 +470,13 @@ async function processJob(runId, job) {
       }
     }
 
-    const smtpHost = run.smtp?.host || process.env.SMTP_HOST || 'smtp.gmail.com';
-    const smtpPort = parseInt(run.smtp?.port || process.env.SMTP_PORT || '587');
-    const smtpUser = run.smtp?.user || process.env.SMTP_USER;
-    const smtpPass = run.smtp?.pass || process.env.SMTP_PASS;
+    const smtpHost = run.smtp?.host;
+    const smtpPort = parseInt(run.smtp?.port || '587');
+    const smtpUser = run.smtp?.user;
+    const smtpPass = run.smtp?.pass;
 
     if (!smtpUser || !smtpPass) {
-      updateRunJob(runId, job.id, { status: 'failed', error: 'SMTP not configured. Set up email in Settings > Email Setup.', processed: true });
+      updateRunJob(runId, job.id, { status: 'failed', error: 'SMTP not configured. Go to Profile > Email Setup to configure your Gmail App Password.', processed: true });
       incRunStat(runId, 'failed');
       addRunLog(runId, 'SMTP', 'SMTP not configured', 'error');
       return;

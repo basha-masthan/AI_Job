@@ -23,6 +23,14 @@ export default function UserProfile() {
   const [experience, setExperience] = useState('');
   const [jobStatus, setJobStatus] = useState('actively_looking');
 
+  // SMTP Form states
+  const [smtpEditing, setSmtpEditing] = useState(false);
+  const [smtpUser, setSmtpUser] = useState('');
+  const [smtpPass, setSmtpPass] = useState('');
+  const [smtpHost, setSmtpHost] = useState('smtp.gmail.com');
+  const [smtpPort, setSmtpPort] = useState('587');
+  const [showSmtpPass, setShowSmtpPass] = useState(false);
+
   const [saving, setSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
 
@@ -37,6 +45,10 @@ export default function UserProfile() {
         setEducation(data.profile.education || '');
         setExperience(data.profile.experience || '');
         setJobStatus(data.profile.jobStatus || 'actively_looking');
+        setSmtpUser(data.profile.smtp?.user || '');
+        setSmtpPass(data.profile.smtp?.pass || '');
+        setSmtpHost(data.profile.smtp?.host || 'smtp.gmail.com');
+        setSmtpPort(String(data.profile.smtp?.port || '587'));
       })
       .catch(e => setError(e.message))
       .finally(() => setLoading(false));
@@ -50,7 +62,11 @@ export default function UserProfile() {
       const res = await fetch('/api/auth/me', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone, address, education, experience, jobStatus })
+        body: JSON.stringify({
+          phone, address, education, experience, jobStatus,
+          smtpUser, smtpPass, smtpHost, smtpPort,
+          smtpConfigured: !!(smtpUser && smtpPass),
+        })
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to save changes');
@@ -329,6 +345,106 @@ export default function UserProfile() {
                   Connect Google Account
                 </a>
               )}
+            </div>
+
+            {/* 📧 SMTP Email Settings Card */}
+            <div className="card" style={{ padding: 32, borderLeft: smtpUser && smtpPass ? '4px solid var(--accent-emerald)' : '4px solid var(--accent-amber)' }}>
+              <div className="flex-between" style={{ marginBottom: 16 }}>
+                <h2 style={{ fontSize: 18, fontWeight: 700, display: 'flex', alignItems: 'center', gap: 10, fontFamily: 'Space Grotesk' }}>
+                  <span>📧</span> Email Sending Setup (SMTP)
+                </h2>
+                {smtpUser && smtpPass ? (
+                  <span className="tag tag-green">Configured</span>
+                ) : (
+                  <span className="tag tag-amber">Not Set</span>
+                )}
+              </div>
+              
+              <p style={{ color: 'var(--text-secondary)', fontSize: 14, marginBottom: 20, lineHeight: 1.6 }}>
+                Configure your Gmail App Password so Auto Apply can send applications on your behalf.
+              </p>
+
+              {smtpEditing ? (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                  <div className="grid-2" style={{ gap: 16 }}>
+                    <div className="form-group">
+                      <label className="form-label">SMTP Host</label>
+                      <input type="text" className="form-input" value={smtpHost}
+                        onChange={e => setSmtpHost(e.target.value)} />
+                    </div>
+                    <div className="form-group">
+                      <label className="form-label">SMTP Port</label>
+                      <input type="number" className="form-input" value={smtpPort}
+                        onChange={e => setSmtpPort(e.target.value)} />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Gmail Address</label>
+                    <input type="email" className="form-input" value={smtpUser}
+                      onChange={e => setSmtpUser(e.target.value)} placeholder="you@gmail.com" />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">App Password</label>
+                    <div style={{ position: 'relative' }}>
+                      <input type={showSmtpPass ? 'text' : 'password'} className="form-input"
+                        value={smtpPass} onChange={e => setSmtpPass(e.target.value)}
+                        placeholder="abcd efgh ijkl mnop" style={{ paddingRight: 40 }} />
+                      <button type="button" onClick={() => setShowSmtpPass(!showSmtpPass)}
+                        style={{ position: 'absolute', right: 8, top: 6, background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, color: 'var(--text-muted)' }}>
+                        {showSmtpPass ? '🙈' : '👁️'}
+                      </button>
+                    </div>
+                    <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 4 }}>
+                      Not your regular password. Generate one at{' '}
+                      <a href="https://myaccount.google.com/security" target="_blank" rel="noopener noreferrer"
+                        style={{ color: 'var(--accent-primary)' }}>Google App Passwords</a>
+                    </p>
+                  </div>
+                  <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end' }}>
+                    <button onClick={() => setSmtpEditing(false)} className="btn btn-ghost btn-sm">Cancel</button>
+                    <button onClick={() => { setSmtpEditing(false); handleSaveChanges(); }} className="btn btn-primary btn-sm">Save SMTP</button>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <div className="grid-2" style={{ gap: 16, marginBottom: 16 }}>
+                    <div className="card-glass" style={{ padding: '14px 18px', borderRadius: 12 }}>
+                      <div style={{ color: 'var(--text-muted)', fontSize: 11, textTransform: 'uppercase', fontWeight: 600 }}>Email</div>
+                      <div style={{ fontSize: 14, fontWeight: 600, marginTop: 4 }}>{smtpUser || 'Not set'}</div>
+                    </div>
+                    <div className="card-glass" style={{ padding: '14px 18px', borderRadius: 12 }}>
+                      <div style={{ color: 'var(--text-muted)', fontSize: 11, textTransform: 'uppercase', fontWeight: 600 }}>SMTP Host</div>
+                      <div style={{ fontSize: 14, fontWeight: 600, marginTop: 4 }}>{smtpHost}:{smtpPort}</div>
+                    </div>
+                  </div>
+                  <button onClick={() => setSmtpEditing(true)} className="btn btn-secondary btn-sm">
+                    ✏️ Edit SMTP Settings
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* 💎 Credits & Usage Card */}
+            <div className="card" style={{ padding: 32 }}>
+              <div className="flex-between" style={{ marginBottom: 16 }}>
+                <h2 style={{ fontSize: 18, fontWeight: 700, display: 'flex', alignItems: 'center', gap: 10, fontFamily: 'Space Grotesk' }}>
+                  <span>💎</span> Credits
+                </h2>
+                <span className="tag tag-primary">{profile.credits || 0} Available</span>
+              </div>
+              
+              <div style={{ background: 'linear-gradient(135deg, #6366f115, #8b5cf625)', borderRadius: 16, padding: 24, border: '1px solid #6366f120' }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 8 }}>
+                  <span style={{ fontSize: 42, fontWeight: 800, color: 'var(--accent-primary)', letterSpacing: '-0.03em' }}>
+                    {profile.credits || 0}
+                  </span>
+                  <span style={{ fontSize: 14, color: 'var(--text-secondary)' }}>credits remaining</span>
+                </div>
+                <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.5, margin: 0 }}>
+                  Credits are used for AI-powered features like resume generation, job matching, and auto-applications.
+                  Each application consumes 1 credit. Contact the admin to purchase more credits.
+                </p>
+              </div>
             </div>
 
           </div>

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth';
-import { getUserByEmail } from '@/lib/users';
+import dbConnect from '@/lib/mongodb';
+import User from '@/models/User';
 
 export async function GET() {
   try {
@@ -9,7 +10,8 @@ export async function GET() {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const user = await getUserByEmail(session.email);
+    await dbConnect();
+    const user = await User.findOne({ email: session.email.toLowerCase() }).lean();
     if (!user) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
@@ -29,24 +31,32 @@ export async function PUT(request) {
     }
 
     const body = await request.json();
-    const { saveUser } = await import('@/lib/users');
-    const user = await getUserByEmail(session.email);
-    if (!user) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 });
-    }
+    await dbConnect();
 
-    const updatedUser = {
-      ...user,
-      phone: body.phone !== undefined ? body.phone : user.phone,
-      address: body.address !== undefined ? body.address : user.address,
-      education: body.education !== undefined ? body.education : user.education,
-      experience: body.experience !== undefined ? body.experience : user.experience,
-      jobStatus: body.jobStatus !== undefined ? body.jobStatus : user.jobStatus,
-    };
+    const updateFields = {};
+    if (body.phone !== undefined) updateFields['profile.phone'] = body.phone;
+    if (body.address !== undefined) updateFields['profile.address'] = body.address;
+    if (body.education !== undefined) updateFields['profile.education'] = body.education;
+    if (body.experience !== undefined) updateFields['profile.experience'] = body.experience;
+    if (body.jobStatus !== undefined) updateFields['profile.jobStatus'] = body.jobStatus;
+    if (body.smtpHost !== undefined) updateFields['smtp.host'] = body.smtpHost;
+    if (body.smtpPort !== undefined) updateFields['smtp.port'] = parseInt(body.smtpPort) || 587;
+    if (body.smtpUser !== undefined) updateFields['smtp.user'] = body.smtpUser;
+    if (body.smtpPass !== undefined) updateFields['smtp.pass'] = body.smtpPass;
+    if (body.smtpConfigured !== undefined) updateFields['smtp.configured'] = body.smtpConfigured;
+    if (body.onboardingComplete !== undefined) updateFields['onboardingComplete'] = body.onboardingComplete;
 
-    await saveUser(updatedUser);
+    updateFields['updatedAt'] = new Date();
 
-    const { password, ...safeProfile } = updatedUser;
+    const user = await User.findOneAndUpdate(
+      { email: session.email.toLowerCase() },
+      { $set: updateFields },
+      { new: true }
+    ).lean();
+
+    if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
+
+    const { password, ...safeProfile } = user;
     return NextResponse.json({ success: true, profile: safeProfile });
   } catch (err) {
     return NextResponse.json({ error: err.message }, { status: 500 });
