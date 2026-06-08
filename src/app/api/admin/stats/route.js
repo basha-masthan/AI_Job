@@ -1,12 +1,10 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
 import { getSession } from '@/lib/auth';
+import dbConnect from '@/lib/mongodb';
+import User from '@/models/User';
 
 export const dynamic = 'force-dynamic';
 
-// Note: In production with a real DB, you'd query the DB directly.
-// Here we are reading the local JSON stores.
 const DATA_DIR = path.join(process.cwd(), 'data');
 
 function safeReadJson(filename, fallback = []) {
@@ -28,14 +26,26 @@ export async function GET() {
       return NextResponse.json({ error: 'Forbidden: Admins only' }, { status: 403 });
     }
 
-    const users = safeReadJson('users.json');
+    let totalUsers = 0;
+    let verifiedUsers = 0;
+    let nylasConnected = 0;
+
+    try {
+      await dbConnect();
+      totalUsers = await User.countDocuments({});
+      verifiedUsers = await User.countDocuments({ verified: true });
+      nylasConnected = await User.countDocuments({ nylasGrantId: { $exists: true, $ne: null } });
+    } catch (mongoErr) {
+      console.error('[admin/stats] MongoDB unavailable:', mongoErr.message);
+    }
+
     const resumes = safeReadJson('resumes.json');
     const jobs = safeReadJson('jobs.json');
 
     const stats = {
-      totalUsers: users.length,
-      verifiedUsers: users.filter(u => u.verified).length,
-      nylasConnected: users.filter(u => !!u.nylasGrantId).length,
+      totalUsers,
+      verifiedUsers,
+      nylasConnected,
       
       totalResumes: resumes.length,
       aiGeneratedResumes: resumes.filter(r => r.source === 'ai-generated').length,
