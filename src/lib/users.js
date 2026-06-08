@@ -1,18 +1,41 @@
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 import { getStoragePath } from '@/lib/config';
 import dbConnect from '@/lib/mongodb';
 import User from '@/models/User';
 
 const USERS_FILE = getStoragePath('users.json');
+let _fsWritable = null;
+
+function isFsWritable() {
+  if (_fsWritable !== null) return _fsWritable;
+  try {
+    const tmp = path.join(os.tmpdir(), `fbt_write_test_${Date.now()}`);
+    fs.writeFileSync(tmp, 'test');
+    fs.unlinkSync(tmp);
+    _fsWritable = true;
+  } catch {
+    _fsWritable = false;
+  }
+  return _fsWritable;
+}
 
 function ensureDataDir() {
-  if (!fs.existsSync(USERS_FILE)) {
-    fs.writeFileSync(USERS_FILE, JSON.stringify([]));
-  }
+  if (!isFsWritable()) return;
+  try {
+    const dir = path.dirname(USERS_FILE);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    if (!fs.existsSync(USERS_FILE)) {
+      fs.writeFileSync(USERS_FILE, JSON.stringify([]));
+    }
+  } catch {}
 }
 
 function readUsersFromFile() {
+  if (!isFsWritable()) return [];
   ensureDataDir();
   try {
     const content = fs.readFileSync(USERS_FILE, 'utf-8');
@@ -23,7 +46,13 @@ function readUsersFromFile() {
 }
 
 function writeUsersToFile(users) {
-  fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
+  if (!isFsWritable()) return false;
+  try {
+    fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function isMongoAvailable() {
@@ -68,10 +97,11 @@ export async function getAllUsers() {
       const users = await User.find({}).sort({ createdAt: -1 }).lean();
       return users.map(fromMongoUser);
     } catch (err) {
-      console.error('[users] MongoDB getAllUsers failed, falling back to JSON:', err.message);
+      console.error('[users] MongoDB getAllUsers failed:', err.message);
     }
   }
-  return readUsersFromFile();
+  if (isFsWritable()) return readUsersFromFile();
+  return [];
 }
 
 export async function saveUser(user) {
@@ -79,28 +109,29 @@ export async function saveUser(user) {
     try {
       await dbConnect();
       const mongoUser = await toMongoUser(user);
-      
       await User.findOneAndUpdate(
         { email: user.email.toLowerCase() },
         { $set: mongoUser },
         { upsert: true, new: true }
       );
-      
       return true;
     } catch (err) {
-      console.error('[users] MongoDB saveUser failed, falling back to JSON:', err.message);
+      console.error('[users] MongoDB saveUser failed:', err.message);
     }
   }
   
-  const users = readUsersFromFile();
-  const index = users.findIndex(u => u.email.toLowerCase() === user.email.toLowerCase());
-  if (index !== -1) {
-    users[index] = { ...users[index], ...user };
-  } else {
-    users.push(user);
+  if (isFsWritable()) {
+    const users = readUsersFromFile();
+    const index = users.findIndex(u => u.email.toLowerCase() === user.email.toLowerCase());
+    if (index !== -1) {
+      users[index] = { ...users[index], ...user };
+    } else {
+      users.push(user);
+    }
+    return writeUsersToFile(users);
   }
-  writeUsersToFile(users);
-  return true;
+  
+  throw new Error('Cannot persist user data: MongoDB unavailable and filesystem is read-only. Add MONGODB_URI to your deployment environment variables.');
 }
 
 export async function getUserByEmail(email) {
@@ -110,12 +141,16 @@ export async function getUserByEmail(email) {
       const user = await User.findOne({ email: email.toLowerCase() }).lean();
       if (user) return fromMongoUser(user);
     } catch (err) {
-      console.error('[users] MongoDB getUserByEmail failed, falling back to JSON:', err.message);
+      console.error('[users] MongoDB getUserByEmail failed:', err.message);
     }
   }
   
-  const users = readUsersFromFile();
-  return users.find(u => u.email.toLowerCase() === email.toLowerCase());
+  if (isFsWritable()) {
+    const users = readUsersFromFile();
+    return users.find(u => u.email.toLowerCase() === email.toLowerCase());
+  }
+  
+  return null;
 }
 
 export async function updateUser(email, updates) {
@@ -128,16 +163,19 @@ export async function updateUser(email, updates) {
       );
       return true;
     } catch (err) {
-      console.error('[users] MongoDB updateUser failed, falling back to JSON:', err.message);
+      console.error('[users] MongoDB updateUser failed:', err.message);
     }
   }
   
-  const users = readUsersFromFile();
-  const index = users.findIndex(u => u.email.toLowerCase() === email.toLowerCase());
-  if (index !== -1) {
-    users[index] = { ...users[index], ...updates };
-    writeUsersToFile(users);
-    return true;
+  if (isFsWritable()) {
+    const users = readUsersFromFile();
+    const index = users.findIndex(u => u.email.toLowerCase() === email.toLowerCase());
+    if (index !== -1) {
+      users[index] = { ...users[index], ...updates };
+      return writeUsersToFile(users);
+    }
+    return false;
   }
+  
   return false;
 }

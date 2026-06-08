@@ -1,9 +1,9 @@
 :root {
-  --bg-primary: #080c14;
-  --bg-secondary: #0d1321;
-  --bg-card: #111827;
-  --bg-card-hover: #1a2438;
-  --bg-glass: rgba(17, 24, 39, 0.7);
+  --bg-primary: #0B0D17;
+  --bg-secondary: #131522;
+  --bg-card: #1A1C29;
+  --bg-card-hover: #222536;
+  --bg-glass: rgba(26, 28, 41, 0.65);
   --border: rgba(99, 102, 241, 0.15);
   --border-hover: rgba(99, 102, 241, 0.4);
 
@@ -28,9 +28,77 @@
   --radius: 12px;
   --radius-lg: 20px;
   --radius-xl: 28px;
-  --shadow: 0 4px 24px rgba(0,0,0,0.4);
-  --shadow-glow: 0 0 40px rgba(99,102,241,0.2);
-  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.25);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ── Premium Utilities ── */
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow), var(--shadow-inset);
+  border-radius: var(--radius-lg);
+  transition: var(--transition);
+}
+
+.glass-card:hover {
+  background: rgba(26, 28, 41, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-glow), var(--shadow-inset);
+}
+
+.glass-panel {
+  background: rgba(19, 21, 34, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius);
+}
+
+.hover-float {
+  transition: var(--transition);
+}
+.hover-float:hover {
+  transform: translateY(-4px);
+}
+
+.text-gradient-shine {
+  background: linear-gradient(to right, var(--text-primary) 20%, var(--accent-primary) 40%, var(--accent-cyan) 60%, var(--text-primary) 80%);
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.pulse-ring {
+  position: relative;
+}
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 50%;
+  background: inherit;
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  z-index: -1;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

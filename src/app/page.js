@@ -607,125 +607,140 @@ export default function HomePage() {
         <div className="hero-glow" />
         
         {/* Left Column - Main Content */}
-        <div style={{ flex: '2 1 500px', minWidth: 0 }}>
+        <div style={{ flex: '2 1 500px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '32px' }}>
 
-        <div className="page-header">
-          <div className="flex-between" style={{ marginBottom: 8 }}>
-            <div>
-              <h1 className="page-title">Good {getGreeting()} 👋</h1>
-              <p className="page-subtitle">Your comprehensive career command center</p>
-            </div>
-            <div className="flex-row">
-              <Link href="/resume-builder" className="btn btn-primary">
-                ✨ New Resume
-              </Link>
-              <Link href="/job-fetcher" className="btn btn-secondary">
-                🔗 Fetch Job
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="stats-grid">
-          {statCards.map(s => (
-            <div key={s.label} className="stat-card">
-              <div className="stat-icon" style={{ background: s.color }}>
-                <span style={{ fontSize: 22 }}>{s.icon}</span>
-              </div>
+          {/* Premium Animated Header */}
+          <div className="glass-card" style={{ padding: '32px', position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', top: '-50%', left: '-20%', width: '140%', height: '200%', background: 'radial-gradient(circle at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 60%)', pointerEvents: 'none' }} />
+            <div className="flex-between" style={{ position: 'relative', zIndex: 1, gap: '20px', flexWrap: 'wrap' }}>
               <div>
-                <div className="stat-value">{dashboardLoading ? '—' : s.value}</div>
-                <div className="stat-label">{s.label}</div>
+                <h1 className="page-title text-gradient-shine" style={{ fontSize: '32px', marginBottom: '8px' }}>
+                  Good {getGreeting()} 👋
+                </h1>
+                <p className="page-subtitle" style={{ fontSize: '15px', color: 'var(--text-secondary)' }}>
+                  Your comprehensive career command center is ready.
+                </p>
               </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="grid-2" style={{ gap: 24 }}>
-          <div>
-            <h2 style={{ fontSize: 16, fontWeight: 700, marginBottom: 16, fontFamily: 'Space Grotesk' }}>⚡ Quick Actions</h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {QUICK_ACTIONS.map(a => (
-                <Link key={a.href} href={a.href} style={{ textDecoration: 'none' }}>
-                  <div className="card" style={{ padding: 16, display: 'flex', alignItems: 'center', gap: 14 }}>
-                    <div style={{
-                      width: 44, height: 44, borderRadius: 12,
-                      background: `${a.color}20`,
-                      border: `1px solid ${a.color}30`,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: 20, flexShrink: 0,
-                    }}>{a.icon}</div>
-                    <div>
-                      <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 2 }}>{a.label}</div>
-                      <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>{a.desc}</div>
-                    </div>
-                    <span style={{ marginLeft: 'auto', color: 'var(--text-muted)', fontSize: 16 }}>→</span>
-                  </div>
+              <div className="flex-row" style={{ gap: '12px' }}>
+                <Link href="/resume-builder" className="btn btn-primary hover-float" style={{ boxShadow: 'var(--shadow-glow)' }}>
+                  ✨ New Resume
                 </Link>
-              ))}
+                <Link href="/job-fetcher" className="btn btn-secondary hover-float" style={{ background: 'var(--bg-glass)', borderColor: 'rgba(255,255,255,0.1)' }}>
+                  🔗 Fetch Job
+                </Link>
+              </div>
             </div>
           </div>
 
-          <div>
-            <div className="flex-between" style={{ marginBottom: 16 }}>
-              <h2 style={{ fontSize: 16, fontWeight: 700, fontFamily: 'Space Grotesk' }}>🕐 Recent Applications</h2>
-              <Link href="/job-tracker" className="btn btn-ghost btn-sm">View All →</Link>
-            </div>
-            {dashboardLoading ? (
-              <div className="empty-state">
-                <img 
-                  src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700"
-                  alt="Loading..."
-                  style={{ width: 100, height: 100, objectFit: 'contain', opacity: 0.85 }}
-                />
-                <div style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 8 }}>Loading your jobs...</div>
-              </div>
-            ) : recentJobs.length === 0 ? (
-              <div className="empty-state">
-                <div className="empty-icon">📭</div>
-                <div className="empty-title">No jobs tracked yet</div>
-                <div className="empty-desc">Start by fetching a job URL or adding one manually</div>
-                <Link href="/job-fetcher" className="btn btn-primary btn-sm" style={{ marginTop: 8 }}>Fetch a Job</Link>
-              </div>
-            ) : (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                {recentJobs.map(job => (
-                  <div key={job.id} className="card" style={{ padding: 16 }}>
-                    <div className="flex-between" style={{ marginBottom: 6 }}>
-                      <div style={{ fontWeight: 600, fontSize: 14 }}>{job.title || job.role || job.jobTitle || (job.company ? job.company + ' Role' : 'Untitled Role')}</div>
-                      <span className={`tag ${STATUS_COLORS[job.status] || 'tag-primary'}`}>{job.status}</span>
-                    </div>
-                    <div style={{ fontSize: 12, color: 'var(--text-secondary)' }}>
-                      {job.company || 'Unknown Company'} · {job.location || 'Remote'}
-                    </div>
-                    <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 4 }}>
-                      {new Date(job.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
-                    </div>
+          <div className="stats-grid" style={{ gap: '20px' }}>
+            {statCards.map(s => (
+              <div key={s.label} className="glass-card hover-float" style={{ padding: '24px', display: 'flex', alignItems: 'center', gap: '20px' }}>
+                <div className="stat-icon" style={{ background: s.color, width: '56px', height: '56px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1)' }}>
+                  <span style={{ fontSize: 26 }}>{s.icon}</span>
+                </div>
+                <div>
+                  <div className="stat-value" style={{ fontSize: '28px', fontWeight: 800, background: 'var(--text-primary)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                    {dashboardLoading ? '—' : s.value}
                   </div>
+                  <div className="stat-label" style={{ fontSize: '13px', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.5px', marginTop: '4px' }}>
+                    {s.label}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid-2" style={{ gap: '24px' }}>
+            {/* Quick Actions Bento */}
+            <div className="glass-panel" style={{ padding: '24px' }}>
+              <h2 style={{ fontSize: 16, fontWeight: 700, marginBottom: 20, fontFamily: 'Space Grotesk', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span className="pulse-ring" style={{ width: '8px', height: '8px', background: 'var(--accent-primary)', display: 'inline-block', borderRadius: '50%' }}></span>
+                Quick Actions
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {QUICK_ACTIONS.map(a => (
+                  <Link key={a.href} href={a.href} style={{ textDecoration: 'none' }}>
+                    <div className="glass-card hover-float" style={{ padding: 16, display: 'flex', alignItems: 'center', gap: 16 }}>
+                      <div style={{
+                        width: 48, height: 48, borderRadius: 14,
+                        background: `linear-gradient(135deg, ${a.color}20 0%, transparent 100%)`,
+                        border: `1px solid ${a.color}40`,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        fontSize: 22, flexShrink: 0,
+                      }}>{a.icon}</div>
+                      <div>
+                        <div style={{ fontWeight: 600, fontSize: 14, color: 'var(--text-primary)', marginBottom: 2 }}>{a.label}</div>
+                        <div style={{ fontSize: 12, color: 'var(--text-secondary)' }}>{a.desc}</div>
+                      </div>
+                      <span style={{ marginLeft: 'auto', color: a.color, fontSize: 18, opacity: 0.7 }}>→</span>
+                    </div>
+                  </Link>
                 ))}
               </div>
-            )}
-          </div>
-        </div>
-
-        {/* ── AI Consensus Brain Center (Removed for cleaner dashboard, moved to separate tab/widget later) ── */}
-
-        <div style={{ marginTop: 32 }} className="card-glass">
-          <div style={{ display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
-            <div style={{ flex: 1, minWidth: 200 }}>
-              <h3 style={{ fontFamily: 'Space Grotesk', fontSize: 18, fontWeight: 700, marginBottom: 8 }}>
-                🚀 Next-Gen Career Optimization Engine
-              </h3>
-              <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                Generate ATS-optimized resumes tailored to any job description, match existing resumes, and extract structured data from any job posting URL — all with our advanced career intelligence engine.
-              </p>
             </div>
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              {['ATS-Optimized', 'Resume Vault', 'URL Scraper', 'Job Tracker'].map(f => (
-                <span key={f} className="tag tag-primary" style={{ padding: '6px 14px', fontSize: 12 }}>{f}</span>
-              ))}
+
+            {/* Recent Applications */}
+            <div className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column' }}>
+              <div className="flex-between" style={{ marginBottom: 20 }}>
+                <h2 style={{ fontSize: 16, fontWeight: 700, fontFamily: 'Space Grotesk', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ fontSize: '18px' }}>🕐</span> Recent Applications
+                </h2>
+                <Link href="/job-tracker" className="btn btn-ghost btn-sm" style={{ background: 'rgba(255,255,255,0.05)', borderRadius: '6px' }}>View All →</Link>
+              </div>
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                {dashboardLoading ? (
+                  <div className="empty-state" style={{ margin: 'auto', padding: '40px 0' }}>
+                    <span className="pulse-ring" style={{ width: 32, height: 32, border: '3px solid var(--accent-primary)', borderRadius: '50%', borderTopColor: 'transparent', animation: 'spinner 0.8s linear infinite', marginBottom: 16, display: 'inline-block' }}></span>
+                    <div style={{ fontSize: 13, color: 'var(--text-muted)' }}>Loading your jobs...</div>
+                  </div>
+                ) : recentJobs.length === 0 ? (
+                  <div className="empty-state" style={{ margin: 'auto', padding: '40px 0' }}>
+                    <div className="empty-icon" style={{ fontSize: '40px', marginBottom: '12px' }}>📭</div>
+                    <div className="empty-title" style={{ fontSize: '16px', color: 'var(--text-primary)' }}>No jobs tracked yet</div>
+                    <div className="empty-desc" style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '16px' }}>Start by fetching a job URL or adding one manually</div>
+                    <Link href="/job-fetcher" className="btn btn-primary hover-float">Fetch a Job</Link>
+                  </div>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                    {recentJobs.map(job => (
+                      <div key={job.id} className="glass-card hover-float" style={{ padding: '16px 20px' }}>
+                        <div className="flex-between" style={{ marginBottom: 8 }}>
+                          <div style={{ fontWeight: 600, fontSize: 15, color: 'var(--text-primary)' }}>{job.title || job.role || job.jobTitle || (job.company ? job.company + ' Role' : 'Untitled Role')}</div>
+                          <span className={`tag ${STATUS_COLORS[job.status] || 'tag-primary'}`} style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.2)' }}>{job.status}</span>
+                        </div>
+                        <div style={{ fontSize: 13, color: 'var(--text-secondary)', display: 'flex', gap: '12px', alignItems: 'center' }}>
+                          <span>💼 {job.company || 'Unknown Company'}</span>
+                          <span style={{ width: '4px', height: '4px', background: 'var(--text-muted)', borderRadius: '50%' }}></span>
+                          <span>📍 {job.location || 'Remote'}</span>
+                        </div>
+                        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 8, borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '8px' }}>
+                          Applied on {new Date(job.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+
+          <div className="glass-panel" style={{ padding: '24px', background: 'linear-gradient(135deg, rgba(99,102,241,0.05) 0%, rgba(6,182,212,0.05) 100%)', border: '1px solid rgba(99,102,241,0.15)' }}>
+            <div style={{ display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
+              <div style={{ flex: 1, minWidth: 200 }}>
+                <h3 style={{ fontFamily: 'Space Grotesk', fontSize: 18, fontWeight: 700, marginBottom: 8, color: 'var(--text-primary)' }}>
+                  🚀 Next-Gen Career Optimization Engine
+                </h3>
+                <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                  Generate ATS-optimized resumes tailored to any job description, match existing resumes, and extract structured data from any job posting URL — all with our advanced career intelligence engine.
+                </p>
+              </div>
+              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+                {['ATS-Optimized', 'Resume Vault', 'URL Scraper', 'Job Tracker'].map(f => (
+                  <span key={f} className="tag tag-primary" style={{ padding: '6px 14px', fontSize: 12, background: 'rgba(99,102,241,0.15)', border: '1px solid rgba(99,102,241,0.3)' }}>{f}</span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Right Column - Auto Apply Status */}
@@ -760,51 +775,51 @@ function AutoApplyWidget() {
   const logs = run?.logs || [];
 
   return (
-    <div className="card auto-apply-widget" style={{ display: 'flex', flexDirection: 'column' }}>
-      <div style={{ borderBottom: '1px solid var(--border)', paddingBottom: '16px', marginBottom: '16px' }}>
-        <h3 style={{ fontSize: '16px', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ width: 8, height: 8, borderRadius: '50%', background: isRunning ? '#10b981' : isPaused ? '#f59e0b' : '#64748b' }}></span>
+    <div className="glass-card auto-apply-widget hover-float" style={{ display: 'flex', flexDirection: 'column', height: '100%', padding: '24px' }}>
+      <div style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '20px', marginBottom: '20px' }}>
+        <h3 style={{ fontSize: '16px', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-primary)' }}>
+          <span className={isRunning ? 'pulse-ring' : ''} style={{ width: 10, height: 10, borderRadius: '50%', background: isRunning ? '#10b981' : isPaused ? '#f59e0b' : '#64748b', display: 'inline-block' }}></span>
           Auto Apply {isRunning ? 'Running' : isPaused ? 'Paused' : 'Idle'}
         </h3>
-        <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px' }}>
+        <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '6px' }}>
           {isRunning ? `Applying to ${run.targetRole} jobs` : 'Auto-application process.'}
         </p>
 
         {run && (
-          <div style={{ display: 'flex', gap: 8, marginTop: 10, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 10, marginTop: 16, flexWrap: 'wrap' }}>
             {[
               { l: 'Search', v: stats.searched, c: '#3b82f6' },
               { l: 'Scored', v: stats.scored, c: '#8b5cf6' },
               { l: 'Applied', v: stats.applied, c: '#10b981' },
               { l: 'Fail', v: stats.failed, c: '#ef4444' },
             ].map(s => (
-              <div key={s.l} style={{ flex: 1, textAlign: 'center', padding: '4px 6px', borderRadius: 6, background: `${s.c}15`, minWidth: 50 }}>
-                <div style={{ fontSize: 16, fontWeight: 700, color: s.c }}>{s.v || 0}</div>
-                <div style={{ fontSize: 9, color: 'var(--text-muted)' }}>{s.l}</div>
+              <div key={s.l} style={{ flex: 1, textAlign: 'center', padding: '8px', borderRadius: '10px', background: `linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%)`, border: `1px solid ${s.c}30` }}>
+                <div style={{ fontSize: 18, fontWeight: 800, color: s.c }}>{s.v || 0}</div>
+                <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{s.l}</div>
               </div>
             ))}
           </div>
         )}
       </div>
 
-      <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px', minHeight: '200px' }}>
         {logs.length === 0 ? (
-          <div className="empty-state" style={{ margin: 'auto' }}>
-            <div className="empty-icon" style={{ fontSize: '32px' }}>💤</div>
-            <div className="empty-title" style={{ fontSize: '14px' }}>Auto Apply is idle</div>
-            <div className="empty-desc" style={{ fontSize: '12px' }}>Configure and start in the Auto Apply page.</div>
-            <Link href="/auto-apply" className="btn btn-primary btn-sm" style={{ marginTop: '12px' }}>Configure</Link>
+          <div className="empty-state" style={{ margin: 'auto', padding: '32px 0' }}>
+            <div className="empty-icon" style={{ fontSize: '36px', marginBottom: '12px' }}>💤</div>
+            <div className="empty-title" style={{ fontSize: '15px', color: 'var(--text-primary)' }}>Auto Apply is idle</div>
+            <div className="empty-desc" style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '16px' }}>Configure and start in the Auto Apply page.</div>
+            <Link href="/auto-apply" className="btn btn-primary btn-sm hover-float" style={{ boxShadow: 'var(--shadow-glow)' }}>Configure</Link>
           </div>
         ) : (
           logs.slice(0, 20).map((log, i) => (
             <div key={i} style={{
-              fontSize: '12px', padding: '10px 12px', background: 'var(--bg-secondary)',
-              borderRadius: '8px',
+              fontSize: '12px', padding: '12px 14px', background: 'rgba(0,0,0,0.2)',
+              borderRadius: '10px',
               borderLeft: `3px solid ${log.type === 'error' ? '#ef4444' : log.type === 'success' ? '#10b981' : '#3b82f6'}`,
             }}>
-              <div style={{ fontWeight: 600, color: 'var(--text-primary)', marginBottom: '2px', fontSize: '12px' }}>{log.title}</div>
-              <div style={{ color: 'var(--text-secondary)', fontSize: '11px' }}>{log.message}</div>
-              <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '4px' }}>
+              <div style={{ fontWeight: 600, color: 'var(--text-primary)', marginBottom: '4px', fontSize: '13px' }}>{log.title}</div>
+              <div style={{ color: 'var(--text-secondary)', fontSize: '12px', lineHeight: 1.5 }}>{log.message}</div>
+              <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '6px' }}>
                 {new Date(log.time).toLocaleTimeString()}
               </div>
             </div>

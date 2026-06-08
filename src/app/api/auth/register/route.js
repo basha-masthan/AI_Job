@@ -34,6 +34,11 @@ export async function POST(request) {
     return NextResponse.json({ success: true, message: 'Verification email sent' });
   } catch (err) {
     console.error('[auth/register] Error:', err);
+    if (err.message && err.message.includes('MONGODB_URI')) {
+      return NextResponse.json({ 
+        error: 'Database not configured on this server. Please add MONGODB_URI to your deployment environment variables.' 
+      }, { status: 500 });
+    }
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }

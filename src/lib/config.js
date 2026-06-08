@@ -2,8 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 export function getStoragePath(filename) {
-  const isVercel = process.env.VERCEL === '1' || process.env.NOW_BUILDER === '1';
-  const targetDir = isVercel ? '/tmp/data' : path.join(process.cwd(), 'data');
+  const targetDir = path.join(process.cwd(), 'data');
   const sourceDir = path.join(process.cwd(), 'data');
 
   if (!fs.existsSync(targetDir)) {
@@ -16,8 +15,8 @@ export function getStoragePath(filename) {
 
   const targetPath = path.join(targetDir, filename);
 
-  // If on Vercel, copy packaged seed JSON file to target /tmp/data directory if missing
-  if (isVercel && !fs.existsSync(targetPath)) {
+  // Fallback to copy from source if needed (mostly legacy support now since target is source)
+  if (!fs.existsSync(targetPath)) {
     const sourcePath = path.join(sourceDir, filename);
     if (fs.existsSync(sourcePath)) {
       try {
@@ -184,7 +183,6 @@ export function invalidateSettingsCache() {}
 
 export function getAppUrl() {
   if (process.env.NEXT_PUBLIC_APP_URL) return process.env.NEXT_PUBLIC_APP_URL;
-  if (process.env.NEXT_PUBLIC_VERCEL_URL) return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  if (process.env.APP_URL) return process.env.APP_URL;
   return 'http://localhost:3000';
 }

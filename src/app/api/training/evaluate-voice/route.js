@@ -23,10 +23,7 @@ export async function POST(req) {
     if (videoFile && videoFile.size > 0) {
       try {
         const buffer = Buffer.from(await videoFile.arrayBuffer());
-        const isVercel = process.env.VERCEL === '1' || process.env.NOW_BUILDER === '1';
-        const uploadDir = isVercel 
-          ? path.join('/tmp', 'uploads', 'interviews')
-          : path.join(process.cwd(), 'public', 'uploads', 'interviews');
+        const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'interviews');
         
         if (!fs.existsSync(uploadDir)) {
           fs.mkdirSync(uploadDir, { recursive: true });
@@ -34,7 +31,7 @@ export async function POST(req) {
         
         const filename = `interview_${userId}_${Date.now()}.webm`;
         fs.writeFileSync(path.join(uploadDir, filename), buffer);
-        videoUrl = isVercel ? null : `/uploads/interviews/${filename}`;
+        videoUrl = `/uploads/interviews/${filename}`;
       } catch (err) {
         console.warn('Failed to save interview video locally due to serverless read-only filesystem:', err.message);
         videoUrl = null; // Failsafe fallback
